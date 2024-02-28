@@ -1,0 +1,76 @@
+<form>
+  <div class="row" style="padding-top: 0.5%;">
+
+    <div class="col">
+      <input type="text"
+      name="nombrePropio1"
+      placeholder="Primer nombre"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="paciente.nombrePropio1">
+    </div>
+
+    <div class="col">
+      <input type="text"
+      name="nombrePropio2"
+      placeholder="Segundo nombre"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="paciente.nombrePropio2">
+    </div>
+
+    <div class="col">
+      <input type="text"
+      name="apellidoPaterno"
+      placeholder="Apellido paterno"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="paciente.apellidoPaterno">
+    </div>
+
+    <div class="col">
+      <input type="text"
+      name="apellidoMaterno"
+      placeholder="Apellido Materno"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="paciente.apellidoMaterno">
+    </div>
+
+    <div class="col">
+      <input
+      name="edad"
+      placeholder="edad"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.edad"
+      type="number"
+      style="max-width: 100px;">
+    </div>
+    <div class="col">
+      <mat-form-field class="form-control mb-2">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="paciente.edad">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="masculino" value="M">
+        <label class="form-check-label" for="inlineRadio1">Masculino</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femenino" value="F">
+        <label class="form-check-label" for="inlineRadio2">Femenino</label>
+      </div>
+    </div>
+  </div>
+</form>
