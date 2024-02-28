@@ -1,6 +1,8 @@
 export interface Persona {
   nombrePropio1?:string;
   nombrePropio2?:string;
+  apellidoPaterno?:string;
+  apellidoMaterno?:string;
   edad?:number;
   genero?:string;
   sexoReferido?:string;
