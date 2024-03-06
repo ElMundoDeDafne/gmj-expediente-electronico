@@ -18,5 +18,5 @@ export interface Paciente extends Persona{
   esquemaVacunacion?:EsquemaVacunacionPac[]; //el px puede tener varios biologicos en su cartilla
   cuentaConCartilla?:boolean;
   tieneMorbilidades?:boolean;
-
+  tipoSangre?:string;
 }

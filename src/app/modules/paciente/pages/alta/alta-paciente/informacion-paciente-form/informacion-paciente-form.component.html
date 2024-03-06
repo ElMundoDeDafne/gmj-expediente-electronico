@@ -1,7 +1,7 @@
 <form>
   <div class="row" style="padding-top: 0.5%;">
-
     <div class="col">
+      <label>Primer nombre</label>
       <input type="text"
       name="nombrePropio1"
       placeholder="Primer nombre"
@@ -12,16 +12,19 @@
     </div>
 
     <div class="col">
-      <input type="text"
-      name="nombrePropio2"
-      placeholder="Segundo nombre"
-      class="form-control"
-      maxLength="20"
-      style="max-width: 100%;"
-      [(ngModel)]="paciente.nombrePropio2">
+      <label>Segundo nombre</label>
+        <input type="text"
+        name="nombrePropio2"
+        placeholder="Segundo nombre"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="paciente.nombrePropio2">
     </div>
 
+
     <div class="col">
+      <label>Apellido Paterno</label>
       <input type="text"
       name="apellidoPaterno"
       placeholder="Apellido paterno"
@@ -32,37 +35,7 @@
     </div>
 
     <div class="col">
-      <input type="text"
-      name="apellidoMaterno"
-      placeholder="Apellido Materno"
-      class="form-control"
-      maxLength="20"
-      style="max-width: 100%;"
-      [(ngModel)]="paciente.apellidoMaterno">
-    </div>
-
-    <div class="col">
-      <input
-      name="edad"
-      placeholder="edad"
-      class="form-control mb-2"
-      size="15"
-      maxLength="15"
-      [(ngModel)]="paciente.edad"
-      type="number"
-      style="max-width: 100px;">
-    </div>
-    <div class="col">
-      <mat-form-field class="form-control mb-2">
-        <mat-label>Fecha de nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="paciente.edad">
-        <mat-hint>DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
-
-    <div class="col">
+      <label>Genero </label>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="masculino" value="M">
         <label class="form-check-label" for="inlineRadio1">Masculino</label>
@@ -73,4 +46,119 @@
       </div>
     </div>
   </div>
+
+  <div class="row" style="padding-top: 0.5%;">
+    <div class="col">
+      <label>Apellido Materno</label>
+      <input type="text"
+      name="apellidoMaterno"
+      placeholder="Apellido Materno"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="paciente.apellidoMaterno">
+    </div>
+
+    <div class="col">
+      <label>Nacionalidad</label>
+      <input
+      name="nacionalidad"
+      placeholder="Nacionalidad"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.nacionalidad"
+      type="text"
+      style="max-width: 100%;">
+    </div>
+
+    <div class="col">
+      <label>Edad</label>
+      <input
+      name="edad"
+      placeholder="edad"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.edad"
+      type="number"
+      style="max-width: 100px;">
+    </div>
+
+
+    <div class="col">
+      <mat-form-field class="form-control mb-2" style="max-width: 100;">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="paciente.edad" name="edad">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row" style="padding-top: 0.5%;">
+    <div class="col">
+      <label>NSS</label>
+      <input
+      name="nacionalidad"
+      placeholder="NSS"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.nss"
+      type="text"
+      style="max-width: 100%;">
+    </div>
+
+    <div class="col">
+      <label>CURP</label>
+      <input
+      name="curp"
+      placeholder="CURP"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.curp"
+      type="text"
+      style="max-width: 100%;">
+    </div>
+
+    <div class="col">
+      <label>Motivo de consulta</label>
+      <input
+      name="motivoConnsulta"
+      placeholder="Motivo consulta"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.motivoConsulta"
+      type="text"
+      style="max-width: 100%;">
+    </div>
+
+    <div class="col">
+      <label>Folio</label>
+      <input
+      name="folioPaciente"
+      placeholder="Folio"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.folioPaciente"
+      type="text"
+      style="max-width: 100%;">
+    </div>
+  </div>
+
+  <div class="row" style="padding-top: 0.5%;">
+  </div>
+
+  <div class="row" style="padding-top: 0.5%;">
+  </div>
+
+  <div class="row" style="padding-top: 0.5%;">
+  </div>
+
 </form>
+<button>Nueva consulta</button>

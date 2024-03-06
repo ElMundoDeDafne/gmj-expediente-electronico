@@ -15,4 +15,9 @@ export interface Persona {
   curp?:string;
   fechaNacimiento?:string;
   fechaRegistro?:string;
+  nacionalidad?:string;
+  religion?:string;
+  talla?:number;
+  folioPaciente?:string;
+
 }

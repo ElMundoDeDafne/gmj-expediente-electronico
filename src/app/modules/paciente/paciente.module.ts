@@ -11,12 +11,16 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AltaPacienteComponent } from './pages/alta/alta-paciente/alta-paciente.component';
 import { InformacionPacienteFormComponent } from './pages/alta/alta-paciente/informacion-paciente-form/informacion-paciente-form.component';
+import { DomicilioPacienteFormComponent } from './pages/alta/alta-paciente/domicilio-paciente-form/domicilio-paciente-form.component';
+import { SignosVitalesPacienteFormComponent } from './pages/alta/alta-paciente/signos-vitales-paciente-form/signos-vitales-paciente-form.component';
 
 @NgModule({
   declarations: [
     AltaPacienteComponent,
     LandingPageComponent,
-    InformacionPacienteFormComponent
+    InformacionPacienteFormComponent,
+    DomicilioPacienteFormComponent,
+    SignosVitalesPacienteFormComponent
   ],
   imports: [
     CommonModule,FormsModule,MatTabsModule,MatStepperModule,

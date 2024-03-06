@@ -24,7 +24,9 @@ export class InformacionPacienteFormComponent {
      return '';
    };
 
-   public paciente : Paciente = {
-     motivoConsulta:'',
-   }
+    public paciente : Paciente = {
+      motivoConsulta:'',
+      nacionalidad:'Mexicano',
+      edad:0
+    }
 }
