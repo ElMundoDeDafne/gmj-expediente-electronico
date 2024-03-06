@@ -1,1 +1,78 @@
-<p>domicilio-paciente-form works!</p>
+  <div class="row" style="padding-top: 0.5%;">
+      <div class="col">
+        <label>Codigo Postal</label>
+        <input type="text"
+        name="codigoPostal"
+        placeholder="E.j. 42064"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.codigoPostal">
+      </div>
+
+      <div class="col">
+        <label>Calle principal</label>
+        <input type="text"
+        name="callePrincipal"
+        placeholder="E.j. Centro"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.callePrincipal">
+      </div>
+
+      <div class="col">
+        <label>Entre calle</label>
+        <input type="text"
+        name="entreCalle1"
+        placeholder="Reforma"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.entreCalles1">
+      </div>
+    </div>
+
+
+    <div class="row" style="padding-top: 0.5%;">
+      <div class="col">
+        <label>Entre calle 2</label>
+        <input type="text"
+        name="entreCalle2"
+        placeholder="Reforma"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.entreCalles2">
+    </div>
+    <div class="col">
+      <label>Estado</label>
+      <input type="text"
+      name="entidad"
+      placeholder="Hidalgo"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="domicilio.entidad">
+    </div>
+    <div class="col">
+      <label>Localidad</label>
+      <input type="text"
+      name="entidad"
+      placeholder="Jacala"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="domicilio.localidad">
+    </div>
+    <div class="col">
+      <label>Municipio</label>
+      <input type="text"
+      name="municipio"
+      placeholder="Jacala"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="domicilio.municipio">
+    </div>
+  </div>
