@@ -10,8 +10,17 @@ const routes: Routes = [
   {path: 'home',component:WelcomePageComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'**',component:NotFoundPageComponent},
-  {path:'consulta/:name',component:StillOnWorkPageComponent}
+  {path:'consulta/pacientes/buscar',component:StillOnWorkPageComponent},
+  {path:'consulta/recetas/reimprimir',component:StillOnWorkPageComponent},
+  {path:'consulta/citas/reagendar',component:StillOnWorkPageComponent},
+  {path:'consulta/expediente',component:StillOnWorkPageComponent}
 ];
+/**
+ *         <li><a class="dropdown-item" routerLink="" routerLinkActive="active">Busqueda paciente</a></li>
+        <li><a class="dropdown-item" routerLink="" routerLinkActive="active">Reimpresion receta</a></li>
+        <li><a class="dropdown-item" routerLink="" routerLinkActive="active">Reagendar cita medica</a></li>
+        <li><a class="dropdown-item" routerLink="" routerLinkActive="active">Consultar expediente</a></li>
+*/
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
