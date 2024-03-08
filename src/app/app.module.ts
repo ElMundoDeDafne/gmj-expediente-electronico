@@ -13,6 +13,8 @@ import { TopMenuComponent } from './pages/top/top-menu/top-menu.component';
 import { FooterComponent } from './pages/footer/footer/footer.component';
 import { WelcomePageComponent } from './pages/landing/welcome-page/welcome-page.component';
 import { WelcomeAlertComponent } from './pages/alerts/welcome-alert/welcome-alert.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { StillOnWorkPageComponent } from './pages/still-on-work-page/still-on-work-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { WelcomeAlertComponent } from './pages/alerts/welcome-alert/welcome-aler
     TopMenuComponent,
     FooterComponent,
     WelcomePageComponent,
-    WelcomeAlertComponent
+    WelcomeAlertComponent,
+    NotFoundPageComponent,
+    StillOnWorkPageComponent
   ],
   imports: [
     BrowserModule,

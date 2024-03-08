@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ConstantesGeneralesApp } from '../../../utils/constantes-generales';
+import { Menu } from './top-menu-menus.interface';
 
 @Component({
   selector: 'app-top-menu',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrl: './top-menu.component.css'
 })
 export class TopMenuComponent {
-
+  public listaMenus:Menu[]=[
+    {
+      nombreMenu:'Nueva Consulta',
+      path:'',
+      clase:'nav-link dropdown-toggle'
+    },{
+      nombreMenu:'Paciente',
+      path:'',
+      nombreSubmenu:['Buscar paciente','b'],
+      submenuPaths:['consulta/pacientes/buscar','c'],
+      clase:'nav-link dropdown-toggle',
+      submenuClase:['dropdown-item']
+    }
+  ];
 }

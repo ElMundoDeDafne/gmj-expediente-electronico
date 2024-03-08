@@ -1,13 +1,21 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
   <a class="navbar-brand" href="#">
-    <img src="assets/logo_small.png" alt="Logotipo" style="height: 40px;">
+    <img src="assets/logo_small.png" alt="Logotipo" style="height: 50px; padding-left: 25%;">
   </a>
 
-  <ul class="navbar-nav">
+  <ul class="navbar-nav mr-auto">
     <li class="nav-item">
-      <a routerLink="empleados" routerLinkActive="active" class="nav-link" >Grupo Medico Jacala</a>
+      <a routerLink="" routerLinkActive="active" class="nav-link" >Jacala Grupo Medico</a>
     </li>
+
+    <!-- <li *ngFor="let menu of listaMenus;" class="nav-item dropdown">
+      <a class="{{menu.clase}}" href="{{menu.path}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{menu.nombreMenu}}</a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="{{menu.submenuClase}}" routerLink="menu.submenuPaths" routerLinkActive="active">{{menu.nombreSubmenu}}</a></li>
+      </ul>
+    </li> -->
+
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Consulta

@@ -8,3 +8,16 @@ html, body { height: 100%; }
 }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.div-centrado{
+  margin:auto;
+  width: 50%;
+  padding:10px;
+}
+
+.img-centrada{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
