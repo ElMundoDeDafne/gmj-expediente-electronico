@@ -21,3 +21,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-right: auto;
   width: 40%;
 }
+
+.form-div-padding {
+  padding-top: 0.5%; padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+}

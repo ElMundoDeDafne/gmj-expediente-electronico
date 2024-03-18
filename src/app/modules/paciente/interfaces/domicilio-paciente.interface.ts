@@ -1,4 +1,4 @@
-export interface DomicilioPaciente {
+export interface IDomicilioPaciente {
   callePrincipal?:string;
   entreCalles1?:string;
   entreCalles2?:string;

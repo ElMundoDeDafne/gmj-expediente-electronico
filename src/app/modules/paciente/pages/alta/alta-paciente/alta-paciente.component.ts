@@ -1,5 +1,5 @@
 import { Component,ViewEncapsulation } from '@angular/core';
-import { Paciente } from '../../../interfaces/paciente.interface';
+import { IPaciente } from '../../../interfaces/paciente.interface';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
@@ -24,7 +24,12 @@ export class AltaPacienteComponent {
     return '';
   };
 
-  public paciente : Paciente = {
-    motivoConsulta:'',
+  public paciente : IPaciente = {
+    domicilioPaciente:{},
+    signosVitales:{}
+  }
+
+  verdatos():void{
+    console.error(this.paciente);
   }
 }

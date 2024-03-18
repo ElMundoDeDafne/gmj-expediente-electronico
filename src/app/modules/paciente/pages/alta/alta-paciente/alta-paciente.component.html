@@ -1,14 +1,46 @@
-<mat-tab-group>
-  <mat-tab label="Informacion de paciente">
-    <app-informacion-paciente-form></app-informacion-paciente-form>
-</mat-tab>
-<mat-tab label="Domicilio">
-  <div class="fs-div">
-    <app-domicilio-paciente-form></app-domicilio-paciente-form>
-  </div>
-</mat-tab>
-<mat-tab label="Signos vitales">
-  <app-signos-vitales-paciente-form></app-signos-vitales-paciente-form>
-</mat-tab>
-</mat-tab-group>
-<button>Nueva consulta</button>
+<div class="form-div-padding">
+  <h1>Nueva consulta</h1>
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Hoja Frontal">
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Informacion paciente">
+          <app-informacion-paciente-form [(ngModel)]="paciente"></app-informacion-paciente-form>
+        </mat-tab>
+        <mat-tab label="Domicilio & Contacto">
+          <app-domicilio-paciente-form [(ngModel)]="paciente.domicilioPaciente"></app-domicilio-paciente-form>
+      </mat-tab>
+      <mat-tab label="Signos vitales">
+        <app-signos-vitales-paciente-form [(ngModel)]="paciente.signosVitales"></app-signos-vitales-paciente-form>
+      </mat-tab>
+      <mat-tab label="Entorno">
+      </mat-tab>
+    </mat-tab-group>
+  </mat-tab>
+  <mat-tab label="Hist. Clinica">
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Antedentes Heredo-familiares">
+        <app-antecedentes-familiares-form></app-antecedentes-familiares-form>
+      </mat-tab>
+      <mat-tab label="Antedentes personales patologicos">
+
+      </mat-tab>
+      <mat-tab label="Antedentes personales no patologicos">
+
+      </mat-tab>
+      <mat-tab label="Antedentes gineco-obstetricos">
+
+      </mat-tab>
+      <mat-tab label="Interrogatorio">
+
+      </mat-tab>
+      <mat-tab label="Inspecciones grales">
+
+      </mat-tab>
+    </mat-tab-group>
+    <!-- <app-antecedentes-familiares-form></app-antecedentes-familiares-form> -->
+  </mat-tab>
+  <mat-tab label="Notas evolucion"></mat-tab>
+  </mat-tab-group><br>
+  <button type="button" (click)="verdatos()" class="btn btn-outline-primary btn-sm">Registrar consulta</button>
+  <p>{{paciente|json}}</p>
+</div>

@@ -1,0 +1,81 @@
+<form>
+  <div class="form-div-padding">
+    <h1>Buscar paciente</h1>
+
+    <div class="row" style="padding-top: 0.5%;">
+      <div class="col">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="folio" value="{{this}}">
+          <label class="form-check-label" for="inlineRadio1">Folio</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="nombre" value="{{this}}">
+          <label class="form-check-label" for="inlineRadio2">Nombre</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="localidad" value="{{this}}">
+          <label class="form-check-label" for="inlineRadio3">Localidad</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="curp" value="{{this}}">
+          <label class="form-check-label" for="inlineRadio3">CURP</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="medicoTratante" value="{{this}}">
+          <label class="form-check-label" for="inlineRadio3">Medico tratante</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" length="130px" type="radio" name="inlineRadioOptions" id="medicoTratante" value="{{busqueda.textoCriterioBusqueda}}">
+          <label class="form-check-label" for="inlineRadio3">Especialidad</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="padding-top: 0.5%;">
+      <div class="col">
+        <input type="text"
+        name="criterioBusquedaTexto"
+        class="form-control"
+        style="max-width: 100%;">
+        <br>
+        <input type="submit" value="Buscar paciente" class="btn btn-outline-primary btn-sm">
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="form-div-padding">
+  <p>Seccion para mostrar tabla con resultados de busqueda de paciente</p>
+  <table class="table">
+    <thead class="thead-dark">
+      <th>Nombre(s)</th>
+      <th>Ap. Paterno</th>
+      <th>Ap. Materno</th>
+      <th>Edad</th>
+      <th>Especialidad</th>
+      <th>Medico Tratante</th>
+      <th>Ultima visita</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="#" routerLinkActive="active">Christian Yamil</a></td>
+        <td>Castillo</td>
+        <td>Covarrubias</td>
+        <td>32</td>
+        <td>Neurologia</td>
+        <td>Gerardo A. Borbolla</td>
+        <td>09/03/2024</td>
+      </tr>
+      <tr>
+        <td>Dafne</td>
+        <td>Castillo</td>
+        <td>Torres</td>
+        <td>6</td>
+        <td>Neumologia</td>
+        <td>Aleida Torres Sanchez</td>
+        <td>09/03/2024</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Nota: Al dar clic al nombre, debera redirigir a la hoja frontal del paciente buscado</p>
+</div>

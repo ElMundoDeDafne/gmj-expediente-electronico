@@ -1,3 +1,56 @@
-<div class="row" style="padding-top: 0.5%;">
-
+  <div class="row form-div-padding">
+    <div class="col">
+      <label>Presion S.</label>
+      <input type="number"
+      name="presionSist"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.presionSist">
+    </div>
+    <div class="col">
+      <label>Presion D.</label>
+      <input type="number"
+      name="presionDiast"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.presionDiast">
+    </div>
+    <div class="col">
+      <label>Frecuencia respiratoria</label>
+      <input type="number"
+      name="freqResiratoria"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.oxigenacion">
+      <!-- <label>FPM</label> -->
+    </div>
+    <div class="col">
+      <label>Frecuencia cardiaca</label>
+      <input type="number"
+      name="freqCardiaca"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.frecuenciaCardiaca">
+      <!-- <label>FPM</label> -->
+    </div>
+    <div class="col">
+      <label>¿Ayuno?</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ayunoNo" value="true" [(ngModel)]="signosVitales.cuentaConAyuno">
+        <label class="form-check-label" for="inlineRadio1">Si</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ayunoSi" value="false" [(ngModel)]="signosVitales.cuentaConAyuno">
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+      <!-- <label>FPM</label> -->
+    </div>
 </div>
