@@ -1,0 +1,132 @@
+  <div class="row form-div-padding">
+    <br><br><h3>Domicilio</h3>
+      <div class="col">
+        <label>Codigo Postal</label>
+        <input type="text"
+        name="codigoPostal"
+        placeholder="E.j. 42064"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.codigoPostal">
+      </div>
+
+      <div class="col">
+        <label>Calle principal</label>
+        <input type="text"
+        name="callePrincipal"
+        placeholder="E.j. Centro"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.callePrincipal">
+      </div>
+
+      <div class="col">
+        <label>Entre calle</label>
+        <input type="text"
+        name="entreCalle1"
+        placeholder="Reforma"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.entreCalles1">
+      </div>
+    </div>
+
+
+    <div class="row form-div-padding">
+      <div class="col">
+        <label>Entre calle 2</label>
+        <input type="text"
+        name="entreCalle2"
+        placeholder="Reforma"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.entreCalles2">
+    </div>
+    <div class="col">
+      <label>Estado</label>
+      <input type="text"
+      name="entidad"
+      placeholder="Hidalgo"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="domicilio.entidad">
+    </div>
+    <div class="col">
+      <label>Localidad</label>
+      <input type="text"
+      name="entidad"
+      placeholder="Jacala"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="domicilio.localidad">
+    </div>
+    <div class="col">
+      <label>Municipio</label>
+      <input type="text"
+      name="municipio"
+      placeholder="Jacala"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="domicilio.municipio">
+    </div>
+  </div>
+
+  <div class="row form-div-padding">
+    <div class="col">
+      <label>Numero</label>
+      <input type="text"
+      name="numeroCalle"
+      placeholder="S/N"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 50%">
+      </div>
+      <div class="col">
+        <label>Manzana</label>
+        <input type="text"
+        name="manzana"
+        placeholder="S/N"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 50%;">
+      </div>
+      <div class="col">
+        <label>Vivienda</label>
+        <input type="text"
+        name="vivienda"
+        placeholder="S/N"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 50%;">
+      </div>
+    </div>
+    <div class="row form-div-padding">
+      <br><br><h3>Datos de contacto</h3>
+      <div class="col">
+        <label>Num. Telefono</label>
+        <input type="tel"
+        name="telefono"
+        placeholder="S/N"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 50%;">
+      </div>
+      <div class="col">
+        <label>Correo electronico</label>
+        <input type="email"
+        name="email"
+        placeholder="S/N"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 50%;">
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+  </div>

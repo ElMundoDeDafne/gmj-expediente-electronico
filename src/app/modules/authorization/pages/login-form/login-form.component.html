@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="login-container">
+    <div class="logo-container">
+      <img src="assets/logo_grande_transparent.png">
+      <h3 class="login-font">Grupo Medico Jacala</h3>
+    </div>
+    <form class="form-group">
+      <label class="login-font">Usuario</label>
+      <input type="text" class="form-control" id="usuarioLogin" [(ngModel)]="usuarioCredenciales.usuario" name="usuario">
+    </form>
+    <form class="form-group">
+      <label class="login-font">Contraseña</label>
+      <input type="password" class="form-control" id="passwLogin" [(ngModel)]="usuarioCredenciales.passw" name="password">
+    </form>
+    <br>
+    <button (click)="validaUsuarios()" class="btn btn-outline-primary btn-sm login-font">Ingresar</button>
+  </div>
+</div>

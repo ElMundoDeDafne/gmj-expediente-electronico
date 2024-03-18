@@ -1,4 +1,4 @@
-export interface EsquemaVacunacionPac {
+export interface IEsquemaVacunacionPac {
   fechaAplicacion:string;
   nombreFabricante:string;
   loteVacuna:string;

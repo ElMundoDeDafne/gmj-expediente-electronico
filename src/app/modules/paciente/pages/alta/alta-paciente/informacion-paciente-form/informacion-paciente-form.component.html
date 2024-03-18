@@ -1,7 +1,56 @@
-<form>
-  <div class="row" style="padding-top: 0.5%;">
+  <div class="row form-div-padding">
+    <div class="col">
+      <label>Tipo de consulta</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="tipoConsulta" value="Primera vez" [(ngModel)]="paciente.tipoConsulta">
+        <label class="form-check-label" for="inlineRadio1">Primera Vez</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="tipoConsulta" value="Subsecuente" [(ngModel)]="paciente.tipoConsulta">
+        <label class="form-check-label" for="inlineRadio2">Subsecuente</label>
+      </div>
+    </div>
 
     <div class="col">
+      <label>¿Es derechohabiente?</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="true" [(ngModel)]="paciente.esDerechoHabiente">
+        <label class="form-check-label" for="inlineRadio3">Si</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="false" [(ngModel)]="paciente.esDerechoHabiente">
+        <label class="form-check-label" for="inlineRadio4">No</label>
+      </div>
+    </div>
+
+    <div class="col">
+      <label>Derechohabiencia</label><br>
+      <select name="derechoHabienciaCombo"
+        id="derechoHabienciaCombobox"
+        class="form-select form-select-sm"
+        style="max-width: 50%;"
+        [(ngModel)]="paciente.derechoHabiencia">
+        <option value="imss">IMSS</option>
+        <option value="issste">ISSSTE</option>
+        <option value="pemex">PEMEX</option>
+        <option value="otro">OTRO</option>
+      </select>
+    </div>
+
+    <div class="col">
+      <label>NSS</label>
+      <input type="text"
+      name="nss"
+      placeholder="Derechohabiencia"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="paciente.nss">
+    </div>
+
+  <div class="row form-div-padding">
+    <div class="col">
+      <label>Primer nombre</label>
       <input type="text"
       name="nombrePropio1"
       placeholder="Primer nombre"
@@ -12,26 +61,32 @@
     </div>
 
     <div class="col">
-      <input type="text"
-      name="nombrePropio2"
-      placeholder="Segundo nombre"
-      class="form-control"
-      maxLength="20"
-      style="max-width: 100%;"
-      [(ngModel)]="paciente.nombrePropio2">
+      <label>Segundo nombre</label>
+        <input type="text"
+        name="nombrePropio2"
+        placeholder="Segundo nombre"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="paciente.nombrePropio2">
     </div>
 
+
     <div class="col">
+      <label>Apellido Paterno</label>
       <input type="text"
       name="apellidoPaterno"
       placeholder="Apellido paterno"
       class="form-control"
       maxLength="20"
-      style="max-width: 100%;"
+      style="max-width: 70%;"
       [(ngModel)]="paciente.apellidoPaterno">
     </div>
+  </div>
 
+  <div class="row form-div-padding" style="padding-top: 0.5%;">
     <div class="col">
+      <label>Apellido Materno</label>
       <input type="text"
       name="apellidoMaterno"
       placeholder="Apellido Materno"
@@ -42,6 +97,20 @@
     </div>
 
     <div class="col">
+      <label>Nacionalidad</label>
+      <input
+      name="nacionalidad"
+      placeholder="Nacionalidad"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.nacionalidad"
+      type="text"
+      style="max-width: 100%;">
+    </div>
+
+    <div class="col">
+      <label>Edad</label>
       <input
       name="edad"
       placeholder="edad"
@@ -52,10 +121,67 @@
       type="number"
       style="max-width: 100px;">
     </div>
+
     <div class="col">
-      <mat-form-field class="form-control mb-2">
+      <label>Genero </label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="genero" id="masculino" value="M" [(ngModel)]="paciente.genero">
+        <label class="form-check-label" for="genero1">Masculino</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="genero" id="femenino" value="F" [(ngModel)]="paciente.genero">
+        <label class="form-check-label" for="genero2">Femenino</label>
+      </div>
+    </div>
+
+    <div class="col">
+      <label>Meses</label>
+      <input
+      name="edad"
+      placeholder="edad"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.meses"
+      type="number"
+      style="max-width: 100px;">
+    </div>
+
+    <div class="col">
+      <label>Talla</label>
+      <input
+      name="tallaPaciente"
+      placeholder=""
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.talla"
+      type="number"
+      style="max-width: 100px;">
+    </div>
+
+    <div class="col">
+      <label>Peso (kg)</label>
+      <input
+      name="tallaPaciente"
+      placeholder=""
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.pesoRegistrado"
+      type="number"
+      style="max-width: 100px;">
+    </div>
+
+  </div>
+  <div class="col"></div><div class="col"></div>
+  <div class="col"></div>
+
+  <div class="row form-div-padding">
+    <div class="col">
+      <mat-form-field class="form-control mb-2" style="max-width: 100;">
         <mat-label>Fecha de nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="paciente.edad">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="paciente.fechaNacimiento" name="fechaNacimiento">
         <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
@@ -63,14 +189,53 @@
     </div>
 
     <div class="col">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="masculino" value="M">
-        <label class="form-check-label" for="inlineRadio1">Masculino</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femenino" value="F">
-        <label class="form-check-label" for="inlineRadio2">Femenino</label>
-      </div>
+      <label>CURP</label>
+      <input
+      name="curp"
+      placeholder="CURP"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.curp"
+      type="text"
+      style="max-width: 100%;">
+    </div>
+
+    <div class="col">
+      <label>Motivo de consulta</label>
+      <input
+      name="motivoConnsulta"
+      placeholder="Motivo consulta"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.motivoConsulta"
+      type="text"
+      style="max-width: 100%;">
+    </div>
+
+    <div class="col">
+      <label>Folio</label>
+      <input
+      name="folioPaciente"
+      placeholder="Folio"
+      class="form-control mb-2"
+      size="15"
+      maxLength="15"
+      [(ngModel)]="paciente.folioPaciente"
+      type="text"
+      style="max-width: 65%;">
     </div>
   </div>
-</form>
+
+  <div class="col">
+    <label>¿Cuenta con cartilla de vacunacion?</label><br>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="true" [(ngModel)]="paciente.cuentaConCartilla">
+      <label class="form-check-label" for="inlineRadio5">Si</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="false" [(ngModel)]="paciente.cuentaConCartilla">
+      <label class="form-check-label" for="inlineRadio6">No</label>
+    </div>
+  </div>

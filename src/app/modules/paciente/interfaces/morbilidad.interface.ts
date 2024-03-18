@@ -1,4 +1,4 @@
-export interface PacMorbilidadPaciente{
+export interface IPacMorbilidadPaciente{
   idMorbilidad:number;
   morbilidadDescrita:string;
 }

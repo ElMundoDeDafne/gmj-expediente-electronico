@@ -1,7 +1,9 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, forwardRef } from '@angular/core';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
-import { Paciente } from '../../../../interfaces/paciente.interface';
+import { IPaciente } from '../../../../interfaces/paciente.interface';
+import { ISignosVitales } from '../../../../interfaces/signos-vitales-paciente.interface';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
 @Component({
@@ -9,9 +11,38 @@ import { Paciente } from '../../../../interfaces/paciente.interface';
   templateUrl: './informacion-paciente-form.component.html',
   styleUrl: './informacion-paciente-form.component.css',
   encapsulation: ViewEncapsulation.None,
-  providers: [provideNativeDateAdapter()],
+  providers: [    {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => InformacionPacienteFormComponent),
+    multi: true
+  },provideNativeDateAdapter()],
 })
-export class InformacionPacienteFormComponent {
+export class InformacionPacienteFormComponent implements ControlValueAccessor{
+
+  // @Input() paciente: IPaciente ={};
+  paciente: IPaciente={};
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+   writeValue(obj: IPaciente): void {
+     this.paciente = obj;
+   }
+
+   registerOnChange(fn: any): void {
+     this.onChange = fn;
+   }
+
+   registerOnTouched(fn: any): void {
+     this.onTouched = fn;
+   }
+
+   setDisabledState?(isDisabled: boolean): void {
+     // Implement if needed
+   }
+
+
+
+
    dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
      // Only highligh dates inside the month view.
      if (view === 'month') {
@@ -24,7 +55,4 @@ export class InformacionPacienteFormComponent {
      return '';
    };
 
-   public paciente : Paciente = {
-     motivoConsulta:'',
-   }
 }
