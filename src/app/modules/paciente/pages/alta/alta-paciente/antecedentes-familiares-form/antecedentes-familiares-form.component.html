@@ -1,13 +1,41 @@
-  <div class="row form-div-padding">
-    <div class="col" *ngFor="let antecedente of antecedentesHeredoFamiliares; let i = index">
+  <div class="row form-div-padding" *ngFor="let antecedente of antecedentesHdoFamiliares; let i = index">
+    <div class="col">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="familiar" id="familiar" value="Paternos" [(ngModel)]="antecedentesHeredoFamiliares[i].familiar"> <!--paterno/materno-->
-        <label class="form-check-label" for="inlineRadio[i]">Paterno</label>
+        <input class="form-check-input" type="radio" name="familiar" id="familiar{{i}}" value="Paternos" [(ngModel)]="antecedentesHdoFamiliares[i].familiar"> <!--paterno/materno-->
+        <label class="form-check-label" [for]="'familiar'+i">Paterno</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="familiar" id="familiar" value="Maternos" [(ngModel)]="antecedentesHeredoFamiliares[i].morbilidadFamilar">
-        <label class="form-check-label" for="inlineRadio[i+1]">Materno</label>
+        <input class="form-check-input" type="radio" name="familiar" id="familiar{{i}}" value="Maternos" [(ngModel)]="antecedentesHdoFamiliares[i].familiar">
+        <label class="form-check-label" [for]="'familiar'+i+1">Materno</label>
+      </div>
+    </div>
+
+    <div class="col">
+      <label>Parentesco</label>
+      <input type="text"
+      name="parentesco"
+      placeholder="E.j. 42064"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="antecedentesHdoFamiliares[i].parentesco">
+    </div>
+
+    <div class="col">
+      <label>Morbilidad</label>
+      <input type="text"
+      name="morbilidad"
+      placeholder="E.j. 42064"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="antecedentesHdoFamiliares[i].morbilidadFamilar">
+    </div>
+
+    <div class="col">
+      <button (click)="agregarInput()" class="btn btn-outline-primary btn-sm">Agregar</button>
+      <div *ngIf="i>=1">
+        <button (click)="eliminar()" *ngIf="i===1" class="btn btn-outline-primary btn-sm">Eliminar</button>
       </div>
     </div>
   </div>
-  <button (click)="agregarInput()">agregar antecedente</button>

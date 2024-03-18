@@ -14,7 +14,7 @@ export interface IPersona {
   ocupacion?:string;
   curp?:string;
   fechaNacimiento?:string;
-  fechaRegistro?:string;
+  fechaRegistro?:Date;
   nacionalidad?:string;
   religion?:string;
   talla?:number;
