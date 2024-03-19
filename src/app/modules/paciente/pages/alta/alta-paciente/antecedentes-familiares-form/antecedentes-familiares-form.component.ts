@@ -43,7 +43,7 @@ export class AntecedentesFamiliaresFormComponent {
     this.antecedentesHdoFamiliares.push(nuevoAntecedente);
   }
 
-  eliminar():void{
-    this.antecedentesHdoFamiliares.pop();
+  eliminar(pos:number):void{
+    this.antecedentesHdoFamiliares.splice(pos,1);
   }
 }

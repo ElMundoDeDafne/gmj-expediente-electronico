@@ -1,11 +1,11 @@
   <div class="row form-div-padding" *ngFor="let antecedente of antecedentesHdoFamiliares; let i = index">
     <div class="col">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="familiar{{i}}" id="familiar{{i}}" value="Paterno" [(ngModel)]="antecedentesHdoFamiliares[i].familiar"> <!--paterno/materno-->
+        <input class="form-check-input" type="radio" name="familiar{{i}}" id="familiar{{i}}" value="Paterno" [(ngModel)]="antecedente.familiar"> <!--paterno/materno-->
         <label class="form-check-label" [for]="'familiar'+i">Paterno</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="familiar{{i}}" id="familiar{{i}}" value="Materno" [(ngModel)]="antecedentesHdoFamiliares[i].familiar">
+        <input class="form-check-input" type="radio" name="familiar{{i}}" id="familiar{{i}}" value="Materno" [(ngModel)]="antecedente.familiar">
         <label class="form-check-label" [for]="'familiar'+i+1">Materno</label>
       </div>
     </div>
@@ -18,7 +18,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="antecedentesHdoFamiliares[i].parentesco">
+      [(ngModel)]="antecedente.parentesco">
     </div>
 
     <div class="col">
@@ -29,13 +29,15 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="antecedentesHdoFamiliares[i].morbilidadFamilar">
+      [(ngModel)]="antecedente.morbilidadFamilar">
     </div>
 
     <div class="col">
-      <button (click)="agregarInput()" class="btn btn-outline-primary btn-sm">Agregar</button>
+      <div *ngIf="i===0">
+        <button (click)="agregarInput()" class="btn btn-outline-primary btn-sm">Agregar</button>
+      </div>
       <div *ngIf="i>=1">
-        <button (click)="eliminar()" *ngIf="i===1" class="btn btn-outline-primary btn-sm">Eliminar</button>
+        <button (click)="eliminar(i)" class="btn btn-outline-primary btn-sm">Eliminar</button>
       </div>
     </div>
   </div>
