@@ -1,1 +1,104 @@
-<p>antecedentes-gineco-obstetricos works!</p>
+<div class="row form-div-padding">
+  <h2>Antecedentes ginecobstetricos</h2>
+  <div class="col">
+      <label>Menarca</label>
+      <input type="text"
+      name="fechaUltimaCitologia"
+      placeholder="fechaUltimaCitologia"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="antecedentesGinecobstetricos.fechaUltimaCitologia">
+  </div>
+
+  <div class="col">
+    <label>Inicio vida sexual</label>
+    <input type="text"
+    name="inicioVidaSexual"
+    placeholder="Menarca"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="antecedentesGinecobstetricos.inicioVidaSexual">
+  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+</div>
+
+<div class="row form-div-padding">
+  <div class="col">
+    <label>Fecha de ultima regla</label>
+    <input type="text"
+    name="fechaUltimaRegla"
+    placeholder="Menarca"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="antecedentesGinecobstetricos.fechaUltimaRegla">
+  </div>
+
+  <div class="col">
+    <label>Fecha de ultima citologia</label>
+    <input type="text"
+    name="inicioVidaSexual"
+    placeholder="Menarca"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;">
+  </div>
+
+  <div class="col">
+    <label>Fecha de ultima parto</label>
+    <input type="text"
+    name="fechaUltimoParto"
+    placeholder="Menarca"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="antecedentesGinecobstetricos.fechaUltimoParto">
+  </div>
+</div>
+
+<div class="row form-div-padding">
+
+  <div class="col">
+    <label>Hijos vivos</label>
+    <input type="number"
+    name="hijosVivos"
+    placeholder="Menarca"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="antecedentesGinecobstetricos.hijosVivos">
+  </div>
+  <div class="col">
+    <label>Gestas</label>
+    <input type="number"
+    name="numGestas"
+    placeholder="Menarca"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="antecedentesGinecobstetricos.numGestas">
+  </div>
+  <div class="col">
+    <label>Abortos</label>
+    <input type="number"
+    name="numAborts"
+    placeholder="Menarca"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="antecedentesGinecobstetricos.numAborts">
+  </div>
+  <div class="col">
+    <label>Partos</label>
+    <input type="number"
+    name="numPartos"
+    placeholder="Menarca"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="antecedentesGinecobstetricos.numPartos">
+  </div>
+</div>

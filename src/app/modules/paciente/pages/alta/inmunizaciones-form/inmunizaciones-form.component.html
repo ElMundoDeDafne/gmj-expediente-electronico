@@ -1,0 +1,30 @@
+
+<!-- agregar combos o predictivos -->
+<div class="row form-div-padding">
+  <br><br><h3>Inmunizaciones</h3>
+  <div class="col">
+    <label>Biologico</label>
+    <input type="text"
+    name="biologicoNombre"
+    placeholder="BCG"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 50%;"
+    [(ngModel)]="inmunizacion.biologicoNombre">
+  </div>
+
+  <!-- cambiar esto por un calendario -->
+  <div class="col">
+    <label>Freq. aplicacion</label>
+    <input type="text"
+    name="frecuenciaAplicacion"
+    placeholder="Ej: RN"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 50%;"
+    [(ngModel)]="inmunizacion.frecuenciaAplicacion"
+    >
+  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+</div>

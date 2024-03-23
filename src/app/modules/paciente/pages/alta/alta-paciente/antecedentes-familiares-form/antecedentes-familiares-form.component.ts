@@ -1,6 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { IPacAntHdoFamiliar } from '../../../../interfaces/antecedentes-heredo-fam.interface';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-antecedentes-familiares-form',
@@ -12,7 +12,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     multi: true
   }]
 })
-export class AntecedentesFamiliaresFormComponent {
+export class AntecedentesFamiliaresFormComponent implements ControlValueAccessor{
   antecedentesHdoFamiliares:IPacAntHdoFamiliar[]=[{}];
 
   onChange: any = () => {};

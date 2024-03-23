@@ -1,7 +1,8 @@
   <div class="row form-div-padding">
+
     <div class="col">
       <label>Tipo de consulta</label><br>
-      <div class="form-check form-check-i+8+nline">
+      <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" id="tipoConsulta" value="Primera vez" [(ngModel)]="paciente.tipoConsulta">
         <label class="form-check-label" for="inlineRadio1">Primera Vez</label>
       </div>
@@ -134,10 +135,6 @@
       </div>
     </div>
 
-    <div class="col" *ngIf="paciente.genero==='M'">
-      <p>componente ant gineco</p>
-    </div>
-
     <div class="col">
       <label>Meses</label>
       <input
@@ -178,7 +175,9 @@
     </div>
 
   </div>
-  <div class="col"></div><div class="col"></div>
+  <div class="col">
+  </div>
+  <div class="col"></div>
   <div class="col"></div>
 
   <div class="row form-div-padding">

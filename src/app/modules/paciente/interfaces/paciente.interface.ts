@@ -4,6 +4,8 @@ import { IEsquemaVacunacionPac } from "./esquema-vac-pac.interface";
 import { IPacMorbilidadPaciente } from "./morbilidad.interface";
 import { IPersona } from "./persona.interface";
 import { ISignosVitales } from "./signos-vitales-paciente.interface";
+import { IAntecedentesGinecoObstetricos } from "./antecedentes-g-obstetricos.interface";
+import { IDatosContactoPaciente } from "./datos-contacto-paciente.interface";
 
 export interface IPaciente extends IPersona{
   idPaciente?:number;
@@ -27,4 +29,5 @@ export interface IPaciente extends IPersona{
   signosVitales?:ISignosVitales;
   domicilioPaciente?:IDomicilioPaciente;
   tipoConsulta?:string;
+  antecedentesGinecobstetricos?:IAntecedentesGinecoObstetricos;
 }

@@ -16,6 +16,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { AuthorizationModule } from './modules/authorization/authorization.module';
 import { ReportsModule } from './modules/reports/reports.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InmunizacionesFormComponent } from './modules/paciente/pages/alta/inmunizaciones-form/inmunizaciones-form.component';
 
 @NgModule({
   declarations: [

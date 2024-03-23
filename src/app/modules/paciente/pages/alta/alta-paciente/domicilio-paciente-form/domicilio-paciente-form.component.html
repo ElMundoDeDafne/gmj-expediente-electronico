@@ -86,7 +86,8 @@
       placeholder="S/N"
       class="form-control"
       maxLength="20"
-      style="max-width: 50%">
+      style="max-width: 50%"
+      [(ngModel)]="domicilio.numeroCalle">
       </div>
       <div class="col">
         <label>Manzana</label>
@@ -95,7 +96,8 @@
         placeholder="S/N"
         class="form-control"
         maxLength="20"
-        style="max-width: 50%;">
+        style="max-width: 50%;"
+        [(ngModel)]="domicilio.manzana">
       </div>
       <div class="col">
         <label>Vivienda</label>
@@ -104,29 +106,8 @@
         placeholder="S/N"
         class="form-control"
         maxLength="20"
-        style="max-width: 50%;">
+        style="max-width: 50%;"
+        [(ngModel)]="domicilio.vivienda">
       </div>
     </div>
-    <div class="row form-div-padding">
-      <br><br><h3>Datos de contacto</h3>
-      <div class="col">
-        <label>Num. Telefono</label>
-        <input type="tel"
-        name="telefono"
-        placeholder="S/N"
-        class="form-control"
-        maxLength="20"
-        style="max-width: 50%;">
-      </div>
-      <div class="col">
-        <label>Correo electronico</label>
-        <input type="email"
-        name="email"
-        placeholder="S/N"
-        class="form-control"
-        maxLength="20"
-        style="max-width: 50%;">
-      </div>
-      <div class="col"></div>
-      <div class="col"></div>
-  </div>
+    <app-datos-contacto-paciente-form [(ngModel)]="domicilio.datosContacto"></app-datos-contacto-paciente-form>

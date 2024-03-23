@@ -1,3 +1,5 @@
+import { IDatosContactoPaciente } from "./datos-contacto-paciente.interface";
+
 export interface IDomicilioPaciente {
   callePrincipal?:string;
   entreCalles1?:string;
@@ -8,5 +10,6 @@ export interface IDomicilioPaciente {
   entidad?:string;
   manzana?:string;
   vivienda?:number;
-
+  numeroCalle?:number;
+  datosContacto?:IDatosContactoPaciente;
 }

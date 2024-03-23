@@ -1,6 +1,7 @@
 export interface IEsquemaVacunacionPac {
-  fechaAplicacion:string;
-  nombreFabricante:string;
-  loteVacuna:string;
-  biologicoNombre:string;
+  fechaAplicacion?:string;
+  nombreFabricante?:string;
+  loteVacuna?:string;
+  biologicoNombre?:string;
+  frecuenciaAplicacion?:string;
 }

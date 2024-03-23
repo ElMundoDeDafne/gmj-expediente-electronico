@@ -24,6 +24,13 @@ import { AntecedentesFamiliaresFormComponent } from './pages/alta/alta-paciente/
 import { AntecedentesPersonalesPatFormComponent } from './pages/alta/alta-paciente/antecedentes-personales-pat-form/antecedentes-personales-pat-form.component';
 import { EntornoViviendaFormComponent } from './pages/entorno-vivienda-form/entorno-vivienda-form.component';
 import { AntecedentesGinecoObstetricosComponent } from './pages/alta/alta-paciente/antecedentes-gineco-obstetricos/antecedentes-gineco-obstetricos.component';
+import { InmunizacionesFormComponent } from './pages/alta/inmunizaciones-form/inmunizaciones-form.component';
+import { DatosContactoPacienteFormComponent } from './pages/alta/datos-contacto-paciente-form/datos-contacto-paciente-form.component';
+import { AntecedentesPersonalesNoPatologicosFormComponent } from './pages/alta/antecedentes-personales-no-patologicos-form/antecedentes-personales-no-patologicos-form.component';
+import { AntecedentesPersonalesPatologicosFormComponent } from './pages/alta/antecedentes-personales-patologicos-form/antecedentes-personales-patologicos-form.component';
+import { InterrogtorioPacienteFormComponent } from './pages/alta/interrogtorio-paciente-form/interrogtorio-paciente-form.component';
+import { InspeccionesGeneralesPacienteFormComponent } from './pages/alta/inspecciones-generales-paciente-form/inspecciones-generales-paciente-form.component';
+import { EntornoViviendaPacienteFormComponent } from './pages/alta/entorno-vivienda-paciente-form/entorno-vivienda-paciente-form.component';
 
 
 @NgModule({
@@ -40,7 +47,14 @@ import { AntecedentesGinecoObstetricosComponent } from './pages/alta/alta-pacien
     AntecedentesPersonalesPatFormComponent,
     AntecedentesGinecoObstetricosComponent,
     ExploracionFisicaFormComponent,
-    EntornoViviendaFormComponent
+    EntornoViviendaFormComponent,
+    InmunizacionesFormComponent,
+    DatosContactoPacienteFormComponent,
+    AntecedentesPersonalesNoPatologicosFormComponent,
+    AntecedentesPersonalesPatologicosFormComponent,
+    InterrogtorioPacienteFormComponent,
+    InspeccionesGeneralesPacienteFormComponent,
+    EntornoViviendaPacienteFormComponent
   ],
   imports: [
     CommonModule,FormsModule,MatTabsModule,MatStepperModule,

@@ -13,8 +13,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   }]
 })
 export class DomicilioPacienteFormComponent implements ControlValueAccessor{
-  domicilio: IDomicilioPaciente={};
-
+  domicilio: IDomicilioPaciente={datosContacto:{}};
   onChange: any = () => {};
   onTouched: any = () => {};
 
