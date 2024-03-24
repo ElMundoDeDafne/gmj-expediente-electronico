@@ -1,0 +1,153 @@
+<div class="row form-div-padding" >
+  <h2>Conceptos</h2>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <th>Concepto</th>
+      <th>Situacion</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><label>Dieta</label><br></td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="dieta" value="Buena" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="dietaRadio1">Buena</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="dieta" value="Regular" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="dietaRadio2">Regular</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="dieta" value="Mala" [(ngModel)]="antecedentesPersNoPat.situacion">
+          <label class="form-check-label" for="dietaRadio3">Mala</label>
+        </div>
+      </td>
+      </tr>
+      <tr>
+        <td><label>Vivienda</label></td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="vivienda" value="Buena" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="viviendaRadio1">Buena</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="vivienda" value="Regular" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="viviendaRadio2">Regular</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="vivienda" value="Mala" [(ngModel)]="antecedentesPersNoPat.situacion">
+          <label class="form-check-label" for="viviendaRadio3">Mala</label>
+        </div>
+      </td>
+      </tr>
+      <tr>
+        <td><label>Servicios</label></td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="servicios" value="Buena" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="serviciosRadio1">Buena</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="servicios" value="Regular" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="serviciosRadio2">Regular</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="servicios" value="Mala" [(ngModel)]="antecedentesPersNoPat.situacion">
+          <label class="form-check-label" for="serviciosRadio3">Mala</label>
+        </div>
+      </td>
+      </tr>
+      <tr>
+        <td><label>Mascotas</label></td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="mascotas" value="Buena" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="mascotasRadio1">Perros</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="mascotas" value="Regular" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="mascotasRadio2">Gatos</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="mascotas" value="Mala" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="mascotasRadio3">Otros</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Fauna Nociva</label></td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="faunaNociva" value="Buena" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="faunaNocivaRadio1">Roedores</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="faunaNociva" value="Regular" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="faunaNocivaRadio2">Plagas</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="faunaNociva" value="Mala" [(ngModel)]="antecedentesPersNoPat.situacion">
+          <label class="form-check-label" for="faunaNocivaRadio3">Otros</label>
+        </div>
+      </td>
+      </tr>
+      <tr>
+        <td><label>Promiscuidad</label></td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="promiscuidad" value="Si" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="promiscuidadRadio1">Si</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="promiscuidad" value="No" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="promiscuidadRadio2">No</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Hacinamiento</label></td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="hacinamiento" value="Buena" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="hacinamientoRadio1">Si</label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="hacinamiento" value="Regular" [(ngModel)]="antecedentesPersNoPat.situacion">
+            <label class="form-check-label" for="hacinamientoRadio2">No</label>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row form-div-padding">
+  <div class="col">
+    <app-inmunizaciones-form></app-inmunizaciones-form>
+  </div>
+</div>

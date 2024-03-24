@@ -9,16 +9,10 @@
         <mat-tab label="Domicilio & Contacto">
           <app-domicilio-paciente-form [(ngModel)]="paciente.domicilioPaciente"></app-domicilio-paciente-form>
       </mat-tab>
-      <mat-tab label="Entorno">
-        <app-entorno-vivienda-paciente-form></app-entorno-vivienda-paciente-form>
-      </mat-tab>
     </mat-tab-group>
   </mat-tab>
   <mat-tab label="Hist. Clinica">
     <mat-tab-group dynamicHeight>
-      <mat-tab label="Signos vitales">
-        <app-signos-vitales-paciente-form [(ngModel)]="paciente.signosVitales"></app-signos-vitales-paciente-form>
-      </mat-tab>
       <mat-tab label="Antedentes Heredo-familiares">
         <app-antecedentes-familiares-form [(ngModel)]="paciente.antecedentesHdoFamiliares"></app-antecedentes-familiares-form>
       </mat-tab>
@@ -26,23 +20,24 @@
         <app-antecedentes-gineco-obstetricos [(ngModel)]="paciente.antecedentesGinecobstetricos"></app-antecedentes-gineco-obstetricos>
       </mat-tab>
       <mat-tab label="Antecedentes Personales Patologicos">
-        <app-antecedentes-personales-patologicos-form></app-antecedentes-personales-patologicos-form>
+        <app-antecedentes-personales-pat-form></app-antecedentes-personales-pat-form>
       </mat-tab>
       <mat-tab label="Antecedentes Personales No Patologicos">
-        <app-antecedentes-personales-no-patologicos-form></app-antecedentes-personales-no-patologicos-form>
+        <app-antecedentes-pers-np-form></app-antecedentes-pers-np-form>
       </mat-tab>
 
       <mat-tab label="Interrogatorio">
         <app-interrogtorio-paciente-form></app-interrogtorio-paciente-form>
       </mat-tab>
       <mat-tab label="Inspecciones grales">
-        <app-inspecciones-generales-paciente-form></app-inspecciones-generales-paciente-form>
+        <app-inspecciones-grales-p-form></app-inspecciones-grales-p-form>
       </mat-tab>
     </mat-tab-group>
   </mat-tab>
   <mat-tab label="Notas medicas">
-
+    <app-notas-medicas-form></app-notas-medicas-form>
   </mat-tab>
+  <app-signos-vitales-paciente-form [(ngModel)]="paciente.signosVitales"></app-signos-vitales-paciente-form>
   </mat-tab-group><br>
   <button type="button" (click)="verdatos()" class="btn btn-outline-primary btn-sm">Registrar consulta</button>
   <p>{{paciente|json}}</p>

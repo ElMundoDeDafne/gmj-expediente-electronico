@@ -1,24 +1,24 @@
 import { Component, forwardRef } from '@angular/core';
-import { IEsquemaVacunacionPac } from '../../../interfaces/esquema-vac-pac.interface';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { IDatosContactoPaciente } from '../../../../interfaces/datos-contacto-paciente.interface';
 
 @Component({
-  selector: 'app-inmunizaciones-form',
-  templateUrl: './inmunizaciones-form.component.html',
-  styleUrl: './inmunizaciones-form.component.css',
+  selector: 'app-datos-contacto-paciente-form',
+  templateUrl: './datos-contacto-paciente-form.component.html',
+  styleUrl: './datos-contacto-paciente-form.component.css',
   providers:[{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => this),
     multi: true
   }]
 })
-export class InmunizacionesFormComponent implements ControlValueAccessor {
-  inmunizacion:IEsquemaVacunacionPac={};
+export class DatosContactoPacienteFormComponent implements ControlValueAccessor{
+  datosContacto: IDatosContactoPaciente={};
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  writeValue(obj: IEsquemaVacunacionPac): void {
-    this.inmunizacion = obj;
+  writeValue(obj: IDatosContactoPaciente): void {
+    this.datosContacto = obj;
   }
 
   registerOnChange(fn: any): void {
@@ -32,4 +32,5 @@ export class InmunizacionesFormComponent implements ControlValueAccessor {
   setDisabledState?(isDisabled: boolean): void {
     // Implement if needed
   }
+
 }

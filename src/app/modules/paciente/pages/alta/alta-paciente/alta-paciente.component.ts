@@ -30,10 +30,12 @@ export class AltaPacienteComponent {
     signosVitales:{},
     tipoConsulta:"",
     antecedentesHdoFamiliares:[{}],
-    antecedentesGinecobstetricos:{}
+    antecedentesGinecobstetricos:{},
+    antecPatologicos:[],
+    antecNoPatologicos:[]
   }
 
-  verdatos():void{
+  verdatos():void {
     console.error(this.paciente);
   }
 }

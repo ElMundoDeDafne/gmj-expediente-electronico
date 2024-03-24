@@ -6,6 +6,8 @@ import { IPersona } from "./persona.interface";
 import { ISignosVitales } from "./signos-vitales-paciente.interface";
 import { IAntecedentesGinecoObstetricos } from "./antecedentes-g-obstetricos.interface";
 import { IDatosContactoPaciente } from "./datos-contacto-paciente.interface";
+import { IAntecedentesPersonalesPatologicos } from './anecedentes-p-patologicos.interface';
+import { IAntecedentesPersNoPat } from './antecedentes-p-npat.interface';
 
 export interface IPaciente extends IPersona{
   idPaciente?:number;
@@ -30,4 +32,8 @@ export interface IPaciente extends IPersona{
   domicilioPaciente?:IDomicilioPaciente;
   tipoConsulta?:string;
   antecedentesGinecobstetricos?:IAntecedentesGinecoObstetricos;
+  antecPatologicos?:IAntecedentesPersonalesPatologicos[];
+  antecNoPatologicos?:IAntecedentesPersNoPat[];
+  cuentaConDerechoHabiencia?:boolean;
+  otraDerechoHabiencia?:string;
 }

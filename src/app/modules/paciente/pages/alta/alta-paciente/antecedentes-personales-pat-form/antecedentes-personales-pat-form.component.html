@@ -1,1 +1,61 @@
-<p>antecedentes-personales-pat-form works!</p>
+<div class="row form-div-padding" *ngFor="let enfermedad of enfermedades; let i = index">
+  <h2>Enfermedades</h2>
+  <div class="col">
+    <label>Enfermedad</label>
+    <select name="enfermedadCombo"
+            id="enfermedadCombobox"
+            class="form-select form-select-sm"
+            style="max-width: 50%;"
+            [(ngModel)]="enfermedad.nombreEnfermedad">
+    <!--Estas opciones deberian de ser cargados desde BDD-->
+      <option value="diabetes">DIABETES</option>
+      <option value="hipertensionArterial">HIPERTENSION ARTERIAL</option>
+      <option value="tuberculosis">TUBERCULOSIS</option>
+      <option value="cardiovascular">CARDIOVASCULAR</option>
+      <option value="otro">OTRO</option>
+    </select>
+  </div>
+
+  <div class="col">
+    <label>Tipo</label>
+    <input type="text"
+    name="tipoEnfermedad"
+    placeholder=""
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="enfermedad.tipoEnfermedad">
+  </div>
+
+  <div class="col">
+    <label>Tiempo evolucion</label>
+    <input type="text"
+    name="tiempoEvolucion"
+    placeholder=""
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="enfermedad.tiempoEvolucion">
+  </div>
+
+  <div class="col">
+    <label>Tratamiento</label>
+    <input type="text"
+    name="tratamientoLlevado"
+    placeholder=""
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="enfermedad.tratamientoLlevado">
+  </div>
+  <div class="col">
+    <div *ngIf="i===0">
+      <button (click)="agregarInput()" class="btn btn-outline-primary btn-sm">Agregar</button>
+    </div>
+    <div *ngIf="i>=1">
+      <!-- agregar identificadores para eliminar por posicion -->
+      <button (click)="eliminar(i)" class="btn btn-outline-primary btn-sm">Eliminar</button>
+    </div>
+  </div>
+
+</div>

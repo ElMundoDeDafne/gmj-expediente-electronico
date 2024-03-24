@@ -1,5 +1,5 @@
 import { IEnfermedades } from "./enfermedades.interface";
 
-export class IAntecedentesPersonalesPatologicos {
+export interface IAntecedentesPersonalesPatologicos {
   enfermedades?:IEnfermedades[];
 }

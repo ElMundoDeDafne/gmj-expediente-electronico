@@ -38,6 +38,17 @@
       </select>
     </div>
 
+    <div class="col" *ngIf="paciente.derechoHabiencia==='otro'">
+      <label>Espeficiar derechohabiencia</label>
+      <input type="text"
+      name="derechoHabiencia"
+      placeholder="Especificar derechohabiencia"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="paciente.otraDerechoHabiencia">
+    </div>
+
     <div class="col">
       <label>NSS</label>
       <input type="text"

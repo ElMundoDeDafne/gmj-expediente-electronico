@@ -1,4 +1,4 @@
-export class IAntecedentesGinecoObstetricos {
+export interface IAntecedentesGinecoObstetricos {
   menarca?:string;
   inicioVidaSexual?:string;
   hijosVivos?:number;

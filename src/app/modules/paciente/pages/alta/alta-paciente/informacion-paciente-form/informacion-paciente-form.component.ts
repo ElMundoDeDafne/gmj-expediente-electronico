@@ -29,6 +29,10 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
   onChange: any = () => {};
   onTouched: any = () => {};
 
+  limpiaOtraDerechoHabiencia():void{
+    this.paciente.otraDerechoHabiencia='';
+  }
+
    writeValue(obj: IPaciente): void {
      this.paciente = obj;
    }
