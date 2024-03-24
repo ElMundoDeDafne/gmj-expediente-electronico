@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConstantesGeneralesApp } from '../../../utils/constantes-generales';
+import { ConstantesGenerales } from '../../../utils/constantes-generales';
 import { Menu } from './top-menu-menus.interface';
 
 @Component({
