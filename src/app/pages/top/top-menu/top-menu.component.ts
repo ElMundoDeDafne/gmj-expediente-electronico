@@ -8,6 +8,7 @@ import { Menu } from './top-menu-menus.interface';
   styleUrl: './top-menu.component.css'
 })
 export class TopMenuComponent {
+
   public listaMenus:Menu[]=[
     {
       nombreMenu:'Nueva Consulta',
