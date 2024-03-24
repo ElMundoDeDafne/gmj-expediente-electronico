@@ -1,4 +1,7 @@
-export interface IPacAntHdoFamiliar {
+
+/*
+Interfaz antecedentes heredo-familiares
+*/export interface IPacAntHdoFamiliar {
   idAntecedente?:number;
   familiar?:string;
   morbilidadFamilar?:string;

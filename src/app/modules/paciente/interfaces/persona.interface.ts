@@ -1,3 +1,4 @@
+/**Interfaz base para persona */
 export interface IPersona {
   nombrePropio1?:string;
   nombrePropio2?:string;

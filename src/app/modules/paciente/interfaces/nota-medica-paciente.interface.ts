@@ -1,8 +1,9 @@
+/**Interfaz para nota medica */
 export interface INotaMedicaPac {
   fechaYHora?:Date;
   exploracion?:string;
   hallazgos?:string;
-  diagnosticos:string[];
-  recomendaciones:string;
-  tratamientos:string[];
+  diagnosticos?:string[];
+  recomendaciones?:string;
+  tratamientos?:string[];
 }

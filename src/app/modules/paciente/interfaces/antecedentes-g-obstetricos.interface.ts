@@ -1,3 +1,4 @@
+/**Interfaz para antecedentes ginecobtetricos */
 export interface IAntecedentesGinecoObstetricos {
   menarca?:string;
   inicioVidaSexual?:string;

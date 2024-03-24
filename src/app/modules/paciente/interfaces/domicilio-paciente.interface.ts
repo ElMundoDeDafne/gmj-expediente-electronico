@@ -1,5 +1,5 @@
 import { IDatosContactoPaciente } from "./datos-contacto-paciente.interface";
-
+/**Interfaz domicilio paciente */
 export interface IDomicilioPaciente {
   callePrincipal?:string;
   entreCalles1?:string;

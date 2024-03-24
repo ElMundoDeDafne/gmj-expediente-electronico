@@ -1,3 +1,4 @@
+/**Signos vitales persona */
 export interface ISignosVitales{
     presionSist?:number;
     presionDiast?:number;

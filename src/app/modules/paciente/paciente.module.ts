@@ -1,3 +1,7 @@
+/**
+ * Propiedad de El Mundo de Dafne
+ * @author Christian Yamil Castillo Covarrubias
+*/
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
@@ -25,11 +29,11 @@ import { AntecedentesGinecoObstetricosComponent } from './pages/alta/alta-pacien
 import { InmunizacionesFormComponent } from './pages/alta/alta-paciente/inmunizaciones-form/inmunizaciones-form.component';
 import { DatosContactoPacienteFormComponent } from './pages/alta/alta-paciente/datos-contacto-paciente-form/datos-contacto-paciente-form.component';
 import { InterrogtorioPacienteFormComponent } from './pages/alta/alta-paciente/interrogtorio-paciente-form/interrogtorio-paciente-form.component';
-import { InspeccionesGeneralesPacienteFormComponent } from './pages/alta/alta-paciente/inspecciones-grales-p-form/inspecciones-grales-p-form.component';
 import { EntornoViviendaPacienteFormComponent } from './pages/alta/alta-paciente/entorno-vivienda-paciente-form/entorno-vivienda-paciente-form.component';
 import { NotasMedicasFormComponent } from './pages/alta/alta-paciente/notas-medicas-form/notas-medicas-form.component';
 import { NotasEnfermeriaFormComponent } from './pages/alta/alta-paciente/notas-enfermeria-form/notas-enfermeria-form.component';
 import { AntecedentesPersonalesNoPatologicosFormComponent } from './pages/alta/alta-paciente/antecedentes-pers-np-form/antecedentes-pers-np-form.component';
+import { InspeccionesGeneralesPacienteFormComponent } from './pages/alta/alta-paciente/inspecciones-grales-p-form/inspecciones-grales-p-form.component';
 
 
 

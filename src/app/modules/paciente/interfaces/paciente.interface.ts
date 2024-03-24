@@ -8,7 +8,7 @@ import { IAntecedentesGinecoObstetricos } from "./antecedentes-g-obstetricos.int
 import { IDatosContactoPaciente } from "./datos-contacto-paciente.interface";
 import { IAntecedentesPersonalesPatologicos } from './anecedentes-p-patologicos.interface';
 import { IAntecedentesPersNoPat } from './antecedentes-p-npat.interface';
-
+/**Paciente interfaz */
 export interface IPaciente extends IPersona{
   idPaciente?:number;
   motivoConsulta?:string;

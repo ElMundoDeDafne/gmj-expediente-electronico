@@ -1,5 +1,5 @@
 import { IMascotaVivienda } from "./mascotas-vivienda.interface";
-
+/**Interfaz para vivienda de paciente */
 export interface IViviendaPaciente {
   tipoVivienda?:string;
   totalCuartos?:number;
