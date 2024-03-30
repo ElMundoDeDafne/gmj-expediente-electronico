@@ -2,7 +2,6 @@ import { Component, Input, OnInit, ViewEncapsulation, forwardRef } from '@angula
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { IPaciente } from '../../../../interfaces/paciente.interface';
-import { ISignosVitales } from '../../../../interfaces/signos-vitales-paciente.interface';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
@@ -28,6 +27,10 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
   paciente: IPaciente={};
   onChange: any = () => {};
   onTouched: any = () => {};
+
+  limpiaDerechoHabiencia(texto:string):void{
+    this.paciente.derechoHabiencia=texto;
+  }
 
   limpiaOtraDerechoHabiencia():void{
     this.paciente.otraDerechoHabiencia='';

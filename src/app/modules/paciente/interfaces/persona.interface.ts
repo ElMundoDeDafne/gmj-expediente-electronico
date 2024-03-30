@@ -9,7 +9,7 @@ export interface IPersona {
   sexoReferido?:string;
   sexoAlNacer?:string;
   esPersonal?:boolean;
-  esDerechoHabiente?:boolean;
+  esDerechoHabiente?:string;
   nss?:string;
   derechoHabiencia?:string;
   ocupacion?:string;

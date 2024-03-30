@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IAntecedentesPersNoPat } from '../../../../interfaces/antecedentes-p-npat.interface';
+import { IAntecedentesPersNoPat, IConceptoAntecedente } from '../../../../interfaces/antecedentes-p-npat.interface';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-antecedentes-pers-np-form',
@@ -7,34 +8,26 @@ import { IAntecedentesPersNoPat } from '../../../../interfaces/antecedentes-p-np
   styleUrl: './antecedentes-pers-np-form.component.css'
 })
 export class AntecedentesPersonalesNoPatologicosFormComponent {
-  antecedentesPersNoPat:IAntecedentesPersNoPat={concepto:[
-    {
-      concepto:'dieta',
-      situacion:''
-    },
-    {
-      concepto:'vivienda',
-      situacion:''
-    },
-    {
-      concepto:'servicios',
-      situacion:''
-    },
-    {
-      concepto:'mascotas',
-      situacion:''
-    },
-    {
-      concepto:'faunaNociva',
-      situacion:''
-    },
-    {
-      concepto:'promiscuidad',
-      situacion:''
-    },
-    {
-      concepto:'hacinamiento',
-      situacion:''
-    }
-  ]};
+  conceptoAnt:IConceptoAntecedente={
+    concepto:'',
+    situacion:''
+  }
+
+  antecedentes:IAntecedentesPersNoPat={
+    conceptoFauna:[],
+    conceptoVivienda:[],
+    concepto:[
+      {concepto:'Dieta',situacion:''},
+      {concepto:'Vivienda',situacion:''},
+      {concepto:'Promiscuidad',situacion:''},
+      {concepto:'Hacinamiento',situacion:''}
+    ]
+  };
+  sumarPalabras(sit:string){
+
+  }
+
+  agregarConcepto(concepto:string,descripcion:string){
+    //this.antecedentes.push(this.antecedente);
+  }
 }

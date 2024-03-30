@@ -4,13 +4,14 @@ import { IViviendaPaciente } from "./vivienda-paciente.interface";
  * Antecedentes personales no patologicos
  */
 export interface IAntecedentesPersNoPat{
-  concepto?:IConceptoAntecedente[];
-  situacion?:string;
+  concepto:IConceptoAntecedente[];
   inmunizaciones?:IEsquemaVacunacionPac[];
   viviendaPaciente?:IViviendaPaciente;
+  conceptoFauna:IConceptoAntecedente[];
+  conceptoVivienda:IConceptoAntecedente[];
 }
 
-interface IConceptoAntecedente{
-  situacion?:string;
-  concepto?:string;
+export interface IConceptoAntecedente{
+  situacion:string;
+  concepto:string;
 }

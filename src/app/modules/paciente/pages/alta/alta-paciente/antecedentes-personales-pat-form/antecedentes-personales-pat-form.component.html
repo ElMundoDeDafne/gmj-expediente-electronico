@@ -5,7 +5,7 @@
     <select name="enfermedadCombo"
             id="enfermedadCombobox"
             class="form-select form-select-sm"
-            style="max-width: 50%;"
+            style="max-width: 100%;"
             [(ngModel)]="enfermedad.nombreEnfermedad">
     <!--Estas opciones deberian de ser cargados desde BDD-->
       <option value="diabetes">DIABETES</option>
@@ -14,6 +14,17 @@
       <option value="cardiovascular">CARDIOVASCULAR</option>
       <option value="otro">OTRO</option>
     </select>
+  </div>
+
+  <div class="col" *ngIf="enfermedad.nombreEnfermedad==='otro'">
+    <label>Especifique:</label>
+    <input type="text"
+    name="otraEnfermedad"
+    placeholder=""
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="enfermedad.otraEnfermedad">
   </div>
 
   <div class="col">

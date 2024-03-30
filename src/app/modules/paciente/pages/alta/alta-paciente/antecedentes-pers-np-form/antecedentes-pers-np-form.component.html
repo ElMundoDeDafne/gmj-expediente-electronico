@@ -1,17 +1,67 @@
 <div class="row form-div-padding" >
   <h2>Conceptos</h2>
   <div class="col">
-    <label>Dieta</label><br>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="true">
-      <label class="form-check-label" for="inlineRadio3">Si</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="false">
-      <label class="form-check-label" for="inlineRadio4">No</label>
+
+    <div *ngFor="let concepto of antecedentes.concepto; let i = index">
+      <label>{{concepto.concepto}}</label><br>
+      <div *ngIf="concepto.concepto==='Dieta'||concepto.concepto==='Vivienda'">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="situacion{{i}}" id="situacion{{i}}" value="buena" [(ngModel)]="concepto.situacion">
+          <label class="form-check-label" [for]="'situacion'+i">Buena</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="situacion{{i}}" id="situacion{{i}}" value="regular" [(ngModel)]="concepto.situacion">
+          <label class="form-check-label" [for]="'situacion'+i">Regular</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="situacion{{i}}" id="situacion{{i}}" value="mala" [(ngModel)]="concepto.situacion">
+          <label class="form-check-label" [for]="'situacion'+i">Mala</label>
+        </div>
+      </div>
+
+      <div *ngIf="concepto.concepto==='Promiscuidad' || concepto.concepto==='Hacinamiento'">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="situacion{{i}}" id="situacion{{i}}" value="S" [(ngModel)]="concepto.situacion">
+          <label class="form-check-label" [for]="'situacion'+i">Si</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="situacion{{i}}" id="situacion{{i}}" value="N" [(ngModel)]="concepto.situacion">
+          <label class="form-check-label" [for]="'situacion'+i">No</label>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<div class="col">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="situacionAgua" value="agua," name="situacion">
+      <label class="form-check-label" for="situacionAgua">Agua</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="situacionLuz" value="luz," name="situacion">
+      <label class="form-check-label" for="situacionLuz">Luz</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="situacionDrenaje" value="drenaje," name="situacion">
+      <label class="form-check-label" for="situacionDrenaje">Drenaje</label>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="situacionFPerros" value="perros" name="situacion">
+      <label class="form-check-label" for="situacionFPerros">Perros</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="situacionFGatos" value="gatos" name="situacion">
+      <label class="form-check-label" for="'situacionFGatos">Gatos</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="situacionFOtros" value="otros" name="situacion">
+      <label class="form-check-label" for="situacionFOtros">Otros</label>
+    </div>
+  </div>
 
 <div class="row form-div-padding">
   <div class="col">
