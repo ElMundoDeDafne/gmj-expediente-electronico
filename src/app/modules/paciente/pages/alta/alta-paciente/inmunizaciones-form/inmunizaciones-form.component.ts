@@ -14,6 +14,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class InmunizacionesFormComponent implements ControlValueAccessor {
   inmunizacion:IEsquemaVacunacionPac={};
+  inmunizaciones:IEsquemaVacunacionPac[]=[{}];
+
   onChange: any = () => {};
   onTouched: any = () => {};
 
@@ -32,4 +34,17 @@ export class InmunizacionesFormComponent implements ControlValueAccessor {
   setDisabledState?(isDisabled: boolean): void {
     // Implement if needed
   }
+
+  agregarInput():void{
+    const nuevoAntecedente:IEsquemaVacunacionPac={
+      fechaAplicacion:'',
+      biologicoNombre:''
+    };
+    this.inmunizaciones.push(nuevoAntecedente);
+  }
+
+  eliminar(pos:number):void{
+    this.inmunizaciones.splice(pos,1);
+  }
+
 }

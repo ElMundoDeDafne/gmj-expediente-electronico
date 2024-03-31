@@ -1,1 +1,41 @@
-<p>interrogtorio-paciente-form works!</p>
+<div class="row">
+  <h2>Interrogatorio</h2>
+  <div class="col">
+    <h4>Aparato y sistemas</h4>
+  </div>
+  <div class="col">
+    <h4>Semiologia</h4>
+  </div>
+</div>
+<div class="row" *ngFor="let aparatoYSistema of interrogatorio.aparatoYSistemas">
+  <div class="col">
+    <p class="text-end" style="max-width: 50%;">{{aparatoYSistema.concepto}}</p>
+  </div>
+  <div class="col">
+    <input type="text"
+    name="semiologia"
+    class="form-control"
+    [(ngModel)]="aparatoYSistema.semioloia">
+  </div>
+</div>
+
+<div class="row">
+  <h2>Inspecciones generales</h2>
+  <div class="col">
+    <h4>Zona</h4>
+  </div>
+  <div class="col">
+    <h4>Observaciones</h4>
+  </div>
+</div>
+<div class="row" *ngFor="let exploracionesFisica of interrogatorio.exploracionesFisicas">
+  <div class="col">
+    <p class="text-end" style="max-width: 50%;">{{exploracionesFisica.zonaInspeccion}}</p>
+  </div>
+  <div class="col">
+    <input type="text"
+    name="observacionesInspeccion"
+    class="form-control"
+    [(ngModel)]="exploracionesFisica.observacionesInspeccion">
+  </div>
+</div>
