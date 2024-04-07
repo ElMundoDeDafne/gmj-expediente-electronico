@@ -1,4 +1,5 @@
 export interface IInterrogatorioPaciente {
+  generoPaciente:string,
   aparatoYSistemas:IApYSintomasPac[],
   exploracionesFisicas:IExploracionFisica[]
 }

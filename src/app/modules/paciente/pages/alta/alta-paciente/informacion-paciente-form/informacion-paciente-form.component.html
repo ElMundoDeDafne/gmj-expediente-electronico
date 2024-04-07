@@ -29,17 +29,17 @@
       <select name="derechoHabienciaCombo"
         id="derechoHabienciaCombobox"
         class="form-select form-select-sm"
-        style="max-width: 50%;"
+        style="max-width: 100%;"
         [(ngModel)]="paciente.derechoHabiencia">
-        <option value="">-- SELECCIONE --</option>
-        <option value="imss">IMSS</option>
-        <option value="issste">ISSSTE</option>
-        <option value="pemex">PEMEX</option>
-        <option value="otro">OTRO</option>
+        <option value="0">-- SELECCIONE --</option>
+        <option value="1">IMSS</option>
+        <option value="2">ISSSTE</option>
+        <option value="3">PEMEX</option>
+        <option value="4">OTRO</option>
       </select>
     </div>
 
-    <div class="col" *ngIf="paciente.derechoHabiencia==='otro'">
+    <div class="col" *ngIf="paciente.derechoHabiencia==='4'">
       <label>Especificar derechohabiencia</label>
       <input type="text"
       name="derechoHabiencia"
@@ -50,7 +50,7 @@
       [(ngModel)]="paciente.otraDerechoHabiencia">
     </div>
 
-    <div class="col">
+    <div class="col" *ngIf="paciente.esDerechoHabiente === 'S' && paciente.derechoHabiencia != null && paciente.derechoHabiencia != '0'" >
       <label>NSS</label>
       <input type="text"
       name="nss"
@@ -132,7 +132,8 @@
       maxLength="15"
       [(ngModel)]="paciente.edad"
       type="number"
-      style="max-width: 100px;">
+      style="max-width: 100px;"
+      value="10">
     </div>
 
     <div class="col">
@@ -156,32 +157,6 @@
       size="15"
       maxLength="15"
       [(ngModel)]="paciente.meses"
-      type="number"
-      style="max-width: 100px;">
-    </div>
-
-    <div class="col">
-      <label>Talla</label>
-      <input
-      name="tallaPaciente"
-      placeholder=""
-      class="form-control mb-2"
-      size="15"
-      maxLength="15"
-      [(ngModel)]="paciente.talla"
-      type="number"
-      style="max-width: 100px;">
-    </div>
-
-    <div class="col">
-      <label>Peso (kg)</label>
-      <input
-      name="tallaPaciente"
-      placeholder=""
-      class="form-control mb-2"
-      size="15"
-      maxLength="15"
-      [(ngModel)]="paciente.pesoRegistrado"
       type="number"
       style="max-width: 100px;">
     </div>

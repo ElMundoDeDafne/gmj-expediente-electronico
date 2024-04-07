@@ -29,13 +29,18 @@
       <mat-tab label="Interrogatorio & Inspecciones grales">
         <app-interrogtorio-paciente-form></app-interrogtorio-paciente-form>
       </mat-tab>
+      <mat-tab label="Signos vitales">
+        <app-signos-vitales-paciente-form [(ngModel)]="paciente.signosVitales"></app-signos-vitales-paciente-form>
+      </mat-tab>
 
     </mat-tab-group>
   </mat-tab>
   <mat-tab label="Notas medicas">
     <app-notas-medicas-form></app-notas-medicas-form>
   </mat-tab>
-  <app-signos-vitales-paciente-form [(ngModel)]="paciente.signosVitales"></app-signos-vitales-paciente-form>
+  <mat-tab label="Notas enfermeria">
+    <app-notas-enfermeria-form></app-notas-enfermeria-form>
+  </mat-tab>
   </mat-tab-group><br>
   <button type="button" (click)="verdatos()" class="btn btn-outline-primary btn-sm">Registrar consulta</button>
   <p>{{paciente|json}}</p>

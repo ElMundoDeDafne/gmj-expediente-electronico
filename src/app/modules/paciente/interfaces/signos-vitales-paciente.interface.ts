@@ -8,4 +8,6 @@ export interface ISignosVitales{
     fechaToma?:string;
     frecuenciaCardiaca?:number;
     cuentaConAyuno?:string;
+    habitusExterior?:string;
+    padecimientoActual?:string;
 }

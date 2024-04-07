@@ -24,9 +24,23 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
   }
 
   // @Input() paciente: IPaciente ={};
-  paciente: IPaciente={};
+  paciente: IPaciente={fechaNacimiento:''};
   onChange: any = () => {};
   onTouched: any = () => {};
+
+  guardarEnLocalStorage(genero:string):void{
+    localStorage.setItem("GEN_PX", genero);
+  }
+
+  calcularEdad(fechaNacimiento:string):void{
+    let edad = 0;
+    const birthday = new Date(fechaNacimiento);
+    const  hoy= new Date();
+    const anioNacimiento = birthday.getFullYear();
+    const anioActual = hoy.getFullYear();
+    edad = anioActual - anioNacimiento;
+    this.paciente.edad=edad;
+  }
 
   limpiaDerechoHabiencia(texto:string):void{
     this.paciente.derechoHabiencia=texto;

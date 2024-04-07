@@ -15,7 +15,7 @@ constructor(private router: Router){}
   validaUsuarios():void{
     console.log('ENTRANDO A METODO VALIDA USUARIOS');
     if(this.usuarioCredenciales.usuario==='admin' && this.usuarioCredenciales.passw==='admin'){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/success']);
       console.log(`${this.usuarioCredenciales.usuario}`);
       console.log(`${this.usuarioCredenciales.passw}`);
       console.log('credenciales validas');

@@ -8,6 +8,7 @@ import { IInterrogatorioPaciente } from '../../../../interfaces/interrogatorio-p
 })
 export class InterrogtorioPacienteFormComponent {
   interrogatorio:IInterrogatorioPaciente={
+    generoPaciente:'',
     exploracionesFisicas:[{
       zonaInspeccion:'Piel y Faneras',
       observacionesInspeccion:''

@@ -20,6 +20,7 @@ const routes: Routes = [
   {path:'consulta/censos/cron',component:StillOnWorkPageComponent},
   {path:'login',component:LoginFormComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
+  {path:'success',redirectTo:'home'},
   {path:'**',component:NotFoundPageComponent}
 ];
 /**

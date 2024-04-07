@@ -25,6 +25,7 @@ export class AltaPacienteComponent {
   };
 
   public paciente : IPaciente = {
+    fechaNacimiento:'',
     fechaRegistro:new Date(),
     domicilioPaciente:{datosContacto:{}},
     signosVitales:{},
@@ -32,7 +33,9 @@ export class AltaPacienteComponent {
     antecedentesHdoFamiliares:[{}],
     antecedentesGinecobstetricos:{},
     antecPatologicos:[],
-    antecNoPatologicos:[]
+    antecNoPatologicos:[],
+    notaMedicaPaciente:{},
+    notaEnfermeriaPx:{}
   }
 
   verdatos():void {
