@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation, forwardRef } from '@angular/core';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
-import { IPaciente } from '../../../../interfaces/paciente.interface';
+import { IInfoPaciente, IPaciente } from '../../../../interfaces/paciente.interface';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
@@ -23,8 +23,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
    // throw new Error('Method not implemented.');
   }
 
-  // @Input() paciente: IPaciente ={};
-  paciente: IPaciente={fechaNacimiento:''};
+  informacionPx:IInfoPaciente={};
   onChange: any = () => {};
   onTouched: any = () => {};
 
@@ -39,19 +38,20 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     const anioNacimiento = birthday.getFullYear();
     const anioActual = hoy.getFullYear();
     edad = anioActual - anioNacimiento;
-    this.paciente.edad=edad;
+    this.informacionPx.edad;
+    // this.paciente.edad=edad;
   }
 
   limpiaDerechoHabiencia(texto:string):void{
-    this.paciente.derechoHabiencia=texto;
+    // this.paciente.derechoHabiencia=texto;
   }
 
-  limpiaOtraDerechoHabiencia():void{
-    this.paciente.otraDerechoHabiencia='';
-  }
+  // limpiaOtraDerechoHabiencia():void{
+  //   this.paciente.otraDerechoHabiencia='';
+  // }
 
-   writeValue(obj: IPaciente): void {
-     this.paciente = obj;
+   writeValue(obj: IInfoPaciente): void {
+     this.informacionPx = obj;
    }
 
    registerOnChange(fn: any): void {

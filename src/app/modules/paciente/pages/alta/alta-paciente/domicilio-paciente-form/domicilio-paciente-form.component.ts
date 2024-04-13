@@ -8,12 +8,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrl: './domicilio-paciente-form.component.css',
   providers:[{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => this),
+    useExisting: forwardRef(() => DomicilioPacienteFormComponent),
     multi: true
   }]
 })
 export class DomicilioPacienteFormComponent implements ControlValueAccessor{
-  domicilio: IDomicilioPaciente={datosContacto:{}};
+  domicilio: IDomicilioPaciente={};
   onChange: any = () => {};
   onTouched: any = () => {};
 

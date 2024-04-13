@@ -3,11 +3,11 @@
     <div class="col">
       <label>Tipo de consulta</label><br>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="tipoConsulta" value="Primera vez" [(ngModel)]="paciente.tipoConsulta">
+        <input class="form-check-input" type="radio" id="tipoConsulta" value="Primera vez" [(ngModel)]="informacionPx.tipoConsulta">
         <label class="form-check-label" for="inlineRadio1">Primera Vez</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="tipoConsulta" value="Subsecuente" [(ngModel)]="paciente.tipoConsulta">
+        <input class="form-check-input" type="radio" id="tipoConsulta" value="Subsecuente" [(ngModel)]="informacionPx.tipoConsulta">
         <label class="form-check-label" for="inlineRadio2">Subsecuente</label>
       </div>
     </div>
@@ -15,22 +15,22 @@
     <div class="col">
       <label>¿Es derechohabiente?</label><br>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="S" [(ngModel)]="paciente.esDerechoHabiente">
+        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="S" [(ngModel)]="informacionPx.esDerechoHabiente">
         <label class="form-check-label" for="inlineRadio3">Si</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="N" [(ngModel)]="paciente.esDerechoHabiente" (onClick)="limpiaDerechoHabiencia('')">
+        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="N" [(ngModel)]="informacionPx.esDerechoHabiente" (onClick)="limpiaDerechoHabiencia('')">
         <label class="form-check-label" for="inlineRadio4">No</label>
       </div>
     </div>
 
-    <div class="col" *ngIf="paciente.esDerechoHabiente === 'S'">
+    <div class="col" *ngIf="informacionPx.esDerechoHabiente === 'S'">
       <label>Derechohabiencia</label><br>
       <select name="derechoHabienciaCombo"
         id="derechoHabienciaCombobox"
         class="form-select form-select-sm"
         style="max-width: 100%;"
-        [(ngModel)]="paciente.derechoHabiencia">
+        [(ngModel)]="informacionPx.derechoHabiencia">
         <option value="0">-- SELECCIONE --</option>
         <option value="1">IMSS</option>
         <option value="2">ISSSTE</option>
@@ -39,7 +39,7 @@
       </select>
     </div>
 
-    <div class="col" *ngIf="paciente.derechoHabiencia==='4'">
+    <div class="col" *ngIf="informacionPx.derechoHabiencia==='4'">
       <label>Especificar derechohabiencia</label>
       <input type="text"
       name="derechoHabiencia"
@@ -47,10 +47,10 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="paciente.otraDerechoHabiencia">
+      [(ngModel)]="informacionPx.otraDerechoHabiencia">
     </div>
 
-    <div class="col" *ngIf="paciente.esDerechoHabiente === 'S' && paciente.derechoHabiencia != null && paciente.derechoHabiencia != '0'" >
+    <div class="col" *ngIf="informacionPx.esDerechoHabiente === 'S' && informacionPx.derechoHabiencia != null && informacionPx.derechoHabiencia != '0'" >
       <label>NSS</label>
       <input type="text"
       name="nss"
@@ -58,7 +58,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="paciente.nss">
+      [(ngModel)]="informacionPx.nss">
     </div>
 
   <div class="row form-div-padding">
@@ -70,7 +70,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="paciente.nombrePropio1">
+      [(ngModel)]="informacionPx.nombrePropio1">
     </div>
 
     <div class="col">
@@ -81,7 +81,7 @@
         class="form-control"
         maxLength="20"
         style="max-width: 100%;"
-        [(ngModel)]="paciente.nombrePropio2">
+        [(ngModel)]="informacionPx.nombrePropio2">
     </div>
 
 
@@ -93,7 +93,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 70%;"
-      [(ngModel)]="paciente.apellidoPaterno">
+      [(ngModel)]="informacionPx.apellidoPaterno">
     </div>
   </div>
 
@@ -106,7 +106,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="paciente.apellidoMaterno">
+      [(ngModel)]="informacionPx.apellidoMaterno">
     </div>
 
     <div class="col">
@@ -117,7 +117,7 @@
       class="form-control mb-2"
       size="15"
       maxLength="15"
-      [(ngModel)]="paciente.nacionalidad"
+      [(ngModel)]="informacionPx.nacionalidad"
       type="text"
       style="max-width: 100%;">
     </div>
@@ -130,7 +130,7 @@
       class="form-control mb-2"
       size="15"
       maxLength="15"
-      [(ngModel)]="paciente.edad"
+      [(ngModel)]="informacionPx.edad"
       type="number"
       style="max-width: 100px;"
       value="10">
@@ -139,11 +139,11 @@
     <div class="col">
       <label>Genero </label><br>
       <div class="form-check form-check-inline" >
-        <input class="form-check-input" type="radio" name="genero" id="masculino" value="M" [(ngModel)]="paciente.genero">
+        <input class="form-check-input" type="radio" name="genero" id="masculino" value="M" [(ngModel)]="informacionPx.genero">
         <label class="form-check-label" for="genero1">Masculino</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genero" id="femenino" value="F" [(ngModel)]="paciente.genero">
+        <input class="form-check-input" type="radio" name="genero" id="femenino" value="F" [(ngModel)]="informacionPx.genero">
         <label class="form-check-label" for="genero2">Femenino</label>
       </div>
     </div>
@@ -156,7 +156,7 @@
       class="form-control mb-2"
       size="15"
       maxLength="15"
-      [(ngModel)]="paciente.meses"
+      [(ngModel)]="informacionPx.meses"
       type="number"
       style="max-width: 100px;">
     </div>
@@ -171,7 +171,7 @@
     <div class="col">
       <mat-form-field class="form-control mb-2" style="max-width: 100;">
         <mat-label>Fecha de nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="paciente.fechaNacimiento" name="fechaNacimiento">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="informacionPx.fechaNacimiento" name="fechaNacimiento">
         <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
@@ -186,7 +186,7 @@
       class="form-control mb-2"
       size="15"
       maxLength="15"
-      [(ngModel)]="paciente.curp"
+      [(ngModel)]="informacionPx.curp"
       type="text"
       style="max-width: 100%;">
     </div>
@@ -199,7 +199,7 @@
       class="form-control mb-2"
       size="15"
       maxLength="15"
-      [(ngModel)]="paciente.motivoConsulta"
+      [(ngModel)]="informacionPx.motivoConsulta"
       type="text"
       style="max-width: 100%;">
     </div>
@@ -212,7 +212,7 @@
       class="form-control mb-2"
       size="15"
       maxLength="15"
-      [(ngModel)]="paciente.folioPaciente"
+      [(ngModel)]="informacionPx.folioPaciente"
       type="text"
       style="max-width: 65%;">
     </div>
@@ -221,11 +221,11 @@
   <div class="col">
     <label>¿Cuenta con cartilla de vacunacion?</label><br>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="true" [(ngModel)]="paciente.cuentaConCartilla">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="true" [(ngModel)]="informacionPx.cuentaConCartilla">
       <label class="form-check-label" for="inlineRadio5">Si</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="false" [(ngModel)]="paciente.cuentaConCartilla">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="false" [(ngModel)]="informacionPx.cuentaConCartilla">
       <label class="form-check-label" for="inlineRadio6">No</label>
     </div>
   </div>

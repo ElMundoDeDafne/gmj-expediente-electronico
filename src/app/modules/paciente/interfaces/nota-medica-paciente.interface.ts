@@ -6,6 +6,10 @@ export interface INotaMedicaPac {
   diagnosticos?:string[];
   recomendaciones?:string;
   tratamientos?:string[];
-  cedulaProfNM?:number;
+  cedulaProfNM?:string;
   realizoNM?:string;
+  impresionDiagnostica?:string[];
+  resultados?:string;
+  analisisYComentarios?:string;
+  tratamiento?:string;
 }

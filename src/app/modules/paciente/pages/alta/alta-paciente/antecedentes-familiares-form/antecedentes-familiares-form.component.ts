@@ -8,7 +8,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrl: './antecedentes-familiares-form.component.css',
   providers:[{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => this),
+    useExisting: forwardRef(() => AntecedentesFamiliaresFormComponent),
     multi: true
   }]
 })

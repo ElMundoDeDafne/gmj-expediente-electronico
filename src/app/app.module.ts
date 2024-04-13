@@ -26,8 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     WelcomeAlertComponent,
     NotFoundPageComponent,
     StillOnWorkPageComponent,
-    //LoginFormComponent,
-    LandingPageComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

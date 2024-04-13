@@ -11,5 +11,4 @@ export interface IDomicilioPaciente {
   manzana?:string;
   vivienda?:number;
   numeroCalle?:number;
-  datosContacto?:IDatosContactoPaciente;
 }

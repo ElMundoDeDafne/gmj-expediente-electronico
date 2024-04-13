@@ -14,4 +14,5 @@ export interface IAntecedentesPersNoPat{
 export interface IConceptoAntecedente{
   situacion:string;
   concepto:string;
+  otros?:string;
 }

@@ -8,7 +8,8 @@
     maxLength="15"
     style="max-width: 100%;"
     cols="40"
-    rows="5"></textarea>
+    rows="5"
+    ></textarea>
   </div>
 </div>
 <div class="row form-div-padding">
@@ -22,6 +23,7 @@
     style="max-width: 100%;"
     cols="40"
     rows="5"
+    [(ngModel)]="notasMedicasPx.analisisYComentarios"
     ></textarea>
   </div>
 </div>
@@ -35,7 +37,8 @@
     maxLength="15"
     style="max-width: 100%;"
     cols="40"
-    rows="5"></textarea>
+    rows="5"
+    [(ngModel)]="notasMedicasPx.impresionDiagnostica"></textarea>
   </div>
 </div>
 <div class="row form-div-padding">
@@ -49,6 +52,7 @@
     style="max-width: 100%;"
     cols="40"
     rows="5"
+    [(ngModel)]="notasMedicasPx.tratamiento"
     ></textarea>
   </div>
 </div>
@@ -60,7 +64,8 @@
     class="form-control"
     size="15"
     maxLength="15"
-    style="max-width: 100%;">
+    style="max-width: 100%;"
+    [(ngModel)]="notasMedicasPx.realizoNM">
   </div>
   <div class="col">
     <strong>Cedula Profesional</strong>
@@ -69,6 +74,7 @@
     class="form-control"
     size="15"
     maxLength="15"
-    style="max-width: 100%;">
+    style="max-width: 100%;"
+    [(ngModel)]="notasMedicasPx.cedulaProfNM">
   </div>
 </div>

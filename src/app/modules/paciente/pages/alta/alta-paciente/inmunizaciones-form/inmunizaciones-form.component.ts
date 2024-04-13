@@ -8,19 +8,19 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrl: './inmunizaciones-form.component.css',
   providers:[{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => this),
+    useExisting: forwardRef(() => InmunizacionesFormComponent),
     multi: true
   }]
 })
 export class InmunizacionesFormComponent implements ControlValueAccessor {
   inmunizacion:IEsquemaVacunacionPac={};
-  inmunizaciones:IEsquemaVacunacionPac[]=[{}];
+  inmunizaciones:IEsquemaVacunacionPac[]=[];
 
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  writeValue(obj: IEsquemaVacunacionPac): void {
-    this.inmunizacion = obj;
+  writeValue(obj: IEsquemaVacunacionPac[]): void {
+    this.inmunizaciones = obj;
   }
 
   registerOnChange(fn: any): void {

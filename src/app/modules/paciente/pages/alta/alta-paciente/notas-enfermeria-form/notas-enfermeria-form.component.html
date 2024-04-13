@@ -8,7 +8,8 @@
     maxLength="15"
     style="max-width: 100%;"
     cols="40"
-    rows="5"></textarea>
+    rows="5"
+    [(ngModel)]="notasEnfermeria.accionesDxEnf"></textarea>
   </div>
 </div>
 <div class="row form-div-padding">
@@ -22,6 +23,7 @@
     style="max-width: 100%;"
     cols="40"
     rows="5"
+    [(ngModel)]="notasEnfermeria.accionesNEnf"
     ></textarea>
   </div>
 </div>
@@ -35,7 +37,8 @@
     maxLength="15"
     style="max-width: 100%;"
     cols="40"
-    rows="5"></textarea>
+    rows="5"
+    [(ngModel)]="notasEnfermeria.resultadosNEnf"></textarea>
   </div>
 </div>
 <div class="row form-div-padding">
@@ -46,7 +49,8 @@
     class="form-control"
     size="15"
     maxLength="15"
-    style="max-width: 100%;">
+    style="max-width: 100%;"
+    [(ngModel)]="notasEnfermeria.realizoNEnf">
   </div>
   <div class="col">
     <strong>Cedula Profesional</strong>
@@ -55,6 +59,7 @@
     class="form-control"
     size="15"
     maxLength="15"
-    style="max-width: 100%;">
+    style="max-width: 100%;"
+    [(ngModel)]="notasEnfermeria.cedulaProfNEnf">
   </div>
 </div>

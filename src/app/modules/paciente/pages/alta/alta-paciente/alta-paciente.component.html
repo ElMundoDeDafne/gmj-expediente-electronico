@@ -1,47 +1,57 @@
 <div class="form-div-padding">
   <h1>Nueva consulta</h1>
+  <!-- <app-informacion-paciente-form [(ngModel)]="paciente.hojaFrontal.informacionPx"></app-informacion-paciente-form>
+  <app-domicilio-paciente-form [(ngModel)]="paciente.hojaFrontal.domicilioPaciente"></app-domicilio-paciente-form>
+  <app-datos-contacto-paciente-form [(ngModel)]="paciente.hojaFrontal.datosContacto"></app-datos-contacto-paciente-form>
+  <app-antecedentes-familiares-form [(ngModel)]="paciente.historiaClinica.antecedentesHdoFamiliares"></app-antecedentes-familiares-form>
+  <app-antecedentes-gineco-obstetricos [(ngModel)]="paciente.historiaClinica.antecedentesGinecobstetricos"></app-antecedentes-gineco-obstetricos>
+  <app-antecedentes-personales-pat-form [(ngModel)]="paciente.historiaClinica.antecPatologicos"></app-antecedentes-personales-pat-form>
+  <app-antecedentes-pers-np-form [(ngModel)]="paciente.historiaClinica.antecNoPatologicos"></app-antecedentes-pers-np-form>
+  <app-interrogtorio-paciente-form [(ngModel)]="paciente.historiaClinica.interrogPx"></app-interrogtorio-paciente-form>
+  <app-notas-medicas-form [(ngModel)]="paciente.notaMedicaPaciente"></app-notas-medicas-form>
+  <app-signos-vitales-paciente-form [(ngModel)]="paciente.notaEnfermeriaPx.signosVitales"></app-signos-vitales-paciente-form>
+  <app-notas-enfermeria-form [(ngModel)]="paciente.notaEnfermeriaPx"></app-notas-enfermeria-form> -->
+
   <mat-tab-group dynamicHeight>
     <mat-tab label="Hoja Frontal">
       <mat-tab-group dynamicHeight>
         <mat-tab label="Informacion paciente">
-          <app-informacion-paciente-form [(ngModel)]="paciente"></app-informacion-paciente-form>
+          <app-informacion-paciente-form [(ngModel)]="paciente.hojaFrontal.informacionPx"></app-informacion-paciente-form>
         </mat-tab>
         <mat-tab label="Domicilio & Contacto">
-          <app-domicilio-paciente-form [(ngModel)]="paciente.domicilioPaciente"></app-domicilio-paciente-form>
+          <app-domicilio-paciente-form [(ngModel)]="paciente.hojaFrontal.domicilioPaciente"></app-domicilio-paciente-form>
+          <app-datos-contacto-paciente-form [(ngModel)]="paciente.hojaFrontal.datosContacto"></app-datos-contacto-paciente-form>
       </mat-tab>
     </mat-tab-group>
   </mat-tab>
   <mat-tab label="Hist. Clinica">
     <mat-tab-group dynamicHeight>
       <mat-tab label="Antedentes Heredo-familiares">
-        <app-antecedentes-familiares-form [(ngModel)]="paciente.antecedentesHdoFamiliares"></app-antecedentes-familiares-form>
+        <app-antecedentes-familiares-form [(ngModel)]="paciente.historiaClinica.antecedentesHdoFamiliares"></app-antecedentes-familiares-form>
       </mat-tab>
-      <mat-tab label="Antedentes Ginecobstetricos" *ngIf="paciente.genero==='F'">
-        <app-antecedentes-gineco-obstetricos [(ngModel)]="paciente.antecedentesGinecobstetricos"></app-antecedentes-gineco-obstetricos>
+      <mat-tab label="Antedentes Ginecobstetricos">
+        <app-antecedentes-gineco-obstetricos [(ngModel)]="paciente.historiaClinica.antecedentesGinecobstetricos"></app-antecedentes-gineco-obstetricos>
       </mat-tab>
       <mat-tab label="Antecedentes Personales Patologicos">
-        <app-antecedentes-personales-pat-form></app-antecedentes-personales-pat-form>
+        <app-antecedentes-personales-pat-form [(ngModel)]="paciente.historiaClinica.antecPatologicos"></app-antecedentes-personales-pat-form>
       </mat-tab>
       <mat-tab label="Antecedentes Personales No Patologicos">
-        <app-antecedentes-pers-np-form></app-antecedentes-pers-np-form>
+        <app-interrogtorio-paciente-form [(ngModel)]="paciente.historiaClinica.interrogPx"></app-interrogtorio-paciente-form>
+        <app-antecedentes-pers-np-form [(ngModel)]="paciente.historiaClinica.antecNoPatologicos"></app-antecedentes-pers-np-form>
       </mat-tab>
-
       <mat-tab label="Interrogatorio & Inspecciones grales">
-        <app-interrogtorio-paciente-form></app-interrogtorio-paciente-form>
+        <app-interrogtorio-paciente-form [(ngModel)]="paciente.historiaClinica.interrogPx"></app-interrogtorio-paciente-form>
       </mat-tab>
-      <mat-tab label="Signos vitales">
-        <app-signos-vitales-paciente-form [(ngModel)]="paciente.signosVitales"></app-signos-vitales-paciente-form>
-      </mat-tab>
-
     </mat-tab-group>
   </mat-tab>
   <mat-tab label="Notas medicas">
-    <app-notas-medicas-form></app-notas-medicas-form>
+    <app-notas-medicas-form [(ngModel)]="paciente.notaMedicaPaciente"></app-notas-medicas-form>
   </mat-tab>
   <mat-tab label="Notas enfermeria">
-    <app-notas-enfermeria-form></app-notas-enfermeria-form>
+    <app-signos-vitales-paciente-form [(ngModel)]="paciente.notaEnfermeriaPx.signosVitales"></app-signos-vitales-paciente-form>
+    <app-notas-enfermeria-form [(ngModel)]="paciente.notaEnfermeriaPx"></app-notas-enfermeria-form>
   </mat-tab>
-  </mat-tab-group><br>
+</mat-tab-group><br>
   <button type="button" (click)="verdatos()" class="btn btn-outline-primary btn-sm">Registrar consulta</button>
-  <p>{{paciente|json}}</p>
+  <code><p>{{paciente|json}}</p></code>
 </div>

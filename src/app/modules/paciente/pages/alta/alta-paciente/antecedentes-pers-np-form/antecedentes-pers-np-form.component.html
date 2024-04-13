@@ -1,9 +1,8 @@
 <div class="row form-div-padding" >
   <h2>Conceptos</h2>
+  <div *ngFor="let concepto of antecedentes.concepto; let i = index">
   <div class="col">
-
-    <div *ngFor="let concepto of antecedentes.concepto; let i = index">
-      <label>{{concepto.concepto}}</label><br>
+      <strong>{{concepto.concepto}}</strong><br>
       <div *ngIf="concepto.concepto==='Dieta'||concepto.concepto==='Vivienda'">
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="situacion{{i}}" id="situacion{{i}}" value="buena" [(ngModel)]="concepto.situacion">
@@ -31,40 +30,30 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="col">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="situacionAgua" value="agua," name="situacion">
-      <label class="form-check-label" for="situacionAgua">Agua</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="situacionLuz" value="luz," name="situacion">
-      <label class="form-check-label" for="situacionLuz">Luz</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="situacionDrenaje" value="drenaje," name="situacion">
-      <label class="form-check-label" for="situacionDrenaje">Drenaje</label>
+  <div class="col">
+    <h2>Vivienda</h2>
+      <div *ngFor="let vivienda of antecedentes.conceptoVivienda;let i = index">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="situacion{{i}}" name="situacion{{i}}" [(ngModel)]="vivienda.situacion">
+          <label class="form-check-label" [for]="'concepto'+i" [(ngModel)]="vivienda.concepto">{{vivienda.concepto}}</label>
+        </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="situacionFPerros" value="perros" name="situacion">
-      <label class="form-check-label" for="situacionFPerros">Perros</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="situacionFGatos" value="gatos" name="situacion">
-      <label class="form-check-label" for="'situacionFGatos">Gatos</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="situacionFOtros" value="otros" name="situacion">
-      <label class="form-check-label" for="situacionFOtros">Otros</label>
+    <h2>Fauna</h2>
+    <div *ngFor="let fauna of antecedentes.conceptoFauna;let i = index">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="situacion{{i}}" name="situacion{{i}}" [(ngModel)]="fauna.situacion">
+        <label class="form-check-label" [for]="'concepto'+i" [(ngModel)]="fauna.concepto">{{fauna.concepto}}</label>
+      </div>
     </div>
   </div>
+</div>
 
 <div class="row form-div-padding">
   <div class="col">
-    <app-inmunizaciones-form></app-inmunizaciones-form>
+    <app-inmunizaciones-form [(ngModel)]="antecedentes.inmunizaciones"></app-inmunizaciones-form>
   </div>
 </div>

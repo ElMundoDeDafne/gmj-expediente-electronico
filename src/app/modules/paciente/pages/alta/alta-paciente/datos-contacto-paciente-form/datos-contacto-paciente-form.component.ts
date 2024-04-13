@@ -8,7 +8,7 @@ import { IDatosContactoPaciente } from '../../../../interfaces/datos-contacto-pa
   styleUrl: './datos-contacto-paciente-form.component.css',
   providers:[{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => this),
+    useExisting: forwardRef(() => DatosContactoPacienteFormComponent),
     multi: true
   }]
 })
