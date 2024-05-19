@@ -2,6 +2,8 @@
  * Propiedad de El Mundo de Dafne
  * @author Christian Yamil Castillo Covarrubias
 */
+
+import { AlertModule,AlertConfig } from 'ngx-bootstrap/alert';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
@@ -13,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 import { AltaPacienteComponent } from './pages/alta/alta-paciente/alta-paciente.component';
 import { InformacionPacienteFormComponent } from './pages/alta/alta-paciente/informacion-paciente-form/informacion-paciente-form.component';
@@ -34,8 +37,25 @@ import { NotasMedicasFormComponent } from './pages/alta/alta-paciente/notas-medi
 import { NotasEnfermeriaFormComponent } from './pages/alta/alta-paciente/notas-enfermeria-form/notas-enfermeria-form.component';
 import { AntecedentesPersonalesNoPatologicosFormComponent } from './pages/alta/alta-paciente/antecedentes-pers-np-form/antecedentes-pers-np-form.component';
 import { InspeccionesGeneralesPacienteFormComponent } from './pages/alta/alta-paciente/inspecciones-grales-p-form/inspecciones-grales-p-form.component';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { AccordionModule } from 'ngx-bootstrap/accordion'
+import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
+import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { esLocale } from 'ngx-bootstrap/locale';
+defineLocale('es', esLocale);
 
-
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -65,7 +85,20 @@ import { InspeccionesGeneralesPacienteFormComponent } from './pages/alta/alta-pa
     CommonModule,FormsModule,MatTabsModule,MatStepperModule,
     ReactiveFormsModule,
     MatButtonModule,MatInputModule,
-    MatIconModule, MatDatepickerModule, MatFormFieldModule
+    MatIconModule, MatDatepickerModule, MatFormFieldModule,
+    MatNativeDateModule,
+    BsDatepickerModule.forRoot(),
+    AccordionModule
+  ],
+  providers: [
+    AlertConfig, BsDatepickerConfig,
+    { provide: MAT_DATE_FORMATS, useValue: 'en-GB' },
   ]
 })
-export class PacienteModule { }
+export class PacienteModule {
+  constructor( private bsLocaleService: BsLocaleService){
+    this.bsLocaleService.use('es');//fecha en español, datepicker
+  }
+
+
+ }

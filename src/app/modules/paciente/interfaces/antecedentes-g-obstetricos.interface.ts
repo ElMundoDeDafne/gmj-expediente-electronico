@@ -6,6 +6,7 @@ export interface IAntecedentesGinecoObstetricos {
   numGestas?:number;
   numAborts?:number;
   numPartos?:number;
+  numCesareas?:number;
   fechaUltimaRegla?:string;
   fechaUltimaCitologia?:string;
   fechaUltimoParto?:string;

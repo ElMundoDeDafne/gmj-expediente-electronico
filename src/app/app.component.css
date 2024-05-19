@@ -3,3 +3,6 @@
   background: black;
   color: white;
 } */
+input[type="text"] {
+  text-transform: uppercase;
+}

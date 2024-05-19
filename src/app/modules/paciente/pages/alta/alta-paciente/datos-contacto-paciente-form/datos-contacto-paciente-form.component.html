@@ -1,27 +1,39 @@
 
 <div class="row form-div-padding">
-  <br><br><h3>Datos de contacto</h3>
-  <div class="col">
-    <label>Num. Telefono</label>
-    <input type="tel"
-    name="telefono"
-    placeholder="S/N"
-    class="form-control"
-    maxLength="20"
-    style="max-width: 50%;"
-    [(ngModel)]="datosContacto.numeroTelefonico">
-  </div>
-  <div class="col">
-    <label>Correo electronico</label>
-    <input type="email"
-    name="email"
-    placeholder="S/N"
-    class="form-control"
-    maxLength="20"
-    style="max-width: 50%;"
-    [(ngModel)]="datosContacto.correoElectronico"
-    >
-  </div>
-  <div class="col"></div>
-  <div class="col"></div>
+    <br><br><h3>Datos de contacto</h3>
+    <div class="col" [formGroup]="datosContactoForm">
+      <label>Num. Telefono <span style="color:red;">*</span></label>
+      <input type="tel"
+      name="telefono"
+      placeholder="S/N"
+      class="form-control"
+      style="max-width: 50%;"
+      [(ngModel)]="datosContacto.numeroTelefonico"
+      formControlName="numeroTelefonico"
+      >
+      <div class="text-danger" *ngIf="datosContactoForm.controls['numeroTelefonico'].invalid && (datosContactoForm.controls['numeroTelefonico'].dirty || datosContactoForm.controls['numeroTelefonico'].touched)">
+        <div *ngIf="datosContactoForm.controls['numeroTelefonico'].errors?.['pattern']">
+          Tel&eacute;fono invalido.
+        </div>
+        <div *ngIf="datosContactoForm.controls['numeroTelefonico'].errors?.['required']">
+          El tel&eacute;fono es requerido.
+        </div>
+      </div>
+    </div>
+    <div class="col" [formGroup]="datosContactoForm">
+      <label>Correo electronico</label>
+      <input type="email"
+      name="email"
+      placeholder="S/N"
+      class="form-control"
+      style="max-width: 50%;"
+      [(ngModel)]="datosContacto.correoElectronico"
+      formControlName="email"
+      >
+      <div class="text-danger" *ngIf="datosContactoForm.controls['email'].invalid && (datosContactoForm.controls['email'].dirty || datosContactoForm.controls['email'].touched)">
+        <div *ngIf="datosContactoForm.controls['email'].errors?.['email']">
+          Email invalido.. (juanperez&commat;correo.com)
+        </div>
+      </div>
+    </div>
 </div>

@@ -32,7 +32,7 @@ export class AltaPacienteComponent {
     },
     historiaClinica: {
       antecedentesHdoFamiliares:[{}],
-      antecedentesGinecobstetricos:{fechaUltimaCitologia:'',fechaUltimaRegla:'',fechaUltimoParto:'',hijosVivos:0,inicioVidaSexual:''},
+      antecedentesGinecobstetricos:{fechaUltimaCitologia:'',fechaUltimaRegla:'',fechaUltimoParto:'',hijosVivos:0,numAborts:0,numCesareas:0,numGestas:0,numPartos:0,inicioVidaSexual:''},
       antecNoPatologicos:{
         conceptoFauna:[{concepto:'Perros',situacion:''},{concepto:'Gatos',situacion:''},{concepto:'Otros',situacion:'',otros:''}],
         conceptoVivienda:[{concepto:'Luz',situacion:''},{concepto:'Agua',situacion:''},{concepto:'Drenaje',situacion:''}],

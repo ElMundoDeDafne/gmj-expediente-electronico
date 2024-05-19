@@ -1,7 +1,8 @@
-  <div class="row form-div-padding">
+<div class="row form-div-padding">
     <br><br><h3>Domicilio</h3>
-      <div class="col">
-        <label>Codigo Postal</label>
+
+      <div class="col" [formGroup]="domicilioForm">
+        <label>Codigo Postal <span style="color:red;">*</span></label>
         <input type="text"
         name="codigoPostal"
         placeholder="E.j. 42064"
@@ -11,8 +12,9 @@
         [(ngModel)]="domicilio.codigoPostal">
       </div>
 
-      <div class="col">
-        <label>Calle principal</label>
+
+      <div class="col" [formGroup]="domicilioForm">
+        <label>Calle principal <span style="color:red;">*</span></label>
         <input type="text"
         name="callePrincipal"
         placeholder="E.j. Centro"
@@ -32,7 +34,8 @@
         style="max-width: 100%;"
         [(ngModel)]="domicilio.entreCalles1">
       </div>
-    </div>
+  </div>
+
 
 
     <div class="row form-div-padding">
@@ -45,9 +48,11 @@
         maxLength="20"
         style="max-width: 100%;"
         [(ngModel)]="domicilio.entreCalles2">
-    </div>
-    <div class="col">
-      <label>Estado</label>
+      </div>
+
+
+    <div class="col" [formGroup]="domicilioForm">
+      <label>Estado <span style="color:red;">*</span></label>
       <input type="text"
       name="entidad"
       placeholder="Hidalgo"
@@ -56,8 +61,9 @@
       style="max-width: 100%;"
       [(ngModel)]="domicilio.entidad">
     </div>
-    <div class="col">
-      <label>Localidad</label>
+
+    <div class="col" [formGroup]="domicilioForm">
+      <label>Localidad <span style="color:red;">*</span></label>
       <input type="text"
       name="entidad"
       placeholder="Jacala"
@@ -66,8 +72,9 @@
       style="max-width: 100%;"
       [(ngModel)]="domicilio.localidad">
     </div>
+
     <div class="col">
-      <label>Municipio</label>
+      <label>Municipio <span style="color:red;">*</span></label>
       <input type="text"
       name="municipio"
       placeholder="Jacala"
@@ -77,6 +84,7 @@
       [(ngModel)]="domicilio.municipio">
     </div>
   </div>
+
 
   <div class="row form-div-padding">
     <div class="col">

@@ -57,6 +57,10 @@
     style="max-width: 100%;"
     [(ngModel)]="antecedentesGinecobstetricos.fechaUltimoParto">
   </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="nrUltimoParto" id="nrUltimoParto" value="NO RECUERDA" (click)="registraCheckbox ($event)">
+    <label class="form-check-label" for="inlineRadio4">No recuerda</label>
+  </div>
 </div>
 
 <div class="row form-div-padding">
@@ -65,7 +69,7 @@
     <label>Hijos vivos</label>
     <input type="number"
     name="hijosVivos"
-    placeholder="Menarca"
+    placeholder=""
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
@@ -75,17 +79,20 @@
     <label>Gestas</label>
     <input type="number"
     name="numGestas"
-    placeholder="Menarca"
+    placeholder=""
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
     [(ngModel)]="antecedentesGinecobstetricos.numGestas">
+    <div class="text-danger" *ngIf="validarNumeroGestas()">
+      <h6>{{mensaje}}</h6>
+    </div>
   </div>
   <div class="col">
     <label>Abortos</label>
     <input type="number"
     name="numAborts"
-    placeholder="Menarca"
+    placeholder=""
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
@@ -95,10 +102,20 @@
     <label>Partos</label>
     <input type="number"
     name="numPartos"
-    placeholder="Menarca"
+    placeholder=""
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
     [(ngModel)]="antecedentesGinecobstetricos.numPartos">
+  </div>
+  <div class="col">
+    <label>Cesareas</label>
+    <input type="number"
+    name="numRitmo"
+    placeholder=""
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="antecedentesGinecobstetricos.numCesareas">
   </div>
 </div>
