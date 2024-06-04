@@ -1,5 +1,6 @@
-<div class="row form-div-padding">
-    <div class="col" [formGroup]="informacionPacienteForm">
+<form [formGroup]="informacionPacienteForm">
+  <div class="row form-div-padding">
+    <div class="col">
       <label>Tipo de consulta <span style="color:red;">*</span></label><br>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" id="tipoConsulta" value="Primera vez" [(ngModel)]="informacionPx.tipoConsulta">
@@ -13,12 +14,12 @@
 
     <div class="col">
       <label>¿Es derechohabiente? <span style="color:red;">*</span></label><br>
-      <div class="form-check form-check-inline" [formGroup]="informacionPacienteForm">
+      <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="S" [(ngModel)]="informacionPx.esDerechoHabiente">
         <label class="form-check-label" for="inlineRadio3">Si</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="N" [(ngModel)]="informacionPx.esDerechoHabiente" (onClick)="limpiaDerechoHabiencia('')">
+        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="N" [(ngModel)]="informacionPx.esDerechoHabiente">
         <label class="form-check-label" for="inlineRadio4">No</label>
       </div>
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['esDerechoHabiente'].invalid && (informacionPacienteForm.controls['esDerechoHabiente'].dirty || informacionPacienteForm.controls['esDerechoHabiente'].touched)">
@@ -28,7 +29,7 @@
       </div>
     </div>
 
-    <div class="col" *ngIf="informacionPx.esDerechoHabiente === 'S'" [formGroup]="informacionPacienteForm">
+    <div class="col" *ngIf="informacionPx.esDerechoHabiente === 'S'">
       <label>Derechohabiencia</label><br>
       <select name="derechoHabienciaCombo"
         id="derechoHabienciaCombobox"
@@ -59,7 +60,7 @@
       [(ngModel)]="informacionPx.otraDerechoHabiencia">
     </div>
 
-    <div class="col" *ngIf="informacionPx.esDerechoHabiente === 'S' && informacionPx.derechoHabiencia != null && informacionPx.derechoHabiencia != '0'" [formGroup]="informacionPacienteForm">
+    <div class="col" *ngIf="informacionPx.esDerechoHabiente === 'S' && informacionPx.derechoHabiencia != null && informacionPx.derechoHabiencia != '0'">
       <label>NSS</label>
       <input type="text"
       name="nss"
@@ -70,7 +71,7 @@
       [(ngModel)]="informacionPx.nss">
     </div>
 
-  <div class="row form-div-padding" [formGroup]="informacionPacienteForm">
+  <div class="row form-div-padding">
     <div class="col">
       <label>Primer nombre <span style="color:red;">*</span></label>
       <input type="text"
@@ -99,7 +100,7 @@
     </div>
 
 
-    <div class="col" [formGroup]="informacionPacienteForm">
+    <div class="col">
       <label>Apellido Paterno <span style="color:red;">*</span></label>
       <input type="text"
       name="apellidoPaterno"
@@ -137,7 +138,7 @@
     </div>
 
 
-      <div class="col" [formGroup]="informacionPacienteForm">
+      <div class="col" >
         <label>Edad <span style="color:red;">*</span></label>
         <input
         id="edad"
@@ -162,7 +163,7 @@
         </div>
       </div>
 
-    <div class="col" [formGroup]="informacionPacienteForm">
+    <div class="col">
       <label>Genero <span style="color:red;">*</span></label><br>
       <div class="form-check form-check-inline" >
         <input class="form-check-input" type="radio" name="genero" id="masculino" value="M" [(ngModel)]="informacionPx.genero">
@@ -177,7 +178,7 @@
 
     <div class="col" *ngIf="informacionPx.edad === 0">
       <!-- Mostramos input para meses -->
-      <div class="col" [formGroup]="informacionPacienteForm">
+      <div class="col">
         <label>Meses</label>
         <input
         name="meses"
@@ -186,7 +187,7 @@
         size="15"
         maxLength="2"
         [(ngModel)]="informacionPx.meses"
-        type="number"
+        type="text"
         style="max-width: 100px;"
         formControlName="meses">
         <div class="text-danger" *ngIf="informacionPacienteForm.controls['meses'].invalid && (informacionPacienteForm.controls['meses'].dirty || informacionPacienteForm.controls['meses'].touched)">
@@ -218,7 +219,7 @@
  </div>
 
 
-    <div class="col" [formGroup]="informacionPacienteForm">
+    <div class="col">
       <label>CURP</label>
       <input
       name="curp"
@@ -265,6 +266,7 @@
       type="text"
       style="max-width: 65%;">
     </div>
+
   </div>
 
   <div class="col">
@@ -278,5 +280,7 @@
       <label class="form-check-label" for="inlineRadio6">No</label>
     </div>
   </div>
+
+</form>
 
   <button type="button" class="btn btn-outline-primary btn-sm">Limpiar</button>

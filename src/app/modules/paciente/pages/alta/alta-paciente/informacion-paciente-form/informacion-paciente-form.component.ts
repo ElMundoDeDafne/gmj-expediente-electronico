@@ -38,7 +38,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
       apellidoMaterno:['',[Validators.required]],
       fechaNacimiento:['',[Validators.required,Validators.pattern('^(0[1-9]\|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$')]],
       motivoConsulta:['',[Validators.required]],
-      curp:['',[Validators.required,Validators.pattern('^[A-Z]{4}\d{6}[A-Z]{2}[A-Z]{3}[A-Z]\d{2}$'),Validators.maxLength(18)]]
+      curp:['',[Validators.required,Validators.pattern('^[A-Z]{4}\d{6}[A-Z]{4}[A-Z]\d{2}$'),Validators.maxLength(18)]]
     });
   }
   ngOnInit(): void {

@@ -16,6 +16,8 @@ export class AltaPacienteComponent {
     // Only highligh dates inside the month view.
     if (view === 'month') {
       const date = cellDate.getDate();
+      //8hrs: 6 am 2 pm 10 pm
+      //12 hrs 10 pm y 10 am
 
       // Highlight the 1st and 20th day of each month.
       // return date === 1 || date === 20 ? 'example-custom-date-class' : '';
