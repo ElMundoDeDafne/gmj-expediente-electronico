@@ -13,7 +13,7 @@ import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Valida
   }]
 })
 export class AntecedentesGinecoObstetricosComponent  implements ControlValueAccessor {
-
+  bsValue : Date = new Date();
   antecedentesForm:FormGroup;
   constructor(private formBuilder : FormBuilder){
     this.antecedentesForm = this.formBuilder.group({
@@ -32,13 +32,29 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  registraCheckbox(event:any):void{
+  actualizarValorFecha(id:string,value:string|undefined):void{
+    if(id === 'fechaUltimoParto') {
+      this.antecedentesGinecobstetricos.fechaUltimoParto = value;
+    } else if (id === 'fechaUltimaCitologia'){
+      this.antecedentesGinecobstetricos.fechaUltimaCitologia = value;
+    } else if (id === 'fechaUltimoParto') {
+      this.antecedentesGinecobstetricos.fechaUltimoParto = value;
+    } else if (id === 'fechaUltimaRegla') {
+      this.antecedentesGinecobstetricos.fechaUltimaRegla = value;
+    } else if (id === 'inicioVidaSexual') {
+      this.antecedentesGinecobstetricos.inicioVidaSexual = value;
+    }
+  }
+
+  registraCheckbox(event:any,id:string):void{
     if (event.target.checked) {
-      if (this.antecedentesGinecobstetricos.fechaUltimoParto!== "NO RECUERDA") {
-        this.antecedentesGinecobstetricos.fechaUltimoParto = "NO RECUERDA";
-      }
+        (<HTMLInputElement> document.getElementById(id)).disabled = true;
+        (<HTMLInputElement> document.getElementById(id)).value = 'NO RECUERDA';
+        this.actualizarValorFecha(id,undefined);
     } else {
-      this.antecedentesGinecobstetricos.fechaUltimoParto = '';
+      (<HTMLInputElement> document.getElementById(id)).disabled = false;
+      (<HTMLInputElement> document.getElementById(id)).value = '';
+      this.actualizarValorFecha(id,'');
     }
   }
 

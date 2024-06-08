@@ -34,6 +34,14 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
       tipoConsulta:['',[Validators.requiredTrue]],
       esDerechoHabiente:['',[Validators.required]],
       primerNombre:['',[Validators.required]],
+      segundoNombre:['',null],
+      nacionalidad:['',null],
+      genero:['',null],
+      derechoHabiencia:['',null],
+      otraDerechoHabciencia:['',null],
+      nss:['',null],
+      folio:['',null],
+      cuentaConCartilla:['',[Validators.required]],
       apellidoPaterno:['',[Validators.required]],
       apellidoMaterno:['',[Validators.required]],
       fechaNacimiento:['',[Validators.required,Validators.pattern('^(0[1-9]\|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$')]],
@@ -45,7 +53,12 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
    // throw new Error('Method not implemented.');
   }
 
-  informacionPx:IInfoPaciente={};
+  informacionPx:IInfoPaciente={
+    apellidoPaterno:'',
+    apellidoMaterno:'',
+    nombrePropio1:'',
+    nombrePropio2:''
+};
   onChange: any = () => {};
   onTouched: any = () => {};
 
@@ -53,30 +66,47 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
 
   }
 
+  alerta():void{
+    window.alert('prueba');
+  }
+
   guardarEnLocalStorage(genero:string):void{
     localStorage.setItem("GEN_PX", genero);
   }
 
+  obtenerHoy():string{
+    const fechaDeHoy: Date = new Date();
+    const dia: number = fechaDeHoy.getDate();
+    const mes: number = fechaDeHoy.getMonth() + 1; // Los meses comienzan desde 0
+    const año: number = fechaDeHoy.getFullYear();
+
+    // Formatear la fecha como cadena de texto (en formato dd/mm/yyyy)
+    const fechaComoTexto: string = `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${año}`;
+
+    return fechaComoTexto;
+  }
+
   calcularEdad(fechaNacimiento:string):void{
-    console.error(fechaNacimiento);
-    const birthdayDate : Date = new Date(fechaNacimiento);
-    const hoy : Date = new Date();
-    let edad:number = hoy.getFullYear() - birthdayDate.getFullYear();
-    let meses:number = hoy.getMonth() - birthdayDate.getMonth();
+    if(fechaNacimiento != undefined){
+      const birthdayDate : Date = new Date(fechaNacimiento);
+      const hoy : Date = new Date();
+      let edad:number = hoy.getFullYear() - birthdayDate.getFullYear();
+      let meses:number = hoy.getMonth() - birthdayDate.getMonth();
 
-    // Corregir la edad si el mes de nacimiento es mayor que el mes actual
-    if (meses < 0) {
-      edad--;
-      meses = 12 + meses;
+      // Corregir la edad si el mes de nacimiento es mayor que el mes actual
+      if (meses < 0) {
+        edad--;
+        meses = 12 + meses;
+      }
+
+      // Corregir la edad si el día de nacimiento es mayor que el día actual
+      if (hoy.getDate() < birthdayDate.getDate()) {
+        meses--;
+      }
+
+      this.informacionPx.edad = edad;
+      this.informacionPx.meses = edad===0&&(meses===0||meses>0)?'RN':meses.toString();
     }
-
-    // Corregir la edad si el día de nacimiento es mayor que el día actual
-    if (hoy.getDate() < birthdayDate.getDate()) {
-      meses--;
-    }
-
-    this.informacionPx.edad = edad;
-    this.informacionPx.meses = edad===0?'RN':meses.toString();
   }
 
   limpiaDerechoHabiencia(texto:string):void{

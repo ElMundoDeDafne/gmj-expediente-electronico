@@ -3,11 +3,11 @@
     <div class="col">
       <label>Tipo de consulta <span style="color:red;">*</span></label><br>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="tipoConsulta" value="Primera vez" [(ngModel)]="informacionPx.tipoConsulta">
+        <input class="form-check-input" type="radio" id="tipoConsulta" value="Primera vez" [(ngModel)]="informacionPx.tipoConsulta" formControlName="tipoConsulta">
         <label class="form-check-label" for="inlineRadio1">Primera Vez</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="tipoConsulta" value="Subsecuente" [(ngModel)]="informacionPx.tipoConsulta">
+        <input class="form-check-input" type="radio" id="tipoConsulta" value="Subsecuente" [(ngModel)]="informacionPx.tipoConsulta" formControlName="tipoConsulta">
         <label class="form-check-label" for="inlineRadio2">Subsecuente</label>
       </div>
     </div>
@@ -15,11 +15,11 @@
     <div class="col">
       <label>¿Es derechohabiente? <span style="color:red;">*</span></label><br>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="S" [(ngModel)]="informacionPx.esDerechoHabiente">
+        <input class="form-check-input" type="radio" formControlName="esDerechoHabiente" name="derechoHabiente" id="derechoHabiente" value="S" [(ngModel)]="informacionPx.esDerechoHabiente">
         <label class="form-check-label" for="inlineRadio3">Si</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="derechoHabiente" id="derechoHabiente" value="N" [(ngModel)]="informacionPx.esDerechoHabiente">
+        <input class="form-check-input" type="radio" formControlName="esDerechoHabiente" name="derechoHabiente" id="derechoHabiente" value="N" [(ngModel)]="informacionPx.esDerechoHabiente">
         <label class="form-check-label" for="inlineRadio4">No</label>
       </div>
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['esDerechoHabiente'].invalid && (informacionPacienteForm.controls['esDerechoHabiente'].dirty || informacionPacienteForm.controls['esDerechoHabiente'].touched)">
@@ -35,7 +35,8 @@
         id="derechoHabienciaCombobox"
         class="form-select form-select-sm"
         style="max-width: 100%;"
-        [(ngModel)]="informacionPx.derechoHabiencia">
+        [(ngModel)]="informacionPx.derechoHabiencia"
+        formControlName="derechoHabiencia">
         <option value="0">-- SELECCIONE --</option>
         <option value="1">IMSS</option>
         <option value="2">ISSSTE</option>
@@ -57,7 +58,8 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="informacionPx.otraDerechoHabiencia">
+      [(ngModel)]="informacionPx.otraDerechoHabiencia"
+      formControlName="otraDerechoHaciencia">
     </div>
 
     <div class="col" *ngIf="informacionPx.esDerechoHabiente === 'S' && informacionPx.derechoHabiencia != null && informacionPx.derechoHabiencia != '0'">
@@ -68,7 +70,8 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="informacionPx.nss">
+      [(ngModel)]="informacionPx.nss"
+      formControlName="nss">
     </div>
 
   <div class="row form-div-padding">
@@ -80,7 +83,8 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="informacionPx.nombrePropio1">
+      [(ngModel)]="informacionPx.nombrePropio1"
+      formControlName="primerNombre">
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['primerNombre'].invalid && (informacionPacienteForm.controls['primerNombre'].dirty || informacionPacienteForm.controls['primerNombre'].touched)">
         <div *ngIf="informacionPacienteForm.controls['primerNombre'].errors?.['required']">
           <h6>Dato obligatorio.</h6>
@@ -96,7 +100,8 @@
         class="form-control"
         maxLength="20"
         style="max-width: 100%;"
-        [(ngModel)]="informacionPx.nombrePropio2">
+        [(ngModel)]="informacionPx.nombrePropio2"
+        formControlName="segundoNombre">
     </div>
 
 
@@ -108,7 +113,13 @@
       class="form-control"
       maxLength="20"
       style="max-width: 70%;"
-      [(ngModel)]="informacionPx.apellidoPaterno">
+      [(ngModel)]="informacionPx.apellidoPaterno"
+      formControlName="apellidoPaterno">
+      <div class="text-danger" *ngIf="informacionPacienteForm.controls['apellidoPaterno'].invalid && (informacionPacienteForm.controls['apellidoPaterno'].dirty || informacionPacienteForm.controls['apellidoPaterno'].touched)">
+        <div *ngIf="informacionPacienteForm.controls['apellidoPaterno'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -121,7 +132,13 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="informacionPx.apellidoMaterno">
+      [(ngModel)]="informacionPx.apellidoMaterno"
+      formControlName="apellidoMaterno">
+      <div class="text-danger" *ngIf="informacionPacienteForm.controls['apellidoMaterno'].invalid && (informacionPacienteForm.controls['apellidoMaterno'].dirty || informacionPacienteForm.controls['apellidoMaterno'].touched)">
+        <div *ngIf="informacionPacienteForm.controls['apellidoMaterno'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
     </div>
 
     <div class="col">
@@ -134,7 +151,8 @@
       maxLength="15"
       [(ngModel)]="informacionPx.nacionalidad"
       type="text"
-      style="max-width: 100%;">
+      style="max-width: 100%;"
+      formControlName="nacionalidad">
     </div>
 
 
@@ -160,17 +178,20 @@
           <div *ngIf="informacionPacienteForm.controls['edad'].errors?.['pattern']">
             Solo números.
           </div>
+          <div *ngIf="informacionPacienteForm.controls['edad'].errors?.['required']">
+            Dato obligatorio.
+          </div>
         </div>
       </div>
 
     <div class="col">
       <label>Genero <span style="color:red;">*</span></label><br>
       <div class="form-check form-check-inline" >
-        <input class="form-check-input" type="radio" name="genero" id="masculino" value="M" [(ngModel)]="informacionPx.genero">
+        <input class="form-check-input" type="radio" name="genero" id="masculino" value="M" [(ngModel)]="informacionPx.genero" formControlName="genero">
         <label class="form-check-label" for="genero1">Masculino</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genero" id="femenino" value="F" [(ngModel)]="informacionPx.genero">
+        <input class="form-check-input" type="radio" name="genero" id="femenino" value="F" [(ngModel)]="informacionPx.genero" formControlName="genero">
         <label class="form-check-label" for="genero2">Femenino</label>
       </div>
     </div>
@@ -214,8 +235,15 @@
        bsDatepicker
        [bsValue]="bsValue"
        [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }"
+       [maxDate]="fechaSeleccionada"
        [(ngModel)]="informacionPx.fechaNacimiento"
+       formControlName="fechaNacimiento"
        (ngModelChange)="calcularEdad($event)">
+       <div class="text-danger" *ngIf="informacionPacienteForm.controls['fechaNacimiento'].invalid && (informacionPacienteForm.controls['fechaNacimiento'].dirty || informacionPacienteForm.controls['fechaNacimiento'].touched)">
+        <div *ngIf="informacionPacienteForm.controls['fechaNacimiento'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
  </div>
 
 
@@ -251,7 +279,13 @@
       maxLength="15"
       [(ngModel)]="informacionPx.motivoConsulta"
       type="text"
-      style="max-width: 100%;">
+      style="max-width: 100%;"
+      formControlName="motivoConsulta">
+      <div class="text-danger" *ngIf="informacionPacienteForm.controls['motivoConsulta'].invalid && (informacionPacienteForm.controls['motivoConsulta'].dirty || informacionPacienteForm.controls['motivoConsulta'].touched)">
+        <div *ngIf="informacionPacienteForm.controls['motivoConsulta'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
     </div>
 
     <div class="col">
@@ -272,11 +306,11 @@
   <div class="col">
     <label>¿Cuenta con cartilla de vacunacion? <span style="color:red;">*</span></label><br>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="true" [(ngModel)]="informacionPx.cuentaConCartilla">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="true" [(ngModel)]="informacionPx.cuentaConCartilla" formControlName="cuentaConCartilla">
       <label class="form-check-label" for="inlineRadio5">Si</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="false" [(ngModel)]="informacionPx.cuentaConCartilla">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="false" [(ngModel)]="informacionPx.cuentaConCartilla" formControlName="cuentaConCartilla">
       <label class="form-check-label" for="inlineRadio6">No</label>
     </div>
   </div>

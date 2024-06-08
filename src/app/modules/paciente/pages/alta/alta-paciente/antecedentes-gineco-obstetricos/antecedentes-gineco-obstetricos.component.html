@@ -1,25 +1,21 @@
 <div class="row form-div-padding">
   <h2>Antecedentes ginecobstetricos</h2>
   <div class="col">
-      <label>Menarca</label>
-      <input type="text"
-      name="fechaUltimaCitologia"
-      placeholder="fechaUltimaCitologia"
-      class="form-control"
-      maxLength="20"
-      style="max-width: 100%;"
-      [(ngModel)]="antecedentesGinecobstetricos.fechaUltimaCitologia">
-  </div>
-
-  <div class="col">
     <label>Inicio vida sexual</label>
     <input type="text"
+    id="inicioVidaSexual"
     name="inicioVidaSexual"
-    placeholder="Menarca"
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
+    bsDatepicker
+    [bsConfig]="{ isAnimated: false, dateInputFormat: 'DD/MM/YYYY' }"
+    [maxDate]="bsValue"
     [(ngModel)]="antecedentesGinecobstetricos.inicioVidaSexual">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="nrInicioVidaSexual" id="nrInicioVidaSexual" (click)="registraCheckbox($event,'inicioVidaSexual')">
+      <label class="form-check-label" for="inlineRadio1">No recuerda</label>
+    </div>
   </div>
   <div class="col"></div>
   <div class="col"></div>
@@ -29,37 +25,55 @@
   <div class="col">
     <label>Fecha de ultima regla</label>
     <input type="text"
+    id="fechaUltimaRegla"
     name="fechaUltimaRegla"
-    placeholder="Menarca"
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
-    [(ngModel)]="antecedentesGinecobstetricos.fechaUltimaRegla">
+    [(ngModel)]="antecedentesGinecobstetricos.fechaUltimaRegla"
+    bsDatepicker
+    [bsConfig]="{ isAnimated: false, dateInputFormat: 'DD/MM/YYYY' }"
+    [maxDate]="bsValue">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="nrUltimaRegla" id="nrUltimaRegla" (click)="registraCheckbox ($event,'fechaUltimaRegla')">
+      <label class="form-check-label" for="inlineRadio2">No recuerda</label>
+    </div>
   </div>
 
   <div class="col">
     <label>Fecha de ultima citologia</label>
     <input type="text"
-    name="inicioVidaSexual"
-    placeholder="Menarca"
+    id="fechaUltimaCitologia"
+    name="fechaUltimaCitologia"
     class="form-control"
     maxLength="20"
-    style="max-width: 100%;">
+    style="max-width: 100%;"
+    bsDatepicker
+    [bsConfig]="{ isAnimated: false, dateInputFormat: 'DD/MM/YYYY' }"
+    [maxDate]="bsValue"
+    [(ngModel)]="antecedentesGinecobstetricos.fechaUltimaCitologia">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="nrFechaUltimaCitologia" id="nrFechaUltimaCitologia" (click)="registraCheckbox($event,'fechaUltimaCitologia')">
+      <label class="form-check-label" for="inlineRadio3">No recuerda</label>
+    </div>
   </div>
 
   <div class="col">
     <label>Fecha de ultima parto</label>
     <input type="text"
+    id="fechaUltimoParto"
+    bsDatepicker
+    [bsConfig]="{ isAnimated: false, dateInputFormat: 'DD/MM/YYYY' }"
+    [maxDate]="bsValue"
+    [(ngModel)]="antecedentesGinecobstetricos.fechaUltimoParto"
     name="fechaUltimoParto"
-    placeholder="Menarca"
     class="form-control"
     maxLength="20"
-    style="max-width: 100%;"
-    [(ngModel)]="antecedentesGinecobstetricos.fechaUltimoParto">
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" name="nrUltimoParto" id="nrUltimoParto" value="NO RECUERDA" (click)="registraCheckbox ($event)">
-    <label class="form-check-label" for="inlineRadio4">No recuerda</label>
+    style="max-width: 100%;">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="nrFechaUltimoParto" id="nrFechaUltimoParto" (click)="registraCheckbox($event,'fechaUltimoParto')">
+      <label class="form-check-label" for="inlineRadio4">No recuerda</label>
+    </div>
   </div>
 </div>
 
