@@ -108,7 +108,7 @@
       [(ngModel)]="domicilio.municipio"
       formControlName="municipio">
       <div class="text-danger" *ngIf="domicilioForm.controls['municipio'].invalid && (domicilioForm.controls['municipio'].dirty || domicilioForm.controls['localidad'].touched)">
-        <div *ngIf="domicilioForm.controls['localidad'].errors?.['required']">
+        <div *ngIf="domicilioForm.controls['municipio'].errors?.['required']">
           <h6>Dato obligatorio.</h6>
         </div>
       </div>
