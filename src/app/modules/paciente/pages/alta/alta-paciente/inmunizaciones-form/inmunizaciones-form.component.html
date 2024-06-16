@@ -17,8 +17,11 @@
     <label>Fecha aplicacion</label>
     <input type="text"
     name="fechaAplicacion"
-    placeholder="Ej: RN"
+    placeholder="Ej: 01/01/2000"
     class="form-control"
+    bsDatepicker
+    [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }"
+    [maxDate]="bsValue"
     maxLength="20"
     style="max-width: 100%;"
     [(ngModel)]="inmunizacion.fechaAplicacion">
@@ -28,7 +31,6 @@
       <button (click)="agregarInput()" class="btn btn-outline-primary btn-sm">Agregar</button>
     </div>
     <div *ngIf="i>=1">
-      <!-- agregar identificadores para eliminar por posicion -->
       <button (click)="eliminar(i)" class="btn btn-outline-primary btn-sm">Eliminar</button>
     </div>
   </div>

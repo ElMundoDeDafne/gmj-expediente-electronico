@@ -18,7 +18,8 @@ export class DomicilioPacienteFormComponent implements ControlValueAccessor{
   constructor(private formBuilder : FormBuilder){
     this.domicilioForm = this.formBuilder.group({
       codigoPostal:['',[
-        Validators.required
+        Validators.required,
+        Validators.pattern('^-?[0-9]+$')
       ]],
       callePrincipal:['',[
         Validators.required

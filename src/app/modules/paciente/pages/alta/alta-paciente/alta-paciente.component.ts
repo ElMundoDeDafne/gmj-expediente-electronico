@@ -12,6 +12,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
   providers: [provideNativeDateAdapter()],
 })
 export class AltaPacienteComponent {
+
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Only highligh dates inside the month view.
     if (view === 'month') {
@@ -25,6 +26,17 @@ export class AltaPacienteComponent {
 
     return '';
   };
+
+  x : string | null = '';
+  recuperaDatoTemporal(event:any):void{
+    const tab : string = event.tab.textLabel;
+    console.error(`Valor de LS: ${localStorage.getItem('GEN_PX')}`);
+    if(tab === 'Hist. Clinica' && localStorage.getItem('GEN_PX') != null) {
+      this.x = localStorage.getItem('GEN_PX');
+    }
+  }
+
+  constructor(){  }
 
   public paciente : IPaciente = {
     hojaFrontal: {

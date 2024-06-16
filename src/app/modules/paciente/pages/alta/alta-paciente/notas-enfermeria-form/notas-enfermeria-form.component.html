@@ -53,13 +53,22 @@
     [(ngModel)]="notasEnfermeria.realizoNEnf">
   </div>
   <div class="col">
-    <strong>Cedula Profesional</strong>
+    <strong>Cedula Profesional <span style="color: red;">*</span></strong>
     <input type="text"
     name="cedulaProfesionalNEnf"
     class="form-control"
     size="15"
     maxLength="15"
     style="max-width: 100%;"
+    formControlName="cedulaProfesionalNEnf"
     [(ngModel)]="notasEnfermeria.cedulaProfNEnf">
+    <div class="text-danger" *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].invalid && (notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].dirty || notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].touched)">
+      <div *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].errors?.['pattern']">
+        <h6>Solo números.</h6>
+      </div>
+      <div *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].errors?.['required']">
+        <h6>Dato obligatorio.</h6>
+      </div>
+    </div>
   </div>
 </div>

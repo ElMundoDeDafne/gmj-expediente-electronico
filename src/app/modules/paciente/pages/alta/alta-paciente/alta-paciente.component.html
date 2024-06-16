@@ -12,7 +12,7 @@
   <app-signos-vitales-paciente-form [(ngModel)]="paciente.notaEnfermeriaPx.signosVitales"></app-signos-vitales-paciente-form>
   <app-notas-enfermeria-form [(ngModel)]="paciente.notaEnfermeriaPx"></app-notas-enfermeria-form> -->
 
-  <mat-tab-group dynamicHeight>
+  <mat-tab-group dynamicHeight (selectedTabChange)="recuperaDatoTemporal($event)">
     <mat-tab label="Hoja Frontal">
       <mat-tab-group dynamicHeight>
         <mat-tab label="Informacion paciente">
@@ -29,9 +29,11 @@
       <mat-tab label="Antedentes Heredo-familiares">
         <app-antecedentes-familiares-form [(ngModel)]="paciente.historiaClinica.antecedentesHdoFamiliares"></app-antecedentes-familiares-form>
       </mat-tab>
-      <mat-tab label="Antedentes Ginecobstetricos">
-        <app-antecedentes-gineco-obstetricos [(ngModel)]="paciente.historiaClinica.antecedentesGinecobstetricos"></app-antecedentes-gineco-obstetricos>
-      </mat-tab>
+      <div *ngIf="x === 'F'">
+        <mat-tab label="Antedentes Ginecobstetricos">
+          <app-antecedentes-gineco-obstetricos [(ngModel)]="paciente.historiaClinica.antecedentesGinecobstetricos"></app-antecedentes-gineco-obstetricos>
+        </mat-tab>
+      </div>
       <mat-tab label="Antecedentes Personales Patologicos">
         <app-antecedentes-personales-pat-form [(ngModel)]="paciente.historiaClinica.antecPatologicos"></app-antecedentes-personales-pat-form>
       </mat-tab>

@@ -10,4 +10,5 @@ export interface IAntecedentesGinecoObstetricos {
   fechaUltimaRegla?:string;
   fechaUltimaCitologia?:string;
   fechaUltimoParto?:string;
+  tieneHijos?:string;
 }

@@ -15,6 +15,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class InmunizacionesFormComponent implements ControlValueAccessor {
   inmunizacion:IEsquemaVacunacionPac={};
   inmunizaciones:IEsquemaVacunacionPac[]=[];
+  bsValue : Date = new Date();
 
   onChange: any = () => {};
   onTouched: any = () => {};

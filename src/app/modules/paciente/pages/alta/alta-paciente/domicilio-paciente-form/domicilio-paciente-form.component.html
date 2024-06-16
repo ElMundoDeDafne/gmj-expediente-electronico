@@ -9,7 +9,18 @@
         class="form-control"
         maxLength="5"
         style="max-width: 100%;"
-        [(ngModel)]="domicilio.codigoPostal">
+        [(ngModel)]="domicilio.codigoPostal"
+        formControlName="codigoPostal">
+        <div class="text-danger" *ngIf="domicilioForm.controls['codigoPostal'].invalid && (domicilioForm.controls['codigoPostal'].dirty || domicilioForm.controls['codigoPostal'].touched)">
+          <div *ngIf="domicilioForm.controls['codigoPostal'].errors?.['required']">
+            <h6>Dato obligatorio.</h6>
+          </div>
+        </div>
+        <div class="text-danger" *ngIf="domicilioForm.controls['codigoPostal'].invalid && (domicilioForm.controls['codigoPostal'].dirty || domicilioForm.controls['codigoPostal'].touched)">
+          <div *ngIf="domicilioForm.controls['codigoPostal'].errors?.['pattern']">
+            <h6>Solo numeros.</h6>
+          </div>
+        </div>
       </div>
 
 
@@ -21,7 +32,13 @@
         class="form-control"
         maxLength="20"
         style="max-width: 100%;"
+        formControlName="callePrincipal"
         [(ngModel)]="domicilio.callePrincipal">
+        <div class="text-danger" *ngIf="domicilioForm.controls['callePrincipal'].invalid && (domicilioForm.controls['callePrincipal'].dirty || domicilioForm.controls['callePrincipal'].touched)">
+          <div *ngIf="domicilioForm.controls['callePrincipal'].errors?.['required']">
+            <h6>Dato obligatorio.</h6>
+          </div>
+        </div>
       </div>
 
       <div class="col">
@@ -59,7 +76,8 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="domicilio.entidad">
+      [(ngModel)]="domicilio.entidad"
+      formControlName="estado">
     </div>
 
     <div class="col" [formGroup]="domicilioForm">
@@ -70,7 +88,13 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="domicilio.localidad">
+      [(ngModel)]="domicilio.localidad"
+      formControlName="localidad">
+      <div class="text-danger" *ngIf="domicilioForm.controls['localidad'].invalid && (domicilioForm.controls['localidad'].dirty || domicilioForm.controls['localidad'].touched)">
+        <div *ngIf="domicilioForm.controls['localidad'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
     </div>
 
     <div class="col">
@@ -81,7 +105,13 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="domicilio.municipio">
+      [(ngModel)]="domicilio.municipio"
+      formControlName="municipio">
+      <div class="text-danger" *ngIf="domicilioForm.controls['municipio'].invalid && (domicilioForm.controls['municipio'].dirty || domicilioForm.controls['localidad'].touched)">
+        <div *ngIf="domicilioForm.controls['localidad'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
     </div>
   </div>
 

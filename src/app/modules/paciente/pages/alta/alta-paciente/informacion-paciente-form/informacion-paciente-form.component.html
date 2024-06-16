@@ -37,11 +37,11 @@
         style="max-width: 100%;"
         [(ngModel)]="informacionPx.derechoHabiencia"
         formControlName="derechoHabiencia">
-        <option value="0">-- SELECCIONE --</option>
-        <option value="1">IMSS</option>
-        <option value="2">ISSSTE</option>
-        <option value="3">PEMEX</option>
-        <option value="4">OTRO</option>
+        <option value="">-- SELECCIONE --</option>
+        <option value="IMSS">IMSS</option>
+        <option value="ISSSTE">ISSSTE</option>
+        <option value="PEMEX">PEMEX</option>
+        <option value="OTRO">OTRO</option>
       </select>
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['esDerechoHabiente'].invalid && (informacionPacienteForm.controls['esDerechoHabiente'].dirty || informacionPacienteForm.controls['esDerechoHabiente'].touched)">
         <div *ngIf="informacionPacienteForm.controls['esDerechoHabiente'].errors?.['required']">
@@ -187,11 +187,11 @@
     <div class="col">
       <label>Genero <span style="color:red;">*</span></label><br>
       <div class="form-check form-check-inline" >
-        <input class="form-check-input" type="radio" name="genero" id="masculino" value="M" [(ngModel)]="informacionPx.genero" formControlName="genero">
+        <input class="form-check-input" type="radio" name="genero" id="masculino" value="M" [(ngModel)]="informacionPx.genero" formControlName="genero" (click)="guardarEnLocalStorage('M')">
         <label class="form-check-label" for="genero1">Masculino</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genero" id="femenino" value="F" [(ngModel)]="informacionPx.genero" formControlName="genero">
+        <input class="form-check-input" type="radio" name="genero" id="femenino" value="F" [(ngModel)]="informacionPx.genero" formControlName="genero" (click)="guardarEnLocalStorage('F')">
         <label class="form-check-label" for="genero2">Femenino</label>
       </div>
     </div>
@@ -276,7 +276,7 @@
       placeholder="Motivo consulta"
       class="form-control mb-2"
       size="15"
-      maxLength="15"
+      maxLength="30"
       [(ngModel)]="informacionPx.motivoConsulta"
       type="text"
       style="max-width: 100%;"

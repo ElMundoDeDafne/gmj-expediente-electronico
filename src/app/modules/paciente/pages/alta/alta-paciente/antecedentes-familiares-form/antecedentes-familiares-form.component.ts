@@ -43,6 +43,24 @@ export class AntecedentesFamiliaresFormComponent implements ControlValueAccessor
     this.antecedentesHdoFamiliares.push(nuevoAntecedente);
   }
 
+  desconoceAntecedentes(event:any):void{
+    if (event.target.checked) {
+      (<HTMLInputElement> document.getElementById('parentesco')).disabled = true;
+      (<HTMLInputElement> document.getElementById('familiarP')).disabled = true;
+      (<HTMLInputElement> document.getElementById('familiarM')).disabled = true;
+      (<HTMLInputElement> document.getElementById('morbilidad')).disabled = true;
+      (<HTMLInputElement> document.getElementById('botonAgregar')).disabled = true;
+      (<HTMLInputElement> document.getElementById('botonEliminar')).disabled = true;
+    } else {
+      (<HTMLInputElement> document.getElementById('parentesco')).disabled = false;
+      (<HTMLInputElement> document.getElementById('familiarP')).disabled = false;
+      (<HTMLInputElement> document.getElementById('familiarM')).disabled = false;
+      (<HTMLInputElement> document.getElementById('morbilidad')).disabled = false;
+      (<HTMLInputElement> document.getElementById('botonAgregar')).disabled = false;
+      (<HTMLInputElement> document.getElementById('botonEliminar')).disabled = false;
+    }
+  }
+
   eliminar(pos:number):void{
     this.antecedentesHdoFamiliares.splice(pos,1);
   }

@@ -5,4 +5,5 @@ export interface IEnfermedades{
   tiempoEvolucion?:string;
   tratamientoLlevado?:string;
   otraEnfermedad?:string;
+  desconoce?:boolean;
 }

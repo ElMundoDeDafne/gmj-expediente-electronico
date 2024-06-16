@@ -11,7 +11,7 @@ describe('AltaPacienteComponent', () => {
       declarations: [AltaPacienteComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(AltaPacienteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

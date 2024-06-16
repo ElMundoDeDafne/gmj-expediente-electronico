@@ -72,6 +72,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
 
   guardarEnLocalStorage(genero:string):void{
     localStorage.setItem("GEN_PX", genero);
+    console.error('valor guarado: '+genero);
   }
 
   obtenerHoy():string{

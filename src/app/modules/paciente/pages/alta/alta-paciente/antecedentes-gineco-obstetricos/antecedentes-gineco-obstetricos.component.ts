@@ -15,9 +15,26 @@ import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Valida
 export class AntecedentesGinecoObstetricosComponent  implements ControlValueAccessor {
   bsValue : Date = new Date();
   antecedentesForm:FormGroup;
-  constructor(private formBuilder : FormBuilder){
-    this.antecedentesForm = this.formBuilder.group({
+  generoPaciente : string|null = '';
 
+
+  validaLocalStorage(){
+    console.error('entrando a metodo');
+    console.error(localStorage.getItem('GEN_PX'));
+    if(localStorage.getItem('GEN_PX') != null){
+      this.generoPaciente = localStorage.getItem('GEN_PX');
+      console.error(this.generoPaciente);
+    }
+  }
+
+  constructor(private formBuilder : FormBuilder){
+    this.validaLocalStorage();
+    this.antecedentesForm = this.formBuilder.group({
+      hijosVivos:['',[Validators.pattern('^-?[0-9]+$')]],
+      numAborts:['',[Validators.pattern('^-?[0-9]+$')]],
+      numPartos:['',[Validators.pattern('^-?[0-9]+$')]],
+      numGestas:['',[Validators.pattern('^-?[0-9]+$')]],
+      numCesareas:['',[Validators.pattern('^-?[0-9]+$')]]
     });
   }
 
@@ -31,6 +48,22 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
   };
   onChange: any = () => {};
   onTouched: any = () => {};
+
+  sinHijos(event:any):void{
+    if (event.target.checked) {
+      (<HTMLInputElement> document.getElementById('numGestas')).disabled = true;
+      (<HTMLInputElement> document.getElementById('numCesareas')).disabled = true;
+      (<HTMLInputElement> document.getElementById('numAborts')).disabled = true;
+      (<HTMLInputElement> document.getElementById('numPartos')).disabled = true;
+      (<HTMLInputElement> document.getElementById('hijosVivos')).disabled = true;
+    } else {
+      (<HTMLInputElement> document.getElementById('numGestas')).disabled = false;
+      (<HTMLInputElement> document.getElementById('numCesareas')).disabled = false;
+      (<HTMLInputElement> document.getElementById('numAborts')).disabled = false;
+      (<HTMLInputElement> document.getElementById('numPartos')).disabled = false;
+      (<HTMLInputElement> document.getElementById('hijosVivos')).disabled = false;
+    }
+  }
 
   actualizarValorFecha(id:string,value:string|undefined):void{
     if(id === 'fechaUltimoParto') {

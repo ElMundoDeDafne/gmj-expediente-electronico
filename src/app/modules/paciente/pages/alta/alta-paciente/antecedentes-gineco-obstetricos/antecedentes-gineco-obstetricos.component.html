@@ -79,20 +79,32 @@
 
 <div class="row form-div-padding">
 
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="cbSinHijos" id="cbSinHijos" (click)="sinHijos($event)" [(ngModel)]="antecedentesGinecobstetricos.tieneHijos">
+    <label class="form-check-label" for="inlineRadio4">No tiene hijos</label>
+  </div>
+  <br>
   <div class="col">
     <label>Hijos vivos</label>
-    <input type="number"
+    <input type="text"
+    id="hijosVivos"
     name="hijosVivos"
     placeholder=""
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
     [(ngModel)]="antecedentesGinecobstetricos.hijosVivos">
+    <div class="text-danger" *ngIf="antecedentesForm.controls['hijosVivos'].invalid && (antecedentesForm.controls['hijosVivos'].dirty || antecedentesForm.controls['hijosVivos'].touched)">
+      <div *ngIf="antecedentesForm.controls['hijosVivos'].errors?.['pattern']">
+        <h6>Solo numeros.</h6>
+      </div>
+    </div>
   </div>
   <div class="col">
     <label>Gestas</label>
-    <input type="number"
+    <input type="text"
     name="numGestas"
+    id="numGestas"
     placeholder=""
     class="form-control"
     maxLength="20"
@@ -101,35 +113,54 @@
     <div class="text-danger" *ngIf="validarNumeroGestas()">
       <h6>{{mensaje}}</h6>
     </div>
+    <div class="text-danger" *ngIf="antecedentesForm.controls['numGestas'].invalid && (antecedentesForm.controls['numGestas'].dirty || antecedentesForm.controls['numGestas'].touched)">
+      <div *ngIf="antecedentesForm.controls['numGestas'].errors?.['pattern']">
+        <h6>Solo numeros.</h6>
+      </div>
+    </div>
   </div>
   <div class="col">
     <label>Abortos</label>
-    <input type="number"
+    <input type="text"
     name="numAborts"
+    id="numAborts"
     placeholder=""
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
     [(ngModel)]="antecedentesGinecobstetricos.numAborts">
+    <div class="text-danger" *ngIf="antecedentesForm.controls['numAborts'].invalid && (antecedentesForm.controls['numAborts'].dirty || antecedentesForm.controls['numAborts'].touched)">
+      <div *ngIf="antecedentesForm.controls['numAborts'].errors?.['pattern']">
+        <h6>Solo numeros.</h6>
+      </div>
+    </div>
   </div>
   <div class="col">
     <label>Partos</label>
-    <input type="number"
+    <input type="text"
     name="numPartos"
+    id="numPartos"
     placeholder=""
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
     [(ngModel)]="antecedentesGinecobstetricos.numPartos">
   </div>
-  <div class="col">
+  <div class="col" [formGroup]="antecedentesForm">
     <label>Cesareas</label>
-    <input type="number"
-    name="numRitmo"
+    <input type="text"
+    name="numCesareas"
+    id="numCesareas"
     placeholder=""
     class="form-control"
     maxLength="20"
     style="max-width: 100%;"
+    formControlName="numCesareas"
     [(ngModel)]="antecedentesGinecobstetricos.numCesareas">
+    <div class="text-danger" *ngIf="antecedentesForm.controls['numCesareas'].invalid && (antecedentesForm.controls['numCesareas'].dirty || antecedentesForm.controls['numCesareas'].touched)">
+      <div *ngIf="antecedentesForm.controls['numCesareas'].errors?.['pattern']">
+        <h6>Solo numeros.</h6>
+      </div>
+    </div>
   </div>
 </div>

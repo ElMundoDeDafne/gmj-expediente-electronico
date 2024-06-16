@@ -6,4 +6,5 @@ Interfaz antecedentes heredo-familiares
   familiar?:string;
   morbilidadFamilar?:string;
   parentesco?:string;
+  desconoce?:boolean;
 }
