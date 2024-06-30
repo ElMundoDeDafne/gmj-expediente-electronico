@@ -37,7 +37,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
       segundoNombre:['',null],
       nacionalidad:['',null],
       genero:['',null],
-      derechoHabiencia:['',null],
+      derechoHabiencia:['',[Validators.required]],
       otraDerechoHabciencia:['',null],
       nss:['',null],
       folio:['',null],

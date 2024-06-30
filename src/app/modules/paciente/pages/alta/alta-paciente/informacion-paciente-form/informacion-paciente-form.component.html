@@ -43,14 +43,19 @@
         <option value="PEMEX">PEMEX</option>
         <option value="OTRO">OTRO</option>
       </select>
+      <div class="text-danger" *ngIf="informacionPacienteForm.controls['derechoHabiencia'].invalid && (informacionPacienteForm.controls['derechoHabiencia'].dirty || informacionPacienteForm.controls['derechoHabiencia'].touched)">
+        <div *ngIf="informacionPacienteForm.controls['derechoHabiencia'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['esDerechoHabiente'].invalid && (informacionPacienteForm.controls['esDerechoHabiente'].dirty || informacionPacienteForm.controls['esDerechoHabiente'].touched)">
         <div *ngIf="informacionPacienteForm.controls['esDerechoHabiente'].errors?.['required']">
           <h6>Dato obligatorio.</h6>
         </div>
-      </div>
+      </div>      
     </div>
 
-    <div class="col" *ngIf="informacionPx.derechoHabiencia==='4'">
+    <div class="col" *ngIf="informacionPx.derechoHabiencia==='OTRO'">
       <label>Especificar derechohabiencia</label>
       <input type="text"
       name="derechoHabiencia"

@@ -15,4 +15,5 @@ export interface IConceptoAntecedente{
   situacion:string;
   concepto:string;
   otros?:string;
+  antecEspecifico?:string;
 }

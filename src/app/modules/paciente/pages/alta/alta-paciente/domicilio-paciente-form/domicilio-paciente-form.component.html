@@ -78,6 +78,11 @@
       style="max-width: 100%;"
       [(ngModel)]="domicilio.entidad"
       formControlName="estado">
+      <div class="text-danger" *ngIf="domicilioForm.controls['estado'].invalid && (domicilioForm.controls['estado'].dirty || domicilioForm.controls['estado'].touched)">
+        <div *ngIf="domicilioForm.controls['estado'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>      
     </div>
 
     <div class="col" [formGroup]="domicilioForm">
@@ -97,7 +102,7 @@
       </div>
     </div>
 
-    <div class="col">
+    <div class="col" [formGroup]="domicilioForm">
       <label>Municipio <span style="color:red;">*</span></label>
       <input type="text"
       name="municipio"
@@ -107,7 +112,7 @@
       style="max-width: 100%;"
       [(ngModel)]="domicilio.municipio"
       formControlName="municipio">
-      <div class="text-danger" *ngIf="domicilioForm.controls['municipio'].invalid && (domicilioForm.controls['municipio'].dirty || domicilioForm.controls['localidad'].touched)">
+      <div class="text-danger" *ngIf="domicilioForm.controls['municipio'].invalid && (domicilioForm.controls['municipio'].dirty || domicilioForm.controls['municipio'].touched)">
         <div *ngIf="domicilioForm.controls['municipio'].errors?.['required']">
           <h6>Dato obligatorio.</h6>
         </div>
