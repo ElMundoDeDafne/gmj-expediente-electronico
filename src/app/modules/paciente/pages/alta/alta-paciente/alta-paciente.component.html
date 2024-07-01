@@ -17,7 +17,7 @@
       <mat-tab label="Antedentes Heredo-familiares">
         <app-antecedentes-familiares-form [(ngModel)]="paciente.historiaClinica.antecedentesHdoFamiliares"></app-antecedentes-familiares-form>
       </mat-tab>
-      <div *ngIf="x === 'F'">
+      <div *ngIf="(x!==undefined||x!==null)&&x === 'F'">
         <mat-tab label="Antedentes Ginecobstetricos">
           <app-antecedentes-gineco-obstetricos [(ngModel)]="paciente.historiaClinica.antecedentesGinecobstetricos"></app-antecedentes-gineco-obstetricos>
         </mat-tab>

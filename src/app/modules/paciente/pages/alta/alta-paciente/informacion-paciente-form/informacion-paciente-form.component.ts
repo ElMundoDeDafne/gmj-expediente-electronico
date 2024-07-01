@@ -106,7 +106,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
       }
 
       this.informacionPx.edad = edad;
-      this.informacionPx.meses = edad===0&&(meses===0||meses>0)?'RN':meses.toString();
+      this.informacionPx.meses = edad===0&&(meses===0||meses>0)?meses.toString():'RN';
     }
   }
 

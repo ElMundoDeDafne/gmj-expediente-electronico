@@ -27,11 +27,12 @@ export class AltaPacienteComponent {
     return '';
   };
 
-  x : string | null = '';
+  x : string | null = null;
+
   recuperaDatoTemporal(event:any):void{
     const tab : string = event.tab.textLabel;
     console.error(`Valor de LS: ${localStorage.getItem('GEN_PX')}`);
-    if(tab === 'Hist. Clinica' && localStorage.getItem('GEN_PX') != null) {
+    if(localStorage.getItem('GEN_PX') != null && tab === 'Hist. Clinica') {
       this.x = localStorage.getItem('GEN_PX');
     }
   }

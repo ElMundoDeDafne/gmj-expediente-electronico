@@ -40,11 +40,7 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
 
   mensaje : string = '';
   antecedentesGinecobstetricos: IAntecedentesGinecoObstetricos={
-    numAborts:0,
-    numGestas:0,
-    numCesareas:0,
-    numPartos:0,
-    hijosVivos:0
+
   };
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -99,28 +95,37 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
   }
 
   validarNumeroGestas():boolean {
-    let numeroCesareas : number|undefined = 0;
-    let numeroPartos : number|undefined = 0;
-    let numeroAbortos : number|undefined = 0;
-    let totalPartosYCesareas : number|undefined = 0;
-    let numeroGestas : number|undefined  = 0;
+    let numeroCesareas : number = 0;
+    let numeroPartos : number = 0;
+    let numeroAbortos : number = 0;
+    let totalPartosYCesareas : number = 0;
+    let numeroGestas : number  = 0;
+    let hijosVivos : number = 0;
 
     if (this.antecedentesGinecobstetricos.numPartos !== undefined) {
       numeroPartos = this.antecedentesGinecobstetricos.numPartos;
     }
-    if (this.antecedentesGinecobstetricos.numCesareas !== undefined) {
+    if (this.antecedentesGinecobstetricos.numCesareas !== undefined){
         numeroCesareas = this.antecedentesGinecobstetricos.numCesareas;
     }
     if (this.antecedentesGinecobstetricos.numGestas !== undefined) {
-        numeroGestas = this.antecedentesGinecobstetricos.numGestas;
+        this.antecedentesGinecobstetricos.numGestas = numeroPartos.valueOf() + numeroCesareas.valueOf();
     }
     if(this.antecedentesGinecobstetricos.numAborts !== undefined) {
       numeroAbortos = this.antecedentesGinecobstetricos.numAborts;
     }
+    console.error(`numeroPartos: ${numeroPartos}, numeroCesareas: ${numeroCesareas}, numeroGestas: ${numeroGestas}, numeroAbortos: ${numeroAbortos}`);
 
-    totalPartosYCesareas = numeroCesareas+numeroPartos+numeroAbortos;
+    totalPartosYCesareas = numeroCesareas.valueOf()+numeroPartos.valueOf()+numeroAbortos.valueOf();
+    console.error(`totalPartosYCesareas: ${totalPartosYCesareas}`);
+    hijosVivos = numeroCesareas.valueOf() + numeroPartos.valueOf() - numeroAbortos.valueOf();
+    console.error(`numero de gestas: ${numeroGestas}`);
+    if(this.antecedentesGinecobstetricos.hijosVivos !== undefined) {
+      this.antecedentesGinecobstetricos.hijosVivos = hijosVivos<0?0:hijosVivos;
+    }
 
     if(numeroGestas!=null && totalPartosYCesareas != numeroGestas){
+      console.error(`numero de gestas: ${numeroGestas}`);
       this.mensaje = `No coincide el total de gestas: ${numeroGestas}`;
       return true;
     }
