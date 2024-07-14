@@ -57,7 +57,8 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     apellidoPaterno:'',
     apellidoMaterno:'',
     nombrePropio1:'',
-    nombrePropio2:''
+    nombrePropio2:'',
+    genero:''
 };
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -70,9 +71,28 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     window.alert('prueba');
   }
 
+  validarClickRadioButton():boolean{
+    let activoMasc = false;
+    let activoFem = false;
+    activoMasc = (<HTMLInputElement> document.getElementById('masculino')).checked;    
+    activoFem = (<HTMLInputElement> document.getElementById('femenino')).checked;
+    console.error(`valores : ${activoMasc} + ${activoFem}`);
+    return activoMasc||activoFem;
+  }
+
   guardarEnLocalStorage(genero:string):void{
-    localStorage.setItem("GEN_PX", genero);
-    console.error('valor guarado: '+genero);
+    console.error(`valor de genero: ${genero}`);
+    if (this.validarClickRadioButton()){
+      if(genero !== null || genero != undefined && genero !== '') {
+        console.error(`valor GENPX: ${genero}`);
+        localStorage.setItem("GEN_PX", genero);
+      }
+    } else {
+      if(localStorage.getItem("GEN_PX") !== null) {
+        console.error(`valor GENPX nulo`);
+        localStorage.removeItem("GEN_PX");
+      }
+    }
   }
 
   obtenerHoy():string{

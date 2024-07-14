@@ -1,6 +1,7 @@
 import { Component, forwardRef } from '@angular/core';
 import { IAntecedentesGinecoObstetricos } from '../../../../interfaces/antecedentes-g-obstetricos.interface';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { deprecate } from 'util';
 
 @Component({
   selector: 'app-antecedentes-gineco-obstetricos',
@@ -17,7 +18,6 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
   antecedentesForm:FormGroup;
   generoPaciente : string|null = '';
 
-
   validaLocalStorage(){
     console.error('entrando a metodo');
     console.error(localStorage.getItem('GEN_PX'));
@@ -28,7 +28,7 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
   }
 
   constructor(private formBuilder : FormBuilder){
-    this.validaLocalStorage();
+    //this.validaLocalStorage();
     this.antecedentesForm = this.formBuilder.group({
       hijosVivos:['',[Validators.pattern('^-?[0-9]+$')]],
       numAborts:['',[Validators.pattern('^-?[0-9]+$')]],
@@ -77,8 +77,8 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
 
   registraCheckbox(event:any,id:string):void{
     if (event.target.checked) {
-        (<HTMLInputElement> document.getElementById(id)).disabled = true;
         (<HTMLInputElement> document.getElementById(id)).value = 'NO RECUERDA';
+        (<HTMLInputElement> document.getElementById(id)).disabled = true;
         this.actualizarValorFecha(id,undefined);
     } else {
       (<HTMLInputElement> document.getElementById(id)).disabled = false;
@@ -94,7 +94,7 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
     }
   }
 
-  validarNumeroGestas():boolean {
+  validarNumeroGestas():void {
     let numeroCesareas : number = 0;
     let numeroPartos : number = 0;
     let numeroAbortos : number = 0;
@@ -102,35 +102,22 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
     let numeroGestas : number  = 0;
     let hijosVivos : number = 0;
 
-    if (this.antecedentesGinecobstetricos.numPartos !== undefined) {
+     if (this.antecedentesGinecobstetricos.numPartos !== undefined) {
       numeroPartos = this.antecedentesGinecobstetricos.numPartos;
-    }
-    if (this.antecedentesGinecobstetricos.numCesareas !== undefined){
+     }
+     if (this.antecedentesGinecobstetricos.numCesareas !== undefined){
         numeroCesareas = this.antecedentesGinecobstetricos.numCesareas;
-    }
-    if (this.antecedentesGinecobstetricos.numGestas !== undefined) {
-        this.antecedentesGinecobstetricos.numGestas = numeroPartos.valueOf() + numeroCesareas.valueOf();
-    }
-    if(this.antecedentesGinecobstetricos.numAborts !== undefined) {
+     }
+     if(this.antecedentesGinecobstetricos.numAborts !== undefined) {
       numeroAbortos = this.antecedentesGinecobstetricos.numAborts;
-    }
-    console.error(`numeroPartos: ${numeroPartos}, numeroCesareas: ${numeroCesareas}, numeroGestas: ${numeroGestas}, numeroAbortos: ${numeroAbortos}`);
-
-    totalPartosYCesareas = numeroCesareas.valueOf()+numeroPartos.valueOf()+numeroAbortos.valueOf();
-    console.error(`totalPartosYCesareas: ${totalPartosYCesareas}`);
-    hijosVivos = numeroCesareas.valueOf() + numeroPartos.valueOf() - numeroAbortos.valueOf();
-    console.error(`numero de gestas: ${numeroGestas}`);
+     }
+    totalPartosYCesareas = parseInt(numeroCesareas.toString())+parseInt(numeroPartos.toString())+parseInt(numeroAbortos.toString());
+    hijosVivos = parseInt(numeroCesareas.toString()) + parseInt(numeroPartos.toString());
+    this.antecedentesGinecobstetricos.numGestas = totalPartosYCesareas;
     if(this.antecedentesGinecobstetricos.hijosVivos !== undefined) {
       this.antecedentesGinecobstetricos.hijosVivos = hijosVivos<0?0:hijosVivos;
     }
-
-    if(numeroGestas!=null && totalPartosYCesareas != numeroGestas){
-      console.error(`numero de gestas: ${numeroGestas}`);
-      this.mensaje = `No coincide el total de gestas: ${numeroGestas}`;
-      return true;
-    }
-    return false;
-    }
+  }
 
    writeValue(obj: IAntecedentesGinecoObstetricos): void {
      this.antecedentesGinecobstetricos = obj;

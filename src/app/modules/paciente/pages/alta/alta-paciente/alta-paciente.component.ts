@@ -32,9 +32,9 @@ export class AltaPacienteComponent {
   recuperaDatoTemporal(event:any):void{
     const tab : string = event.tab.textLabel;
     console.error(`Valor de LS: ${localStorage.getItem('GEN_PX')}`);
-    if(localStorage.getItem('GEN_PX') != null && tab === 'Hist. Clinica') {
-      this.x = localStorage.getItem('GEN_PX');
-    }
+      if(localStorage.getItem('GEN_PX') !== null && tab === 'Hist. Clinica') {
+        this.x = localStorage.getItem('GEN_PX');
+      }
   }
 
   constructor(){  }
