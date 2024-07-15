@@ -8,7 +8,7 @@ import { Menu } from './top-menu-menus.interface';
   styleUrl: './top-menu.component.css'
 })
 export class TopMenuComponent {
-
+  nombreApp : string = ConstantesGenerales.NOMBRE_APP
   public listaMenus:Menu[]=[
     {
       nombreMenu:'Nueva Consulta',
