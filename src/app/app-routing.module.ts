@@ -6,6 +6,12 @@ import { StillOnWorkPageComponent } from './pages/still-on-work-page/still-on-wo
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { BusquedaPacienteComponent } from './modules/paciente/pages/busqueda-paciente/busqueda-paciente.component';
 import { LoginFormComponent } from './modules/authorization/pages/login-form/login-form.component';
+import { CensoHaComponent } from './modules/reports/censo-ha/censo-ha.component';
+import { CensoEmbarazadasComponent } from './modules/reports/censo-embarazadas/censo-embarazadas.component';
+import { CensoCronicosComponent } from './modules/reports/censo-cronicos/censo-cronicos.component';
+import { CensoEstomatologiaComponent } from './modules/reports/censo-estomat/censo-estomat.component';
+import { CensoGeneralComponent } from './modules/reports/censo-general/censo-general.component';
+
 
 const routes: Routes = [
   {path: 'consulta/nueva',component:AltaPacienteComponent}, //añade rutas
@@ -14,10 +20,11 @@ const routes: Routes = [
   {path:'consulta/recetas/reimprimir',component:StillOnWorkPageComponent},
   {path:'consulta/citas/reagendar',component:StillOnWorkPageComponent},
   {path:'consulta/expediente',component:StillOnWorkPageComponent},
-  {path:'consulta/censos/general',component:StillOnWorkPageComponent},
-  {path:'consulta/censos/ha',component:StillOnWorkPageComponent},
-  {path:'consulta/censos/emb',component:StillOnWorkPageComponent},
-  {path:'consulta/censos/cron',component:StillOnWorkPageComponent},
+  {path:'consulta/censos/general',component:CensoGeneralComponent},
+  {path:'consulta/censos/ha',component:CensoHaComponent},
+  {path:'consulta/censos/emb',component:CensoEmbarazadasComponent},
+  {path:'consulta/censos/cron',component:CensoCronicosComponent},
+  {path:'consulta/censos/estomatologia',component:CensoEstomatologiaComponent},
   {path:'login',component:LoginFormComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'success',redirectTo:'home'},

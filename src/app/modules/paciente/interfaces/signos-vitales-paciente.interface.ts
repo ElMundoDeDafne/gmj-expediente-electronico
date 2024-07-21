@@ -10,4 +10,6 @@ export interface ISignosVitales{
     cuentaConAyuno?:string;
     habitusExterior?:string;
     padecimientoActual?:string;
+    peso?:number;
+    talla?:number;
 }

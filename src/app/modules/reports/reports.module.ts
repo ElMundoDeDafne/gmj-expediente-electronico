@@ -4,6 +4,7 @@ import { CensoEmbarazadasComponent } from './censo-embarazadas/censo-embarazadas
 import { CensoCronicosComponent } from './censo-cronicos/censo-cronicos.component';
 import { CensoHaComponent } from './censo-ha/censo-ha.component';
 import { CensoGeneralComponent } from './censo-general/censo-general.component';
+import { CensoEstomatologiaComponent } from './censo-estomat/censo-estomat.component';
 
 
 
@@ -12,7 +13,8 @@ import { CensoGeneralComponent } from './censo-general/censo-general.component';
     CensoEmbarazadasComponent,
     CensoCronicosComponent,
     CensoHaComponent,
-    CensoGeneralComponent
+    CensoGeneralComponent,
+    CensoEstomatologiaComponent
   ],
   imports: [
     CommonModule
