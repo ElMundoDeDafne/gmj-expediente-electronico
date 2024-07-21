@@ -52,7 +52,7 @@
         <div *ngIf="informacionPacienteForm.controls['esDerechoHabiente'].errors?.['required']">
           <h6>Dato obligatorio.</h6>
         </div>
-      </div>      
+      </div>
     </div>
 
     <div class="col" *ngIf="informacionPx.derechoHabiencia==='OTRO'">
@@ -301,7 +301,8 @@
       class="form-control mb-2"
       size="15"
       maxLength="15"
-      [(ngModel)]="informacionPx.folioPaciente"
+      [(ngModel)]="informacionPx.folio"
+      formControlName="folio"
       type="text"
       style="max-width: 65%;">
     </div>
