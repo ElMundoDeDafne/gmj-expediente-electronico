@@ -11,6 +11,7 @@ import { CensoEmbarazadasComponent } from './modules/reports/censo-embarazadas/c
 import { CensoCronicosComponent } from './modules/reports/censo-cronicos/censo-cronicos.component';
 import { CensoEstomatologiaComponent } from './modules/reports/censo-estomat/censo-estomat.component';
 import { CensoGeneralComponent } from './modules/reports/censo-general/censo-general.component';
+import { MostrarAgendaFormComponent } from './modules/paciente/pages/agenda/mostrar-agenda-form/mostrar-agenda-forn.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'consulta/censos/ha',component:CensoHaComponent},
   {path:'consulta/censos/emb',component:CensoEmbarazadasComponent},
   {path:'consulta/censos/cron',component:CensoCronicosComponent},
+  {path:'consulta/agenda',component:MostrarAgendaFormComponent},
   {path:'consulta/censos/estomatologia',component:CensoEstomatologiaComponent},
   {path:'login',component:LoginFormComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},

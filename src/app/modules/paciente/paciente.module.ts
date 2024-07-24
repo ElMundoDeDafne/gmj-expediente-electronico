@@ -43,6 +43,9 @@ import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
 import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { esLocale } from 'ngx-bootstrap/locale';
+import { MostrarAgendaFormComponent } from './pages/agenda/mostrar-agenda-form/mostrar-agenda-forn.component';
+import { DayPilotModule } from '@daypilot/daypilot-lite-angular';
+
 defineLocale('es', esLocale);
 
 export const MY_FORMATS = {
@@ -79,7 +82,8 @@ export const MY_FORMATS = {
     InspeccionesGeneralesPacienteFormComponent,
     EntornoViviendaPacienteFormComponent,
     NotasMedicasFormComponent,
-    NotasEnfermeriaFormComponent
+    NotasEnfermeriaFormComponent,
+    MostrarAgendaFormComponent
   ],
   imports: [
     CommonModule,FormsModule,MatTabsModule,MatStepperModule,
@@ -88,7 +92,7 @@ export const MY_FORMATS = {
     MatIconModule, MatDatepickerModule, MatFormFieldModule,
     MatNativeDateModule,
     BsDatepickerModule.forRoot(),
-    AccordionModule
+    AccordionModule,DayPilotModule
   ],
   providers: [
     AlertConfig, BsDatepickerConfig,
