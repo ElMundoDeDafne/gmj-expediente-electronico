@@ -57,24 +57,15 @@
       <th>Ultima visita</th>
     </thead>
     <tbody>
-      <tr>
-        <td><a href="#" routerLinkActive="active">Christian Yamil</a></td>
-        <td>Castillo</td>
-        <td>Covarrubias</td>
-        <td>32</td>
-        <td>Neurologia</td>
-        <td>Gerardo A. Borbolla</td>
-        <td>09/03/2024</td>
-      </tr>
-      <tr>
-        <td>Dafne</td>
-        <td>Castillo</td>
-        <td>Torres</td>
-        <td>6</td>
-        <td>Neumologia</td>
-        <td>Aleida Torres Sanchez</td>
-        <td>09/03/2024</td>
-      </tr>
+        <tr *ngFor="let resultado of resultados">
+          <td><a href="{{resultado.idPaciente}}" routerLinkActive="active">{{resultado.nombres}}</a></td>
+          <td>{{resultado.apPaterno}}</td>
+          <td>{{resultado.apMaterno}}</td>
+          <td>{{resultado.edad}}</td>
+          <td>{{resultado.especialidad}}</td>
+          <td>{{resultado.medicoTratante}}</td>
+          <td>{{resultado.ultimaVisita}}</td>
+        </tr>
     </tbody>
   </table>
   <p>Nota: Al dar clic al nombre, debera redirigir a la hoja frontal del paciente buscado</p>

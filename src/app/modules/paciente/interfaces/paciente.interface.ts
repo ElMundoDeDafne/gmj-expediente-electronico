@@ -10,6 +10,7 @@ import { INotaMedicaPac } from "./nota-medica-paciente.interface";
 import { INotaEnfermeriaPac } from "./nota-enferm-pac.interface";
 import { IInterrogatorioPaciente } from './interrogatorio-p.interface';
 import { IDatosContactoPaciente } from "./datos-contacto-paciente.interface";
+import { IConsultaEstomatologia } from "./cons-estomatologia.interface";
 
 /**Paciente interfaz */
 export interface IPaciente{
@@ -17,6 +18,7 @@ export interface IPaciente{
   historiaClinica:IHistClinica;
   notaMedicaPaciente:INotaMedicaPac;
   notaEnfermeriaPx:INotaEnfermeriaPac;
+  consultaOdontologia:IConsultaEstomatologia;
 }
 
 export interface IHojaFrontal{
@@ -32,10 +34,11 @@ export interface IHistClinica {
   antecedentesGinecobstetricos?:IAntecedentesGinecoObstetricos;
   antecPatologicos?:IAntecedentesPersonalesPatologicos[];
   antecNoPatologicos?:IAntecedentesPersNoPat;
-  interrogPx:IInterrogatorioPaciente;
+  interrogPx?:IInterrogatorioPaciente;
 }
 
 export interface IInfoPaciente extends IPersona{
+  isValid?:boolean;
   tipoConsulta?:string;
   idPaciente?:number;
   motivoConsulta?:string;
@@ -53,4 +56,6 @@ export interface IInfoPaciente extends IPersona{
   tieneMorbilidades?:boolean;
   tipoSangre?:string;
   folioPaciente?:string;
+  tieneAlergias?:boolean;
+  alergias?:string[];
 }

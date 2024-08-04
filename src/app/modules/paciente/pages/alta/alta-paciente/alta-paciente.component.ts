@@ -144,6 +144,9 @@ export class AltaPacienteComponent {
         presionSist:0,
         cuentaConAyuno:'false'
       }
+    },
+    consultaOdontologia:{
+
     }
   }
 

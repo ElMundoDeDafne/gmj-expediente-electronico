@@ -12,10 +12,12 @@ import { CensoCronicosComponent } from './modules/reports/censo-cronicos/censo-c
 import { CensoEstomatologiaComponent } from './modules/reports/censo-estomat/censo-estomat.component';
 import { CensoGeneralComponent } from './modules/reports/censo-general/censo-general.component';
 import { MostrarAgendaFormComponent } from './modules/paciente/pages/agenda/mostrar-agenda-form/mostrar-agenda-forn.component';
+import { ConsultaOdontologicaComponent } from './modules/paciente/pages/cons-odonto/cons-odonto.component';
 
 
 const routes: Routes = [
   {path: 'consulta/nueva',component:AltaPacienteComponent}, //añade rutas
+  {path: 'consulta/odontologia',component:ConsultaOdontologicaComponent},
   {path: 'home',component:LandingPageComponent},
   {path:'consulta/pacientes/buscar',component:BusquedaPacienteComponent},
   {path:'consulta/recetas/reimprimir',component:StillOnWorkPageComponent},

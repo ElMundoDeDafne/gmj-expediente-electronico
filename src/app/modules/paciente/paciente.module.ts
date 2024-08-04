@@ -45,6 +45,7 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { esLocale } from 'ngx-bootstrap/locale';
 import { MostrarAgendaFormComponent } from './pages/agenda/mostrar-agenda-form/mostrar-agenda-forn.component';
 import { DayPilotModule } from '@daypilot/daypilot-lite-angular';
+import { ConsultaOdontologicaComponent } from './pages/cons-odonto/cons-odonto.component';
 
 defineLocale('es', esLocale);
 
@@ -83,7 +84,8 @@ export const MY_FORMATS = {
     EntornoViviendaPacienteFormComponent,
     NotasMedicasFormComponent,
     NotasEnfermeriaFormComponent,
-    MostrarAgendaFormComponent
+    MostrarAgendaFormComponent,
+    ConsultaOdontologicaComponent
   ],
   imports: [
     CommonModule,FormsModule,MatTabsModule,MatStepperModule,
