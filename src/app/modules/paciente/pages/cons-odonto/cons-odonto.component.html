@@ -1,101 +1,19 @@
 <div class="row form-div-padding">
   <h1>Nueva consulta odontologia</h1>
-  <div class="col">
-    <label>Labios</label>
-
-      <input type="text"
-      name="observacionesLabios"
-      class="form-control"
-      maxLength="200"
-      style="max-width: 100%;"
-      [(ngModel)]="consultaOdonto.observacionesLabios"
-      formControlName="observacionesLabios">
-
-  </div>
-
-  <div class="col">
-    <label>Encias</label>
-
-      <input type="text"
-      name="observacionesEncias"
-      class="form-control"
-      maxLength="200"
-      style="max-width: 100%;"
-      [(ngModel)]="consultaOdonto.observacionesEncias"
-      formControlName="observacionesEncias">
-
-  </div>
-
-  <div class="col">
-    <label>Lengua</label>
-      <input type="text"
-      name="observacionesLengua"
-      class="form-control"
-      maxLength="200"
-      style="max-width: 100%;"
-      [(ngModel)]="consultaOdonto.observacionesLengua"
-      formControlName="observacionesLengua">
-  </div>
-
-  <div class="col">
-    <label>Carrillos</label>
-      <input type="text"
-      name="carrillos"
-      class="form-control"
-      maxLength="200"
-      style="max-width: 100%;"
-      [(ngModel)]="consultaOdonto.carrillos"
-      formControlName="carrillos">
-  </div>
-
-</div>
-
-<div class="row form-div-padding">
-  <div class="col">
-    <label>Paladar</label>
-      <input type="text"
-      name="observacionesPaladar"
-      class="form-control"
-      maxLength="200"
-      style="max-width: 100%;"
-      [(ngModel)]="consultaOdonto.observacionesPaladar"
-      formControlName="observacionesPaladar">
-  </div>
-
-  <div class="col">
-    <label>Piso de la boca</label>
-      <input type="text"
-      name="observacionesPisoBoca"
-      class="form-control"
-      maxLength="200"
-      style="max-width: 100%;"
-      [(ngModel)]="consultaOdonto.observacionesPisoBoca"
-      formControlName="observacionesPisoBoca">
-  </div>
-
-
-  <div class="col">
-    <label>Art. Temporomand.</label>
-      <input type="text"
-      name="observacionesArticulacionTempMand"
-      class="form-control"
-      maxLength="200"
-      style="max-width: 100%;"
-      [(ngModel)]="consultaOdonto.observacionesArticulacionTempMand"
-      formControlName="observacionesArticulacionTempMand">
-  </div>
-</div>
-
-<div class="row form-div-padding">
-  <div class="col">
-    <label>¿Se observa gingivitis?</label><br>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" id="tieneGingivitis" name="tieneGingivitis" value="S" [(ngModel)]="consultaOdonto.tieneGingivitis" formControlName="tieneGingivitis">
-      <label class="form-check-label" for="inlineRadio1">Si</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" id="tieneGingivitis" name="tieneGingivitis" value="N" [(ngModel)]="consultaOdonto.tieneGingivitis" formControlName="tieneGingivitis">
-      <label class="form-check-label" for="inlineRadio2">No</label>
-    </div>
-  </div>
-</div>
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Hoja Frontal">
+      <p>Hoja frontal</p>
+      <app-odonto-hoja-front></app-odonto-hoja-front>
+    </mat-tab>
+    <mat-tab label="Ant. Hedo fam.">
+      <p>Ant. Hedofam.</p>
+      <app-odonto-ant-hfam></app-odonto-ant-hfam>
+    </mat-tab>
+    <mat-tab label="Ant. Personales">
+      <p>Ant. Personales</p>
+      <app-odonto-ant-per></app-odonto-ant-per>
+    </mat-tab>
+    <mat-tab label="Observaciones">
+      <app-odonto-observaciones></app-odonto-observaciones>
+    </mat-tab>
+  </mat-tab-group>

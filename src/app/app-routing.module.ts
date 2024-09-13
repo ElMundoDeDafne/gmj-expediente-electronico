@@ -34,12 +34,6 @@ const routes: Routes = [
   {path:'success',redirectTo:'home'},
   {path:'**',component:NotFoundPageComponent}
 ];
-/**
- *         <li><a class="dropdown-item" routerLink="" routerLinkActive="active">Busqueda paciente</a></li>
-        <li><a class="dropdown-item" routerLink="" routerLinkActive="active">Reimpresion receta</a></li>
-        <li><a class="dropdown-item" routerLink="" routerLinkActive="active">Reagendar cita medica</a></li>
-        <li><a class="dropdown-item" routerLink="" routerLinkActive="active">Consultar expediente</a></li>
-*/
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

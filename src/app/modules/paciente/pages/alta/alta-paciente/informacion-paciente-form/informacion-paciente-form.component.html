@@ -38,10 +38,7 @@
         [(ngModel)]="informacionPx.derechoHabiencia"
         formControlName="derechoHabiencia">
         <option value="">-- SELECCIONE --</option>
-        <option value="IMSS">IMSS</option>
-        <option value="ISSSTE">ISSSTE</option>
-        <option value="PEMEX">PEMEX</option>
-        <option value="OTRO">OTRO</option>
+        <option *ngFor="let valor of derechoHabienciaOpciones" value="{{valor}}">{{valor}}</option>
       </select>
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['derechoHabiencia'].invalid && (informacionPacienteForm.controls['derechoHabiencia'].dirty || informacionPacienteForm.controls['derechoHabiencia'].touched)">
         <div *ngIf="informacionPacienteForm.controls['derechoHabiencia'].errors?.['required']">
@@ -218,7 +215,7 @@
         formControlName="meses">
         <div class="text-danger" *ngIf="informacionPacienteForm.controls['meses'].invalid && (informacionPacienteForm.controls['meses'].dirty || informacionPacienteForm.controls['meses'].touched)">
           <div *ngIf="informacionPacienteForm.controls['meses'].errors?.['min']">
-            Mes fuera de rango, valor minimo permitido: 1.
+            Mes fuera de rango, valor minimo permitido: 0.
           </div>
           <div *ngIf="informacionPacienteForm.controls['meses'].errors?.['max']">
             Mes fuera de rango, valor maximo permitido: 12.
@@ -237,6 +234,7 @@
     <input type="text"
        placeholder="Ej: 12/02/1991"
        class="form-control"
+       pattern="\d{2}/\d{2}/\d{4}"
        bsDatepicker
        [bsValue]="bsValue"
        [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }"
@@ -251,6 +249,18 @@
       </div>
  </div>
 
+ <div class="col">
+  <label>Ocupacion</label><br>
+  <select name="ocupacionCombo"
+    id="ocupacionCombobox"
+    class="form-select form-select-sm"
+    style="max-width: 100%;"
+    [(ngModel)]="informacionPx.ocupacion"
+    formControlName="ocupacion">
+    <option value="">-- SELECCIONE --</option>
+    <option *ngFor="let valor of ocupacionesJson" [value]="valor.clave">{{valor.descOcupacion}}</option>
+  </select>
+</div>
 
     <div class="col">
       <label>CURP</label>

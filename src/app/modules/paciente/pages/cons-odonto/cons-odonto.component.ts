@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { provideNativeDateAdapter } from "@angular/material/core";
 import { IConsultaEstomatologia } from "../../interfaces/cons-estomatologia.interface";
+import { IPaciente } from "../../interfaces/paciente.interface";
 
 @Component({
   selector: 'app-consulta-odonto',
@@ -10,6 +11,9 @@ import { IConsultaEstomatologia } from "../../interfaces/cons-estomatologia.inte
   providers: [provideNativeDateAdapter()],
 })
 export class ConsultaOdontologicaComponent {
+
+  x : IPaciente | null = null;
+
   public consultaOdonto:IConsultaEstomatologia={
 
   }

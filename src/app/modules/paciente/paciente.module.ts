@@ -46,6 +46,10 @@ import { esLocale } from 'ngx-bootstrap/locale';
 import { MostrarAgendaFormComponent } from './pages/agenda/mostrar-agenda-form/mostrar-agenda-forn.component';
 import { DayPilotModule } from '@daypilot/daypilot-lite-angular';
 import { ConsultaOdontologicaComponent } from './pages/cons-odonto/cons-odonto.component';
+import { ConsultaOdontologicaObservacionesComponent } from './pages/cons-odonto/pages/observaciones/odonto-observaciones.component';
+import { OdontoHojaFrontComponent } from './pages/cons-odonto/pages/hoja-frontal/odonto-hoja-front.component';
+import { OdontoHFamComponent } from './pages/cons-odonto/pages/ant-hdofam/odonto-ant-hfam.component';
+import { OdontoPerComponent } from './pages/cons-odonto/pages/ant-personales/odonto-ant-per.component';
 
 defineLocale('es', esLocale);
 
@@ -85,7 +89,11 @@ export const MY_FORMATS = {
     NotasMedicasFormComponent,
     NotasEnfermeriaFormComponent,
     MostrarAgendaFormComponent,
-    ConsultaOdontologicaComponent
+    ConsultaOdontologicaComponent,
+    ConsultaOdontologicaObservacionesComponent,
+    OdontoHojaFrontComponent,
+    OdontoHFamComponent,
+    OdontoPerComponent
   ],
   imports: [
     CommonModule,FormsModule,MatTabsModule,MatStepperModule,

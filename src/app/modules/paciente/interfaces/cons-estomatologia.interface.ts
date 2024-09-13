@@ -5,11 +5,15 @@ export interface IConsultaEstomatologia{
   antecedentesPersonales?:IAntecedentesPers;
   antecedentesFam?:IAntFamiliares;
   domicilio?:IDomicilioOdonto;
+  observaciones?:IObservacionesOdontologia;
+}
+
+interface IObservacionesOdontologia {
   fechaConsulta?:Date;
-  observacionesLabios?:String;
-  observacionesPaladar?:String;
-  observacionesEncias?:String;
-  observacionesPisoBoca?:String;
+  observacionesLabios?:string;
+  observacionesPaladar?:string;
+  observacionesEncias?:string;
+  observacionesPisoBoca?:string;
   observacionesGenerales?:string;
   carrillos?:string;
   observacionesArticulacionTempMand?:string;

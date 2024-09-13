@@ -3,6 +3,7 @@ import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { IInfoPaciente, IPaciente } from '../../../../interfaces/paciente.interface';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { CatOcupacionesService } from '../../../../../../services/cat-ocupaciones.service';
 
 @Component({
   selector: 'app-informacion-paciente-form',
@@ -27,9 +28,9 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
   bsValue : Date = new Date();
 
   informacionPacienteForm : FormGroup;
-  constructor(private formBuilder : FormBuilder){
+  constructor(private formBuilder : FormBuilder, private servCatOcupaciones : CatOcupacionesService){
     this.informacionPacienteForm = this.formBuilder.group({
-      meses:['',[Validators.min(1),Validators.max(12),Validators.pattern('^-?[0-9]+$|^RN$')]],
+      meses:['',[Validators.min(0),Validators.max(12),Validators.pattern('^-?[0-9]+$|^RN$')]],
       edad: ['',[Validators.min(0),Validators.max(110),Validators.pattern('^-?[0-9]+$'),Validators.required]],
       tipoConsulta:['',[Validators.requiredTrue]],
       esDerechoHabiente:['',[Validators.required]],
@@ -49,16 +50,27 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
       curp:['',[Validators.required,Validators.pattern('^[A-Z]{4}\d{6}[A-Z]{4}[A-Z]\d{2}$'),Validators.maxLength(18)]]
     });
   }
+
+  ocupacionesJson :any[]=[];
+
   ngOnInit(): void {
    // throw new Error('Method not implemented.');
+   this.servCatOcupaciones
+   .getData()
+   .subscribe((data:any) => {
+    this.ocupacionesJson =data;
+   });
   }
 
+  derechoHabienciaOpciones : string[] = ["IMSS","ISSSTE","PEMEX","OTRO"];
+  ocupaciones:string[] = ["MECANICO","CAMPESINO","DENTISTA","MEDICO GENERAL"];
   informacionPx:IInfoPaciente={
     apellidoPaterno:'',
     apellidoMaterno:'',
     nombrePropio1:'',
     nombrePropio2:'',
-    genero:''
+    genero:'',
+    ocupacion:''
 };
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -74,7 +86,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
   validarClickRadioButton():boolean{
     let activoMasc = false;
     let activoFem = false;
-    activoMasc = (<HTMLInputElement> document.getElementById('masculino')).checked;    
+    activoMasc = (<HTMLInputElement> document.getElementById('masculino')).checked;
     activoFem = (<HTMLInputElement> document.getElementById('femenino')).checked;
     console.error(`valores : ${activoMasc} + ${activoFem}`);
     return activoMasc||activoFem;

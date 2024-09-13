@@ -28,7 +28,7 @@ export interface IHojaFrontal{
 }
 
 export interface IHistClinica {
-  esquemaVacunacion?:IEsquemaVacunacionPac[]; //el px puede tener varios biologicos en su cartilla
+  esquemaVacunacion?:IEsquemaVacunacionPac[]; //el px puede tener  en varios biologicossu cartilla
   antecedentesHdoFamiliares?:IPacAntHdoFamiliar[];
   antecedentesHdoFam?:IPacAntHdoFamiliar[];
   antecedentesGinecobstetricos?:IAntecedentesGinecoObstetricos;

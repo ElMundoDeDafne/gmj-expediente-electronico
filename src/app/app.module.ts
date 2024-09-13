@@ -16,6 +16,8 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { AuthorizationModule } from './modules/authorization/authorization.module';
 import { ReportsModule } from './modules/reports/reports.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CatOcupacionesService } from './services/cat-ocupaciones.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,11 +36,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     PacienteModule,
     ReportsModule,
     AuthorizationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    CatOcupacionesService
   ],
   bootstrap: [AppComponent]
 })

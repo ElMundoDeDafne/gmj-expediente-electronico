@@ -1,0 +1,18 @@
+[
+  {
+    "idGpoSang":1,
+    "grupo":"A+"
+  },
+  {
+    "idGpoSang":2,
+    "grupo":"O+"
+  },
+  {
+    "idGpoSang":3,
+    "grupo":"AB+"
+  },
+  {
+    "idGpoSang":4,
+    "grupo":"B+"
+  }
+]
