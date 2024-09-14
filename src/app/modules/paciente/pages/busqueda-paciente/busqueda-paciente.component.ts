@@ -1,5 +1,7 @@
 import { IBusquedaPaciente } from './../../interfaces/busqueda-paciente.interface';
 import { Component, OnInit } from '@angular/core';
+import { ResultadosBusquedaService } from '../../service/resultados-busqueda.service';
+import { IBusquedaPacientes } from '../../interfaces/busqueda/busqueda-pacientes.interface';
 
 @Component({
   selector: 'app-busqueda-paciente',
@@ -9,8 +11,32 @@ import { Component, OnInit } from '@angular/core';
 
 export class BusquedaPacienteComponent implements OnInit{
 
+constructor(private resultadosBusquedaServ : ResultadosBusquedaService){ }
+
   ngOnInit(): void {
+    this.loadData();
   }
+
+  data : IBusquedaPacientes[] = [];
+  filteredData : IBusquedaPacientes[] = [];
+  searchTerm : string = ''; //termino de busqueda
+
+  loadData():void{
+    this.resultadosBusquedaServ.getData()
+    .subscribe((response)=> {
+      this.data = response;
+      this.filteredData = this.data;
+    });
+  }
+
+filterData():void {
+  this.filteredData = this.data.filter(item => {
+    const searchTermLower = this.searchTerm.toLowerCase();
+    return item.nombres.toLowerCase().includes(searchTermLower) ||
+           item.especialidad.toLowerCase().includes(searchTermLower);
+  });
+}
+
 
   public busqueda:IBusquedaPaciente={
     textoCriterioBusqueda:'',

@@ -1,0 +1,30 @@
+/* popper-demo.component.css */
+.tooltip-container {
+  background-color: #333;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  visibility: hidden; /* Tooltip inicialmente invisible */
+}
+
+.tooltip-container[data-popper-reference-hidden] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.tooltip-container[data-popper-escaped] {
+  visibility: hidden;
+}
+
+.tooltip-container.show {
+  visibility: visible; /* Mostrar tooltip cuando sea necesario */
+}
+
+.arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #333;
+  transform: rotate(45deg);
+}

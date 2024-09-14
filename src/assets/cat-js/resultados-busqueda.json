@@ -1,0 +1,52 @@
+[
+  {
+    "idPaciente":1234,
+    "nombres":"Christian Yamil",
+    "apPaterno":"Castillo",
+    "apMaterno":"Covarrubias",
+    "edad":32,
+    "especialidad":"Neumologia",
+    "medicoTratante":"Gerardo Borbolla",
+    "ultimaVisita":"09/03/2024"
+  },
+  {
+    "idPaciente":1235,
+    "nombres":"Dafne",
+    "apPaterno":"Castillo",
+    "apMaterno":"Torres",
+    "edad":6,
+    "especialidad":"Pediatria",
+    "medicoTratante":"Gerardo Borbolla",
+    "ultimaVisita":"09/03/2024"
+  },
+  {
+    "idPaciente":1236,
+    "nombres":"Aleida",
+    "apPaterno":"Torres",
+    "apMaterno":"Sanchez",
+    "edad":32,
+    "especialidad":"Familiar",
+    "medicoTratante":"Gerardo Borbolla",
+    "ultimaVisita":"09/03/2024"
+  },
+  {
+    "idPaciente":1237,
+    "nombres":"Christian Yamil",
+    "apPaterno":"Castillo",
+    "apMaterno":"Covarrubias",
+    "edad":32,
+    "especialidad":"Neurologia",
+    "medicoTratante":"Gerardo Borbolla",
+    "ultimaVisita":"09/03/2024"
+  },
+  {
+    "idPaciente":1238,
+    "nombres":"Nom 02 Nom 03",
+    "apPaterno":"Castillo",
+    "apMaterno":"Covarrubias",
+    "edad":32,
+    "especialidad":"Neurologia",
+    "medicoTratante":"Gerardo Borbolla",
+    "ultimaVisita":"09/03/2024"
+  }
+]

@@ -1,5 +1,33 @@
 <div class="row form-div-padding">
   <h1>Nueva consulta odontologia</h1>
+
+  <div class="container">
+    <button #buttonRef class="btn btn-primary"
+            (mouseenter)="toolTipElement.nativeElement.classList.add('show')"
+            (mouseleave)="toolTipElement.nativeElement.classList.remove('show')">
+      Hover me
+    </button>
+
+    <div #tooltipRef class="tooltip-container" role="tooltip">
+      Este es un tooltip flotante.
+      <div class="arrow" data-popper-arrow></div>
+    </div>
+  </div>
+
+  <!-- modal.component.html -->
+<div class="container">
+  <!-- Botón que abre el modal -->
+  <button #triggerRef class="btn btn-primary" (click)="toggleModal()">Abrir Modal</button>
+
+  <!-- Modal -->
+  <div *ngIf="isModalVisible" #modalRef class="modal-container">
+    <div class="modal-content">
+      <button class="btn-close" (click)="toggleModal()"></button>
+      <app-busqueda-paciente></app-busqueda-paciente> <!-- Aquí va el componente hijo -->
+    </div>
+  </div>
+</div>
+
   <mat-tab-group dynamicHeight>
     <mat-tab label="Hoja Frontal">
       <p>Hoja frontal</p>

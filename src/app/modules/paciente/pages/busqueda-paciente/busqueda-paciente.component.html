@@ -36,37 +36,41 @@
         <input type="text"
         name="criterioBusquedaTexto"
         class="form-control"
-        style="max-width: 100%;">
+        style="max-width: 100%;"
+        [(ngModel)]="searchTerm"
+        (input)="filterData()">
         <br>
         <input type="submit" value="Buscar paciente" class="btn btn-outline-primary btn-sm">
       </div>
     </div>
   </div>
 </form>
-
-<div class="form-div-padding">
-  <p>Seccion para mostrar tabla con resultados de busqueda de paciente</p>
-  <table class="table">
-    <thead class="thead-dark">
-      <th>Nombre(s)</th>
-      <th>Ap. Paterno</th>
-      <th>Ap. Materno</th>
-      <th>Edad</th>
-      <th>Especialidad</th>
-      <th>Medico Tratante</th>
-      <th>Ultima visita</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let resultado of resultados">
-          <td><a href="{{resultado.idPaciente}}" routerLinkActive="active">{{resultado.nombres}}</a></td>
-          <td>{{resultado.apPaterno}}</td>
-          <td>{{resultado.apMaterno}}</td>
-          <td>{{resultado.edad}}</td>
-          <td>{{resultado.especialidad}}</td>
-          <td>{{resultado.medicoTratante}}</td>
-          <td>{{resultado.ultimaVisita}}</td>
-        </tr>
-    </tbody>
-  </table>
-  <p>Nota: Al dar clic al nombre, debera redirigir a la hoja frontal del paciente buscado</p>
+<div *ngIf="data">
+  <div class="form-div-padding">
+    <p>Seccion para mostrar tabla con resultados de busqueda de paciente</p>
+    <table class="table">
+      <thead class="thead-dark">
+        <th>Nombre(s)</th>
+        <th>Ap. Paterno</th>
+        <th>Ap. Materno</th>
+        <th>Edad</th>
+        <th>Especialidad</th>
+        <th>Medico Tratante</th>
+        <th>Ultima visita</th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let resultado of filteredData">
+            <td>
+            <input type="radio" id="radio" value="{{resultado.idPaciente}}"/>
+            <a href="{{resultado.idPaciente}}" routerLinkActive="active">{{resultado.nombres}}</a></td>
+            <td>{{resultado.apPaterno}}</td>
+            <td>{{resultado.apMaterno}}</td>
+            <td>{{resultado.edad}}</td>
+            <td>{{resultado.especialidad}}</td>
+            <td>{{resultado.medicoTratante}}</td>
+            <td>{{resultado.ultimaVisita}}</td>
+          </tr>
+      </tbody>
+    </table>
+    <p>Nota: Al dar clic al nombre, debera redirigir a la hoja frontal del paciente buscado</p>
 </div>
