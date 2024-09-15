@@ -18,15 +18,15 @@
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="curp" value="{{this}}">
-          <label class="form-check-label" for="inlineRadio3">CURP</label>
+          <label class="form-check-label" for="inlineRadio4">CURP</label>
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="medicoTratante" value="{{this}}">
-          <label class="form-check-label" for="inlineRadio3">Medico tratante</label>
+          <label class="form-check-label" for="inlineRadio5">Medico tratante</label>
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" length="130px" type="radio" name="inlineRadioOptions" id="medicoTratante" value="{{busqueda.textoCriterioBusqueda}}">
-          <label class="form-check-label" for="inlineRadio3">Especialidad</label>
+          <label class="form-check-label" for="inlineRadio6">Especialidad</label>
         </div>
       </div>
     </div>
@@ -37,8 +37,7 @@
         name="criterioBusquedaTexto"
         class="form-control"
         style="max-width: 100%;"
-        [(ngModel)]="searchTerm"
-        (input)="filterData()">
+        [(ngModel)]="searchTerm">
         <br>
         <input type="submit" value="Buscar paciente" class="btn btn-outline-primary btn-sm">
       </div>
@@ -50,6 +49,7 @@
     <p>Seccion para mostrar tabla con resultados de busqueda de paciente</p>
     <table class="table">
       <thead class="thead-dark">
+        <th></th>
         <th>Nombre(s)</th>
         <th>Ap. Paterno</th>
         <th>Ap. Materno</th>
@@ -60,9 +60,8 @@
       </thead>
       <tbody>
           <tr *ngFor="let resultado of filteredData">
-            <td>
-            <input type="radio" id="radio" value="{{resultado.idPaciente}}"/>
-            <a href="{{resultado.idPaciente}}" routerLinkActive="active">{{resultado.nombres}}</a></td>
+            <td><input type="radio" id="{{resultado.idPaciente}}" value="{{resultado.idPaciente}}" name="options"/></td>
+            <td><a href="{{resultado.idPaciente}}" routerLinkActive="active">{{resultado.nombres}}</a></td>
             <td>{{resultado.apPaterno}}</td>
             <td>{{resultado.apMaterno}}</td>
             <td>{{resultado.edad}}</td>

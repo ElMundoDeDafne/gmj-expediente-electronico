@@ -21,6 +21,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService){ }
   filteredData : IBusquedaPacientes[] = [];
   searchTerm : string = ''; //termino de busqueda
 
+
   loadData():void{
     this.resultadosBusquedaServ.getData()
     .subscribe((response)=> {
@@ -28,6 +29,35 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService){ }
       this.filteredData = this.data;
     });
   }
+
+  selectedPatientId: number | null = null;
+
+onRadioChange(resultado: any): void {
+  this.selectedPatientId = resultado.idPaciente;
+}
+
+filterDataByCriteria(criteria:string):void{
+  this.filteredData = this.data.filter(
+    item => {
+      const searchTermLower = criteria.toLowerCase();
+      console.error(searchTermLower);
+      if(searchTermLower === 'folio') {
+        return item.folio.toLowerCase().includes(searchTermLower);
+      } else if (searchTermLower === 'curp') {
+        return item.curp.toLowerCase().includes(searchTermLower);
+      } else if (searchTermLower === 'localidad') {
+        return item.localidad.toLowerCase().includes(searchTermLower);
+      } else if (searchTermLower === 'especialidad') {
+        return item.especialidad.toLowerCase().includes(searchTermLower);
+      } else if (searchTermLower === 'nombre'){
+        return item.nombres.toLowerCase().includes(searchTermLower);
+      } else if (searchTermLower === 'medicotratante'){
+        return item.medicoTratante.toLowerCase().includes(searchTermLower);
+      } else {
+        return item.especialidad.toLowerCase().includes(searchTermLower);
+      }
+    });
+}
 
 filterData():void {
   this.filteredData = this.data.filter(item => {
@@ -98,7 +128,6 @@ filterData():void {
 
 };
 
-let resultados: Object[]= [];
 
 function validaSitio():boolean{
   let estado:boolean ;

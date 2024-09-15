@@ -10,5 +10,8 @@ export interface IBusquedaPacientes {
   edad:number,
   especialidad:string,
   medicoTratante:string,
-  ultimaVisita:string
+  ultimaVisita:string,
+  folio:string,
+  curp:string,
+  localidad:string
 }
