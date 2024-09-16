@@ -58,4 +58,5 @@ export interface IInfoPaciente extends IPersona{
   folioPaciente?:string;
   tieneAlergias?:boolean;
   alergias?:string[];
+  ocupacion?:string;
 }

@@ -60,6 +60,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
+      (input)="handleInput('especificderhab',$event)"
       [(ngModel)]="informacionPx.otraDerechoHabiencia"
       formControlName="otraDerechoHaciencia">
     </div>
@@ -72,6 +73,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
+      (input)="handleInput('nss',$event)"
       [(ngModel)]="informacionPx.nss"
       formControlName="nss">
     </div>
@@ -85,6 +87,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
+      (input)="handleInput('primernombre',$event)"
       [(ngModel)]="informacionPx.nombrePropio1"
       formControlName="primerNombre">
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['primerNombre'].invalid && (informacionPacienteForm.controls['primerNombre'].dirty || informacionPacienteForm.controls['primerNombre'].touched)">
@@ -102,6 +105,7 @@
         class="form-control"
         maxLength="20"
         style="max-width: 100%;"
+        (input)="handleInput('segundonombre',$event)"
         [(ngModel)]="informacionPx.nombrePropio2"
         formControlName="segundoNombre">
     </div>
@@ -115,6 +119,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 70%;"
+      (input)="handleInput('apellidopaterno',$event)"
       [(ngModel)]="informacionPx.apellidoPaterno"
       formControlName="apellidoPaterno">
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['apellidoPaterno'].invalid && (informacionPacienteForm.controls['apellidoPaterno'].dirty || informacionPacienteForm.controls['apellidoPaterno'].touched)">
@@ -134,6 +139,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
+      (input)="handleInput('apellidomaterno',$event)"
       [(ngModel)]="informacionPx.apellidoMaterno"
       formControlName="apellidoMaterno">
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['apellidoMaterno'].invalid && (informacionPacienteForm.controls['apellidoMaterno'].dirty || informacionPacienteForm.controls['apellidoMaterno'].touched)">
@@ -151,6 +157,7 @@
       class="form-control mb-2"
       size="15"
       maxLength="15"
+      (input)="handleInput('nacionalidad',$event)"
       [(ngModel)]="informacionPx.nacionalidad"
       type="text"
       style="max-width: 100%;"
@@ -254,11 +261,11 @@
   <select name="ocupacionCombo"
     id="ocupacionCombobox"
     class="form-select form-select-sm"
-    style="max-width: 100%;"
     [(ngModel)]="informacionPx.ocupacion"
+    style="max-width: 100%;"
     formControlName="ocupacion">
     <option value="">-- SELECCIONE --</option>
-    <option *ngFor="let valor of ocupacionesJson" [value]="valor.clave">{{valor.descOcupacion}}</option>
+    <option *ngFor="let valor of ocupacionesJson" value="valor.clave">{{valor.descOcupacion}}</option>
   </select>
 </div>
 
@@ -273,6 +280,7 @@
       [(ngModel)]="informacionPx.curp"
       type="text"
       style="max-width: 100%;"
+      (input)="handleInput('curp',$event)"
       formControlName="curp">
        <div class="text-danger" *ngIf="informacionPacienteForm.controls['curp'].invalid && (informacionPacienteForm.controls['curp'].dirty || informacionPacienteForm.controls['curp'].touched)">
         <div *ngIf="informacionPacienteForm.controls['curp'].errors?.['required']">
@@ -293,6 +301,7 @@
       size="15"
       maxLength="30"
       [(ngModel)]="informacionPx.motivoConsulta"
+      (input)="handleInput('motivoconsulta',$event)"
       type="text"
       style="max-width: 100%;"
       formControlName="motivoConsulta">
@@ -306,6 +315,7 @@
     <div class="col">
       <label>Folio</label>
       <input
+      (input)="handleInput('folio',$event)"
       name="folioPaciente"
       placeholder="Folio"
       class="form-control mb-2"

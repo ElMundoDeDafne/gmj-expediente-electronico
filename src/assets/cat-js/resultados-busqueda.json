@@ -7,7 +7,9 @@
     "edad":32,
     "especialidad":"Neumologia",
     "medicoTratante":"Gerardo Borbolla",
-    "ultimaVisita":"09/03/2024"
+    "ultimaVisita":"09/03/2024",
+    "localidad":"Jacala",
+    "curp":"CACC910212HSPSVH04"
   },
   {
     "idPaciente":1235,
@@ -17,7 +19,9 @@
     "edad":6,
     "especialidad":"Pediatria",
     "medicoTratante":"Gerardo Borbolla",
-    "ultimaVisita":"09/03/2024"
+    "ultimaVisita":"09/03/2024",
+    "localidad":"Jacala",
+    "curp":"CACC910212HSPSVH04"
   },
   {
     "idPaciente":1236,
@@ -27,7 +31,9 @@
     "edad":32,
     "especialidad":"Familiar",
     "medicoTratante":"Gerardo Borbolla",
-    "ultimaVisita":"09/03/2024"
+    "ultimaVisita":"09/03/2024",
+    "localidad":"Zimapán",
+    "curp":"CACC910212HSPSVH04"
   },
   {
     "idPaciente":1237,
@@ -37,7 +43,9 @@
     "edad":32,
     "especialidad":"Neurologia",
     "medicoTratante":"Gerardo Borbolla",
-    "ultimaVisita":"09/03/2024"
+    "ultimaVisita":"09/03/2024",
+    "localidad":"La Culebra",
+    "curp":"CACC910212HSPSVH04"
   },
   {
     "idPaciente":1238,
@@ -47,6 +55,20 @@
     "edad":32,
     "especialidad":"Neurologia",
     "medicoTratante":"Gerardo Borbolla",
-    "ultimaVisita":"09/03/2024"
+    "ultimaVisita":"09/03/2024",
+    "localidad":"La Misión",
+    "curp":"CACC910212HSPSVH04"
+  },
+  {
+    "idPaciente":1239,
+    "nombres":"Nom 02 Nom 03",
+    "apPaterno":"Castillo",
+    "apMaterno":"Torres",
+    "edad":17,
+    "especialidad":"Consulta general",
+    "medicoTratante":"Aleida Torres",
+    "ultimaVisita":"13/03/2024",
+    "localidad":"Pachuca de Soto",
+    "curp":"CACC910212HSPSVH04"
   }
 ]

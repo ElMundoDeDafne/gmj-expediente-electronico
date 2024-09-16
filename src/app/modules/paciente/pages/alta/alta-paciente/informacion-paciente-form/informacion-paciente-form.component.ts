@@ -47,7 +47,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
       apellidoMaterno:['',[Validators.required]],
       fechaNacimiento:['',[Validators.required,Validators.pattern('^(0[1-9]\|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$')]],
       motivoConsulta:['',[Validators.required]],
-      curp:['',[Validators.required,Validators.pattern('^[A-Z]{4}\d{6}[A-Z]{4}[A-Z]\d{2}$'),Validators.maxLength(18)]]
+      curp:['',[Validators.required,Validators.pattern('^[A-Z]{4}\d{6}[A-Z]{4}[A-Z]{2}\d{2}$'),Validators.maxLength(18)]]
     });
   }
 
@@ -70,7 +70,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     nombrePropio1:'',
     nombrePropio2:'',
     genero:'',
-    ocupacion:''
+    ocupacion:'a'
 };
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -107,7 +107,51 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     }
   }
 
+  handleInput(propiedad:string,event: Event) : void {
+    const inputElement = event.target as HTMLInputElement;
+    // alert(event);
+    if(inputElement) {
+      inputElement.value = inputElement.value.toUpperCase();
+      if(propiedad==='curp'){
+        this.informacionPx.curp = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.curp;
+      } else if (propiedad === 'primernombre') {
+        this.informacionPx.nombrePropio1 = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.nombrePropio1;
+      } else if (propiedad === 'segundonombre') {
+        this.informacionPx.nombrePropio2 = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.nombrePropio2;
+      } else if (propiedad === 'apellidomaterno') {
+        this.informacionPx.apellidoMaterno = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.apellidoMaterno;
+      } else if (propiedad === 'apellidopaterno'){
+        this.informacionPx.apellidoPaterno = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.apellidoPaterno;
+      } else if (propiedad === 'nacionalidad') {
+        this.informacionPx.nacionalidad = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.nacionalidad;
+      } else if (propiedad === 'motivoconsulta') {
+        this.informacionPx.motivoConsulta = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.motivoConsulta;
+      } else if (propiedad === 'folio') {
+        this.informacionPx.folio = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.folio;
+      } else if (propiedad === 'especificderhab') {
+        this.informacionPx.otraDerechoHabiencia = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.otraDerechoHabiencia;
+      } else if (propiedad === 'nss') {
+        this.informacionPx.nss = inputElement.value.toUpperCase();
+        inputElement.value = this.informacionPx.nss;
+      }
+      // Convertir el valor a mayúsculas y actualizar el modelo
+      // this.informacionPx.curp = inputElement.value.toUpperCase();
+      // Actualizar el valor del campo de entrada con el texto en mayúsculas
+      // inputElement.value = this.informacionPx.curp;
+    }
+  }
+
   obtenerHoy():string{
+
     const fechaDeHoy: Date = new Date();
     const dia: number = fechaDeHoy.getDate();
     const mes: number = fechaDeHoy.getMonth() + 1; // Los meses comienzan desde 0

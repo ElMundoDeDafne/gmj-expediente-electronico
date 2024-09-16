@@ -1,4 +1,4 @@
-import { IBusquedaPaciente } from './../../interfaces/busqueda-paciente.interface';
+  import { IBusquedaPaciente } from './../../interfaces/busqueda-paciente.interface';
 import { Component, OnInit } from '@angular/core';
 import { ResultadosBusquedaService } from '../../service/resultados-busqueda.service';
 import { IBusquedaPacientes } from '../../interfaces/busqueda/busqueda-pacientes.interface';
@@ -20,7 +20,15 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService){ }
   data : IBusquedaPacientes[] = [];
   filteredData : IBusquedaPacientes[] = [];
   searchTerm : string = ''; //termino de busqueda
+  option : string = ''; //opcion para busqueda
 
+  toggleSelection(id:number) {
+    if (this.selectedPatientId === id) {
+      this.selectedPatientId = null;
+    } else {
+      this.selectedPatientId = id;
+    }
+  }
 
   loadData():void{
     this.resultadosBusquedaServ.getData()
@@ -35,23 +43,24 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService){ }
 onRadioChange(resultado: any): void {
   this.selectedPatientId = resultado.idPaciente;
 }
-
-filterDataByCriteria(criteria:string):void{
+/*** criteria: texto a buscar
+ * option : [folio,curp,localidad,especialidad]
+ */
+filterDataByCriteria(option:string,criteria:string):void{
   this.filteredData = this.data.filter(
     item => {
       const searchTermLower = criteria.toLowerCase();
-      console.error(searchTermLower);
-      if(searchTermLower === 'folio') {
+      if(option === 'folio') {
         return item.folio.toLowerCase().includes(searchTermLower);
-      } else if (searchTermLower === 'curp') {
+      } else if (option === 'curp') {
         return item.curp.toLowerCase().includes(searchTermLower);
-      } else if (searchTermLower === 'localidad') {
+      } else if (option === 'localidad') {
         return item.localidad.toLowerCase().includes(searchTermLower);
-      } else if (searchTermLower === 'especialidad') {
+      } else if (option === 'especialidad') {
         return item.especialidad.toLowerCase().includes(searchTermLower);
-      } else if (searchTermLower === 'nombre'){
+      } else if (option === 'nombres'){
         return item.nombres.toLowerCase().includes(searchTermLower);
-      } else if (searchTermLower === 'medicotratante'){
+      } else if (option === 'medicotratante'){
         return item.medicoTratante.toLowerCase().includes(searchTermLower);
       } else {
         return item.especialidad.toLowerCase().includes(searchTermLower);
@@ -59,73 +68,18 @@ filterDataByCriteria(criteria:string):void{
     });
 }
 
-filterData():void {
-  this.filteredData = this.data.filter(item => {
-    const searchTermLower = this.searchTerm.toLowerCase();
-    return item.nombres.toLowerCase().includes(searchTermLower) ||
-           item.especialidad.toLowerCase().includes(searchTermLower);
-  });
-}
-
+  filterData():void {
+    this.filteredData = this.data.filter(item => {
+      const searchTermLower = this.searchTerm.toLowerCase();
+      return item.nombres.toLowerCase().includes(searchTermLower) ||
+            item.especialidad.toLowerCase().includes(searchTermLower);
+    });
+  }
 
   public busqueda:IBusquedaPaciente={
     textoCriterioBusqueda:'',
     criterioBusqueda:''
   }
-
-  public resultados = [
-    {
-      idPaciente:1234,
-      nombres:'Christian Yamil',
-      apPaterno:'Castillo',
-      apMaterno:'Covarrubias',
-      edad:32,
-      especialidad:'Neurologia',
-      medicoTratante:'Gerardo Borbolla',
-      ultimaVisita:'09/03/2024'
-    },
-    {
-      idPaciente:1235,
-      nombres:'Dafne',
-      apPaterno:'Castillo',
-      apMaterno:'Torres',
-      edad:6,
-      especialidad:'Neurologia',
-      medicoTratante:'Gerardo Borbolla',
-      ultimaVisita:'09/03/2024'
-    },
-    {
-      idPaciente:1236,
-      nombres:'Aleida',
-      apPaterno:'Torres',
-      apMaterno:'Sanchez',
-      edad:32,
-      especialidad:'Familiar',
-      medicoTratante:'Gerardo Borbolla',
-      ultimaVisita:'09/03/2024'
-    },
-    {
-      idPaciente:1237,
-      nombres:'Christian Yamil',
-      apPaterno:'Castillo',
-      apMaterno:'Covarrubias',
-      edad:32,
-      especialidad:'Neurologia',
-      medicoTratante:'Gerardo Borbolla',
-      ultimaVisita:'09/03/2024'
-    },
-    {
-      idPaciente:1238,
-      nombres:'Christian Yamil',
-      apPaterno:'Castillo',
-      apMaterno:'Covarrubias',
-      edad:32,
-      especialidad:'Neurologia',
-      medicoTratante:'Gerardo Borbolla',
-      ultimaVisita:'09/03/2024'
-    }
-  ];
-
 };
 
 

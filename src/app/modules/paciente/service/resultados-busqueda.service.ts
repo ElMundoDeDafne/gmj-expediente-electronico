@@ -13,7 +13,7 @@ export class ResultadosBusquedaService {
   private jsonURL = 'assets/cat-js/resultados-busqueda.json';
   constructor(private http: HttpClient) { }
   getData(): Observable<IBusquedaPacientes[]> {
-    return this.http.get<any>(this.jsonURL);
+    return this.http.get<IBusquedaPacientes[]>(this.jsonURL);
   }
 }
 
