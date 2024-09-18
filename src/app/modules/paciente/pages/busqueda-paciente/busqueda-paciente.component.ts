@@ -22,14 +22,6 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService){ }
   searchTerm : string = ''; //termino de busqueda
   option : string = ''; //opcion para busqueda
 
-  toggleSelection(id:number) {
-    if (this.selectedPatientId === id) {
-      this.selectedPatientId = null;
-    } else {
-      this.selectedPatientId = id;
-    }
-  }
-
   loadData():void{
     this.resultadosBusquedaServ.getData()
     .subscribe((response)=> {
@@ -47,25 +39,31 @@ onRadioChange(resultado: any): void {
  * option : [folio,curp,localidad,especialidad]
  */
 filterDataByCriteria(option:string,criteria:string):void{
-  this.filteredData = this.data.filter(
-    item => {
-      const searchTermLower = criteria.toLowerCase();
-      if(option === 'folio') {
-        return item.folio.toLowerCase().includes(searchTermLower);
-      } else if (option === 'curp') {
-        return item.curp.toLowerCase().includes(searchTermLower);
-      } else if (option === 'localidad') {
-        return item.localidad.toLowerCase().includes(searchTermLower);
-      } else if (option === 'especialidad') {
-        return item.especialidad.toLowerCase().includes(searchTermLower);
-      } else if (option === 'nombres'){
-        return item.nombres.toLowerCase().includes(searchTermLower);
-      } else if (option === 'medicotratante'){
-        return item.medicoTratante.toLowerCase().includes(searchTermLower);
-      } else {
-        return item.especialidad.toLowerCase().includes(searchTermLower);
-      }
-    });
+  if(option === '') {
+    (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = 'Seleccione una opcion';
+    return;
+  } else {
+    (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
+    this.filteredData = this.data.filter(
+      item => {
+        const searchTermLower = criteria.toLowerCase();
+        if(option === 'folio') {
+          return item.folio.toLowerCase().includes(searchTermLower);
+        } else if (option === 'curp') {
+          return item.curp.toLowerCase().includes(searchTermLower);
+        } else if (option === 'localidad') {
+          return item.localidad.toLowerCase().includes(searchTermLower);
+        } else if (option === 'especialidad') {
+          return item.especialidad.toLowerCase().includes(searchTermLower);
+        } else if (option === 'nombres'){
+          return item.nombres.toLowerCase().includes(searchTermLower);
+        } else if (option === 'medicotratante'){
+          return item.medicoTratante.toLowerCase().includes(searchTermLower);
+        } else {
+          return item.especialidad.toLowerCase().includes(searchTermLower);
+        }
+      });
+  }
 }
 
   filterData():void {
