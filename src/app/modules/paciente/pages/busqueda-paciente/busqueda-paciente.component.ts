@@ -1,7 +1,8 @@
   import { IBusquedaPaciente } from './../../interfaces/busqueda-paciente.interface';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ResultadosBusquedaService } from '../../service/resultados-busqueda.service';
 import { IBusquedaPacientes } from '../../interfaces/busqueda/busqueda-pacientes.interface';
+import { setDefaultResultOrder } from 'dns';
 
 @Component({
   selector: 'app-busqueda-paciente',
@@ -9,18 +10,33 @@ import { IBusquedaPacientes } from '../../interfaces/busqueda/busqueda-pacientes
   styleUrl: './busqueda-paciente.component.css'
 })
 
-export class BusquedaPacienteComponent implements OnInit{
+export class BusquedaPacienteComponent implements OnInit, AfterViewInit{
 
 constructor(private resultadosBusquedaServ : ResultadosBusquedaService){ }
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      if(this.folioRB){
+        this.folioRB.nativeElement.checked = true;
+        this.option = this.folioRB.nativeElement.value;
+      }
+    },0);
+
+    this.loadData();
+  }
+  @ViewChild('folioRadioButton',{static:false}) folioRB! : ElementRef<HTMLInputElement> ;
 
   ngOnInit(): void {
-    this.loadData();
+  }
+
+  borrarSearchTerm():void{
+    this.searchTerm = "";
   }
 
   data : IBusquedaPacientes[] = [];
   filteredData : IBusquedaPacientes[] = [];
   searchTerm : string = ''; //termino de busqueda
   option : string = ''; //opcion para busqueda
+  sinResultados:boolean=false;
 
   loadData():void{
     this.resultadosBusquedaServ.getData()
@@ -43,46 +59,75 @@ filterDataByCriteria(option:string,criteria:string):void{
     (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = 'Seleccione una opcion';
     return;
   } else {
-    (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
-    this.filteredData = this.data.filter(
-      item => {
-        const searchTermLower = criteria.toLowerCase();
-        if(option === 'folio') {
+    if(criteria===''){
+      this.filteredData = this.data;
+      this.sinResultados = false;
+    } else {
+      (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
+      const searchTermLower = criteria.toLowerCase().trim();
+      // this.filteredData = this.data.filter(
+      //   item => {
+      //     const searchTermLower = criteria.toLowerCase().trim();
+      //     if(option === 'folio') {
+      //       return item.folio.toLowerCase().includes(searchTermLower);
+      //     } else if (option === 'curp') {
+      //       return item.curp.toLowerCase().includes(searchTermLower);
+      //     } else if (option === 'localidad') {
+      //       return item.localidad.toLowerCase().includes(searchTermLower);
+      //     } else if (option === 'especialidad') {
+      //       return item.especialidad.toLowerCase().includes(searchTermLower);
+      //     } else if (option === 'nombres'){
+      //       return item.nombres.toLowerCase().includes(searchTermLower);
+      //     } else if (option === 'medicotratante'){
+      //       return item.medicoTratante.toLowerCase().includes(searchTermLower);
+      //     } else {
+      //       return item.especialidad.toLowerCase().includes(searchTermLower);
+      //     }
+      //   });
+      if(option === 'folio') {
+        this.filteredData = this.data.filter((item) => {
+          this.sinResultados = this.filteredData.length===0;
           return item.folio.toLowerCase().includes(searchTermLower);
-        } else if (option === 'curp') {
+        });
+      } else if(option === 'curp'){
+        this.filteredData = this.data.filter((item) => {
+          this.sinResultados = this.filteredData.length===0;
           return item.curp.toLowerCase().includes(searchTermLower);
-        } else if (option === 'localidad') {
+        });
+      } else if (option === 'localidad') {
+        this.filteredData = this.data.filter((item) => {
+          this.sinResultados = this.filteredData.length===0;
           return item.localidad.toLowerCase().includes(searchTermLower);
-        } else if (option === 'especialidad') {
+        });
+      } else if (option === 'especialidad') {
+        this.filteredData = this.data.filter((item) => {
+          this.sinResultados = this.filteredData.length===0;
           return item.especialidad.toLowerCase().includes(searchTermLower);
-        } else if (option === 'nombres'){
+        });
+      } else if (option === 'nombres'){
+        this.filteredData = this.data.filter((item) => {
+          this.sinResultados = this.filteredData.length===0;
           return item.nombres.toLowerCase().includes(searchTermLower);
-        } else if (option === 'medicotratante'){
+        });
+      } else if (option === 'medicotratante'){
+        this.filteredData = this.data.filter((item) => {
+          this.sinResultados = this.filteredData.length===0;
           return item.medicoTratante.toLowerCase().includes(searchTermLower);
-        } else {
+        });
+      } else {
+        this.filteredData = this.data.filter((item) => {
+          this.sinResultados = this.filteredData.length===0;
           return item.especialidad.toLowerCase().includes(searchTermLower);
-        }
-      });
+        });
+      }
+    }
+     // alert(this.data.length);
+      // alert(this.filteredData.length);
   }
 }
-
-  filterData():void {
-    this.filteredData = this.data.filter(item => {
-      const searchTermLower = this.searchTerm.toLowerCase();
-      return item.nombres.toLowerCase().includes(searchTermLower) ||
-            item.especialidad.toLowerCase().includes(searchTermLower);
-    });
-  }
 
   public busqueda:IBusquedaPaciente={
     textoCriterioBusqueda:'',
     criterioBusqueda:''
   }
 };
-
-
-function validaSitio():boolean{
-  let estado:boolean ;
-  estado=false; //false quiere decir que esta en construccion
-  return true;
-}

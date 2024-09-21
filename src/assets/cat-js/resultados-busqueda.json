@@ -1,6 +1,7 @@
 [
   {
     "idPaciente":1234,
+    "folio":"0001",
     "nombres":"Christian Yamil",
     "apPaterno":"Castillo",
     "apMaterno":"Covarrubias",
@@ -13,6 +14,7 @@
   },
   {
     "idPaciente":1235,
+    "folio":"0002",
     "nombres":"Dafne",
     "apPaterno":"Castillo",
     "apMaterno":"Torres",
@@ -25,6 +27,7 @@
   },
   {
     "idPaciente":1236,
+    "folio":"0003",
     "nombres":"Aleida",
     "apPaterno":"Torres",
     "apMaterno":"Sanchez",
@@ -37,6 +40,7 @@
   },
   {
     "idPaciente":1237,
+    "folio":"0004",
     "nombres":"Christian Yamil",
     "apPaterno":"Castillo",
     "apMaterno":"Covarrubias",
@@ -49,6 +53,7 @@
   },
   {
     "idPaciente":1238,
+    "folio":"0005",
     "nombres":"Nom 02 Nom 03",
     "apPaterno":"Castillo",
     "apMaterno":"Covarrubias",
@@ -61,6 +66,7 @@
   },
   {
     "idPaciente":1239,
+    "folio":"0006",
     "nombres":"Nom 02 Nom 03",
     "apPaterno":"Castillo",
     "apMaterno":"Torres",
