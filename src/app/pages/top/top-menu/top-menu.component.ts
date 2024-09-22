@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ConstantesGenerales } from '../../../utils/constantes-generales';
 import { Menu } from './top-menu-menus.interface';
+import { AlertGeneratorService } from '../../alerts/alert-generator/alert-generator.service';
 
 @Component({
   selector: 'app-top-menu',
@@ -8,7 +9,13 @@ import { Menu } from './top-menu-menus.interface';
   styleUrl: './top-menu.component.css'
 })
 export class TopMenuComponent {
-  nombreApp : string = ConstantesGenerales.NOMBRE_APP
+constructor(private alertas:AlertGeneratorService){}
+
+  cargarAlertaSalir(){
+    this.alertas.confirmarOperacion("¿Desea salir?","Está a punto de cerrar sesión.","login");
+  }
+
+  nombreApp : string = ConstantesGenerales.NOMBRE_APP;
   public listaMenus:Menu[]=[
     {
       nombreMenu:'Nueva Consulta',

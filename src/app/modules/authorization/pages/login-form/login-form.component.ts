@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ILoginAuth } from './interfaces/ILoginAuth.interface';
 
@@ -11,18 +11,18 @@ import { ILoginAuth } from './interfaces/ILoginAuth.interface';
 export class LoginFormComponent {
 
 constructor(private router: Router){}
+  mensajeError : string = '';
+
+  @ViewChild('mensajeErrorP')
+  mensajeErrorP! : ElementRef<HTMLBodyElement>; //accedemos a DOM de forma segura
 
   validaUsuarios():void{
     console.log('ENTRANDO A METODO VALIDA USUARIOS');
     if(this.usuarioCredenciales.usuario==='admin' && this.usuarioCredenciales.passw==='admin'){
       this.router.navigate(['/success']);
-      console.log(`${this.usuarioCredenciales.usuario}`);
-      console.log(`${this.usuarioCredenciales.passw}`);
-      console.log('credenciales validas');
     } else {
-      console.log(`${this.usuarioCredenciales.usuario}`);
-      console.log(`${this.usuarioCredenciales.passw}`);
-      console.log('CREDENCIAS NO VALIDAS');
+      this.mensajeError = 'Usuario o contraseña erroneos'.toUpperCase();
+      this.mensajeErrorP.nativeElement.innerHTML=this.mensajeError;
     }
   }
 

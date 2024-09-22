@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {BsModalService,ModalModule} from 'ngx-bootstrap/modal';
 
 
 import { AltaPacienteComponent } from './pages/alta/alta-paciente/alta-paciente.component';
@@ -38,7 +39,7 @@ import { NotasEnfermeriaFormComponent } from './pages/alta/alta-paciente/notas-e
 import { AntecedentesPersonalesNoPatologicosFormComponent } from './pages/alta/alta-paciente/antecedentes-pers-np-form/antecedentes-pers-np-form.component';
 import { InspeccionesGeneralesPacienteFormComponent } from './pages/alta/alta-paciente/inspecciones-grales-p-form/inspecciones-grales-p-form.component';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-import { AccordionModule } from 'ngx-bootstrap/accordion'
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
 import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
@@ -50,6 +51,7 @@ import { ConsultaOdontologicaObservacionesComponent } from './pages/cons-odonto/
 import { OdontoHojaFrontComponent } from './pages/cons-odonto/pages/hoja-frontal/odonto-hoja-front.component';
 import { OdontoHFamComponent } from './pages/cons-odonto/pages/ant-hdofam/odonto-ant-hfam.component';
 import { OdontoPerComponent } from './pages/cons-odonto/pages/ant-personales/odonto-ant-per.component';
+import { AlertGeneratorService } from '../../pages/alerts/alert-generator/alert-generator.service';
 
 defineLocale('es', esLocale);
 
@@ -102,10 +104,12 @@ export const MY_FORMATS = {
     MatIconModule, MatDatepickerModule, MatFormFieldModule,
     MatNativeDateModule,
     BsDatepickerModule.forRoot(),
+    ModalModule.forRoot(),
+    AlertModule,
     AccordionModule,DayPilotModule
   ],
   providers: [
-    AlertConfig, BsDatepickerConfig,
+    AlertConfig, BsDatepickerConfig,BsModalService,AlertGeneratorService,
     { provide: MAT_DATE_FORMATS, useValue: 'en-GB' },
   ]
 })

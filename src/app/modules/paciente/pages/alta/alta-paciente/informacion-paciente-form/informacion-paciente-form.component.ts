@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, ViewEncapsulation, forwardRef } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation, forwardRef, AfterViewInit } from '@angular/core';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { IInfoPaciente, IPaciente } from '../../../../interfaces/paciente.interface';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { CatOcupacionesService } from '../../../../../../services/cat-ocupaciones.service';
+import { AlertGeneratorService } from '../../../../../../pages/alerts/alert-generator/alert-generator.service';
 
 @Component({
   selector: 'app-informacion-paciente-form',
@@ -16,19 +17,9 @@ import { CatOcupacionesService } from '../../../../../../services/cat-ocupacione
     multi: true
   },provideNativeDateAdapter()],
 })
-export class InformacionPacienteFormComponent implements ControlValueAccessor, OnInit{
-  fechaSeleccionada : Date = new Date();
-  picker : any;
+export class InformacionPacienteFormComponent implements ControlValueAccessor, OnInit,AfterViewInit{
 
-  asignarPicker(picker: any) {
-    this.picker = picker;
-  }
- // infoPacienteForm : FormGroup;
-
-  bsValue : Date = new Date();
-
-  informacionPacienteForm : FormGroup;
-  constructor(private formBuilder : FormBuilder, private servCatOcupaciones : CatOcupacionesService){
+  constructor(private alertas:AlertGeneratorService,private formBuilder : FormBuilder, private servCatOcupaciones : CatOcupacionesService){
     this.informacionPacienteForm = this.formBuilder.group({
       meses:['',[Validators.min(0),Validators.max(12),Validators.pattern('^-?[0-9]+$|^RN$')]],
       edad: ['',[Validators.min(0),Validators.max(110),Validators.pattern('^-?[0-9]+$'),Validators.required]],
@@ -51,16 +42,43 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     });
   }
 
-  ocupacionesJson :any[]=[];
+  fechaSeleccionada : Date = new Date();
+  picker : any;
+  ocupacionSeleccionada : string = '';
+  bsValue : Date = new Date();
+
+  // @ViewChild('alertBootstrap')
+  // alertBootstrap!:ElementRef<HTMLElement>;
+
+  informacionPacienteForm : FormGroup;
+  mensajeExito:string='';
+
+  ngAfterViewInit(): void {
+    // throw new Error('Method not implemented.');
+    // this.alertBootstrap.nativeElement.hidden=true;
+  }
 
   ngOnInit(): void {
-   // throw new Error('Method not implemented.');
-   this.servCatOcupaciones
-   .getData()
-   .subscribe((data:any) => {
-    this.ocupacionesJson =data;
-   });
+    // throw new Error('Method not implemented.');
+    this.servCatOcupaciones
+    .getData()
+    .subscribe((data:any) => {
+     this.ocupacionesJson =data;
+    });
+   }
+
+  asignarPicker(picker: any) {
+    this.picker = picker;
   }
+ // infoPacienteForm : FormGroup;
+
+  mostrarMensaje(){
+    this.alertas.ventanaExitoSinBoton();
+    this.mensajeExito = 'Consulta guardada correctamente';
+    // this.alertBootstrap.nativeElement.hidden=false;
+  }
+
+  ocupacionesJson :any[]=[];
 
   derechoHabienciaOpciones : string[] = ["IMSS","ISSSTE","PEMEX","OTRO"];
   ocupaciones:string[] = ["MECANICO","CAMPESINO","DENTISTA","MEDICO GENERAL"];
@@ -222,4 +240,8 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
      return '';
    };
 
+   public onChangeCombo(params:Event) : void {
+    const inputCombo = params.target as HTMLInputElement;
+    this.informacionPx.ocupacion = inputCombo.value;
+   }
 }

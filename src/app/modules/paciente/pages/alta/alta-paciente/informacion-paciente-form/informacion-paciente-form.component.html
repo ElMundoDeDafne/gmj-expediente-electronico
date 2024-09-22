@@ -263,9 +263,10 @@
     class="form-select form-select-sm"
     [(ngModel)]="informacionPx.ocupacion"
     style="max-width: 100%;"
-    formControlName="ocupacion">
+    formControlName="ocupacion"
+    (change)="onChangeCombo($event)">
     <option value="">-- SELECCIONE --</option>
-    <option *ngFor="let valor of ocupacionesJson" value="valor.clave">{{valor.descOcupacion}}</option>
+    <option *ngFor="let valor of ocupacionesJson" value={{valor.descOcupacion}}>{{valor.descOcupacion}}</option>
   </select>
 </div>
 
@@ -341,6 +342,7 @@
     </div>
   </div>
 
+  <button type="button" class="btn btn-outline-primary btn-sm" >Limpiar</button>
 </form>
   <p>Formulario invalido? {{informacionPacienteForm.invalid}}</p>
-  <button type="button" class="btn btn-outline-primary btn-sm">Limpiar</button>
+  <button type="button" class="btn btn-outline-primary btn-sm" (click)="mostrarMensaje()">Registrar consulta</button>

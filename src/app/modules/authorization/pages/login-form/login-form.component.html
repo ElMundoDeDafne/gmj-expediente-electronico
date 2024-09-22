@@ -12,6 +12,10 @@
       <label class="login-font">Contraseña</label>
       <input type="password" class="form-control" id="passwLogin" [(ngModel)]="usuarioCredenciales.passw" name="password">
     </form>
+    <form class="form-group">
+      <p style="color:white;">Pista: admin/admin</p>
+      <p id="mensajeErrorP" #mensajeErrorP style="color:red;">{{mensajeError}}</p>
+    </form>
     <br>
     <button (click)="validaUsuarios()" class="btn btn-outline-primary btn-sm login-font">Ingresar</button>
   </div>

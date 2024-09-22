@@ -5,5 +5,6 @@ export class ConstantesGenerales{
   //Claves para interrogatorio
   static readonly CLAVE_SINTOMAS_GENERALES:string='SINT_GEN';
   static readonly CLAVE_PIEL_FANERAS:string='PIELFAN';
+  /** Endpoint para manejo de todos los microservicios a consumir */
   static readonly BASE_API_ORQ_ENDPOINT:string ='';
 }
