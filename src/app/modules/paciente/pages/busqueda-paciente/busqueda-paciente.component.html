@@ -52,6 +52,7 @@
 </form>
 
 <div *ngIf="data">
+  <p>{{filteredData|json}}</p>
   <p style="text-align: center;"><strong>- RESULTADOS -</strong></p>
   <div class="form-div-padding">
     <table class="table table-striped table-hover table-sm text-center">
@@ -84,6 +85,6 @@
           </tr>
       </tbody>
     </table>
-    <button class="btn btn-outline-primary btn-sm" *ngIf="isConfirmed">Agregar</button>
+    <button class="btn btn-outline-primary btn-sm" *ngIf="isConfirmed" (click)="sendMessageParent()">Agregar</button>
     <p>Nota: Al dar clic al nombre, debera redirigir a la hoja frontal del paciente buscado</p>
 </div>

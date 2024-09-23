@@ -1,13 +1,14 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Output, ViewChild, ViewEncapsulation } from "@angular/core";
 import { provideNativeDateAdapter } from "@angular/material/core";
 import { createPopper } from '@popperjs/core';
 
 import { IConsultaEstomatologia } from "../../interfaces/cons-estomatologia.interface";
 import { IPaciente } from "../../interfaces/paciente.interface";
 
-import {BsModalRef, BsModalService, ModalOptions} from 'ngx-bootstrap/modal';
+import {BsModalRef, BsModalService, ModalContainerComponent, ModalOptions} from 'ngx-bootstrap/modal';
 import { title } from "process";
 import { BusquedaPacienteComponent } from "../busqueda-paciente/busqueda-paciente.component";
+import { EventEmitter } from "stream";
 
 @Component({
   selector: 'app-consulta-odonto',
@@ -18,21 +19,29 @@ import { BusquedaPacienteComponent } from "../busqueda-paciente/busqueda-pacient
 })
 export class ConsultaOdontologicaComponent implements AfterViewInit {
 
-  @ViewChild('buttonRef') buttonElement!:ElementRef;
-  @ViewChild('tooltipRef') toolTipElement!:ElementRef;
+  @ViewChild('buttonRef')
+  buttonElement!:ElementRef;
 
-  @ViewChild('modalRef') modalElement!: ElementRef;
-  @ViewChild('triggerRef') triggerElement!: ElementRef;
+  @ViewChild('tooltipRef')
+  toolTipElement!:ElementRef;
+
+  @ViewChild('modalRef')
+  modalElement!: ElementRef;
+
+  @ViewChild('triggerRef')
+  triggerElement!: ElementRef;
+
+  mensaje : string = '';
+
   isModalVisible: boolean = false;  // Controla la visibilidad del modal
   modalRef?:BsModalRef;
+
 
 
 
   constructor(private modalService : BsModalService){
 
   }
-
-
 
   ngAfterViewInit(): void {
     // //tooltip
@@ -67,14 +76,17 @@ export class ConsultaOdontologicaComponent implements AfterViewInit {
 
 
   cargarModal():void{
-    const edoInicial : ModalOptions = {
-    initialState:{
-         title:'modal'
-       }
-     };
-     alert('llamando a modal');
-    this.modalRef = this.modalService.show(BusquedaPacienteComponent,{class: 'modal-xl '});
-    this.modalRef.content.closeBtnName='d';
+    // alert('llamando a modal');
+    this.modalRef = this.modalService.show(BusquedaPacienteComponent,{initialState:{isConfirmed:true},class: 'modal-xl '});
+    // this.modalRef.content.closeBtnName='d';
+    (this.modalRef.content as BusquedaPacienteComponent).onCloseEmitter.subscribe(
+      (result:string) => {
+        this.mensaje = result;
+      }
+    );
+
+    //Cuando se cierra el modal
+    // (this.modalRef.content as ModalContentComponent).
   }
 
   x : IPaciente | null = null;

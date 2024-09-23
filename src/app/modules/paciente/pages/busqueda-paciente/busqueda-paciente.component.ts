@@ -1,8 +1,9 @@
   import { IBusquedaPaciente } from './../../interfaces/busqueda-paciente.interface';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ResultadosBusquedaService } from '../../service/resultados-busqueda.service';
 import { IBusquedaPacientes } from '../../interfaces/busqueda/busqueda-pacientes.interface';
 import { setDefaultResultOrder } from 'dns';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-busqueda-paciente',
@@ -12,7 +13,7 @@ import { setDefaultResultOrder } from 'dns';
 
 export class BusquedaPacienteComponent implements OnInit, AfterViewInit{
 
-constructor(private resultadosBusquedaServ : ResultadosBusquedaService){ }
+constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private bsModalRefdf : BsModalRef){ }
   ngAfterViewInit(): void {
     setTimeout(() => {
       if(this.folioRB){
@@ -23,13 +24,28 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService){ }
 
     this.loadData();
   }
-  @ViewChild('folioRadioButton',{static:false}) folioRB! : ElementRef<HTMLInputElement> ;
+  @ViewChild('folioRadioButton',{static:false})
+  folioRB! : ElementRef<HTMLInputElement> ;
+
+
+
+  @Input() isConfirmed! : boolean;
+
+
+  @Output()
+  onCloseEmitter : EventEmitter<string> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
 
   ngOnInit(): void {
   }
 
   borrarSearchTerm():void{
     this.searchTerm = "";
+  }
+
+  sendMessageParent() : void {
+    this.bsModalRefdf.hide();
+    this.onCloseEmitter.emit('hola desde modal');
+    // this.modal
   }
 
   data : IBusquedaPacientes[] = [];
