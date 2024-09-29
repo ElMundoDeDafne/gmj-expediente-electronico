@@ -52,6 +52,8 @@ import { OdontoHojaFrontComponent } from './pages/cons-odonto/pages/hoja-frontal
 import { OdontoHFamComponent } from './pages/cons-odonto/pages/ant-hdofam/odonto-ant-hfam.component';
 import { OdontoPerComponent } from './pages/cons-odonto/pages/ant-personales/odonto-ant-per.component';
 import { AlertGeneratorService } from '../../pages/alerts/alert-generator/alert-generator.service';
+import { PaginationModule,PaginationConfig } from 'ngx-bootstrap/pagination';
+import { PaginadorComponent } from './pages/paginador/paginador.component';
 
 defineLocale('es', esLocale);
 
@@ -95,7 +97,8 @@ export const MY_FORMATS = {
     ConsultaOdontologicaObservacionesComponent,
     OdontoHojaFrontComponent,
     OdontoHFamComponent,
-    OdontoPerComponent
+    OdontoPerComponent,
+    PaginadorComponent,
   ],
   imports: [
     CommonModule,FormsModule,MatTabsModule,MatStepperModule,
@@ -106,10 +109,10 @@ export const MY_FORMATS = {
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     AlertModule,
-    AccordionModule,DayPilotModule
+    AccordionModule,DayPilotModule,PaginationModule
   ],
   providers: [
-    AlertConfig, BsDatepickerConfig,BsModalService,AlertGeneratorService,
+    AlertConfig, BsDatepickerConfig,BsModalService,AlertGeneratorService,PaginationConfig,
     { provide: MAT_DATE_FORMATS, useValue: 'en-GB' },
   ]
 })

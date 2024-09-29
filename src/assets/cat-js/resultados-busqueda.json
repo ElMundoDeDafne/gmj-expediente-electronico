@@ -10,7 +10,11 @@
     "medicoTratante":"Gerardo Borbolla",
     "ultimaVisita":"09/03/2024",
     "localidad":"Jacala",
-    "curp":"CACC910212HSPSVH04"
+    "curp":"CACC910212HSPSVH04",
+    "sexo":"M",
+    "fechaNacimiento":"12/02/1991",
+    "motivaConsulta":"Dolor estomacal",
+    "telefono":"7712149235"
   },
   {
     "idPaciente":1235,
@@ -23,7 +27,11 @@
     "medicoTratante":"Gerardo Borbolla",
     "ultimaVisita":"09/03/2024",
     "localidad":"Jacala",
-    "curp":"CACC910212HSPSVH04"
+    "curp":"CACC910212HSPSVH04",
+    "sexo":"F",
+    "fechaNacimiento":"12/02/1991",
+    "motivaConsulta":"Dolor de muela",
+    "telefono":"7712149235"
   },
   {
     "idPaciente":1236,
@@ -36,7 +44,11 @@
     "medicoTratante":"Gerardo Borbolla",
     "ultimaVisita":"09/03/2024",
     "localidad":"Zimapán",
-    "curp":"CACC910212HSPSVH04"
+    "curp":"CACC910212HSPSVH04",
+    "sexo":"F",
+    "fechaNacimiento":"12/02/1991",
+    "motivaConsulta":"Posible gripe",
+    "telefono":"7712149235"
   },
   {
     "idPaciente":1237,
@@ -49,32 +61,44 @@
     "medicoTratante":"Gerardo Borbolla",
     "ultimaVisita":"09/03/2024",
     "localidad":"La Culebra",
-    "curp":"CACC910212HSPSVH04"
+    "curp":"CACC910212HSPSVH04",
+    "sexo":"M",
+    "fechaNacimiento":"12/02/1991",
+    "motivaConsulta":"Posible EM",
+    "telefono":"7712149235"
   },
   {
     "idPaciente":1238,
     "folio":"0005",
-    "nombres":"Nom 02 Nom 03",
-    "apPaterno":"Castillo",
-    "apMaterno":"Covarrubias",
+    "nombres":"Nom02 Nom03",
+    "apPaterno":"Appat01",
+    "apMaterno":"APMAT01",
     "edad":32,
     "especialidad":"Neurologia",
     "medicoTratante":"Gerardo Borbolla",
     "ultimaVisita":"09/03/2024",
     "localidad":"La Misión",
-    "curp":"CACC910212HSPSVH04"
+    "curp":"CACC910212HSPSVH04",
+    "sexo":"M",
+    "fechaNacimiento":"12/02/1991",
+    "motivaConsulta":"Dolor de muela",
+    "telefono":"7712149235"
   },
   {
     "idPaciente":1239,
     "folio":"0006",
-    "nombres":"Nom 02 Nom 03",
-    "apPaterno":"Castillo",
-    "apMaterno":"Torres",
+    "nombres":"Nom02 Nom03",
+    "apPaterno":"APPAT03",
+    "apMaterno":"APMAT05",
     "edad":17,
     "especialidad":"Consulta general",
     "medicoTratante":"Aleida Torres",
     "ultimaVisita":"13/03/2024",
     "localidad":"Pachuca de Soto",
-    "curp":"CACC910212HSPSVH04"
+    "curp":"CACC910212HSPSVH04",
+    "sexo":"F",
+    "fechaNacimiento":"12/02/1991",
+    "motivaConsulta":"Dolor de muela",
+    "telefono":"1"
   }
 ]

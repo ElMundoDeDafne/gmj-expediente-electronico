@@ -9,6 +9,7 @@ import {BsModalRef, BsModalService, ModalContainerComponent, ModalOptions} from 
 import { title } from "process";
 import { BusquedaPacienteComponent } from "../busqueda-paciente/busqueda-paciente.component";
 import { EventEmitter } from "stream";
+import { IBusquedaPacientes } from "../../interfaces/busqueda/busqueda-pacientes.interface";
 
 @Component({
   selector: 'app-consulta-odonto',
@@ -31,7 +32,9 @@ export class ConsultaOdontologicaComponent implements AfterViewInit {
   @ViewChild('triggerRef')
   triggerElement!: ElementRef;
 
-  mensaje : string = '';
+  resultado! : IBusquedaPacientes;
+
+  mensaje! : IBusquedaPacientes;
 
   isModalVisible: boolean = false;  // Controla la visibilidad del modal
   modalRef?:BsModalRef;
@@ -77,14 +80,14 @@ export class ConsultaOdontologicaComponent implements AfterViewInit {
 
   cargarModal():void{
     // alert('llamando a modal');
-    this.modalRef = this.modalService.show(BusquedaPacienteComponent,{initialState:{isConfirmed:true},class: 'modal-xl '});
-    // this.modalRef.content.closeBtnName='d';
-    (this.modalRef.content as BusquedaPacienteComponent).onCloseEmitter.subscribe(
-      (result:string) => {
-        this.mensaje = result;
-      }
-    );
-
+    // this.modalRef = this.modalService.show(BusquedaPacienteComponent,{initialState:{isConfirmed:true},class: 'modal-xl '});
+    // // this.modalRef.content.closeBtnName='d';
+    // (this.modalRef.content as BusquedaPacienteComponent).onCloseEmitter.subscribe(
+    //   (result:IBusquedaPacientes) => {
+    //     this.resultado = result;
+    //     tis.mensaje = result;
+      // }
+    // );
     //Cuando se cierra el modal
     // (this.modalRef.content as ModalContentComponent).
   }

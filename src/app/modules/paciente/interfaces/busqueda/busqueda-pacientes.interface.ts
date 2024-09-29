@@ -13,5 +13,11 @@ export interface IBusquedaPacientes {
   ultimaVisita:string,
   folio:string,
   curp:string,
-  localidad:string
+  localidad:string,
+  sexo:string,
+  domicilio:string,
+  telefono:string,
+  fechaNacimiento:string,
+  motivoConsultaOdonto:string,
+  fechaUltimoExMedico:string
 }

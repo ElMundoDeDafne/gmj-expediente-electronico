@@ -1,0 +1,16 @@
+<div *ngFor="let seleccion of antecedentesChkbox; let i=index">
+  <label>
+  <input
+  type="checkbox"
+  [value]="seleccion"
+  (change)="onCheckboxChange($event)"
+  /> {{ seleccion }}
+  </label>
+</div>
+
+<div>
+  <p>Opciones seleccionadas:</p>
+  <ul>
+    <li *ngFor="let seleccion of selecciones">{{ seleccion }}</li>
+  </ul>
+</div>

@@ -33,7 +33,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
 
 
   @Output()
-  onCloseEmitter : EventEmitter<string> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
+  onCloseEmitter : EventEmitter<IBusquedaPacientes> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
 
   ngOnInit(): void {
   }
@@ -44,7 +44,10 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
 
   sendMessageParent() : void {
     this.bsModalRefdf.hide();
-    this.onCloseEmitter.emit('hola desde modal');
+    if(this.seleccion != null) {
+      this.onCloseEmitter.emit(this.seleccion);
+    }
+
     // this.modal
   }
 
@@ -52,6 +55,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   filteredData : IBusquedaPacientes[] = [];
   searchTerm : string = ''; //termino de busqueda
   option : string = ''; //opcion para busqueda
+  seleccion! : IBusquedaPacientes ; //opcion seleccionada
   sinResultados:boolean=false;
 
   loadData():void{
@@ -64,8 +68,9 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
 
   selectedPatientId: number | null = null;
 
-onRadioChange(resultado: any): void {
-  this.selectedPatientId = resultado.idPaciente;
+onRadioChange(resultado: IBusquedaPacientes): void {
+  this.seleccion = resultado;
+
 }
 /*** criteria: texto a buscar
  * option : [folio,curp,localidad,especialidad]
