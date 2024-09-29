@@ -70,6 +70,9 @@
         <th>Ultima visita</th>
       </thead>
       <tbody>
+
+        <app-paginador [contentArray]="filteredData"></app-paginador>
+
           <tr *ngFor="let resultado of filteredData">
             <td><input (change)="onRadioChange(resultado)" type="radio" id="{{resultado.idPaciente}}" value="{{resultado.idPaciente}}" name="options"/></td>
             <td>{{resultado.folio}}</td>
