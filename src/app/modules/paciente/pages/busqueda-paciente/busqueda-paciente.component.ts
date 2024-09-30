@@ -4,6 +4,7 @@ import { ResultadosBusquedaService } from '../../service/resultados-busqueda.ser
 import { IBusquedaPacientes } from '../../interfaces/busqueda/busqueda-pacientes.interface';
 import { setDefaultResultOrder } from 'dns';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 @Component({
   selector: 'app-busqueda-paciente',
@@ -26,17 +27,31 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   }
   @ViewChild('folioRadioButton',{static:false})
   folioRB! : ElementRef<HTMLInputElement> ;
-
-
-
   @Input() isConfirmed! : boolean;
-
-
-  @Output()
-  onCloseEmitter : EventEmitter<IBusquedaPacientes> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
+  @Output() onCloseEmitter : EventEmitter<IBusquedaPacientes> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
+  data : IBusquedaPacientes[] = [];
+  filteredData : IBusquedaPacientes[] = [];
+  searchTerm : string = ''; //termino de busqueda
+  option : string = ''; //opcion para busqueda
+  seleccion! : IBusquedaPacientes ; //opcion seleccionada
+  sinResultados:boolean=false;
+  selectedPatientId: number | null = null;
+  returnedArray!: IBusquedaPacientes[];
+  contentArray!: IBusquedaPacientes[];
 
   ngOnInit(): void {
+    this.filteredData = this.filteredData.map((v: IBusquedaPacientes, i: number) => {
+      return v;
+   });
+   this.filteredData = this.filteredData.slice(0, 5);
+
   }
+
+  pageChanged(event: PageChangedEvent): void {
+    const startItem = (event.page - 1) * event.itemsPerPage;
+    const endItem = event.page * event.itemsPerPage;
+    this.filteredData = this.data.slice(startItem, endItem);
+ }
 
   borrarSearchTerm():void{
     this.searchTerm = "";
@@ -47,16 +62,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
     if(this.seleccion != null) {
       this.onCloseEmitter.emit(this.seleccion);
     }
-
-    // this.modal
   }
-
-  data : IBusquedaPacientes[] = [];
-  filteredData : IBusquedaPacientes[] = [];
-  searchTerm : string = ''; //termino de busqueda
-  option : string = ''; //opcion para busqueda
-  seleccion! : IBusquedaPacientes ; //opcion seleccionada
-  sinResultados:boolean=false;
 
   loadData():void{
     this.resultadosBusquedaServ.getData()
@@ -65,8 +71,6 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
       this.filteredData = this.data;
     });
   }
-
-  selectedPatientId: number | null = null;
 
 onRadioChange(resultado: IBusquedaPacientes): void {
   this.seleccion = resultado;
@@ -86,25 +90,7 @@ filterDataByCriteria(option:string,criteria:string):void{
     } else {
       (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
       const searchTermLower = criteria.toLowerCase().trim();
-      // this.filteredData = this.data.filter(
-      //   item => {
-      //     const searchTermLower = criteria.toLowerCase().trim();
-      //     if(option === 'folio') {
-      //       return item.folio.toLowerCase().includes(searchTermLower);
-      //     } else if (option === 'curp') {
-      //       return item.curp.toLowerCase().includes(searchTermLower);
-      //     } else if (option === 'localidad') {
-      //       return item.localidad.toLowerCase().includes(searchTermLower);
-      //     } else if (option === 'especialidad') {
-      //       return item.especialidad.toLowerCase().includes(searchTermLower);
-      //     } else if (option === 'nombres'){
-      //       return item.nombres.toLowerCase().includes(searchTermLower);
-      //     } else if (option === 'medicotratante'){
-      //       return item.medicoTratante.toLowerCase().includes(searchTermLower);
-      //     } else {
-      //       return item.especialidad.toLowerCase().includes(searchTermLower);
-      //     }
-      //   });
+
       if(option === 'folio') {
         this.filteredData = this.data.filter((item) => {
           this.sinResultados = this.filteredData.length===0;
@@ -142,8 +128,6 @@ filterDataByCriteria(option:string,criteria:string):void{
         });
       }
     }
-     // alert(this.data.length);
-      // alert(this.filteredData.length);
   }
 }
 
