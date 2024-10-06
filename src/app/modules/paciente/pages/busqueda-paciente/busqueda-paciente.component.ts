@@ -5,6 +5,7 @@ import { IBusquedaPacientes } from '../../interfaces/busqueda/busqueda-pacientes
 import { setDefaultResultOrder } from 'dns';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import { debug } from 'console';
 
 @Component({
   selector: 'app-busqueda-paciente',
@@ -40,17 +41,20 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   contentArray!: IBusquedaPacientes[];
 
   ngOnInit(): void {
-    this.filteredData = this.filteredData.map((v: IBusquedaPacientes, i: number) => {
+    this.contentArray = this.contentArray.map((v: IBusquedaPacientes, i: number) => {
       return v;
    });
-   this.filteredData = this.filteredData.slice(0, 5);
+   this.returnedArray = this.contentArray.slice(0, 5);
 
   }
 
   pageChanged(event: PageChangedEvent): void {
+    debug;
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
-    this.filteredData = this.data.slice(startItem, endItem);
+    this.returnedArray = this.contentArray.slice(startItem, endItem);
+    console.error('startitem: '+startItem);
+    console.error('enditem: '+endItem);
  }
 
   borrarSearchTerm():void{
@@ -69,6 +73,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
     .subscribe((response)=> {
       this.data = response;
       this.filteredData = this.data;
+      // this.contentArray = this.filteredData;
     });
   }
 
