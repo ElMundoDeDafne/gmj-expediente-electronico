@@ -13,8 +13,9 @@
     "curp":"CACC910212HSPSVH04",
     "sexo":"M",
     "fechaNacimiento":"12/02/1991",
-    "motivaConsulta":"Dolor estomacal",
-    "telefono":"7712149235"
+    "motivoConsultaOdonto":"Dolor estomacal",
+    "telefono":"7712149235",
+    "fechaUltimoExMedico":"01/01/1999"
   },
   {
     "idPaciente":1235,
@@ -30,8 +31,9 @@
     "curp":"CACC910212HSPSVH04",
     "sexo":"F",
     "fechaNacimiento":"12/02/1991",
-    "motivaConsulta":"Dolor de muela",
-    "telefono":"7712149235"
+    "motivoConsultaOdonto":"Dolor de muela",
+    "telefono":"7712149235",
+    "fechaUltimoExMedico":"01/01/1999"
   },
   {
     "idPaciente":1236,
@@ -47,8 +49,9 @@
     "curp":"CACC910212HSPSVH04",
     "sexo":"F",
     "fechaNacimiento":"12/02/1991",
-    "motivaConsulta":"Posible gripe",
-    "telefono":"7712149235"
+    "motivoConsultaOdonto":"Posible gripe",
+    "telefono":"7712149235",
+    "fechaUltimoExMedico":"01/01/1999"
   },
   {
     "idPaciente":1237,
@@ -64,8 +67,9 @@
     "curp":"CACC910212HSPSVH04",
     "sexo":"M",
     "fechaNacimiento":"12/02/1991",
-    "motivaConsulta":"Posible EM",
-    "telefono":"7712149235"
+    "motivoConsultaOdonto":"Posible EM",
+    "telefono":"7712149235",
+    "fechaUltimoExMedico":""
   },
   {
     "idPaciente":1238,
@@ -81,8 +85,9 @@
     "curp":"CACC910212HSPSVH04",
     "sexo":"M",
     "fechaNacimiento":"12/02/1991",
-    "motivaConsulta":"Dolor de muela",
-    "telefono":"7712149235"
+    "motivoConsultaOdonto":"Dolor de muela",
+    "telefono":"7712149235",
+    "fechaUltimoExMedico":"01/01/1999"
   },
   {
     "idPaciente":1239,
@@ -98,7 +103,8 @@
     "curp":"CACC910212HSPSVH04",
     "sexo":"F",
     "fechaNacimiento":"12/02/1991",
-    "motivaConsulta":"Dolor de muela",
-    "telefono":"1"
+    "motivoConsultaOdonto":"Dolor de muela",
+    "telefono":"1",
+    "fechaUltimoExMedico":"01/01/1999"
   }
 ]

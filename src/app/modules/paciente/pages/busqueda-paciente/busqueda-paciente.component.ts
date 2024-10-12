@@ -26,8 +26,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
 
     this.loadData();
   }
-  @ViewChild('folioRadioButton',{static:false})
-  folioRB! : ElementRef<HTMLInputElement> ;
+  @ViewChild('folioRadioButton',{static:false}) folioRB! : ElementRef<HTMLInputElement> ;
   @Input() isConfirmed! : boolean;
   @Output() onCloseEmitter : EventEmitter<IBusquedaPacientes> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
   data : IBusquedaPacientes[] = [];
@@ -41,20 +40,18 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   contentArray!: IBusquedaPacientes[];
 
   ngOnInit(): void {
-    this.contentArray = this.contentArray.map((v: IBusquedaPacientes, i: number) => {
-      return v;
-   });
-   this.returnedArray = this.contentArray.slice(0, 5);
+    //this.contentArray = this.data;
+    // this.contentArray = this.contentArray.map((v: IBusquedaPacientes, i: number) => {
+    //    return v;
+    // });
+    // this.returnedArray = this.contentArray.slice(0, 5);
 
   }
 
   pageChanged(event: PageChangedEvent): void {
-    debug;
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
     this.returnedArray = this.contentArray.slice(startItem, endItem);
-    console.error('startitem: '+startItem);
-    console.error('enditem: '+endItem);
  }
 
   borrarSearchTerm():void{
@@ -65,6 +62,9 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
     this.bsModalRefdf.hide();
     if(this.seleccion != null) {
       this.onCloseEmitter.emit(this.seleccion);
+    } else {
+      (<HTMLBodyElement> document.getElementById('mensajeErrorAgregar')).innerHTML = 'No se ha seleccionado algun registro';
+      return;
     }
   }
 
@@ -73,8 +73,14 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
     .subscribe((response)=> {
       this.data = response;
       this.filteredData = this.data;
-      // this.contentArray = this.filteredData;
+      this.contentArray = this.filteredData;
     });
+    //this.contentArray = this.data;
+    //this.contentArray = this.filteredData;
+    this.contentArray = this.contentArray.map((v: IBusquedaPacientes, i: number) => {
+      return v;
+   });
+   this.returnedArray = this.contentArray.slice(0, 5);
   }
 
 onRadioChange(resultado: IBusquedaPacientes): void {
@@ -91,43 +97,44 @@ filterDataByCriteria(option:string,criteria:string):void{
   } else {
     if(criteria===''){
       this.filteredData = this.data;
+      this.contentArray = this.filteredData;
       this.sinResultados = false;
     } else {
       (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
       const searchTermLower = criteria.toLowerCase().trim();
 
       if(option === 'folio') {
-        this.filteredData = this.data.filter((item) => {
+        this.returnedArray = this.filteredData.filter((item) => {
           this.sinResultados = this.filteredData.length===0;
           return item.folio.toLowerCase().includes(searchTermLower);
         });
       } else if(option === 'curp'){
-        this.filteredData = this.data.filter((item) => {
+        this.returnedArray = this.filteredData.filter((item) => {
           this.sinResultados = this.filteredData.length===0;
           return item.curp.toLowerCase().includes(searchTermLower);
         });
       } else if (option === 'localidad') {
-        this.filteredData = this.data.filter((item) => {
+        this.returnedArray = this.filteredData.filter((item) => {
           this.sinResultados = this.filteredData.length===0;
           return item.localidad.toLowerCase().includes(searchTermLower);
         });
       } else if (option === 'especialidad') {
-        this.filteredData = this.data.filter((item) => {
+        this.returnedArray = this.filteredData.filter((item) => {
           this.sinResultados = this.filteredData.length===0;
           return item.especialidad.toLowerCase().includes(searchTermLower);
         });
       } else if (option === 'nombres'){
-        this.filteredData = this.data.filter((item) => {
+        this.returnedArray = this.filteredData.filter((item) => {
           this.sinResultados = this.filteredData.length===0;
           return item.nombres.toLowerCase().includes(searchTermLower);
         });
       } else if (option === 'medicotratante'){
-        this.filteredData = this.data.filter((item) => {
+        this.returnedArray = this.filteredData.filter((item) => {
           this.sinResultados = this.filteredData.length===0;
           return item.medicoTratante.toLowerCase().includes(searchTermLower);
         });
       } else {
-        this.filteredData = this.data.filter((item) => {
+        this.returnedArray = this.filteredData.filter((item) => {
           this.sinResultados = this.filteredData.length===0;
           return item.especialidad.toLowerCase().includes(searchTermLower);
         });

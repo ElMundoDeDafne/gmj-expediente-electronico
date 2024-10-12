@@ -17,46 +17,41 @@ export class OdontoHojaFrontComponent implements OnInit{
   form : IInfoPaciente = {};
 
   modalRef?:BsModalRef;
-  resultado! : IBusquedaPacientes;
-  nombres:string='';
-  telefono:string='';
-  localidad:string='';
+  nombres:string = '';
+  telefono:string = '';
+  localidad:string = '';
+  fechaUltimoExMedico:string = '';
 
   desactivarDivs():void {
-    const totalElementos = (<HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('bloque'));
-    alert('obtenemostotalelementos');
-    (<HTMLInputElement> document.getElementById('edad')).disabled=true;
+    const totalElementos = (<HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('infoPacienteId'));
     //recorremos los elementos
     for(let i = 0 ; i < totalElementos.length ; i++) {
       totalElementos[i].disabled=true;
-      alert(totalElementos[i].textContent);
     }
   };
 
-  cargarModal():void{
+  cargarModal():void {
     // alert('llamando a modal');
     this.modalRef = this.modalService.show(BusquedaPacienteComponent,{initialState:{isConfirmed:true},class: 'modal-xl '});
-    // this.modalRef.content.closeBtnName='d';
+
     (this.modalRef.content as BusquedaPacienteComponent).onCloseEmitter.subscribe(
       (result:IBusquedaPacientes) => {
-        this.resultado = result;
-        this.form.edad = this.resultado.edad;
-        this.form.sexoAlNacer = this.resultado.sexo.toUpperCase();
-        this.form.apellidoPaterno = this.resultado.apPaterno.toUpperCase();
-        this.form.apellidoMaterno = this.resultado.apMaterno.toUpperCase();
-        this.nombres=this.resultado.nombres.split(' ')[0]+' '+(this.resultado.nombres.split(' ')[1]===null || this.resultado.nombres.split(' ')[1]===undefined?'':this.resultado.nombres.split(' ')[1]);
+        this.form.edad = result.edad;
+        this.form.sexoAlNacer = result.sexo.toUpperCase();
+        this.form.apellidoPaterno = result.apPaterno.toUpperCase();
+        this.form.apellidoMaterno = result.apMaterno.toUpperCase();
+        this.nombres=result.nombres.split(' ')[0]+' '+(result.nombres.split(' ')[1]===null || result.nombres.split(' ')[1]===undefined?'':result.nombres.split(' ')[1]);
         this.form.nombrePropio1 = this.nombres.toUpperCase();
-        this.form.fechaNacimiento = this.resultado.fechaNacimiento
-        this.form.motivoConsulta = this.resultado.motivoConsultaOdonto.toUpperCase();
-        this.telefono = this.resultado.telefono;
-        this.localidad = this.resultado.localidad.toUpperCase();
+        this.form.fechaNacimiento = result.fechaNacimiento;
+        this.form.motivoConsulta = result.motivoConsultaOdonto.toUpperCase();
+        this.telefono = result.telefono;
+        this.localidad = result.localidad.toUpperCase();
+        this.form.fechaUltimoExMedico = result.fechaUltimoExMedico;
         // // this.desactivarDivs();
       }
     );
-
-
     //Cuando se cierra el modal
     // (this.modalRef.content as ModalContentComponent).
+    // this.desactivarDivs();
   }
-
 }

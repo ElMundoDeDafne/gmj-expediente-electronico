@@ -59,4 +59,5 @@ export interface IInfoPaciente extends IPersona{
   tieneAlergias?:boolean;
   alergias?:string[];
   ocupacion?:string;
+  fechaUltimoExMedico?:string;
 }

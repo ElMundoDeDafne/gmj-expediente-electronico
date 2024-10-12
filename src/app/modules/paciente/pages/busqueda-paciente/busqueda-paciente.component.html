@@ -39,7 +39,7 @@
         style="max-width: 100%;"
         [(ngModel)]="searchTerm">
         <br>
-        <input type="submit" value="Buscar paciente" class="btn btn-outline-primary btn-sm" (click)="filterDataByCriteria(option,searchTerm)">
+        <input type="submit" value="Buscar" class="btn btn-outline-primary btn-sm" (click)="filterDataByCriteria(option,searchTerm)">
       </div>
     </div>
 
@@ -70,7 +70,7 @@
       </thead>
       <tbody>
 
-          <tr *ngFor="let resultado of filteredData">
+          <tr *ngFor="let resultado of returnedArray">
             <!--Agregamos paginador en esta seccion-->
             <td><input (change)="onRadioChange(resultado)" type="radio" id="{{resultado.idPaciente}}" value="{{resultado.idPaciente}}" name="options"/></td>
             <td>{{resultado.folio}}</td>
@@ -88,7 +88,7 @@
     </table>
     <pagination [boundaryLinks]="true"
       [directionLinks]="true"
-      [totalItems]="contentArray.length"
+      [totalItems]="filteredData.length"
       [itemsPerPage]="5"
       [previousText]="'Anterior'"
       [nextText]="'Siguiente'"
@@ -98,5 +98,6 @@
     >
     </pagination>
     <button class="btn btn-outline-primary btn-sm" *ngIf="isConfirmed" (click)="sendMessageParent()">Agregar</button>
+    <p id="mensajeErrorAgregar" style="color: red;"></p>
     <p>Nota: Al dar clic al nombre, debera redirigir a la hoja frontal del paciente buscado</p>
 </div>

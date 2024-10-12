@@ -7,7 +7,7 @@
       <input type="text"
       name="nombre"
       placeholder="Nombre(s)"
-      class="form-control"
+      class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="form.nombrePropio1">
@@ -15,9 +15,9 @@
 
     <div class=" form-div-padding d-inline-block">
       <input type="text"
-      name="apellidoMaterno"
-      placeholder="Apellido materno"
-      class="form-control"
+      name="apellidoPaterno"
+      placeholder="Apellido paterno"
+      class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="form.apellidoPaterno">
@@ -25,9 +25,9 @@
 
     <div class=" form-div-padding d-inline-block">
       <input type="text"
-      name="nombre"
+      name="apellidoMaterno"
       placeholder="Nombre(s)"
-      class="form-control"
+      class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="form.apellidoMaterno">
@@ -42,7 +42,7 @@
       id="edad"
       name="edad"
       placeholder="Edad"
-      class="form-control bloque"
+      class="form-control bloque infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="form.edad">
@@ -50,9 +50,9 @@
 
     <div class=" form-div-padding d-inline-block">
       <input type="text"
-      name="nombre"
+      name="sexoAlNacer"
       placeholder="Sexo"
-      class="form-control"
+      class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="form.sexoAlNacer">
@@ -60,9 +60,9 @@
 
     <div class=" form-div-padding d-inline-block">
       <input type="text"
-      name="nombre"
+      name="fechaNacimiento"
       placeholder="Fecha de nacimiento"
-      class="form-control"
+      class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="form.fechaNacimiento">
@@ -74,9 +74,9 @@
   <div class="col d-inline-block">
     <div class=" form-div-padding d-inline-block">
       <input type="text"
-      name="nombre"
+      name="domicilio"
       placeholder="Domicilio"
-      class="form-control"
+      class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="localidad">
@@ -84,38 +84,37 @@
 
     <div class="form-div-padding d-inline-block">
       <input type="text"
-      name="nombre"
+      name="telefono"
       placeholder="Telefono"
-      class="form-control"
+      class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="telefono"
-      >
+      [(ngModel)]="telefono">
     </div>
   </div>
 
   <div class="row form-div-padding">
     <div class="col d-inline-block">
-      <div class=" form-div-padding d-inline-block">
+      <div class="form-div-padding d-inline-block">
         <label>Motivo de consulta</label>
         <input type="text"
-        name="apellidoPaterno"
-        placeholder=""
-        class="form-control"
+        name="motivoConsulta"
+        placeholder="Ej: Entumecimiento hemisferio derecho"
+        class="form-control infoPacienteId"
         maxLength="200"
         style="max-width: 100%;"
         [(ngModel)]="form.motivoConsulta">
       </div>
 
-      <div class=" form-div-padding d-inline-block">
+      <div class="form-div-padding d-inline-block">
         <label>Fecha ultimo examen medico</label>
         <input type="text"
-        name="apellidoPaterno"
-        placeholder=""
-        class="form-control"
-        maxLength="200"
+        name="fechaUltimoExMedico"
+        placeholder="DD/MM/AAAA"
+        class="form-control infoPacienteId"
+        maxLength="10"
         style="max-width: 100%;"
-        formControlName="otraDerechoHaciencia">
+        [(ngModel)]="form.fechaUltimoExMedico">
       </div>
 
         <div class="form-check form-check-inline">
@@ -125,5 +124,4 @@
 
     </div>
   </div>
-<p>tel:{{telefono}}{{localidad}}</p>
 </div>
