@@ -106,5 +106,41 @@
     "motivoConsultaOdonto":"Dolor de muela",
     "telefono":"1",
     "fechaUltimoExMedico":"01/01/1999"
+  },
+  {
+    "idPaciente":1239,
+    "folio":"0007",
+    "nombres":"Nom02 Nom03",
+    "apPaterno":"APPAT03",
+    "apMaterno":"APMAT05",
+    "edad":17,
+    "especialidad":"Consulta general",
+    "medicoTratante":"Aleida Torres",
+    "ultimaVisita":"13/03/2024",
+    "localidad":"Pachuca de Soto",
+    "curp":"CACC910212HSPSVH04",
+    "sexo":"F",
+    "fechaNacimiento":"12/02/1991",
+    "motivoConsultaOdonto":"Dolor de muela",
+    "telefono":"1",
+    "fechaUltimoExMedico":"01/01/1999"
+  },
+  {
+    "idPaciente":1239,
+    "folio":"0008",
+    "nombres":"Nom02 Nom03",
+    "apPaterno":"APPAT03",
+    "apMaterno":"APMAT05",
+    "edad":17,
+    "especialidad":"Consulta general",
+    "medicoTratante":"Aleida Torres",
+    "ultimaVisita":"13/03/2024",
+    "localidad":"Pachuca de Soto",
+    "curp":"CACC910212HSPSVH04",
+    "sexo":"F",
+    "fechaNacimiento":"12/02/1991",
+    "motivoConsultaOdonto":"Dolor de muela",
+    "telefono":"1",
+    "fechaUltimoExMedico":"01/01/1999"
   }
 ]

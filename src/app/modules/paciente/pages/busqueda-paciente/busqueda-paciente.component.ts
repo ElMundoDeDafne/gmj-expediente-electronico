@@ -37,7 +37,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   sinResultados:boolean=false;
   selectedPatientId: number | null = null;
   returnedArray!: IBusquedaPacientes[];
-  contentArray!: IBusquedaPacientes[];
+  contentArray: IBusquedaPacientes[] = [];
 
   ngOnInit(): void {
     //this.contentArray = this.data;
@@ -51,7 +51,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   pageChanged(event: PageChangedEvent): void {
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
-    this.returnedArray = this.contentArray.slice(startItem, endItem);
+    this.returnedArray = this.filteredData.slice(startItem, endItem);
  }
 
   borrarSearchTerm():void{
@@ -73,14 +73,16 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
     .subscribe((response)=> {
       this.data = response;
       this.filteredData = this.data;
-      this.contentArray = this.filteredData;
+      // this.filteredData = this.filteredData.slice(0,5);
+      this.returnedArray = this.filteredData.slice(0, 5);
+      // this.returnedArray = this.filteredData.slice(0, 5);
     });
     //this.contentArray = this.data;
     //this.contentArray = this.filteredData;
-    this.contentArray = this.contentArray.map((v: IBusquedaPacientes, i: number) => {
-      return v;
-   });
-   this.returnedArray = this.contentArray.slice(0, 5);
+  //   this.contentArray = this.contentArray.map((v: IBusquedaPacientes, i: number) => {
+  //     return v;
+  //  });
+  //  this.returnedArray = this.filteredData.slice(0, 5);
   }
 
 onRadioChange(resultado: IBusquedaPacientes): void {
@@ -91,55 +93,55 @@ onRadioChange(resultado: IBusquedaPacientes): void {
  * option : [folio,curp,localidad,especialidad]
  */
 filterDataByCriteria(option:string,criteria:string):void{
+  (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
   if(option === '') {
     (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = 'Seleccione una opcion';
     return;
   } else {
     if(criteria===''){
       this.filteredData = this.data;
-      this.contentArray = this.filteredData;
-      this.sinResultados = false;
+       this.returnedArray = this.filteredData.slice(0,5);
     } else {
-      (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
       const searchTermLower = criteria.toLowerCase().trim();
-
       if(option === 'folio') {
-        this.returnedArray = this.filteredData.filter((item) => {
-          this.sinResultados = this.filteredData.length===0;
+        var r! : string;
+        this.returnedArray = this.data.filter((item) => {
           return item.folio.toLowerCase().includes(searchTermLower);
         });
+        this.filteredData = this.returnedArray;
       } else if(option === 'curp'){
-        this.returnedArray = this.filteredData.filter((item) => {
-          this.sinResultados = this.filteredData.length===0;
+        this.returnedArray = this.data.filter((item) => {
           return item.curp.toLowerCase().includes(searchTermLower);
         });
+        this.filteredData = this.returnedArray;
       } else if (option === 'localidad') {
-        this.returnedArray = this.filteredData.filter((item) => {
-          this.sinResultados = this.filteredData.length===0;
+        this.returnedArray = this.data.filter((item) => {
           return item.localidad.toLowerCase().includes(searchTermLower);
         });
+        this.filteredData = this.returnedArray;
       } else if (option === 'especialidad') {
-        this.returnedArray = this.filteredData.filter((item) => {
-          this.sinResultados = this.filteredData.length===0;
+        this.returnedArray = this.data.filter((item) => {
           return item.especialidad.toLowerCase().includes(searchTermLower);
         });
+        this.filteredData = this.returnedArray;
       } else if (option === 'nombres'){
-        this.returnedArray = this.filteredData.filter((item) => {
-          this.sinResultados = this.filteredData.length===0;
+        this.returnedArray = this.data.filter((item) => {
           return item.nombres.toLowerCase().includes(searchTermLower);
         });
+        this.filteredData = this.returnedArray;
       } else if (option === 'medicotratante'){
-        this.returnedArray = this.filteredData.filter((item) => {
-          this.sinResultados = this.filteredData.length===0;
+        this.returnedArray = this.data.filter((item) => {
           return item.medicoTratante.toLowerCase().includes(searchTermLower);
         });
+        this.filteredData = this.returnedArray;
       } else {
-        this.returnedArray = this.filteredData.filter((item) => {
-          this.sinResultados = this.filteredData.length===0;
+        this.returnedArray = this.data.filter((item) => {
           return item.especialidad.toLowerCase().includes(searchTermLower);
         });
+        this.filteredData = this.returnedArray;
       }
     }
+    if (this.filteredData.length===0) (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = `No se encontraron resultados con '${criteria}' para opcion seleccionada ${option} !!`;
   }
 }
 
