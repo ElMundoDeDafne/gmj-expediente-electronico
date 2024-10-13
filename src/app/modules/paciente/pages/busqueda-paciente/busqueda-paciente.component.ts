@@ -141,7 +141,7 @@ filterDataByCriteria(option:string,criteria:string):void{
         this.filteredData = this.returnedArray;
       }
     }
-    if (this.filteredData.length===0) (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = `No se encontraron resultados con '${criteria}' para opcion seleccionada ${option} !!`;
+    if (this.filteredData.length===0) (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = `No se encontraron resultados con criterio '<b>${criteria}</b>' para opcion seleccionada <b>${option}</b>`;
   }
 }
 
