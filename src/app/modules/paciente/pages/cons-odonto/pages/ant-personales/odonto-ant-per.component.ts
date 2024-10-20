@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Utilerias } from "../../../../../../utils/utilerias";
 
 @Component({
   selector: 'app-odonto-ant-per',
@@ -6,9 +7,20 @@ import { Component } from "@angular/core";
 })
 
 export class OdontoPerComponent {
+
+  constructor(){
+    this.utils=new Utilerias();
+  }
+
   antecedentesChkbox:string[]=['Diabetico','Hipertennso','asmatico','vih/sida','tuberculoso','cardiopata','quirurgico','alergias','hepatitis','hemofilico','cardiovasculares','otros'];
   selecciones:string[]=[];
   observaciones:string='';
+  antecEspecifico!:string;
+  utils:Utilerias;
+
+  contieneOtros(sel:string[]):boolean {
+    return sel.some(s=>s.toLowerCase() === 'otros');
+  }
 
   onCheckboxChange(event: any) {
     const opcion = event.target.value;

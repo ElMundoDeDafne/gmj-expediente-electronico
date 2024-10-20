@@ -1,6 +1,7 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { IEnfermedades } from '../../../../interfaces/enfermedades.interface';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Utilerias } from '../../../../../../utils/utilerias';
 
 @Component({
   selector: 'app-antecedentes-personales-pat-form',
@@ -22,8 +23,9 @@ export class AntecedentesPersonalesPatFormComponent implements ControlValueAcces
     this.antecedentesPersPatForm = formBuilder.group({
       otraEnfermedad:['',[Validators.required]]
     });
+    this.utils = new Utilerias();
   }
-
+  utils : Utilerias;
   enfermedades:IEnfermedades[]=[{}];
   enfermedad:IEnfermedades={
     nombreEnfermedad:'',

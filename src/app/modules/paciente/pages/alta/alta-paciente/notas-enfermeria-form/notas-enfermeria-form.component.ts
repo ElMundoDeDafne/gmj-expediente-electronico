@@ -1,6 +1,7 @@
 import { Component, forwardRef } from '@angular/core';
 import { INotaEnfermeriaPac } from '../../../../interfaces/nota-enferm-pac.interface';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Utilerias } from '../../../../../../utils/utilerias';
 
 @Component({
   selector: 'app-notas-enfermeria-form',
@@ -13,6 +14,8 @@ import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Valida
   }]
 })
 export class NotasEnfermeriaFormComponent implements ControlValueAccessor{
+
+  utils : Utilerias;
   notasEnfemeriaForm : FormGroup;
   notasEnfermerias:INotaEnfermeriaPac[]=[];
   notasEnfermeria:INotaEnfermeriaPac={accionesDxEnf:'',accionesNEnf:'',cedulaProfNEnf:'',realizoNEnf:'',resultadosNEnf:'',signosVitales:{}};
@@ -23,6 +26,7 @@ export class NotasEnfermeriaFormComponent implements ControlValueAccessor{
     this.notasEnfemeriaForm = this.fb.group({
       cedulaProfesionalNEnf:['',[Validators.pattern('^-?[0-9]+$'),Validators.required]]
     });
+    this.utils = new Utilerias();
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { IDatosContactoPaciente } from '../../../../interfaces/datos-contacto-paciente.interface';
+import { Utilerias } from '../../../../../../utils/utilerias';
 
 @Component({
   selector: 'app-datos-contacto-paciente-form',
@@ -16,6 +17,7 @@ export class DatosContactoPacienteFormComponent implements ControlValueAccessor{
 
    datosContactoForm : FormGroup;
    constructor(private formBuilder : FormBuilder){
+    this.utils = new Utilerias();
      this.datosContactoForm = this.formBuilder.group({
        email:['',[
          Validators.email
@@ -26,6 +28,8 @@ export class DatosContactoPacienteFormComponent implements ControlValueAccessor{
        ]]
      })
    }
+
+   utils : Utilerias;
 
   datosContacto: IDatosContactoPaciente={};
   onChange: any = () => {};

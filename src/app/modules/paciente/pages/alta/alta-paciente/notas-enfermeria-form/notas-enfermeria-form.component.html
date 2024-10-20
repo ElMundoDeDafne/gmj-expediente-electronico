@@ -9,7 +9,8 @@
     style="max-width: 100%;"
     cols="40"
     rows="5"
-    [(ngModel)]="notasEnfermeria.accionesDxEnf"></textarea>
+    [(ngModel)]="notasEnfermeria.accionesDxEnf"
+    (input)="utils.convertirAMayusculas($event)"></textarea>
   </div>
 </div>
 <div class="row form-div-padding">
@@ -24,6 +25,7 @@
     cols="40"
     rows="5"
     [(ngModel)]="notasEnfermeria.accionesNEnf"
+    (input)="utils.convertirAMayusculas($event)"
     ></textarea>
   </div>
 </div>
@@ -38,7 +40,8 @@
     style="max-width: 100%;"
     cols="40"
     rows="5"
-    [(ngModel)]="notasEnfermeria.resultadosNEnf"></textarea>
+    [(ngModel)]="notasEnfermeria.resultadosNEnf"
+    (input)="utils.convertirAMayusculas($event)"></textarea>
   </div>
 </div>
 <div class="row form-div-padding">
@@ -50,7 +53,8 @@
     size="15"
     maxLength="15"
     style="max-width: 100%;"
-    [(ngModel)]="notasEnfermeria.realizoNEnf">
+    [(ngModel)]="notasEnfermeria.realizoNEnf"
+    (input)="utils.convertirAMayusculas($event)">
   </div>
   <div class="col">
     <strong>Cedula Profesional <span style="color: red;">*</span></strong>
@@ -60,15 +64,15 @@
     size="8"
     maxLength="8"
     style="max-width: 100%;"
-    formControlName="cedulaProfesionalNEnf"
-    [(ngModel)]="notasEnfermeria.cedulaProfNEnf">
-    <div class="text-danger" *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].invalid && (notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].dirty || notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].touched)">
+    [(ngModel)]="notasEnfermeria.cedulaProfNEnf"
+    (input)="utils.convertirAMayusculas($event)">
+    <!-- <div class="text-danger" *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].invalid && (notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].dirty || notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].touched)">
       <div *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].errors?.['pattern']">
         <h6>Solo números.</h6>
       </div>
       <div *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].errors?.['required']">
         <h6>Dato obligatorio.</h6>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

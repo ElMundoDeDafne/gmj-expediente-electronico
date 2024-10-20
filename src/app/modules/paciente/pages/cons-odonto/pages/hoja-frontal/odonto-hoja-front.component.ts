@@ -3,6 +3,7 @@ import { IBusquedaPacientes } from "../../../../interfaces/busqueda/busqueda-pac
 import { IInfoPaciente } from "../../../../interfaces/paciente.interface";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { BusquedaPacienteComponent } from "../../../busqueda-paciente/busqueda-paciente.component";
+import { Utilerias } from "../../../../../../utils/utilerias";
 
 @Component({
   selector: 'app-odonto-hoja-front',
@@ -11,11 +12,13 @@ import { BusquedaPacienteComponent } from "../../../busqueda-paciente/busqueda-p
 
 export class OdontoHojaFrontComponent implements OnInit{
 
-  constructor(private modalService : BsModalService){}
+  constructor(private modalService : BsModalService){
+    this.utils = new Utilerias();
+  }
   ngOnInit(): void {}
 
+  utils : Utilerias;
   form : IInfoPaciente = {};
-
   modalRef?:BsModalRef;
   nombres:string = '';
   telefono:string = '';

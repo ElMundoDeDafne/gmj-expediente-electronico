@@ -29,6 +29,7 @@
       style="max-width: 50%;"
       [(ngModel)]="datosContacto.correoElectronico"
       formControlName="email"
+      (input)="utils.convertirAMayusculas($event)"
       >
       <div class="text-danger" *ngIf="datosContactoForm.controls['email'].invalid && (datosContactoForm.controls['email'].dirty || datosContactoForm.controls['email'].touched)">
         <div *ngIf="datosContactoForm.controls['email'].errors?.['email']">

@@ -1,11 +1,35 @@
-<div *ngFor="let seleccion of antecedentesChkbox; let i=index">
-  <label>
-  <input
-  type="checkbox"
-  [value]="seleccion"
-  (change)="onCheckboxChange($event)"
-  /> {{ seleccion }}
-  </label>
+<div class="row form-div-padding">
+    <div class="col d-inline-block">
+        <div class="form-div-padding d-inline-block" *ngFor="let seleccion of antecedentesChkbox; let i=index">
+          <label class="form-check-label">
+            <input class="form-check-input"
+            type="checkbox"
+            [value]="seleccion.toUpperCase()"
+            (change)="onCheckboxChange($event)"
+            style="max-width: 100%;"
+            /> {{ seleccion.toUpperCase() }}
+            </label>
+        </div>
+        <div *ngIf="contieneOtros(selecciones)">
+          <label>Especifique: </label>
+          <input
+            type="text"
+            (input)="utils.convertirAMayusculas($event)"
+            [(ngModel)]="antecEspecifico"
+          >
+    </div>
+</div>
+
+<div>
+  <label class="form-check-label">Observaciones: </label>
+    <textarea type="text"
+    class="form-control form-check-label"
+    size="15"
+    maxLength="200"
+    style="max-width: 100%;"
+    rows="5"
+    class="form-control">
+  </textarea>
 </div>
 
 <div>

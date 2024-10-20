@@ -103,13 +103,13 @@ export class AntecedentesGinecoObstetricosComponent  implements ControlValueAcce
     let hijosVivos : number = 0;
 
      if (this.antecedentesGinecobstetricos.numPartos !== undefined) {
-      numeroPartos = this.antecedentesGinecobstetricos.numPartos;
+        numeroPartos = this.antecedentesGinecobstetricos.numPartos;
      }
      if (this.antecedentesGinecobstetricos.numCesareas !== undefined){
         numeroCesareas = this.antecedentesGinecobstetricos.numCesareas;
      }
      if(this.antecedentesGinecobstetricos.numAborts !== undefined) {
-      numeroAbortos = this.antecedentesGinecobstetricos.numAborts;
+        numeroAbortos = this.antecedentesGinecobstetricos.numAborts;
      }
     totalPartosYCesareas = parseInt(numeroCesareas.toString())+parseInt(numeroPartos.toString())+parseInt(numeroAbortos.toString());
     hijosVivos = parseInt(numeroCesareas.toString()) + parseInt(numeroPartos.toString());

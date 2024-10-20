@@ -49,13 +49,13 @@ export class AltaPacienteComponent {
       antecedentesHdoFamiliares:[{}],
       antecedentesGinecobstetricos:{fechaUltimaCitologia:'',fechaUltimaRegla:'',fechaUltimoParto:'',hijosVivos:0,numAborts:0,numCesareas:0,numGestas:0,numPartos:0,inicioVidaSexual:''},
       antecNoPatologicos:{
-        conceptoFauna:[{concepto:'Perros',situacion:''},{concepto:'Gatos',situacion:''},{concepto:'Otros',situacion:'',otros:''}],
-        conceptoVivienda:[{concepto:'Luz',situacion:''},{concepto:'Agua',situacion:''},{concepto:'Drenaje',situacion:''}],
+        conceptoFauna:[{concepto:'Perros',situacion:false},{concepto:'Gatos',situacion:false},{concepto:'Otros',situacion:false,otros:''}],
+        conceptoVivienda:[{concepto:'Luz',situacion:false},{concepto:'Agua',situacion:false},{concepto:'Drenaje',situacion:false}],
         concepto:[
-          {concepto:'Dieta',situacion:''},
-          {concepto:'Vivienda',situacion:''},
-          {concepto:'Promiscuidad',situacion:''},
-          {concepto:'Hacinamiento',situacion:''}
+          {concepto:'Dieta',situacion:false},
+          {concepto:'Vivienda',situacion:false},
+          {concepto:'Promiscuidad',situacion:false},
+          {concepto:'Hacinamiento',situacion:false}
         ],
         inmunizaciones:[{}]
 },

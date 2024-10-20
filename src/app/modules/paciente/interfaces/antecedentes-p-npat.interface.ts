@@ -12,7 +12,7 @@ export interface IAntecedentesPersNoPat{
 }
 
 export interface IConceptoAntecedente{
-  situacion:string;
+  situacion:boolean;
   concepto:string;
   otros?:string;
   antecEspecifico?:string;

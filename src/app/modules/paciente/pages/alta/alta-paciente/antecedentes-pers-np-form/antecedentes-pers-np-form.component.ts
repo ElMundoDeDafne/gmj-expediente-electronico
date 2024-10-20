@@ -2,6 +2,7 @@ import { Component, forwardRef } from '@angular/core';
 import { IAntecedentesPersNoPat, IConceptoAntecedente } from '../../../../interfaces/antecedentes-p-npat.interface';
 import { stringify } from 'querystring';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Utilerias } from '../../../../../../utils/utilerias';
 
 @Component({
   selector: 'app-antecedentes-pers-np-form',
@@ -18,10 +19,12 @@ export class AntecedentesPersonalesNoPatologicosFormComponent implements Control
     this.form = this.fb.group({
       antecEspecifico:['',[Validators.required]]
     });
+
+    this.utils = new Utilerias();
   }
   conceptoAnt:IConceptoAntecedente={
     concepto:'',
-    situacion:''
+    situacion:false
   }
 
   antecedentes:IAntecedentesPersNoPat={
@@ -32,6 +35,7 @@ export class AntecedentesPersonalesNoPatologicosFormComponent implements Control
   };
   antecentesPers:IAntecedentesPersNoPat[]=[];
   form : FormGroup;
+  utils : Utilerias;
 
   onChange: any = () => {};
   onTouched: any = () => {};

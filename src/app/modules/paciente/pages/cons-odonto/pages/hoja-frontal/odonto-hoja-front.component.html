@@ -10,7 +10,8 @@
       class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="form.nombrePropio1">
+      [(ngModel)]="form.nombrePropio1"
+      (input)="utils.convertirAMayusculas($event)">
     </div>
 
     <div class=" form-div-padding d-inline-block">
@@ -20,7 +21,8 @@
       class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="form.apellidoPaterno">
+      [(ngModel)]="form.apellidoPaterno"
+      (input)="utils.convertirAMayusculas($event)">
     </div>
 
     <div class=" form-div-padding d-inline-block">
@@ -30,7 +32,8 @@
       class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="form.apellidoMaterno">
+      [(ngModel)]="form.apellidoMaterno"
+      (input)="utils.convertirAMayusculas($event)">
     </div>
   </div>
 </div>
@@ -79,7 +82,8 @@
       class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="localidad">
+      [(ngModel)]="localidad"
+      (input)="utils.convertirAMayusculas($event)">
     </div>
 
     <div class="form-div-padding d-inline-block">
@@ -103,7 +107,8 @@
         class="form-control infoPacienteId"
         maxLength="200"
         style="max-width: 100%;"
-        [(ngModel)]="form.motivoConsulta">
+        [(ngModel)]="form.motivoConsulta"
+        (input)="utils.convertirAMayusculas($event)">
       </div>
 
       <div class="form-div-padding d-inline-block">
