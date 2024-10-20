@@ -94,6 +94,8 @@ onRadioChange(resultado: IBusquedaPacientes): void {
  */
 filterDataByCriteria(option:string,criteria:string):void{
   (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
+        this.filteredData = this.data;
+      this.returnedArray = this.filteredData.slice(0,5);
   if(option === '') {
     (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = 'Seleccione una opcion';
     return;
