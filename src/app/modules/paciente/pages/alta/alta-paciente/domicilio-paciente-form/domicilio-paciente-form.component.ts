@@ -1,6 +1,7 @@
 import { Component, forwardRef } from '@angular/core';
 import { IDomicilioPaciente } from '../../../../interfaces/domicilio-paciente.interface';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Utilerias } from '../../../../../../utils/utilerias';
 
 @Component({
   selector: 'app-domicilio-paciente-form',
@@ -16,6 +17,7 @@ export class DomicilioPacienteFormComponent implements ControlValueAccessor{
 
   domicilioForm : FormGroup;
   constructor(private formBuilder : FormBuilder){
+    this.utils = new Utilerias();
     this.domicilioForm = this.formBuilder.group({
       codigoPostal:['',[
         Validators.required,
@@ -43,6 +45,7 @@ export class DomicilioPacienteFormComponent implements ControlValueAccessor{
   domicilio: IDomicilioPaciente={};
   onChange: any = () => {};
   onTouched: any = () => {};
+  utils:Utilerias;
 
    writeValue(obj: IDomicilioPaciente): void {
      this.domicilio = obj;

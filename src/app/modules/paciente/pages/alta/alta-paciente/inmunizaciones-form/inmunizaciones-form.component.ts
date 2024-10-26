@@ -16,6 +16,12 @@ export class InmunizacionesFormComponent implements ControlValueAccessor {
   inmunizacion:IEsquemaVacunacionPac={};
   inmunizaciones:IEsquemaVacunacionPac[]=[];
   bsValue : Date = new Date();
+  biologicos : string[] = [
+    "BCG","Hepatitis B","Pentavalente","Rotavirus",
+    "Neumocócica conjugada","Sarampión, Rubéola y Paperas (SRP)","Vacuna contra el VPH",
+    "Difteria y Tétanos","Influenza","Neumocócica (adultos)",
+    "Hepatitis B (en grupos de riesgo)","Vacuna contra COVID-19","Fiebre amarilla (para viajeros)"];
+    biologicoSeleccionado : string = '';
 
   onChange: any = () => {};
   onTouched: any = () => {};

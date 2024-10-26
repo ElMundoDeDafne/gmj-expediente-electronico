@@ -1,6 +1,7 @@
 import { Component, forwardRef, ViewChild } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import {DayPilot, DayPilotCalendarComponent} from "@daypilot/daypilot-lite-angular";
+import { Utilerias } from "../../../../../utils/utilerias";
 
 @Component({
   selector: 'app-mostrar-agenda-form',
@@ -13,12 +14,22 @@ import {DayPilot, DayPilotCalendarComponent} from "@daypilot/daypilot-lite-angul
   }]
 })
 export class MostrarAgendaFormComponent {
+
+  constructor(){
+
+  }
+  utils : Utilerias = new Utilerias();
+  fechaInicio : string = this.utils.getLastMonday(new Date());
+
   @ViewChild("calendar")
   calendar!:DayPilotCalendarComponent;
   //de alguna manera configurar la fecha de inicio (startDate)
   conf: DayPilot.CalendarConfig = {
     viewType: "Week",
-    startDate: "2024-07-22T08:00:00"
+    // startDate: "2024-07-21T08:00:00",
+    startDate: this.fechaInicio,
+    headerDateFormat:"dd/MM/yyyy"
+
   }
 
   events: any = [
