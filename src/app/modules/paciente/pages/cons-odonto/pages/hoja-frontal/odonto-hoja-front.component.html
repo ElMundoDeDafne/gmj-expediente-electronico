@@ -10,7 +10,7 @@
       class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="form.nombrePropio1"
+      [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.nombreUno"
       (input)="utils.convertirAMayusculas($event)">
     </div>
 
@@ -21,7 +21,7 @@
       class="form-control infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="form.apellidoPaterno"
+      [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.nombreDos"
       (input)="utils.convertirAMayusculas($event)">
     </div>
 
@@ -48,7 +48,7 @@
       class="form-control bloque infoPacienteId"
       maxLength="20"
       style="max-width: 100%;"
-      [(ngModel)]="form.edad">
+      [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.edad">
     </div>
 
     <div class=" form-div-padding d-inline-block">
@@ -56,9 +56,9 @@
       name="sexoAlNacer"
       placeholder="Sexo"
       class="form-control infoPacienteId"
-      maxLength="20"
+      maxLength="1"
       style="max-width: 100%;"
-      [(ngModel)]="form.sexoAlNacer">
+      [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.sexo">
     </div>
 
     <div class=" form-div-padding d-inline-block">
@@ -125,7 +125,7 @@
         class="form-control infoPacienteId"
         maxLength="200"
         style="max-width: 100%;"
-        [(ngModel)]="form.motivoConsulta"
+        [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.motivoConsulta"
         (input)="utils.convertirAMayusculas($event)">
       </div>
 

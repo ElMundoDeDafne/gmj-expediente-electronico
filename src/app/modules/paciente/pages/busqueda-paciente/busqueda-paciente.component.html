@@ -40,6 +40,7 @@
         [(ngModel)]="searchTerm">
         <br>
         <input type="submit" value="Buscar" class="btn btn-outline-primary btn-sm" (click)="filterDataByCriteria(option,searchTerm)">
+        &nbsp;&nbsp;<button class="btn btn-outline-primary btn-sm" *ngIf="!isConfirmed" >Generar Excel</button>
       </div>
     </div>
 

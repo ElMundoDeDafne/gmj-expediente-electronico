@@ -94,7 +94,11 @@ export class ConsultaOdontologicaComponent implements AfterViewInit {
 
   x : IPaciente | null = null;
 
-  public consultaOdonto:IConsultaEstomatologia={
-
+  public pacienteOdonto:IConsultaEstomatologia={
+    hojaFrontalOdonto : {
+      nombreUno : '',
+      nombreDos : '',
+      sexo : ''
+    }
   }
 }

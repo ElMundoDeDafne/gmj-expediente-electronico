@@ -146,7 +146,9 @@ export class AltaPacienteComponent {
       }
     },
     consultaOdontologia:{
-
+      hojaFrontalOdonto:{
+        nombreUno:''
+      }
     }
   }
 

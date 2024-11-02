@@ -1,9 +1,16 @@
-import { Component } from "@angular/core";
+import { Component, forwardRef } from "@angular/core";
 import { Utilerias } from "../../../../../../utils/utilerias";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { IConsultaEstomatologia } from "../../../../interfaces/cons-estomatologia.interface";
 
 @Component({
   selector: 'app-odonto-ant-per',
   templateUrl: 'odonto-ant-per.component.html',
+  providers:[{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => this),
+    multi: true
+  }]
 })
 
 export class OdontoPerComponent {
@@ -17,6 +24,7 @@ export class OdontoPerComponent {
   observaciones:string='';
   antecEspecifico!:string;
   utils:Utilerias;
+  antecPersOdont! : IConsultaEstomatologia;
 
   contieneOtros(sel:string[]):boolean {
     return sel.some(s=>s.toLowerCase() === 'otros');

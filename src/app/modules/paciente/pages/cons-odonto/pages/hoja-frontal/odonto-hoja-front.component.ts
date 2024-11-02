@@ -1,19 +1,62 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, Input, OnInit, ViewChild, forwardRef } from "@angular/core";
 import { IBusquedaPacientes } from "../../../../interfaces/busqueda/busqueda-pacientes.interface";
 import { IInfoPaciente } from "../../../../interfaces/paciente.interface";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { BusquedaPacienteComponent } from "../../../busqueda-paciente/busqueda-paciente.component";
 import { Utilerias } from "../../../../../../utils/utilerias";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { IConsultaEstomatologia } from "../../../../interfaces/cons-estomatologia.interface";
 
 @Component({
   selector: 'app-odonto-hoja-front',
   templateUrl: 'odonto-hoja-front.component.html',
+  providers:[{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => this),
+    multi: true
+  }]
 })
 
-export class OdontoHojaFrontComponent implements OnInit{
+export class OdontoHojaFrontComponent implements OnInit,ControlValueAccessor{
 
   constructor(private modalService : BsModalService){
     this.utils = new Utilerias();
+  }
+
+  hojaFrontalEsto! : IConsultaEstomatologia;
+
+/**
+ *
+writeValue(obj: IAntecedentesGinecoObstetricos): void {
+  this.antecedentesGinecobstetricos = obj;
+}
+
+registerOnChange(fn: any): void {
+  this.onChange = fn;
+}
+
+registerOnTouched(fn: any): void {
+  this.onTouched = fn;
+}
+
+setDisabledState?(isDisabled: boolean): void {
+  // Implement if needed
+}
+ */
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  writeValue(obj: IConsultaEstomatologia): void {
+    this.hojaFrontalEsto = obj;
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    //throw new Error("Method not implemented.");
   }
   ngOnInit(): void {}
 
@@ -64,6 +107,13 @@ export class OdontoHojaFrontComponent implements OnInit{
         this.telefono = result.telefono;
         this.localidad = result.localidad.toUpperCase();
         this.form.fechaUltimoExMedico = result.fechaUltimoExMedico;
+        this.hojaFrontalEsto.hojaFrontalOdonto.nombreUno = result.nombres.split(' ')[0].trimStart().toUpperCase();
+        this.hojaFrontalEsto.hojaFrontalOdonto.nombreDos = result.nombres.split(' ')[1].trimStart().toUpperCase();
+        this.hojaFrontalEsto.hojaFrontalOdonto.motivoConsulta = result.motivoConsultaOdonto.toUpperCase();
+        this.hojaFrontalEsto.hojaFrontalOdonto.edad = result.edad;
+        this.hojaFrontalEsto.hojaFrontalOdonto.sexo = result.sexo;
+
+
         // // this.desactivarDivs();
       }
     );

@@ -1,7 +1,7 @@
 import { IPaciente } from "./paciente.interface";
 
 export interface IConsultaEstomatologia{
-  hojaFrontalOdonto?:IHojaFrontalOdonto;
+  hojaFrontalOdonto:IHojaFrontalOdonto;
   antecedentesPersonales?:IAntecedentesPers;
   antecedentesFam?:IAntFamiliares;
   domicilio?:IDomicilioOdonto;
@@ -26,7 +26,7 @@ interface IObservacionesOdontologia {
 
 interface IHojaFrontalOdonto {
   fechaConsulta?: Date;
-  nombreUno?:string;
+  nombreUno:string;
   nombreDos?:string;
   edad?:number;
   sexo?:string;

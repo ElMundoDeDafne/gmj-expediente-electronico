@@ -18,7 +18,7 @@
   <mat-tab-group dynamicHeight>
     <mat-tab label="Hoja Frontal">
       <p>Hoja frontal</p>
-      <app-odonto-hoja-front></app-odonto-hoja-front>
+      <app-odonto-hoja-front [(ngModel)]="pacienteOdonto"></app-odonto-hoja-front>
     </mat-tab>
     <mat-tab label="Ant. Hedo fam.">
       <p>Ant. Hedofam.</p>
@@ -26,11 +26,11 @@
     </mat-tab>
     <mat-tab label="Ant. Personales">
       <p>Ant. Personales</p>
-      <app-odonto-ant-per></app-odonto-ant-per>
+      <app-odonto-ant-per [(ngModel)]="pacienteOdonto"></app-odonto-ant-per>
     </mat-tab>
     <mat-tab label="Observaciones">
       <app-odonto-observaciones></app-odonto-observaciones>
     </mat-tab>
   </mat-tab-group>
 
-
+  <code><p>{{pacienteOdonto|json}}</p></code>
