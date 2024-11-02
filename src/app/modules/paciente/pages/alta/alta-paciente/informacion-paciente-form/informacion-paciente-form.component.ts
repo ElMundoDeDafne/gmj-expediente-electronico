@@ -5,6 +5,7 @@ import { IInfoPaciente, IPaciente } from '../../../../interfaces/paciente.interf
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { CatOcupacionesService } from '../../../../../../services/cat-ocupaciones.service';
 import { AlertGeneratorService } from '../../../../../../pages/alerts/alert-generator/alert-generator.service';
+import { Utilerias } from '../../../../../../utils/utilerias';
 
 @Component({
   selector: 'app-informacion-paciente-form',
@@ -40,12 +41,14 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
       motivoConsulta:['',[Validators.required]],
       curp:['',[Validators.required,Validators.pattern('^[A-Z]{4}\d{6}[A-Z]{4}[A-Z]{2}\d{2}$'),Validators.maxLength(18)]]
     });
+    this.utils = new Utilerias();
   }
 
   fechaSeleccionada : Date = new Date();
   picker : any;
   ocupacionSeleccionada : string = '';
   bsValue : Date = new Date();
+  utils:Utilerias;
 
   // @ViewChild('alertBootstrap')
   // alertBootstrap!:ElementRef<HTMLElement>;
@@ -181,12 +184,22 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     return fechaComoTexto;
   }
 
+  formatearFecha(id:string) : void {
+    let tempFecha : string = (<HTMLInputElement> document.getElementById(id)).value;
+    this.informacionPx.fechaNacimiento = tempFecha;
+    //this.informacionPx.fechaNacimiento = (<HTMLInputElement) document.getElementById('parentesco')).disabled;
+    // Retornar el formato DD/MM/YYYY
+    //return `${day}/${month}/${year}`;
+}
+
   calcularEdad(fechaNacimiento:string):void{
     if(fechaNacimiento != undefined){
+      console.error(fechaNacimiento);
       const birthdayDate : Date = new Date(fechaNacimiento);
       const hoy : Date = new Date();
       let edad:number = hoy.getFullYear() - birthdayDate.getFullYear();
-      let meses:number = hoy.getMonth() - birthdayDate.getMonth();
+      let meses:number = (hoy.getMonth()+1) - (birthdayDate.getMonth()+1);
+      console.error(`meses: ${meses} - ${(hoy.getMonth()+1)} - ${(birthdayDate.getMonth()+1)}`);
 
       // Corregir la edad si el mes de nacimiento es mayor que el mes actual
       if (meses < 0) {
@@ -198,6 +211,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
       if (hoy.getDate() < birthdayDate.getDate()) {
         meses--;
       }
+
 
       this.informacionPx.edad = edad;
       this.informacionPx.meses = edad===0&&(meses===0||meses>0)?meses.toString():'RN';

@@ -21,7 +21,7 @@ export class InmunizacionesFormComponent implements ControlValueAccessor {
     "Neumocócica conjugada","Sarampión, Rubéola y Paperas (SRP)","Vacuna contra el VPH",
     "Difteria y Tétanos","Influenza","Neumocócica (adultos)",
     "Hepatitis B (en grupos de riesgo)","Vacuna contra COVID-19","Fiebre amarilla (para viajeros)"];
-    biologicoSeleccionado : string = '';
+  biologicoSeleccionado : string = '';
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -54,4 +54,7 @@ export class InmunizacionesFormComponent implements ControlValueAccessor {
     this.inmunizaciones.splice(pos,1);
   }
 
+  hola(evento : Date):void{
+    window.alert(evento);
+    }
 }

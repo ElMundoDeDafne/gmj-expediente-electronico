@@ -240,6 +240,7 @@
     <label>Fecha nacimiento <span style="color:red;">*</span></label>
     <input type="text"
        placeholder="Ej: 12/02/1991"
+       id="fechaCumpleanios"
        class="form-control"
        pattern="\d{2}/\d{2}/\d{4}"
        bsDatepicker
@@ -248,7 +249,8 @@
        [maxDate]="fechaSeleccionada"
        [(ngModel)]="informacionPx.fechaNacimiento"
        formControlName="fechaNacimiento"
-       (ngModelChange)="calcularEdad($event)">
+       (ngModelChange)="calcularEdad($event)"
+       />
        <div class="text-danger" *ngIf="informacionPacienteForm.controls['fechaNacimiento'].invalid && (informacionPacienteForm.controls['fechaNacimiento'].dirty || informacionPacienteForm.controls['fechaNacimiento'].touched)">
         <div *ngIf="informacionPacienteForm.controls['fechaNacimiento'].errors?.['required']">
           <h6>Dato obligatorio.</h6>

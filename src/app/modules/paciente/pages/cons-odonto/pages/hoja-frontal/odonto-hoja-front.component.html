@@ -67,8 +67,26 @@
       placeholder="Fecha de nacimiento"
       class="form-control infoPacienteId"
       maxLength="20"
+      bsDatepicker
+      [bsValue]="bsValue"
+      [maxDate]="bsValue"
       style="max-width: 100%;"
       [(ngModel)]="form.fechaNacimiento">
+
+      <!-- <input type="text"
+      placeholder="Ej: 12/02/1991"
+      class="form-control"
+      pattern="\d{2}/\d{2}/\d{4}"
+      bsDatepicker
+      [bsValue]="bsValue"
+      [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }"
+      [maxDate]="fechaSeleccionada"
+      [(ngModel)]="informacionPx.fechaNacimiento"
+      formControlName="fechaNacimiento"
+      (ngModelChange)="calcularEdad($event)"> -->
+
+
+
     </div>
   </div>
 </div>

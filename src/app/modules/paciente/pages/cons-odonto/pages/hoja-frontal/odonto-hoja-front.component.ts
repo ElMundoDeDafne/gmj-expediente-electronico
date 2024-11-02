@@ -24,6 +24,20 @@ export class OdontoHojaFrontComponent implements OnInit{
   telefono:string = '';
   localidad:string = '';
   fechaUltimoExMedico:string = '';
+  bsValue : Date = new Date();
+
+  formatearFecha(fecha : string) : void {
+       // Crear un objeto Date a partir de la cadena ISO
+       const date = new Date(fecha);
+
+       // Obtener el día, mes y año
+       const day = String(date.getDate()).padStart(2, '0');
+       const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses comienzan en 0
+       const year = date.getFullYear();
+
+       // Retornar el formato DD/MM/YYYY
+       //return `${day}/${month}/${year}`;
+  }
 
   desactivarDivs():void {
     const totalElementos = (<HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('infoPacienteId'));
