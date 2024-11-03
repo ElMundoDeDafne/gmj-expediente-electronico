@@ -2,10 +2,10 @@ import { IPaciente } from "./paciente.interface";
 
 export interface IConsultaEstomatologia{
   hojaFrontalOdonto:IHojaFrontalOdonto;
-  antecedentesPersonales?:IAntecedentesPers;
-  antecedentesFam?:IAntFamiliares;
-  domicilio?:IDomicilioOdonto;
-  observaciones?:IObservacionesOdontologia;
+  antecedentesPersonales:IAntecedentesPers;
+  antecedentesFam:IAntFamiliares;
+  domicilio:IDomicilioOdonto;
+  observaciones:IObservacionesOdontologia;
 }
 
 interface IObservacionesOdontologia {
@@ -26,7 +26,7 @@ interface IObservacionesOdontologia {
 
 interface IHojaFrontalOdonto {
   fechaConsulta?: Date;
-  nombreUno:string;
+  nombreUno?:string;
   nombreDos?:string;
   edad?:number;
   sexo?:string;
@@ -48,9 +48,11 @@ interface IDomicilioOdonto {
 interface IAntFamiliares{
   enfermedades?:string[];
   observaciones?:string;
+  enfermedadEspecifica?:string;
 }
 
 interface IAntecedentesPers{
   enfermedades?:string[];
   observaciones?:string;
+  enfermedadEspecifica?:string;
 }

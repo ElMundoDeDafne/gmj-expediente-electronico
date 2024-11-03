@@ -148,7 +148,11 @@ export class AltaPacienteComponent {
     consultaOdontologia:{
       hojaFrontalOdonto:{
         nombreUno:''
-      }
+      },
+      antecedentesFam:{},
+      antecedentesPersonales:{},
+      domicilio:{},
+      observaciones:{}
     }
   }
 

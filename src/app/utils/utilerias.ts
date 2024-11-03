@@ -1,8 +1,22 @@
+import { IBusquedaPacientes } from "../modules/paciente/interfaces/busqueda/busqueda-pacientes.interface";
+import * as XLSX from "xlsx";
+
 /**
  * Clase con distintos metodos de utileria para el sistema
  *
 */
 export class Utilerias{
+
+  hojaExcel! : XLSX.WorkSheet;
+  libro! : XLSX.WorkBook;
+
+  generarExcelPxs(datos : IBusquedaPacientes[]) : void {
+      this.hojaExcel = XLSX.utils.json_to_sheet(datos);
+      this.libro = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(this.libro,this.hojaExcel,'Datos');
+      XLSX.writeFile(this.libro,'datos.xlsx');
+  }
+
   convertirAMayusculas(event: Event): void {
     const input = event.target as HTMLInputElement;
     setTimeout(() => {

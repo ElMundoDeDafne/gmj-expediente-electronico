@@ -99,6 +99,10 @@ export class ConsultaOdontologicaComponent implements AfterViewInit {
       nombreUno : '',
       nombreDos : '',
       sexo : ''
-    }
+    },
+    antecedentesFam:{},
+    domicilio:{},
+    antecedentesPersonales:{},
+    observaciones:{}
   }
 }

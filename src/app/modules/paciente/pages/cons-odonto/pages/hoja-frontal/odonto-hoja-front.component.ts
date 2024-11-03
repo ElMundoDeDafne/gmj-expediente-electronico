@@ -101,14 +101,15 @@ setDisabledState?(isDisabled: boolean): void {
         this.form.apellidoPaterno = result.apPaterno.toUpperCase();
         this.form.apellidoMaterno = result.apMaterno.toUpperCase();
         this.nombres=result.nombres.split(' ')[0]+' '+(result.nombres.split(' ')[1]===null || result.nombres.split(' ')[1]===undefined?'':result.nombres.split(' ')[1]);
+        const [nombreUno,nombreDos] = result.nombres.split(' ');
         this.form.nombrePropio1 = this.nombres.toUpperCase();
         this.form.fechaNacimiento = result.fechaNacimiento;
         this.form.motivoConsulta = result.motivoConsultaOdonto.toUpperCase();
         this.telefono = result.telefono;
         this.localidad = result.localidad.toUpperCase();
         this.form.fechaUltimoExMedico = result.fechaUltimoExMedico;
-        this.hojaFrontalEsto.hojaFrontalOdonto.nombreUno = result.nombres.split(' ')[0].trimStart().toUpperCase();
-        this.hojaFrontalEsto.hojaFrontalOdonto.nombreDos = result.nombres.split(' ')[1].trimStart().toUpperCase();
+        this.hojaFrontalEsto.hojaFrontalOdonto.nombreUno = nombreUno.toUpperCase();
+        this.hojaFrontalEsto.hojaFrontalOdonto.nombreDos = nombreDos.toUpperCase();
         this.hojaFrontalEsto.hojaFrontalOdonto.motivoConsulta = result.motivoConsultaOdonto.toUpperCase();
         this.hojaFrontalEsto.hojaFrontalOdonto.edad = result.edad;
         this.hojaFrontalEsto.hojaFrontalOdonto.sexo = result.sexo;

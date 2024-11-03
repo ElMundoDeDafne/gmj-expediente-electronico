@@ -6,6 +6,7 @@ import { setDefaultResultOrder } from 'dns';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { debug } from 'console';
+import { Utilerias } from '../../../../utils/utilerias';
 
 @Component({
   selector: 'app-busqueda-paciente',
@@ -25,6 +26,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
     },0);
 
     this.loadData();
+    this.utils = new Utilerias();
   }
   @ViewChild('folioRadioButton',{static:false}) folioRB! : ElementRef<HTMLInputElement> ;
   @Input() isConfirmed! : boolean;
@@ -38,6 +40,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   selectedPatientId: number | null = null;
   returnedArray!: IBusquedaPacientes[];
   contentArray: IBusquedaPacientes[] = [];
+  utils! : Utilerias;
 
   ngOnInit(): void {
     //this.contentArray = this.data;

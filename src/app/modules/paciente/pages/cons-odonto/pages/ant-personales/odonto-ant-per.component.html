@@ -15,7 +15,7 @@
           <input
             type="text"
             (input)="utils.convertirAMayusculas($event)"
-            [(ngModel)]="antecEspecifico"
+            [(ngModel)]="antecPersOdont.antecedentesPersonales.enfermedadEspecifica"
           >
         </div>
 </div>
@@ -28,6 +28,7 @@
     maxLength="200"
     style="max-width: 100%;"
     rows="5"
+    [(ngModel)]="antecPersOdont.antecedentesPersonales.observaciones"
     class="form-control">
   </textarea>
 </div>

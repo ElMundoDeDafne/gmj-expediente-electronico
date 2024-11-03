@@ -1,7 +1,8 @@
 import { Component, forwardRef } from "@angular/core";
 import { Utilerias } from "../../../../../../utils/utilerias";
-import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { IConsultaEstomatologia } from "../../../../interfaces/cons-estomatologia.interface";
+import { threadId } from "worker_threads";
 
 @Component({
   selector: 'app-odonto-ant-per',
@@ -13,10 +14,26 @@ import { IConsultaEstomatologia } from "../../../../interfaces/cons-estomatologi
   }]
 })
 
-export class OdontoPerComponent {
+export class OdontoPerComponent implements ControlValueAccessor{
 
   constructor(){
     this.utils=new Utilerias();
+  }
+
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  writeValue(obj: IConsultaEstomatologia): void {
+    this.antecPersOdont = obj;
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    // throw new Error("Method not implemented.");
   }
 
   antecedentesChkbox:string[]=['Diabetico','Hipertennso','asmatico','vih/sida','tuberculoso','cardiopata','quirurgico','alergias','hepatitis','hemofilico','cardiovasculares','otros'];
@@ -25,6 +42,7 @@ export class OdontoPerComponent {
   antecEspecifico!:string;
   utils:Utilerias;
   antecPersOdont! : IConsultaEstomatologia;
+
 
   contieneOtros(sel:string[]):boolean {
     return sel.some(s=>s.toLowerCase() === 'otros');
@@ -37,10 +55,12 @@ export class OdontoPerComponent {
     // Agrega la opción seleccionada o quita la deseleccionada del array
     if (isChecked) {
       this.selecciones.push(opcion);
+      this.antecPersOdont.antecedentesPersonales.enfermedades = this.selecciones;
     } else {
       const index = this.selecciones.indexOf(opcion);
       if (index > -1) {
         this.selecciones.splice(index, 1); // Elimina el elemento del array
+        this.antecPersOdont.antecedentesPersonales.enfermedades = this.selecciones;
       }
     }
   }
