@@ -34,6 +34,9 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   data : IBusquedaPacientes[] = [];
   filteredData : IBusquedaPacientes[] = [];
   searchTerm : string = ''; //termino de busqueda
+  headers : string[] = ['','Folio','Nombre(s)','Ap. Paterno','Ap. Materno','CURP','Localidad','Edad','Especialidad','Medico Tratante','Ultima Visita'];
+  radios : string[] = ['Folio','Nombre','Localidad','CURP','Medico tratante','Especialidad'];
+
   option : string = ''; //opcion para busqueda
   seleccion! : IBusquedaPacientes ; //opcion seleccionada
   sinResultados:boolean=false;
@@ -103,9 +106,10 @@ filterDataByCriteria(option:string,criteria:string):void{
     (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = 'Seleccione una opcion';
     return;
   } else {
-    if(criteria===''){
+    if(criteria.trim()===''){
       this.filteredData = this.data;
-       this.returnedArray = this.filteredData.slice(0,5);
+      this.returnedArray = this.filteredData.slice(0,5);
+      (<HTMLInputElement> document.getElementById('criterioBusquedaTexto')).innerHTML = 's';
     } else {
       const searchTermLower = criteria.toLowerCase().trim();
       if(option === 'folio') {
