@@ -11,10 +11,19 @@ export class Utilerias{
   libro! : XLSX.WorkBook;
 
   generarExcelPxs(datos : IBusquedaPacientes[]) : void {
+      const now = new Date();
+      const year = now.getFullYear();
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const nombre = `${year}${day}${month}${hours}${minutes}${seconds}.xlsx`;
+
       this.hojaExcel = XLSX.utils.json_to_sheet(datos);
       this.libro = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(this.libro,this.hojaExcel,'Datos');
-      XLSX.writeFile(this.libro,'datos.xlsx');
+      XLSX.writeFile(this.libro,nombre);
   }
 
   convertirAMayusculas(event: Event): void {

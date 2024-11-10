@@ -81,6 +81,11 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     // this.alertBootstrap.nativeElement.hidden=false;
   }
 
+  generarFolio() : string {
+
+    return '';
+  }
+
   ocupacionesJson :any[]=[];
 
   derechoHabienciaOpciones : string[] = ["IMSS","ISSSTE","PEMEX","OTRO"];

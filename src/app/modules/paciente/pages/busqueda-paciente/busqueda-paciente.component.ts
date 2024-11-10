@@ -100,16 +100,16 @@ onRadioChange(resultado: IBusquedaPacientes): void {
  */
 filterDataByCriteria(option:string,criteria:string):void{
   (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
-        this.filteredData = this.data;
+      this.filteredData = this.data;
       this.returnedArray = this.filteredData.slice(0,5);
   if(option === '') {
     (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = 'Seleccione una opcion';
     return;
   } else {
     if(criteria.trim()===''){
+      (<HTMLInputElement> document.getElementById('criterioBusquedaTexto')).innerHTML = '';
       this.filteredData = this.data;
       this.returnedArray = this.filteredData.slice(0,5);
-      (<HTMLInputElement> document.getElementById('criterioBusquedaTexto')).innerHTML = 's';
     } else {
       const searchTermLower = criteria.toLowerCase().trim();
       if(option === 'folio') {
