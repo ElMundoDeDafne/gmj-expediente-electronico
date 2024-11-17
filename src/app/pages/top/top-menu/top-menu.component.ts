@@ -16,6 +16,8 @@ constructor(private alertas:AlertGeneratorService){}
   }
 
   nombreApp : string = ConstantesGenerales.NOMBRE_APP;
+  usuario : string = "DR. NOM01 NOM02 APPMAT APPPAT";
+
   public listaMenus:Menu[]=[
     {
       nombreMenu:'Nueva Consulta',
