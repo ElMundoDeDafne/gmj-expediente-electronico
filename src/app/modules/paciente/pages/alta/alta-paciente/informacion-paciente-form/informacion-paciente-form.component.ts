@@ -49,12 +49,18 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
   ocupacionSeleccionada : string = '';
   bsValue : Date = new Date();
   utils:Utilerias;
+  folioPaciente : string = '';
 
   // @ViewChild('alertBootstrap')
   // alertBootstrap!:ElementRef<HTMLElement>;
 
   informacionPacienteForm : FormGroup;
   mensajeExito:string='';
+
+  generarFolioPaciente(){
+    this.folioPaciente = this.utils.generarFolioPaciente('CG');
+    this.informacionPx.folio = this.folioPaciente;
+  }
 
   ngAfterViewInit(): void {
     // throw new Error('Method not implemented.');

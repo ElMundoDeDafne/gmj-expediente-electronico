@@ -65,4 +65,38 @@ export class Utilerias{
 
    return `${year}-${month}-${day}T08:00:00`;
   }
+
+  generarFolioPaciente(prefijo : 'CG'|'CD'|'CE'):string {
+    const validPrefixes = ['CG', 'CD', 'CE'];
+    if (!validPrefixes.includes(prefijo)) {
+      throw new Error('Prefijo no válido. Use "CG", "CD" o "CE".');
+    }
+      // Determinar el prefijo numérico según el tipo
+  let numericPrefix: string;
+  switch (prefijo) {
+    case 'CG':
+      numericPrefix = '100';
+      break;
+    case 'CD':
+      numericPrefix = '300';
+      break;
+    case 'CE':
+      numericPrefix = '900';
+      break;
+  }
+
+    // Generar 4 caracteres numéricos aleatorios
+    const randomString = Array(4)
+    .fill(0)
+    .map(() => Math.floor(Math.random() * 10)) // Números del 0 al 9
+    .join('');
+
+    // Concatenar el prefijo, el número base y la cadena aleatoria
+    const numVerificador : number = this.getRandomNumber();
+  return `${numericPrefix}${randomString}-${numVerificador.toString()}`;
+  }
+
+  private getRandomNumber(): number {
+    return Math.floor(Math.random() * 9) + 1; // Números del 1 al 9
+  }
 }
