@@ -34,7 +34,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   data : IBusquedaPacientes[] = [];
   filteredData : IBusquedaPacientes[] = [];
   searchTerm : string = ''; //termino de busqueda
-  headers : string[] = ['','Folio','Nombre(s)','Ap. Paterno','Ap. Materno','CURP','Localidad','Edad','Especialidad','Medico Tratante','Ultima Visita'];
+  headers : string[] = ['','Folio','Nombre(s)','Ap. Paterno','Ap. Materno','CURP','Localidad','Edad','Especialidad','Medico Tratante','Ultima Visita','Receta'];
   radios : string[] = ['Folio','Nombre','Localidad','CURP','Medico tratante','Especialidad'];
 
   option : string = ''; //opcion para busqueda

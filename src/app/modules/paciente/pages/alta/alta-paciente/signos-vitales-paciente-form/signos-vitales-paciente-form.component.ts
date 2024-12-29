@@ -1,6 +1,7 @@
 import { Component, forwardRef } from '@angular/core';
 import { ISignosVitales } from '../../../../interfaces/signos-vitales-paciente.interface';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Utilerias } from '../../../../../../utils/utilerias';
 
 @Component({
   selector: 'app-signos-vitales-paciente-form',
@@ -13,9 +14,27 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   }]
 })
 export class SignosVitalesPacienteFormComponent implements ControlValueAccessor{
-  signosVitales: ISignosVitales={};
+
+  constructor(){
+    this.utils = new Utilerias();
+  }
+
+
+  signosVitales: ISignosVitales={
+    peso : 0,
+    talla : 0
+  };
+  utils : Utilerias;
+  imcCalculado : number = this.calcularIMC();
   onChange: any = () => {};
   onTouched: any = () => {};
+
+  calcularIMC() : number {
+    let peso : number = this.signosVitales.peso!;
+    //let imc :number = this.utils.calcularIMC(this.signosVitales.talla!, this.signosVitales.peso!);
+    //this.signosVitales.imc = imc;
+    return 0;
+  }
 
   writeValue(obj: ISignosVitales): void {
     this.signosVitales = obj;
