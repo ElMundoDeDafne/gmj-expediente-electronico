@@ -128,7 +128,7 @@ export class AltaPacienteComponent {
       exploracion:'',
       hallazgos:'',
       recomendaciones:'',
-      impresionDiagnostica:[],
+      impresionDiagnostica:'',
       realizoNM:''
     },
     notaEnfermeriaPx: {

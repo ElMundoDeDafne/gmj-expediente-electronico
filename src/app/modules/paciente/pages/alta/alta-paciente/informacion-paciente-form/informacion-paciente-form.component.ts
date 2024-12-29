@@ -49,12 +49,18 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
   ocupacionSeleccionada : string = '';
   bsValue : Date = new Date();
   utils:Utilerias;
+  folioPaciente : string = '';
 
   // @ViewChild('alertBootstrap')
   // alertBootstrap!:ElementRef<HTMLElement>;
 
   informacionPacienteForm : FormGroup;
   mensajeExito:string='';
+
+  generarFolioPaciente(){
+    this.folioPaciente = this.utils.generarFolioPaciente('CG');
+    this.informacionPx.folio = this.folioPaciente;
+  }
 
   ngAfterViewInit(): void {
     // throw new Error('Method not implemented.');
@@ -63,11 +69,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
-    this.servCatOcupaciones
-    .getData()
-    .subscribe((data:any) => {
-     this.ocupacionesJson =data;
-    });
+    this.cargarOcupaciones();
    }
 
   asignarPicker(picker: any) {
@@ -90,6 +92,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
 
   derechoHabienciaOpciones : string[] = ["IMSS","ISSSTE","PEMEX","OTRO"];
   ocupaciones:string[] = ["MECANICO","CAMPESINO","DENTISTA","MEDICO GENERAL"];
+  religiones:string[] = ["Catolico"]; //definir mas religiones aqui
   informacionPx:IInfoPaciente={
     apellidoPaterno:'',
     apellidoMaterno:'',
@@ -173,6 +176,17 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
       // this.informacionPx.curp = inputElement.value.toUpperCase();
       // Actualizar el valor del campo de entrada con el texto en mayúsculas
       // inputElement.value = this.informacionPx.curp;
+    }
+  }
+
+  async cargarOcupaciones() {
+    try {
+      this.servCatOcupaciones
+      .getData()
+      .then((data: any) => this.ocupacionesJson = data)
+      .catch((error) => console.error(error));
+    } catch(err) {
+      console.error('Error: '+err);
     }
   }
 

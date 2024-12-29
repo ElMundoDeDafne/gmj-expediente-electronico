@@ -4,11 +4,12 @@
     <textarea type="number"
     name="resPreviosLab"
     class="form-control"
-    size="15"
-    maxLength="15"
+    size="80"
+    maxLength="300"
     style="max-width: 100%;"
-    cols="40"
-    rows="5"
+    cols="80"
+    rows="7"
+    [(ngModel)]="notasMedicasPx.resultados"
     ></textarea>
   </div>
 </div>
@@ -18,11 +19,11 @@
     <textarea type="number"
     name="analisisYComent"
     class="form-control"
-    size="15"
-    maxLength="15"
+    size="80"
+    maxLength="300"
     style="max-width: 100%;"
-    cols="40"
-    rows="5"
+    cols="80"
+    rows="7"
     [(ngModel)]="notasMedicasPx.analisisYComentarios"
     ></textarea>
   </div>
@@ -33,11 +34,11 @@
     <textarea type="number"
     name="impDiagnost"
     class="form-control"
-    size="15"
-    maxLength="15"
+    size="80"
+    maxLength="300"
     style="max-width: 100%;"
-    cols="40"
-    rows="5"
+    cols="80"
+    rows="7"
     [(ngModel)]="notasMedicasPx.impresionDiagnostica"></textarea>
   </div>
 </div>
@@ -47,11 +48,11 @@
     <textarea type="number"
     name="tratamiento"
     class="form-control"
-    size="15"
-    maxLength="15"
+    size="80"
+    maxLength="300"
     style="max-width: 100%;"
-    cols="40"
-    rows="5"
+    cols="80"
+    rows="7"
     [(ngModel)]="notasMedicasPx.tratamiento"
     ></textarea>
   </div>
@@ -76,5 +77,10 @@
     maxLength="15"
     style="max-width: 100%;"
     [(ngModel)]="notasMedicasPx.cedulaProfNM">
+  </div>
+  <div class="row form-div-padding">
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="generarReceta()">Generar receta</button>
+    </div>
   </div>
 </div>
