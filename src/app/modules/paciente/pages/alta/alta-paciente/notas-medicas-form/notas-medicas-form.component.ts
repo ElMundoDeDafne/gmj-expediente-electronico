@@ -17,6 +17,10 @@ export class NotasMedicasFormComponent implements ControlValueAccessor{
   onChange: any = () => {};
   onTouched: any = () => {};
 
+  generarReceta():void{
+    console.log('Generar receta clic');
+  }
+
   writeValue(obj: INotaMedicaPac): void {
     this.notasMedicasPx = obj;
   }

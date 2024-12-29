@@ -86,7 +86,7 @@ export class Utilerias{
   }
 
     // Generar 4 caracteres numéricos aleatorios
-    const randomString = Array(4)
+    const randomString = Array(7)
     .fill(0)
     .map(() => Math.floor(Math.random() * 10)) // Números del 0 al 9
     .join('');

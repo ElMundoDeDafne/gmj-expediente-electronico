@@ -3,12 +3,12 @@ export interface INotaMedicaPac {
   fechaYHora?:Date;
   exploracion?:string;
   hallazgos?:string;
-  diagnosticos?:string[];
+  diagnosticos?:string;
   recomendaciones?:string;
-  tratamientos?:string[];
+  tratamientos?:string;
   cedulaProfNM?:string;
   realizoNM?:string;
-  impresionDiagnostica?:string[];
+  impresionDiagnostica?:string;
   resultados?:string;
   analisisYComentarios?:string;
   tratamiento?:string;
