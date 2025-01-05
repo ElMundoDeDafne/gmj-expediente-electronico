@@ -10,6 +10,12 @@ export class Utilerias{
   hojaExcel! : XLSX.WorkSheet;
   libro! : XLSX.WorkBook;
 
+  calcularIMC(talla : number , peso : number) : number {
+    let imcCalculado : number = 0;
+    imcCalculado = peso / Math.pow(talla,2);
+    return imcCalculado;
+  }
+
   generarExcelPxs(datos : IBusquedaPacientes[]) : void {
       const now = new Date();
       const year = now.getFullYear();

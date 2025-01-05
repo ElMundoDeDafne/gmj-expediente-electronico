@@ -65,6 +65,61 @@
       >
       <!-- <label>FPM</label> -->
     </div>
+
+    <div class="row form-div-padding">
+      <div class="col">
+        <label>Tipo de sangre</label>
+        <input type="number"
+        name="temperatura"
+        class="form-control"
+        size="15"
+        maxLength="15"
+        style="max-width: 100px;"
+        [(ngModel)]="signosVitales.temperatura"
+        >
+      </div>
+
+      <div class="col">
+        <label>Factor RH</label>
+        <!--Cambiar esto por un select-->
+        <input type="number"
+        name="temperatura"
+        class="form-control"
+        size="15"
+        maxLength="15"
+        style="max-width: 100px;"
+        [(ngModel)]="signosVitales.temperatura"
+        >
+      </div>
+
+      <div class="col">
+        <label>Peso</label>
+        <input type="number"
+        name="peso"
+        class="form-control"
+        size="15"
+        maxLength="3"
+        style="max-width: 100px;"
+        [(ngModel)]="signosVitales.peso"
+        >
+      </div>
+
+      <div class="col">
+        <label>IMC (calculado)</label>
+        <input type="number"
+        name="imcPx"
+        class="form-control"
+        size="15"
+        maxLength="15"
+        style="max-width: 100px;"
+        disabled
+        [(ngModel)]="signosVitales.peso"
+        >
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+
     <div class="col">
       <label>¿Ayuno?</label><br>
       <div class="form-check form-check-inline">

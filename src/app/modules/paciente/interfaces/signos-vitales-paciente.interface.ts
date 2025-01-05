@@ -12,4 +12,5 @@ export interface ISignosVitales{
     padecimientoActual?:string;
     peso?:number;
     talla?:number;
+    imc?:number;
 }
