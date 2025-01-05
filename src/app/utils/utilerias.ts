@@ -46,11 +46,33 @@ export class Utilerias{
     return `${day}/${month}/${year}`;
 }
 
+  /* Function that receives an Date object and returns a string in format dd/MM/yyyy hh:mm AM/PM*/
+  dateToStringWithTimeAmPm(date: Date): string {
+    const day = String(date.getDate()).padStart(2, '0'); // Obtiene el día y asegura que tenga dos dígitos
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Obtiene el mes (0-11) y lo convierte a (1-12)
+    const year = date.getFullYear(); // Obtiene el año
+    const hours = String(date.getHours()).padStart(2, '0'); // Obtiene las horas y asegura que tenga dos dígitos
+    const minutes = String(date.getMinutes()).padStart(2, '0'); // Obtiene los minutos y asegura que tenga dos dígitos
+    const ampm = hours >= '12' ? 'PM' : 'AM'; // Determina si es AM o PM
+    return `${day}/${month}/${year} ${hours}:${minutes} ${ampm}`; // Devuelve la fecha en el formato dd/MM/yyyy hh:mm AM/PM
+  }
+
   dateToString(date: Date): string {
     const day = String(date.getDate()).padStart(2, '0'); // Obtiene el día y asegura que tenga dos dígitos
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Obtiene el mes (0-11) y lo convierte a (1-12)
     const year = date.getFullYear(); // Obtiene el año
     return `${day}/${month}/${year}`; // Devuelve la fecha en el formato dd/MM/yyyy
+  }
+
+  /** Function that gets an object Date and returns a string in format dd/MM/yyyy hh:mm:ss */
+  dateToStringWithTime(date: Date): string {
+    const day = String(date.getDate()).padStart(2, '0'); // Obtiene el día y asegura que tenga dos dígitos
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Obtiene el mes (0-11) y lo convierte a (1-12)
+    const year = date.getFullYear(); // Obtiene el año
+    const hours = String(date.getHours()).padStart(2, '0'); // Obtiene las horas y asegura que tenga dos dígitos
+    const minutes = String(date.getMinutes()).padStart(2, '0'); // Obtiene los minutos y asegura que tenga dos dígitos
+    const seconds = String(date.getSeconds()).padStart(2, '0'); // Obtiene los segundos y asegura que tenga dos dígitos
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`; // Devuelve la fecha en el formato dd/MM/yyyy hh:mm:ss
   }
 
   getLastMonday(date: Date): string {
