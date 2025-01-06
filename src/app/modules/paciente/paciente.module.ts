@@ -98,7 +98,7 @@ export const MY_FORMATS = {
     OdontoHojaFrontComponent,
     OdontoHFamComponent,
     OdontoPerComponent,
-    PaginadorComponent,
+    PaginadorComponent
   ],
   imports: [
     CommonModule,FormsModule,MatTabsModule,MatStepperModule,
@@ -114,7 +114,8 @@ export const MY_FORMATS = {
   providers: [
     AlertConfig, BsDatepickerConfig,BsModalService,AlertGeneratorService,PaginationConfig,
     { provide: MAT_DATE_FORMATS, useValue: 'en-GB' },
-  ]
+  ],
+  bootstrap:[NotasMedicasFormComponent]
 })
 export class PacienteModule {
   constructor( private bsLocaleService: BsLocaleService){

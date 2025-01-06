@@ -1,10 +1,11 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { INotaMedicaPac } from '../../../../interfaces/nota-medica-paciente.interface';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IRecetaRequest } from '../../../../interfaces/request/receta-request.interface';
 import { RecetaMedicaService } from '../../../../../../services/receta-medica-px.service';
 import { IRecetaResponse } from '../../../../interfaces/response/receta-response.interface';
 import { Utilerias } from '../../../../../../utils/utilerias';
+import { IInfoPaciente } from '../../../../interfaces/paciente.interface';
 
 @Component({
   selector: 'app-notas-medicas-form',
@@ -17,6 +18,9 @@ import { Utilerias } from '../../../../../../utils/utilerias';
   }]
 })
 export class NotasMedicasFormComponent implements ControlValueAccessor{
+
+  @Input() infoPaciente : IInfoPaciente = {};
+
   utils : Utilerias = new Utilerias();
   notasMedicasPx:INotaMedicaPac={};
   recetaRequest : IRecetaRequest = {
