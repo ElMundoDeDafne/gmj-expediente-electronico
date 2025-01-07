@@ -72,7 +72,7 @@ export class NotasMedicasFormComponent implements ControlValueAccessor{
     this.recetaRequest.parametros.push('FECHA_IMPRESION_REC='+this.utils.dateToStringWithTimeAmPm(new Date()));
     this.recetaRequest.parametros.push('NOMBRE_MEDICO='+this.notasMedicasPx.realizoNM);
     this.recetaRequest.parametros.push('CED_PROF='+this.notasMedicasPx.cedulaProfNM);
-    this.recetaRequest.parametros.push('FOLIO_P='+'1001324657-1');
+    this.recetaRequest.parametros.push('FOLIO_P='+this.infoPaciente.informacionPx.folio);
     this.recetaRequest.parametros.push('EDAD_PACIENTE='+this.infoPaciente.informacionPx.edad);
     this.recetaRequest.parametros.push('PX_TRATAMIENTO='+this.notasMedicasPx.tratamiento);
 
