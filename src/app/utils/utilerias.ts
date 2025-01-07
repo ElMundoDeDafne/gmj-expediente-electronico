@@ -1,5 +1,6 @@
 import { IBusquedaPacientes } from "../modules/paciente/interfaces/busqueda/busqueda-pacientes.interface";
 import * as XLSX from "xlsx";
+import { IInfoPaciente } from '../modules/paciente/interfaces/paciente.interface';
 
 /**
  * Clase con distintos metodos de utileria para el sistema
@@ -9,6 +10,11 @@ export class Utilerias{
 
   hojaExcel! : XLSX.WorkSheet;
   libro! : XLSX.WorkBook;
+
+  obtenerNombreCompeto(infoPaciente : IInfoPaciente) : string {
+    const nombreCompleto : string = infoPaciente.nombrePropio1 + ' ' + (infoPaciente.nombrePropio2 ? infoPaciente.nombrePropio2 : "") + ' ' + infoPaciente.apellidoPaterno + ' ' + infoPaciente.apellidoMaterno;
+    return nombreCompleto;
+  }
 
   calcularIMC(talla : number , peso : number) : number {
     let imcCalculado : number = 0;

@@ -66,14 +66,14 @@ export class NotasMedicasFormComponent implements ControlValueAccessor{
       this.recetaRequest.parametros = [];
     }
     this.recetaRequest.codigo = 'RECETA_MEDICA';
-    this.recetaRequest.parametros.push('NOMBRE_PACIENTE='+this.infoPaciente.informacionPx.nombrePropio1);
+    this.recetaRequest.parametros.push('NOMBRE_PACIENTE='+this.utils.obtenerNombreCompeto(this.infoPaciente.informacionPx));
     this.recetaRequest.parametros.push('DIAGNOSTICO_PACIENTE='+this.notasMedicasPx.impresionDiagnostica);
     this.recetaRequest.parametros.push('NOTAS_RECETA_OBSERV='+this.notasMedicasPx.analisisYComentarios);
     this.recetaRequest.parametros.push('FECHA_IMPRESION_REC='+this.utils.dateToStringWithTimeAmPm(new Date()));
     this.recetaRequest.parametros.push('NOMBRE_MEDICO='+this.notasMedicasPx.realizoNM);
     this.recetaRequest.parametros.push('CED_PROF='+this.notasMedicasPx.cedulaProfNM);
     this.recetaRequest.parametros.push('FOLIO_P='+'1001324657-1');
-    this.recetaRequest.parametros.push('EDAD_PACIENTE='+'7');
+    this.recetaRequest.parametros.push('EDAD_PACIENTE='+this.infoPaciente.informacionPx.edad);
     this.recetaRequest.parametros.push('PX_TRATAMIENTO='+this.notasMedicasPx.tratamiento);
 
     this.recetaMedicaService.registrarObjetoReceta(this.recetaRequest).subscribe(
