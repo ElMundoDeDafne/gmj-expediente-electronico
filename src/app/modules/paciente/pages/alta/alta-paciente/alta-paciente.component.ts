@@ -1,5 +1,5 @@
 import { Component,ViewEncapsulation } from '@angular/core';
-import { IInfoPaciente, IPaciente } from '../../../interfaces/paciente.interface';
+import { IHojaFrontal, IInfoPaciente, IPaciente } from '../../../interfaces/paciente.interface';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
@@ -28,6 +28,7 @@ export class AltaPacienteComponent {
   };
 
   x : string | null = null;
+  hmInfoPx : Map<string,string> = new Map<string,string>();
 
   recuperaDatoTemporal(event:any):void{
     const tab : string = event.tab.textLabel;
@@ -37,11 +38,15 @@ export class AltaPacienteComponent {
       }
   }
 
-  infoPaciente : IInfoPaciente = {};
+  infoPaciente : IHojaFrontal = {
+    informacionPx: {},
+    domicilioPaciente:{},
+    datosContacto:{}
+  };
 
   constructor(){  }
 
-  public paciente : IPaciente = {
+  paciente : IPaciente = {
     hojaFrontal: {
       informacionPx: {},
       domicilioPaciente:{},

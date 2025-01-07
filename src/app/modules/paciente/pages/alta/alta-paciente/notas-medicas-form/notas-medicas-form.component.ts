@@ -5,7 +5,7 @@ import { IRecetaRequest } from '../../../../interfaces/request/receta-request.in
 import { RecetaMedicaService } from '../../../../../../services/receta-medica-px.service';
 import { IRecetaResponse } from '../../../../interfaces/response/receta-response.interface';
 import { Utilerias } from '../../../../../../utils/utilerias';
-import { IInfoPaciente } from '../../../../interfaces/paciente.interface';
+import { IHojaFrontal, IInfoPaciente, IPaciente } from '../../../../interfaces/paciente.interface';
 
 @Component({
   selector: 'app-notas-medicas-form',
@@ -19,7 +19,11 @@ import { IInfoPaciente } from '../../../../interfaces/paciente.interface';
 })
 export class NotasMedicasFormComponent implements ControlValueAccessor{
 
-  @Input() infoPaciente : IInfoPaciente = {};
+  @Input() infoPaciente : IHojaFrontal = {
+    informacionPx: {},
+    domicilioPaciente:{},
+    datosContacto:{}
+  };
 
   utils : Utilerias = new Utilerias();
   notasMedicasPx:INotaMedicaPac={};
@@ -62,7 +66,7 @@ export class NotasMedicasFormComponent implements ControlValueAccessor{
       this.recetaRequest.parametros = [];
     }
     this.recetaRequest.codigo = 'RECETA_MEDICA';
-    this.recetaRequest.parametros.push('NOMBRE_PACIENTE='+'Dafne Castillo Torres');
+    this.recetaRequest.parametros.push('NOMBRE_PACIENTE='+this.infoPaciente.informacionPx.nombrePropio1);
     this.recetaRequest.parametros.push('DIAGNOSTICO_PACIENTE='+this.notasMedicasPx.impresionDiagnostica);
     this.recetaRequest.parametros.push('NOTAS_RECETA_OBSERV='+this.notasMedicasPx.analisisYComentarios);
     this.recetaRequest.parametros.push('FECHA_IMPRESION_REC='+this.utils.dateToStringWithTimeAmPm(new Date()));
