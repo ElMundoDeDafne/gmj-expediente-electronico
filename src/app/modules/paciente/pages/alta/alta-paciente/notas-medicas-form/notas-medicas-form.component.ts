@@ -6,6 +6,7 @@ import { RecetaMedicaService } from '../../../../../../services/receta-medica-px
 import { IRecetaResponse } from '../../../../interfaces/response/receta-response.interface';
 import { Utilerias } from '../../../../../../utils/utilerias';
 import { IHojaFrontal, IInfoPaciente, IPaciente } from '../../../../interfaces/paciente.interface';
+import { AlertGeneratorService } from '../../../../../../pages/alerts/alert-generator/alert-generator.service';
 
 @Component({
   selector: 'app-notas-medicas-form',
@@ -25,6 +26,7 @@ export class NotasMedicasFormComponent implements ControlValueAccessor{
     datosContacto:{}
   };
 
+
   utils : Utilerias = new Utilerias();
   notasMedicasPx:INotaMedicaPac={};
   recetaRequest : IRecetaRequest = {
@@ -40,11 +42,18 @@ export class NotasMedicasFormComponent implements ControlValueAccessor{
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  constructor(private recetaMedicaService : RecetaMedicaService) { }
+  constructor(private recetaMedicaService : RecetaMedicaService,private alertas:AlertGeneratorService) { }
 
   generarReceta():void{
     console.log('Generar receta clic');
+    //validamos los datos obligatorios para la receta
+
+    if (!this.notasMedicasPx.impresionDiagnostica || !this.notasMedicasPx.analisisYComentarios || !this.notasMedicasPx.realizoNM || !this.notasMedicasPx.cedulaProfNM || !this.infoPaciente.informacionPx.folio || !this.infoPaciente.informacionPx.edad || !this.notasMedicasPx.tratamiento) {
+      this.alertas.ventanaError('Faltan datos obligatorios para generar la receta.');
+      return;
+    }
     this.generarObjetoRequestReceta();
+
   }
 
   writeValue(obj: INotaMedicaPac): void {
@@ -60,7 +69,6 @@ export class NotasMedicasFormComponent implements ControlValueAccessor{
   }
 
   generarObjetoRequestReceta():void{
-
     if(this.recetaRequest != null) {
       this.recetaRequest.codigo = '';
       this.recetaRequest.parametros = [];

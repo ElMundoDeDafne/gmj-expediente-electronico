@@ -56,4 +56,13 @@ export class AlertGeneratorService implements OnInit{
       showConfirmButton:true
     });
   }
+
+  ventanaError(mensaje:string):void{
+    Swal.fire({
+      icon:'error',
+      title:'Error',
+      text:mensaje,
+      showConfirmButton:true
+    });
+  }
 }
