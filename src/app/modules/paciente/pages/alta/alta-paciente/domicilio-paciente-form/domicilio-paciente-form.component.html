@@ -10,15 +10,16 @@
         maxLength="5"
         style="max-width: 100%;"
         [(ngModel)]="domicilio.codigoPostal"
-        formControlName="codigoPostal">
+        formControlName="codigoPostal"
+        (keypress)="validateNumber($event)">
         <div class="text-danger" *ngIf="domicilioForm.controls['codigoPostal'].invalid && (domicilioForm.controls['codigoPostal'].dirty || domicilioForm.controls['codigoPostal'].touched)">
           <div *ngIf="domicilioForm.controls['codigoPostal'].errors?.['required']">
-            <h6>Dato obligatorio.</h6>
+        <h6>Dato obligatorio.</h6>
           </div>
         </div>
         <div class="text-danger" *ngIf="domicilioForm.controls['codigoPostal'].invalid && (domicilioForm.controls['codigoPostal'].dirty || domicilioForm.controls['codigoPostal'].touched)">
           <div *ngIf="domicilioForm.controls['codigoPostal'].errors?.['pattern']">
-            <h6>Solo numeros.</h6>
+        <h6>Solo numeros.</h6>
           </div>
         </div>
       </div>
@@ -78,7 +79,8 @@
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="domicilio.entidad"
-      formControlName="estado">
+      formControlName="estado"
+      (keypress)="utils.validateCharacter($event)">
       <div class="text-danger" *ngIf="domicilioForm.controls['estado'].invalid && (domicilioForm.controls['estado'].dirty || domicilioForm.controls['estado'].touched)">
         <div *ngIf="domicilioForm.controls['estado'].errors?.['required']">
           <h6>Dato obligatorio.</h6>

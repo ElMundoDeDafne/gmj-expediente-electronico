@@ -6,6 +6,6 @@ export class ConstantesGenerales{
   static readonly CLAVE_SINTOMAS_GENERALES:string='SINT_GEN';
   static readonly CLAVE_PIEL_FANERAS:string='PIELFAN';
   /** Endpoint para manejo de todos los microservicios a consumir */
-  static readonly BASE_API_ORQ_ENDPOINT:string ='';
+  static readonly BASE_API_ORQ_ENDPOINT:string ='http:localhost:8088/api/pacientes/v1.0/hoja';
   static readonly URL_API_REPORTES:string = 'http://localhost:8089/api/reportes/v1.0/reporte/get';
 }

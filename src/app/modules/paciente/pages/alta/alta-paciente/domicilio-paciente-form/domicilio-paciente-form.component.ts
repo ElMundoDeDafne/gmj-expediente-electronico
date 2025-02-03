@@ -14,8 +14,15 @@ import { Utilerias } from '../../../../../../utils/utilerias';
   }]
 })
 export class DomicilioPacienteFormComponent implements ControlValueAccessor{
+  validateNumber($event: KeyboardEvent) {
+    const charCode = $event.which ? $event.which : $event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      $event.preventDefault();
+    }
+  }
 
   domicilioForm : FormGroup;
+
   constructor(private formBuilder : FormBuilder){
     this.utils = new Utilerias();
     this.domicilioForm = this.formBuilder.group({

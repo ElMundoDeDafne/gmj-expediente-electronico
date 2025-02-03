@@ -39,7 +39,8 @@
     style="max-width: 100%;"
     cols="200"
     rows="5"
-    [(ngModel)]="notasMedicasPx.impresionDiagnostica"></textarea>
+    [(ngModel)]="notasMedicasPx.impresionDiagnostica"
+    (input)="utils.convertInputToUppercase($event)"></textarea>
   </div>
 </div>
 <div class="row form-div-padding">

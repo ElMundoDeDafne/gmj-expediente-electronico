@@ -11,6 +11,25 @@ export class Utilerias{
   hojaExcel! : XLSX.WorkSheet;
   libro! : XLSX.WorkBook;
 
+  /**
+   * Function to accept only characters (this also excludes numbers and special characters) given a KeyboardEvent
+   * @param $event KeyboardEvent
+   *
+  */
+  validateCharacter($event: KeyboardEvent) {
+    const charCode = $event.which ? $event.which : $event.keyCode;
+    if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+      $event.preventDefault();
+    }
+  }
+
+  validateNumber($event: KeyboardEvent) {
+    const charCode = $event.which ? $event.which : $event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      $event.preventDefault();
+    }
+  }
+
   obtenerNombreCompeto(infoPaciente : IInfoPaciente) : string {
     const nombreCompleto : string = infoPaciente.nombrePropio1 + ' ' + (infoPaciente.nombrePropio2 ? infoPaciente.nombrePropio2 : "") + ' ' + infoPaciente.apellidoPaterno + ' ' + infoPaciente.apellidoMaterno;
     return nombreCompleto;
@@ -100,6 +119,14 @@ export class Utilerias{
    return `${year}-${month}-${day}T08:00:00`;
   }
 
+  /**
+   * Given a KeyboardEvent object, this function will convert the input to uppercase, exclude special characters
+  */
+  convertInputToUppercase(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    input.value = input.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+  }
+
   generarFolioPaciente(prefijo : 'CG'|'CD'|'CE'):string {
     const validPrefixes = ['CG', 'CD', 'CE'];
     if (!validPrefixes.includes(prefijo)) {
@@ -133,4 +160,6 @@ export class Utilerias{
   private getRandomNumber(): number {
     return Math.floor(Math.random() * 9) + 1; // Números del 1 al 9
   }
+
+
 }

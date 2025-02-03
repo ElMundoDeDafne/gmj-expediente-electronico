@@ -49,7 +49,8 @@ export class NotasMedicasFormComponent implements ControlValueAccessor{
     //validamos los datos obligatorios para la receta
 
     if (!this.notasMedicasPx.impresionDiagnostica || !this.notasMedicasPx.analisisYComentarios || !this.notasMedicasPx.realizoNM || !this.notasMedicasPx.cedulaProfNM || !this.infoPaciente.informacionPx.folio || !this.infoPaciente.informacionPx.edad || !this.notasMedicasPx.tratamiento) {
-      this.alertas.ventanaError('Faltan datos obligatorios para generar la receta.');
+      let html : string = '<p>Falta capturar datos obligatorios, por favor revise: </p> <ul><li>Nombre de paciente</li><li>Edad del paciente</li><li>Datos en nota medica</li></ul>';
+      this.alertas.ventanaErrorHTML(html);
       return;
     }
     this.generarObjetoRequestReceta();
