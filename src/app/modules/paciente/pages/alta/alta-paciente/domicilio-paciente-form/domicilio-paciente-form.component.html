@@ -96,6 +96,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
+      (keypress)="utils.validateCharacter($event)"
       [(ngModel)]="domicilio.localidad"
       formControlName="localidad">
       <div class="text-danger" *ngIf="domicilioForm.controls['localidad'].invalid && (domicilioForm.controls['localidad'].dirty || domicilioForm.controls['localidad'].touched)">
@@ -114,6 +115,7 @@
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="domicilio.municipio"
+      (keypress)="utils.validateCharacter($event)"
       formControlName="municipio">
       <div class="text-danger" *ngIf="domicilioForm.controls['municipio'].invalid && (domicilioForm.controls['municipio'].dirty || domicilioForm.controls['municipio'].touched)">
         <div *ngIf="domicilioForm.controls['municipio'].errors?.['required']">
