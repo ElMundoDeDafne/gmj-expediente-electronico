@@ -1,7 +1,7 @@
 /**
  * Interface que contiene los atributos de la respuesta de ms frontal
  */
-export interface IHojaFrontalRequest {
+export interface IHojaFrontalResponse {
   mensajes:string[];
   exito:boolean;
 }

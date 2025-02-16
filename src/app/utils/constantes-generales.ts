@@ -8,7 +8,7 @@ export class ConstantesGenerales{
   /** Endpoint para manejo de todos los microservicios a consumir */
   static readonly BASE_API_ORQ_ENDPOINT:string ='http:localhost:8088/api/pacientes/v1.0/hoja';
   static readonly URL_API_REPORTES:string = 'http://localhost:8089/api/reportes/v1.0/reporte/get';
-  static readonly URL_API_FRONTAL:string = 'http://localhost:8089/api/frontal/v1.0/registro/get';
+  static readonly URL_API_FRONTAL:string = 'http://localhost:8088/api/frontal/v1.0/registro/get';
   static readonly URL_API_CAT_POSTAL:string = 'http://localhost:8089/api/catalogos/v1.0/postal/get';
 
 }

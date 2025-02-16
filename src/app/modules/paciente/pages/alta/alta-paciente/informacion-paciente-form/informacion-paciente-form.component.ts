@@ -6,6 +6,7 @@ import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Valida
 import { CatOcupacionesService } from '../../../../../../services/cat-ocupaciones.service';
 import { AlertGeneratorService } from '../../../../../../pages/alerts/alert-generator/alert-generator.service';
 import { Utilerias } from '../../../../../../utils/utilerias';
+import { HojaFrontalService } from '../../../../../../services/frontal.service';
 
 @Component({
   selector: 'app-informacion-paciente-form',
@@ -20,7 +21,7 @@ import { Utilerias } from '../../../../../../utils/utilerias';
 })
 export class InformacionPacienteFormComponent implements ControlValueAccessor, OnInit,AfterViewInit{
 
-  constructor(private alertas:AlertGeneratorService,private formBuilder : FormBuilder, private servCatOcupaciones : CatOcupacionesService){
+  constructor(private hojaFrontalService : HojaFrontalService, private alertas:AlertGeneratorService,private formBuilder : FormBuilder, private servCatOcupaciones : CatOcupacionesService){
     this.informacionPacienteForm = this.formBuilder.group({
       meses:['',[Validators.min(0),Validators.max(12),Validators.pattern('^-?[0-9]+$|^RN$')]],
       edad: ['',[Validators.min(0),Validators.max(110),Validators.pattern('^-?[0-9]+$'),Validators.required]],
