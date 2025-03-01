@@ -137,6 +137,10 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     }
   }
 
+  registro():void{
+    this.hojaFrontalService.registrarObjetoReceta;
+  }
+
   handleInput(propiedad:string,event: Event) : void {
     const inputElement = event.target as HTMLInputElement;
     // alert(event);
