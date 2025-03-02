@@ -3,6 +3,8 @@ import { IHojaFrontal, IInfoPaciente, IPaciente } from '../../../interfaces/paci
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { HojaFrontalService } from '../../../../../services/frontal.service';
+import { IHojaFrontalRequest } from '../../../interfaces/request/frontal-request.interface';
 
 @Component({
   selector: 'app-alta-paciente',
@@ -44,7 +46,14 @@ export class AltaPacienteComponent {
     datosContacto:{}
   };
 
-  constructor(){  }
+  requestFrontal : IHojaFrontalRequest = {
+    informacionPx : {},
+    domicilioPaciente : {},
+    datosContacto : {},
+    historiaClinica : {}
+  }
+
+  constructor(private hojaFrontalService : HojaFrontalService){  }
 
   paciente : IPaciente = {
     hojaFrontal: {
@@ -161,6 +170,67 @@ export class AltaPacienteComponent {
       domicilio:{},
       observaciones:{}
     }
+  }
+
+  registroPaciente():void {
+    this.requestFrontal.informacionPx = this.paciente.hojaFrontal.informacionPx;
+    this.requestFrontal.domicilioPaciente = this.paciente.hojaFrontal.domicilioPaciente;
+    this.requestFrontal.datosContacto = this.paciente.hojaFrontal.datosContacto;
+    this.requestFrontal.historiaClinica = this.paciente.historiaClinica;
+
+    this.hojaFrontalService.registrarObjetoReceta(this.requestFrontal).subscribe(
+      data => {
+        console.error('Respuesta registro paciente: ',data);
+      },
+      error => {
+        console.error('Error al registrar paciente: ',error);
+      }
+    );
+    //paciente
+
+//IHojaFrontalRequest,IHojaFrontalResponse
+/**
+ *   informacionPx : IInfoPaciente;
+   domicilioPaciente : IDomicilioPaciente;
+   datosContacto : IDatosContactoPaciente;
+   historiaClinica : IHistClinica;
+ *
+ */
+
+    //this.hojaFrontalService.
+
+    /***
+     *     this.recetaRequest.codigo = 'RECETA_MEDICA';
+    this.recetaRequest.parametros.push('NOMBRE_PACIENTE='+this.utils.obtenerNombreCompeto(this.infoPaciente.informacionPx));
+    this.recetaRequest.parametros.push('DIAGNOSTICO_PACIENTE='+this.notasMedicasPx.impresionDiagnostica);
+    this.recetaRequest.parametros.push('NOTAS_RECETA_OBSERV='+this.notasMedicasPx.analisisYComentarios);
+    this.recetaRequest.parametros.push('FECHA_IMPRESION_REC='+this.utils.dateToStringWithTimeAmPm(new Date()));
+    this.recetaRequest.parametros.push('NOMBRE_MEDICO='+this.notasMedicasPx.realizoNM);
+    this.recetaRequest.parametros.push('CED_PROF='+this.notasMedicasPx.cedulaProfNM);
+    this.recetaRequest.parametros.push('FOLIO_P='+this.infoPaciente.informacionPx.folio);
+    this.recetaRequest.parametros.push('EDAD_PACIENTE='+this.infoPaciente.informacionPx.edad);
+    this.recetaRequest.parametros.push('PX_TRATAMIENTO='+this.notasMedicasPx.tratamiento);
+
+    this.recetaMedicaService.registrarObjetoReceta(this.recetaRequest).subscribe(
+      data => {
+        console.log('Respuesta receta medica: ',data);
+        const arrayBuffer = this.base64ToArrayBuffer(data.base64);
+        const blob = new Blob([arrayBuffer], { type: 'application/pdf' });
+        this.pdfSrc = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href  = this.pdfSrc;
+        a.download = 'receta-medica.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      },
+      error => {
+        console.error('Error al obtener base 64:', error);
+      }
+    );
+     *
+     *
+    */
   }
 
   verdatos():void {

@@ -41,6 +41,6 @@
     <app-notas-enfermeria-form [(ngModel)]="paciente.notaEnfermeriaPx"></app-notas-enfermeria-form>
   </mat-tab>
 </mat-tab-group><br>
-  <button type="button" (click)="verdatos()" class="btn btn-outline-primary btn-sm">Registrar consulta</button>
+  <button type="button" (click)="verdatos();registroPaciente();" class="btn btn-outline-primary btn-sm">Registrar consulta</button>
   <code><p>{{paciente|json}}</p></code>
 </div>

@@ -24,7 +24,7 @@ export interface IPaciente{
 export interface IHojaFrontal{
   informacionPx:IInfoPaciente;
   domicilioPaciente:IDomicilioPaciente;
-  datosContacto?:IDatosContactoPaciente;
+  datosContacto:IDatosContactoPaciente;
 }
 
 export interface IHistClinica {

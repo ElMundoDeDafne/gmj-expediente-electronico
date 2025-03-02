@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
 import { IHojaFrontalResponse } from '../modules/paciente/interfaces/response/frontal-response.interface';
 import { IHojaFrontalRequest } from '../modules/paciente/interfaces/request/frontal-request.interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { ConstantesGenerales } from '../utils/constantes-generales';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class HojaFrontalService {
   recetaResponse:IHojaFrontalResponse = {
     mensajes:[],

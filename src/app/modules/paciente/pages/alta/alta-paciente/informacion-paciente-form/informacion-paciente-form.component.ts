@@ -7,6 +7,7 @@ import { CatOcupacionesService } from '../../../../../../services/cat-ocupacione
 import { AlertGeneratorService } from '../../../../../../pages/alerts/alert-generator/alert-generator.service';
 import { Utilerias } from '../../../../../../utils/utilerias';
 import { HojaFrontalService } from '../../../../../../services/frontal.service';
+import { IHojaFrontalRequest } from '../../../../interfaces/request/frontal-request.interface';
 
 @Component({
   selector: 'app-informacion-paciente-form',
@@ -21,7 +22,8 @@ import { HojaFrontalService } from '../../../../../../services/frontal.service';
 })
 export class InformacionPacienteFormComponent implements ControlValueAccessor, OnInit,AfterViewInit{
 
-  constructor(private hojaFrontalService : HojaFrontalService, private alertas:AlertGeneratorService,private formBuilder : FormBuilder, private servCatOcupaciones : CatOcupacionesService){
+  constructor(private alertas:AlertGeneratorService,private formBuilder : FormBuilder, private servCatOcupaciones : CatOcupacionesService){
+  // constructor(private alertas:AlertGeneratorService,private formBuilder : FormBuilder, private servCatOcupaciones : CatOcupacionesService){
     this.informacionPacienteForm = this.formBuilder.group({
       meses:['',[Validators.min(0),Validators.max(12),Validators.pattern('^-?[0-9]+$|^RN$')]],
       edad: ['',[Validators.min(0),Validators.max(110),Validators.pattern('^-?[0-9]+$'),Validators.required]],
@@ -51,6 +53,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
   bsValue : Date = new Date();
   utils:Utilerias;
   folioPaciente : string = '';
+ // requestHF : IHojaFrontalRequest;
 
   // @ViewChild('alertBootstrap')
   // alertBootstrap!:ElementRef<HTMLElement>;
@@ -138,7 +141,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
   }
 
   registro():void{
-    this.hojaFrontalService.registrarObjetoReceta;
+    // this.hojaFrontalService.registrarObjetoReceta;
   }
 
   handleInput(propiedad:string,event: Event) : void {
