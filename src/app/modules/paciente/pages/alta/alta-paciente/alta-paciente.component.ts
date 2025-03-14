@@ -5,6 +5,7 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { HojaFrontalService } from '../../../../../services/frontal.service';
 import { IHojaFrontalRequest } from '../../../interfaces/request/frontal-request.interface';
+import { AlertGeneratorService } from '../../../../../../pages/alerts/alert-generator/alert-generator.service';
 
 @Component({
   selector: 'app-alta-paciente',
@@ -53,7 +54,12 @@ export class AltaPacienteComponent {
     historiaClinica : {}
   }
 
-  constructor(private hojaFrontalService : HojaFrontalService){  }
+  constructor(
+    private hojaFrontalService: HojaFrontalService,
+    @Inject(AlertGeneratorService) private alertasService: AlertGeneratorService
+  ) {}
+//@Inject(AlertGeneratorService) private alertasService: AlertGeneratorService
+  //constructor(private hojaFrontalService : HojaFrontalService, @Inject(AlertGeneratorService) private alertasService : AlertGeneratorService){  }
 
   paciente : IPaciente = {
     hojaFrontal: {
@@ -183,6 +189,7 @@ export class AltaPacienteComponent {
         console.error('Respuesta registro paciente: ',data);
       },
       error => {
+        this.alertasService.ventanaError('Error al registrar paciente');
         console.error('Error al registrar paciente: ',error);
       }
     );
