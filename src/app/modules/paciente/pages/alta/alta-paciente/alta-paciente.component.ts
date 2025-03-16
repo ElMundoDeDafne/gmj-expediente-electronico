@@ -5,7 +5,8 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { HojaFrontalService } from '../../../../../services/frontal.service';
 import { IHojaFrontalRequest } from '../../../interfaces/request/frontal-request.interface';
-import { AlertGeneratorService } from '../../../../../../pages/alerts/alert-generator/alert-generator.service';
+import { AlertGeneratorService } from '../../../../../pages/alerts/alert-generator/alert-generator.service';
+// import { AlertGeneratorService } from '../../../../../../pages/alerts/alert-generator/alert-generator.service';
 
 @Component({
   selector: 'app-alta-paciente',
@@ -55,8 +56,8 @@ export class AltaPacienteComponent {
   }
 
   constructor(
-    private hojaFrontalService: HojaFrontalService,
-    @Inject(AlertGeneratorService) private alertasService: AlertGeneratorService
+    private alertas:AlertGeneratorService,
+    private hojaFrontalService: HojaFrontalService
   ) {}
 //@Inject(AlertGeneratorService) private alertasService: AlertGeneratorService
   //constructor(private hojaFrontalService : HojaFrontalService, @Inject(AlertGeneratorService) private alertasService : AlertGeneratorService){  }
@@ -187,10 +188,11 @@ export class AltaPacienteComponent {
     this.hojaFrontalService.registrarObjetoReceta(this.requestFrontal).subscribe(
       data => {
         console.error('Respuesta registro paciente: ',data);
+        this.alertas.ventanaError('Registro exitoso');
       },
       error => {
-        this.alertasService.ventanaError('Error al registrar paciente');
-        console.error('Error al registrar paciente: ',error);
+        this.alertas.ventanaError(`Error al registrar paciente: ${error.error.error}`);
+        console.error('Error al registrar paciente: ',error.error.error);
       }
     );
     //paciente
