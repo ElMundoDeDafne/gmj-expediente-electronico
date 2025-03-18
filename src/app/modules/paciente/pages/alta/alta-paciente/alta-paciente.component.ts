@@ -6,6 +6,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { HojaFrontalService } from '../../../../../services/frontal.service';
 import { IHojaFrontalRequest } from '../../../interfaces/request/frontal-request.interface';
 import { AlertGeneratorService } from '../../../../../pages/alerts/alert-generator/alert-generator.service';
+import { Utilerias } from '../../../../../utils/utilerias';
 // import { AlertGeneratorService } from '../../../../../../pages/alerts/alert-generator/alert-generator.service';
 
 @Component({
@@ -33,6 +34,7 @@ export class AltaPacienteComponent {
 
   x : string | null = null;
   hmInfoPx : Map<string,string> = new Map<string,string>();
+  utils : Utilerias;
 
   recuperaDatoTemporal(event:any):void{
     const tab : string = event.tab.textLabel;
@@ -47,6 +49,7 @@ export class AltaPacienteComponent {
     domicilioPaciente:{},
     datosContacto:{}
   };
+  msg : string = "";
 
   requestFrontal : IHojaFrontalRequest = {
     informacionPx : {},
@@ -55,10 +58,9 @@ export class AltaPacienteComponent {
     historiaClinica : {}
   }
 
-  constructor(
-    private alertas:AlertGeneratorService,
-    private hojaFrontalService: HojaFrontalService
-  ) {}
+  constructor(private alertas:AlertGeneratorService,private hojaFrontalService: HojaFrontalService) {
+    this.utils = new Utilerias();
+  }
 //@Inject(AlertGeneratorService) private alertasService: AlertGeneratorService
   //constructor(private hojaFrontalService : HojaFrontalService, @Inject(AlertGeneratorService) private alertasService : AlertGeneratorService){  }
 
@@ -184,6 +186,7 @@ export class AltaPacienteComponent {
     this.requestFrontal.domicilioPaciente = this.paciente.hojaFrontal.domicilioPaciente;
     this.requestFrontal.datosContacto = this.paciente.hojaFrontal.datosContacto;
     this.requestFrontal.historiaClinica = this.paciente.historiaClinica;
+    this.msg = "";
 
     this.hojaFrontalService.registrarObjetoReceta(this.requestFrontal).subscribe(
       data => {
@@ -191,8 +194,22 @@ export class AltaPacienteComponent {
         this.alertas.ventanaError('Registro exitoso');
       },
       error => {
-        this.alertas.ventanaError(`Error al registrar paciente: ${error.error.error}`);
-        console.error('Error al registrar paciente: ',error.error.error);
+        this.msg = this.utils.manejarErrorServicios(error);
+        this.alertas.ventanaError(this.msg);
+        // this.msg = error.error.error;
+        // console.error(this.msg);
+        // if(error.name === 'HttpErrorResponse'){
+        //   console.error('Error al registrar paciente (HttpErrorResponse): ',error.name);
+        //   this.alertas.ventanaError(`Error con el servicio. (${error.name})`);
+        // }
+
+        // if(this.msg === undefined) {
+        //   this.alertas.ventanaError(`No es posible registrar paciente con informacion vacia`);
+        //   console.error('Error al registrar paciente: ',error);
+        // } else {
+        //   this.alertas.ventanaError(`Error al registrar paciente: ${error.error.error}`);
+        //   console.error('Error al registrar paciente: ',error);
+        // }
       }
     );
     //paciente
@@ -245,4 +262,6 @@ export class AltaPacienteComponent {
   verdatos():void {
     console.error(this.paciente);
   }
+
+
 }

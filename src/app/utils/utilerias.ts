@@ -1,6 +1,7 @@
 import { IBusquedaPacientes } from "../modules/paciente/interfaces/busqueda/busqueda-pacientes.interface";
 import * as XLSX from "xlsx";
 import { IInfoPaciente } from '../modules/paciente/interfaces/paciente.interface';
+import { HttpErrorResponse } from "@angular/common/http";
 
 /**
  * Clase con distintos metodos de utileria para el sistema
@@ -10,6 +11,8 @@ export class Utilerias{
 
   hojaExcel! : XLSX.WorkSheet;
   libro! : XLSX.WorkBook;
+  respuesta : string = "";
+
 
   /**
    * Function to accept only characters (this also excludes numbers and special characters) given a KeyboardEvent
@@ -159,6 +162,36 @@ export class Utilerias{
 
   private getRandomNumber(): number {
     return Math.floor(Math.random() * 9) + 1; // Números del 1 al 9
+  }
+
+  /**
+   * Metodo para manejar errores en servicios
+   */
+  manejarErrorServicios(error : HttpErrorResponse) : string {
+    this.respuesta = "";
+    console.error(error);
+
+    if(error.name === 'HttpErrorResponse'){
+      console.error('Error al registrar paciente (HttpErrorResponse): ',error.name);
+          this.respuesta = `Error con el servicio. (${error.name})`;
+          return this.respuesta;
+        }
+
+    if (error.error instanceof ErrorEvent) {
+      console.error('Ocurrió un error:', error.error.message);
+      if(error.name === 'HttpErrorResponse'){
+        console.error('Error al consumir el servicio');
+        this.respuesta = "Error al consumir el servicio";
+      }
+    } else {
+      console.error(`Código de error ${error.status}, ` + `Error: ${error.error}`);
+      if(error.status === 404){
+        this.respuesta = "No se encontraron registros";
+      } else if(error.status === 500){
+        this.respuesta = "Error en el servicio";
+      }
+    }
+    return this.respuesta;
   }
 
 
