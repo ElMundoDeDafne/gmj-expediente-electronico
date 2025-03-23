@@ -181,6 +181,10 @@ export class AltaPacienteComponent {
     }
   }
 
+  onSubmit():void {
+
+  }
+
   registroPaciente():void {
     this.requestFrontal.informacionPx = this.paciente.hojaFrontal.informacionPx;
     this.requestFrontal.domicilioPaciente = this.paciente.hojaFrontal.domicilioPaciente;
@@ -191,7 +195,7 @@ export class AltaPacienteComponent {
     this.hojaFrontalService.registrarObjetoReceta(this.requestFrontal).subscribe(
       data => {
         console.error('Respuesta registro paciente: ',data);
-        this.alertas.ventanaError('Registro exitoso');
+        this.alertas.ventanaExitoSinBoton();
       },
       error => {
         this.msg = this.utils.manejarErrorServicios(error);

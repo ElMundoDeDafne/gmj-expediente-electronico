@@ -169,28 +169,36 @@ export class Utilerias{
    */
   manejarErrorServicios(error : HttpErrorResponse) : string {
     this.respuesta = "";
+    console.error("manejar Error Servicios");
     console.error(error);
 
     if(error.name === 'HttpErrorResponse'){
-      console.error('Error al registrar paciente (HttpErrorResponse): ',error.name);
-          this.respuesta = `Error con el servicio. (${error.name})`;
-          return this.respuesta;
-        }
-
-    if (error.error instanceof ErrorEvent) {
+      console.error("Error es HttpErrorResponse");
       console.error('Ocurrió un error:', error.error.message);
-      if(error.name === 'HttpErrorResponse'){
-        console.error('Error al consumir el servicio');
-        this.respuesta = "Error al consumir el servicio";
+
+      if(error.status === 0){
+        this.respuesta = "Servicio no disponible, intente mas tarde";
       }
-    } else {
-      console.error(`Código de error ${error.status}, ` + `Error: ${error.error}`);
+
       if(error.status === 404){
+        console.error(error.error);
         this.respuesta = "No se encontraron registros";
       } else if(error.status === 500){
-        this.respuesta = "Error en el servicio";
+        this.respuesta = "Error en el servicio: "+error.error.error;
+      } else if (error.status === 400) {
+        this.respuesta = "Ocurrio un error al registrar paciente, respuesta de servicio: "+error.error.error;
       }
-    }
+      // console.error('Error al consumir el servicio');
+      // this.respuesta = "Error al consumir el servicio";
+    console.error(`Código de error ${error.status}, ` + `Error: ${error.error}`);
+    console.error(error);
+    console.error(error.error);
+    console.error(error.error.error);
+
+
+      if (error.error instanceof ErrorEvent) {
+      }
+        }
     return this.respuesta;
   }
 

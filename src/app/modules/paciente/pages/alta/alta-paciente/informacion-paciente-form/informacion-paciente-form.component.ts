@@ -27,7 +27,7 @@ export class InformacionPacienteFormComponent implements ControlValueAccessor, O
     this.informacionPacienteForm = this.formBuilder.group({
       meses:['',[Validators.min(0),Validators.max(12),Validators.pattern('^-?[0-9]+$|^RN$')]],
       edad: ['',[Validators.min(0),Validators.max(110),Validators.pattern('^-?[0-9]+$'),Validators.required]],
-      tipoConsulta:['',[Validators.requiredTrue]],
+      tipoConsulta:['',[Validators.required]],
       esDerechoHabiente:['',[Validators.required]],
       primerNombre:['',[Validators.required]],
       segundoNombre:['',null],
