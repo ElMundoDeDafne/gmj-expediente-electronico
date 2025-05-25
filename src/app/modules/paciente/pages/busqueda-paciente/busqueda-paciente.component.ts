@@ -7,6 +7,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { debug } from 'console';
 import { Utilerias } from '../../../../utils/utilerias';
+import { BusquedaPacienteService } from '../../../../services/busq-pacientes.service';
 
 @Component({
   selector: 'app-busqueda-paciente',
@@ -16,7 +17,7 @@ import { Utilerias } from '../../../../utils/utilerias';
 
 export class BusquedaPacienteComponent implements OnInit, AfterViewInit{
 
-constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private bsModalRefdf : BsModalRef){ }
+constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private bsModalRefdf : BsModalRef, private busquedaPacienteService : BusquedaPacienteService) { }
   ngAfterViewInit(): void {
     setTimeout(() => {
       if(this.folioRB){

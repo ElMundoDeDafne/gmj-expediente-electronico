@@ -14,6 +14,7 @@ export class BusquedaPacienteService {
    * Constructor del servicio
    */
   constructor(private client : HttpClient) {}
+
       async getData() : Promise<IBusqPacientesResponse> {
       try {
         const response = firstValueFrom(
