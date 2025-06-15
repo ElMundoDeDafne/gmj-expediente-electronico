@@ -1,3 +1,5 @@
+import { IBusqPacientesRequest } from './../../interfaces/request/busq-pacientes-request.interface';
+import { IBusqPacientesResponse } from './../../interfaces/response/busq-pacientes-response.interface';
   import { IBusquedaPaciente } from './../../interfaces/busqueda-paciente.interface';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ResultadosBusquedaService } from '../../service/resultados-busqueda.service';
@@ -33,6 +35,10 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   @Input() isConfirmed! : boolean;
   @Output() onCloseEmitter : EventEmitter<IBusquedaPacientes> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
   data : IBusquedaPacientes[] = [];
+  dataMs : IBusqPacientesResponse = {
+    exito : false
+  };
+  //iBusqPacResponse
   filteredData : IBusquedaPacientes[] = [];
   searchTerm : string = ''; //termino de busqueda
   headers : string[] = ['','Folio','Nombre(s)','Ap. Paterno','Ap. Materno','CURP','Localidad','Edad','Especialidad','Medico Tratante','Ultima Visita','Receta'];
@@ -100,6 +106,7 @@ onRadioChange(resultado: IBusquedaPacientes): void {
  * option : [folio,curp,localidad,especialidad]
  */
 filterDataByCriteria(option:string,criteria:string):void{
+  console.error('Se inicia busqueda de pacientes');
   (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = '';
       this.filteredData = this.data;
       this.returnedArray = this.filteredData.slice(0,5);
@@ -113,12 +120,41 @@ filterDataByCriteria(option:string,criteria:string):void{
       this.returnedArray = this.filteredData.slice(0,5);
     } else {
       const searchTermLower = criteria.toLowerCase().trim();
+
+    var pruebas : boolean = false;
       if(option === 'folio') {
-        var r! : string;
-        this.returnedArray = this.data.filter((item) => {
-          return item.folio.toLowerCase().includes(searchTermLower);
-        });
-        this.filteredData = this.returnedArray;
+        console.error('Buscando por folio');
+        if(!pruebas) {
+          var iBusqPacResponse : IBusqPacientesResponse;
+          var iBusqPacRequest : IBusqPacientesRequest;
+          iBusqPacRequest = {
+            folio: 'sdsd',
+            nombre: 'sdfdsf'
+          }
+          iBusqPacResponse = {
+            exito:false
+          }
+          console.error('Se consume servicio de busqueda de pacientes');
+          this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
+            data => {
+              console.error('Respuesta registro paciente: ',data);
+        //this.alertas.ventanaExitoSinBoton();
+            },
+            error => {
+        //this.msg = this.utils.manejarErrorServicios(error);
+        //this.alertas.ventanaError(this.msg);
+            }
+        );
+      }
+        /*
+      else {
+          var r! : string;
+          this.returnedArray = this.data.filter((item) => {
+            return item.folio.toLowerCase().includes(searchTermLower);
+          });
+          this.filteredData = this.returnedArray;
+        }
+          */
       } else if(option === 'curp'){
         this.returnedArray = this.data.filter((item) => {
           return item.curp.toLowerCase().includes(searchTermLower);
