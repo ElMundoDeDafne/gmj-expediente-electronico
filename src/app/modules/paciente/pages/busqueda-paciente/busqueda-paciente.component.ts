@@ -29,7 +29,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
       }
     },0);
 
-    this.loadData();
+    // this.loadData();
     this.utils = new Utilerias();
   }
   @ViewChild('folioRadioButton',{static:false}) folioRB! : ElementRef<HTMLInputElement> ;
@@ -129,8 +129,8 @@ filterDataByCriteria(option:string,criteria:string):void{
           var iBusqPacResponse : IBusqPacientesResponse;
           var iBusqPacRequest : IBusqPacientesRequest;
           iBusqPacRequest = {
-            folio: 'sdsd',
-            nombre: 'sdfdsf'
+            tipoBusqueda : option
+
           }
           iBusqPacResponse = {
             exito:false
@@ -147,6 +147,7 @@ filterDataByCriteria(option:string,criteria:string):void{
               data.forEach((item: IBusqPacientesResponse) => {
                 i++;
                 console.error('Iterando data: ',item);
+                console.error('Fecha ultima consulta: ',item.fechaUltimaVisita);
             });
              console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
             },
@@ -199,7 +200,7 @@ filterDataByCriteria(option:string,criteria:string):void{
         this.filteredData = this.returnedArray;
       }
     }
-    if (this.filteredData.length===0) (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = `No se encontraron resultados con criterio '<b>${criteria}</b>' para opcion seleccionada <b>${option}</b>`;
+    // if (this.filteredData.length===0) (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = `No se encontraron resultados con criterio '<b>${criteria}</b>' para opcion seleccionada <b>${option}</b>`;
   }
 }
 

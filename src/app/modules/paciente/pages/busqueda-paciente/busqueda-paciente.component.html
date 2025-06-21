@@ -68,7 +68,6 @@
             <!--Agregamos paginador en esta seccion-->
             <td><input (change)="onRadioChange(resultado)" type="radio" id="{{resultado.idPaciente}}" value="{{resultado.idPaciente}}" name="options"/></td>
             <td>{{resultado.folio}}</td>
-            <td>{{resultado.nombres}}</td>
             <td><a href="{{resultado.idPaciente}}" routerLinkActive="active">{{resultado.nombres}}</a></td>
             <td>{{resultado.apellidoPaterno}}</td>
             <td>{{resultado.apellidoMaterno}}</td>
@@ -77,6 +76,8 @@
             <td>{{resultado.edad}}</td>
             <td>{{resultado.especialidad}}</td>
             <td>{{resultado.medicoTratante}}</td>
+            <td>{{ resultado.fechaUltimaVisita | date:'dd/MM/yyyy hh:mm:ss' }}</td>
+
             <!-- <td>{{resultado.}}</td> -->
             <td>[RECETA]</td>
           </tr>

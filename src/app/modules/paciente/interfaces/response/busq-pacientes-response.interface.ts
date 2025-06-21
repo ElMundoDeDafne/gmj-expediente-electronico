@@ -10,7 +10,7 @@ export interface IBusqPacientesResponse {
   edad?:number;
   especialidad?:string;
   medicoTratante?:string;
-  fechaUltimaConsulta?:string;
+  fechaUltimaVisita?:Date;
   ultimaReceta?:string;
   idPaciente?:number;
 }

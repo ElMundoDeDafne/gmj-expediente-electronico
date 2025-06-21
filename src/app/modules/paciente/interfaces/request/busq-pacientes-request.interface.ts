@@ -6,4 +6,5 @@ export interface IBusqPacientesRequest {
   edad?: number;
   especialidad?: string;
   medicoTratante?: string;
+  tipoBusqueda?: string; // Puede ser 'curp', 'folio', 'nombre', 'localidad', 'especialidad', 'medicotratante'
 }
