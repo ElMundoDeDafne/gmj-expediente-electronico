@@ -10,6 +10,7 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { debug } from 'console';
 import { Utilerias } from '../../../../utils/utilerias';
 import { BusquedaPacienteService } from '../../../../services/busq-pacientes.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-busqueda-paciente',
@@ -33,7 +34,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   }
   @ViewChild('folioRadioButton',{static:false}) folioRB! : ElementRef<HTMLInputElement> ;
   @Input() isConfirmed! : boolean;
-  @Output() onCloseEmitter : EventEmitter<IBusquedaPacientes> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
+  @Output() onCloseEmitter : EventEmitter<IBusqPacientesResponse> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
   data : IBusquedaPacientes[] = [];
   dataMs : IBusqPacientesResponse = {
     exito : false
@@ -43,9 +44,9 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   searchTerm : string = ''; //termino de busqueda
   headers : string[] = ['','Folio','Nombre(s)','Ap. Paterno','Ap. Materno','CURP','Localidad','Edad','Especialidad','Medico Tratante','Ultima Visita','Receta'];
   radios : string[] = ['Folio','Nombre','Localidad','CURP','Medico tratante','Especialidad'];
-
+  resultadosBusqueda : IBusqPacientesResponse[] = [];
   option : string = ''; //opcion para busqueda
-  seleccion! : IBusquedaPacientes ; //opcion seleccionada
+  seleccion! : IBusqPacientesResponse ; //opcion seleccionada
   sinResultados:boolean=false;
   selectedPatientId: number | null = null;
   returnedArray!: IBusquedaPacientes[];
@@ -98,7 +99,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   //  this.returnedArray = this.filteredData.slice(0, 5);
   }
 
-onRadioChange(resultado: IBusquedaPacientes): void {
+onRadioChange(resultado: IBusqPacientesResponse): void {
   this.seleccion = resultado;
 
 }
@@ -137,10 +138,21 @@ filterDataByCriteria(option:string,criteria:string):void{
           console.error('Se consume servicio de busqueda de pacientes');
           this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
             data => {
+              this.resultadosBusqueda = data;
               console.error('Respuesta registro paciente: ',data);
-        //this.alertas.ventanaExitoSinBoton();
+
+              //iterar data
+              var i : number= 0;
+              console.error(`Total de registros encontrados: ${data.length}`);
+              data.forEach((item: IBusqPacientesResponse) => {
+                i++;
+                console.error('Iterando data: ',item);
+            });
+             console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
             },
             error => {
+              var resp : string = this.utils.manejarErrorServicios(error);
+              console.error(`Respuesta del servicio: ${resp}`);
         //this.msg = this.utils.manejarErrorServicios(error);
         //this.alertas.ventanaError(this.msg);
             }

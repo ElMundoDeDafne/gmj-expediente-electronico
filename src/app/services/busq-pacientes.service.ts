@@ -19,8 +19,8 @@ export class BusquedaPacienteService {
 
 
     /**Funcion para consumir servicio mediante metodo post*/
-    getDataPost(data: IBusqPacientesRequest) : Observable<IBusqPacientesResponse> {
-      return this.client.post<IBusqPacientesResponse>(ConstantesGenerales.URL_API_BUSQ_PACIENTES, data);
+    getDataPost(data: IBusqPacientesRequest) : Observable<IBusqPacientesResponse[]> {
+      return this.client.post<IBusqPacientesResponse[]>(ConstantesGenerales.URL_API_BUSQ_PACIENTES, data);
     };
 
     //   async getData() : Promise<IBusqPacientesResponse> {
