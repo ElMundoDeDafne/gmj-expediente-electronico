@@ -13,6 +13,7 @@ import { CensoEstomatologiaComponent } from './modules/reports/censo-estomat/cen
 import { CensoGeneralComponent } from './modules/reports/censo-general/censo-general.component';
 import { MostrarAgendaFormComponent } from './modules/paciente/pages/agenda/mostrar-agenda-form/mostrar-agenda-forn.component';
 import { ConsultaOdontologicaComponent } from './modules/paciente/pages/cons-odonto/cons-odonto.component';
+import { AltaPersonalComponent } from './modules/personal/pages/alta-personal-gui/alta-per.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path:'consulta/agenda',component:MostrarAgendaFormComponent},
   {path:'consulta/censos/estomatologia',component:CensoEstomatologiaComponent},
   {path:'login',component:LoginFormComponent},
+  {path:'personal/alta',component:AltaPersonalComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'success',redirectTo:'home'},
   {path:'**',component:NotFoundPageComponent}

@@ -1,0 +1,14 @@
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Fecha de consulta</strong>
+    <input type="text"
+           name="fechaConsulta"
+           class="form-control"
+           style="max-width: 50%;"
+           [ngModel]="fechaFormateada"
+           (ngModelChange)="actualizarFecha($event)"
+           placeholder="dd/MM/yyyy"
+    >
+  </div>
+  <div class="col"></div>
+</div>

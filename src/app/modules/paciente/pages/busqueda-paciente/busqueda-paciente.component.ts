@@ -129,13 +129,15 @@ filterDataByCriteria(option:string,criteria:string):void{
           var iBusqPacResponse : IBusqPacientesResponse;
           var iBusqPacRequest : IBusqPacientesRequest;
           iBusqPacRequest = {
-            tipoBusqueda : option
+            tipoBusqueda : option,
+            folio: searchTermLower
 
           }
           iBusqPacResponse = {
             exito:false
           }
           console.error('Se consume servicio de busqueda de pacientes');
+          //se consume servicio buscando por folio
           this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
             data => {
               this.resultadosBusqueda = data;
