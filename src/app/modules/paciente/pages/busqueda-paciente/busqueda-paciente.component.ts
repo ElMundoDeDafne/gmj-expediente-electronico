@@ -120,8 +120,8 @@ filterDataByCriteria(option:string,criteria:string):void{
       this.filteredData = this.data;
       this.returnedArray = this.filteredData.slice(0,5);
     } else {
-      const searchTermLower = criteria.toLowerCase().trim();
-
+      const searchTermLower = criteria.toUpperCase().trim();
+      msBusqPacientes(searchTermLower,option);
     var pruebas : boolean = false;
       if(option === 'folio') {
         console.error('Buscando por folio');
@@ -142,15 +142,9 @@ filterDataByCriteria(option:string,criteria:string):void{
             data => {
               this.resultadosBusqueda = data;
               console.error('Respuesta registro paciente: ',data);
-
               //iterar data
               var i : number= 0;
               console.error(`Total de registros encontrados: ${data.length}`);
-              data.forEach((item: IBusqPacientesResponse) => {
-                i++;
-                console.error('Iterando data: ',item);
-                console.error('Fecha ultima consulta: ',item.fechaUltimaVisita);
-            });
              console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
             },
             error => {
@@ -186,10 +180,43 @@ filterDataByCriteria(option:string,criteria:string):void{
         });
         this.filteredData = this.returnedArray;
       } else if (option === 'nombres'){
-        this.returnedArray = this.data.filter((item) => {
+
+        if(!pruebas) {
+          var iBusqPacResponse : IBusqPacientesResponse;
+          var iBusqPacRequest : IBusqPacientesRequest;
+          iBusqPacRequest = {
+            tipoBusqueda : option,
+            folio: searchTermLower
+
+          }
+          iBusqPacResponse = {
+            exito:false
+          }
+          console.error('Se consume servicio de busqueda de pacientes');
+          //se consume servicio buscando por folio
+          this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
+            data => {
+              this.resultadosBusqueda = data;
+              console.error('Respuesta registro paciente: ',data);
+              //iterar data
+              var i : number= 0;
+              console.error(`Total de registros encontrados: ${data.length}`);
+             console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
+            },
+            error => {
+              var resp : string = this.utils.manejarErrorServicios(error);
+              console.error(`Respuesta del servicio: ${resp}`);
+        //this.msg = this.utils.manejarErrorServicios(error);
+        //this.alertas.ventanaError(this.msg);
+            }
+        );
+      }
+
+
+        /*this.returnedArray = this.data.filter((item) => {
           return item.nombres.toLowerCase().includes(searchTermLower);
         });
-        this.filteredData = this.returnedArray;
+        this.filteredData = this.returnedArray;*/
       } else if (option === 'medicotratante'){
         this.returnedArray = this.data.filter((item) => {
           return item.medicoTratante.toLowerCase().includes(searchTermLower);
@@ -204,6 +231,11 @@ filterDataByCriteria(option:string,criteria:string):void{
     }
     // if (this.filteredData.length===0) (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = `No se encontraron resultados con criterio '<b>${criteria}</b>' para opcion seleccionada <b>${option}</b>`;
   }
+
+
+  busquedaPacMs : void {
+
+  }
 }
 
   public busqueda:IBusquedaPaciente={
@@ -211,3 +243,7 @@ filterDataByCriteria(option:string,criteria:string):void{
     criterioBusqueda:''
   }
 };
+function msBusqPacientes(searchTermLower: string, option: string) {
+  throw new Error('Function not implemented.');
+}
+
