@@ -121,11 +121,12 @@ filterDataByCriteria(option:string,criteria:string):void{
       this.returnedArray = this.filteredData.slice(0,5);
     } else {
       const searchTermLower = criteria.toUpperCase().trim();
-      msBusqPacientes(searchTermLower,option);
-    var pruebas : boolean = false;
+      var pruebas : boolean = false;
       if(option === 'folio') {
         console.error('Buscando por folio');
         if(!pruebas) {
+          //msBusqPacientes(searchTermLower,option);
+
           var iBusqPacResponse : IBusqPacientesResponse;
           var iBusqPacRequest : IBusqPacientesRequest;
           iBusqPacRequest = {
@@ -154,6 +155,9 @@ filterDataByCriteria(option:string,criteria:string):void{
         //this.alertas.ventanaError(this.msg);
             }
         );
+
+
+
       }
         /*
       else {
@@ -175,13 +179,15 @@ filterDataByCriteria(option:string,criteria:string):void{
         });
         this.filteredData = this.returnedArray;
       } else if (option === 'especialidad') {
-        this.returnedArray = this.data.filter((item) => {
+        consMsPacientes(option, criteria);
+        /*this.returnedArray = this.data.filter((item) => {
           return item.especialidad.toLowerCase().includes(searchTermLower);
-        });
+        });*/
         this.filteredData = this.returnedArray;
       } else if (option === 'nombres'){
 
         if(!pruebas) {
+          // consMsPacientes(option, criteria);
           var iBusqPacResponse : IBusqPacientesResponse;
           var iBusqPacRequest : IBusqPacientesRequest;
           iBusqPacRequest = {
@@ -244,6 +250,10 @@ filterDataByCriteria(option:string,criteria:string):void{
   }
 };
 function msBusqPacientes(searchTermLower: string, option: string) {
+
+}
+
+function consMsPacientes(tipoBusqueda: any, folio: any) {
   throw new Error('Function not implemented.');
 }
 
