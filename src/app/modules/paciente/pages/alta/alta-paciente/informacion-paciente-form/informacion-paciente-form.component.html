@@ -99,7 +99,7 @@
     <div class="col d-inline-block">
       <label>Segundo nombre</label>
       <input type="text" name="nombrePropio2" placeholder="Segundo nombre" class="form-control" maxLength="20"
-        style="max-width: 100%;"  (keypress)="utils.validateCharacter($event)" (input)="handleInput('segundonombre',$event)"
+        style="max-width: 100%;"  (keypress)="utils.validateCharacter($event)" oninput="this.value = this.value.toUpperCase()"
         [(ngModel)]="informacionPx.nombrePropio2" formControlName="segundoNombre">
     </div>
 
@@ -107,7 +107,7 @@
     <div class="col d-inline-block">
       <label>Apellido Paterno <span style="color:red;">*</span></label>
       <input type="text" name="apellidoPaterno" placeholder="Apellido paterno" class="form-control" maxLength="20"
-        style="max-width: 70%;" (keypress)="utils.validateCharacter($event)" (input)="handleInput('apellidopaterno',$event)"
+        style="max-width: 70%;" (keypress)="utils.validateCharacter($event)" oninput="this.value = this.value.toUpperCase()"
         [(ngModel)]="informacionPx.apellidoPaterno" formControlName="apellidoPaterno">
       <div class="text-danger"
         *ngIf="informacionPacienteForm.controls['apellidoPaterno'].invalid && (informacionPacienteForm.controls['apellidoPaterno'].dirty || informacionPacienteForm.controls['apellidoPaterno'].touched)">
@@ -119,7 +119,7 @@
     <div class="col d-inline-block">
       <label>Apellido Materno <span style="color:red;">*</span></label>
       <input type="text" name="apellidoMaterno" placeholder="Apellido Materno" class="form-control" maxLength="20"
-        style="max-width: 100%;" (keypress)="utils.validateCharacter($event)" (input)="handleInput('apellidomaterno',$event)"
+        style="max-width: 100%;" (keypress)="utils.validateCharacter($event)" oninput="this.value = this.value.toUpperCase()"
         [(ngModel)]="informacionPx.apellidoMaterno" formControlName="apellidoMaterno">
       <div class="text-danger" *ngIf="informacionPacienteForm.controls['apellidoMaterno'].invalid && (informacionPacienteForm.controls['apellidoMaterno'].dirty || informacionPacienteForm.controls['apellidoMaterno'].touched)">
           <h6>Dato obligatorio.</h6>
@@ -129,7 +129,7 @@
     <div class="col d-inline-block">
       <label>Nacionalidad</label>
       <input name="nacionalidad" placeholder="Nacionalidad" class="form-control mb-2" size="15" maxLength="15"
-      (keypress)="utils.validateCharacter($event)" (input)="handleInput('nacionalidad',$event)" [(ngModel)]="informacionPx.nacionalidad" type="text"
+      (keypress)="utils.validateCharacter($event)" oninput="this.value = this.value.toUpperCase()" [(ngModel)]="informacionPx.nacionalidad" type="text"
         style="max-width: 100%;" formControlName="nacionalidad">
     </div>
   </div>
@@ -219,7 +219,7 @@
   <div class="col d-inline-block">
     <label>CURP</label>
     <input name="curp" placeholder="CURP" class="form-control mb-2" size="15" maxLength="18"
-      [(ngModel)]="informacionPx.curp" type="text" style="max-width: 100%;" (input)="handleInput('curp',$event)"
+      [(ngModel)]="informacionPx.curp" type="text" style="max-width: 100%;" oninput="this.value = this.value.toUpperCase()"
       formControlName="curp">
     <div class="text-danger"
       *ngIf="informacionPacienteForm.controls['curp'].invalid && (informacionPacienteForm.controls['curp'].dirty || informacionPacienteForm.controls['curp'].touched)">
@@ -237,7 +237,7 @@
     <div class="col d-inline-block">
       <label>Motivo de consulta <span style="color:red;">*</span></label>
       <input name="motivoConnsulta" placeholder="Motivo consulta" class="form-control mb-2" size="15" maxLength="30"
-        [(ngModel)]="informacionPx.motivoConsulta" (input)="handleInput('motivoconsulta',$event)" type="text"
+        [(ngModel)]="informacionPx.motivoConsulta" oninput="this.value = this.value.toUpperCase()" type="text"
         style="max-width: 100%;" formControlName="motivoConsulta">
       <div class="text-danger"
         *ngIf="informacionPacienteForm.controls['motivoConsulta'].invalid && (informacionPacienteForm.controls['motivoConsulta'].dirty || informacionPacienteForm.controls['motivoConsulta'].touched)">

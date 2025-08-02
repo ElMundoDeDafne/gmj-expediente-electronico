@@ -8,7 +8,7 @@
               class="form-control"
               style="max-width: 100%;"
               [ngModel]="fechaFormateada"
-              (ngModelChange)="actualizarFecha($event)"
+              oninput="this.value = this.value.toUpperCase()"
               placeholder="dd/MM/yyyy"
           >
       </div>

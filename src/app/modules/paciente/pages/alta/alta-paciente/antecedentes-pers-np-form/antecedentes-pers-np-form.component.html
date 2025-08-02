@@ -54,7 +54,7 @@
               class="form-control"
               maxLength="20"
               style="max-width: 100%;"
-              (input)="utils.convertirAMayusculas($event)"
+              oninput="this.value = this.value.toUpperCase()"
               [(ngModel)]="fauna.antecEspecifico">
               <!-- <div class="text-danger" *ngIf="form.controls['antecEspecifico'].invalid && (form.controls['antecEspecifico'].dirty || form.controls['antecEspecifico'].touched)">
                 <div *ngIf="form.controls['antecEspecifico'].errors?.['required']">

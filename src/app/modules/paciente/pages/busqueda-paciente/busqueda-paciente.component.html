@@ -22,7 +22,7 @@
           <label class="form-check-label" for="inlineRadio4" >CURP</label>
         </div>
         <div class="form-check form-check-inline">
-          <input (change)="borrarSearchTerm()" class="form-check-input" type="radio" name="inlineRadioOptions" id="medicoTratante" value="medicotratante" [(ngModel)]="option">
+          <input (change)="borrarSearchTerm()" class="form-check-input" type="radio" name="inlineRadioOptions" id="medicoTratante" value="medicotratante"  [(ngModel)]="option">
           <label class="form-check-label" for="inlineRadio5" >Medico tratante</label>
         </div>
         <div class="form-check form-check-inline">
@@ -39,10 +39,11 @@
         id="criterioBusquedaTexto"
         class="form-control"
         style="max-width: 100%;"
-        [(ngModel)]="searchTerm">
+        [(ngModel)]="searchTerm"
+        oninput="this.value = this.value.toUpperCase()" >
         <br>
-        <input type="submit" value="Buscar" class="btn btn-outline-primary btn-sm" (click)="filterDataByCriteria(option,searchTerm)">
-        &nbsp;&nbsp;<button class="btn btn-outline-primary btn-sm" *ngIf="!isConfirmed" (click)="utils.generarExcelPxs(filteredData)">Generar Excel</button>
+        <input type="submit" value="Buscar" class="btn btn-outline-primary btn-sm" (click)="filterDataByCriteria(option,searchTerm)" >
+        &nbsp;&nbsp;<button class="btn btn-outline-primary btn-sm" *ngIf="!isConfirmed" (click)="utils.generarExcelPxs(filteredData)"  >Generar Excel</button>
       </div>
     </div>
 

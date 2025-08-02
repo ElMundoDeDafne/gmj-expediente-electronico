@@ -15,6 +15,7 @@
     <input type="text"
     name="semiologia"
     class="form-control"
+    oninput="this.value = this.value.toUpperCase()"
     [(ngModel)]="aparatoYSistema.semioloia">
   </div>
 </div>
@@ -36,6 +37,7 @@
     <input type="text"
     name="observacionesInspeccion"
     class="form-control"
+    oninput="this.value = this.value.toUpperCase()"
     [(ngModel)]="exploracionesFisica.observacionesInspeccion">
   </div>
 </div>

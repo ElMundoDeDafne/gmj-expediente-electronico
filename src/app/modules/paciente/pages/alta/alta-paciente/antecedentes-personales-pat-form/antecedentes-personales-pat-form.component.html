@@ -35,7 +35,8 @@
       maxLength="20"
       style="max-width: 100%;"
       [(ngModel)]="enfermedad.otraEnfermedad"
-      formControlName="otraEnfermedad">
+      formControlName="otraEnfermedad"
+      oninput="this.value = this.value.toUpperCase()">
       <div class="text-danger" *ngIf="antecedentesPersPatForm.controls['otraEnfermedad'].invalid && (antecedentesPersPatForm.controls['otraEnfermedad'].dirty || antecedentesPersPatForm.controls['otraEnfermedad'].touched)">
         <div *ngIf="antecedentesPersPatForm.controls['otraEnfermedad'].errors?.['required']">
           <h6>Dato obligatorio.</h6>
@@ -51,6 +52,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
+      oninput="this.value = this.value.toUpperCase()"
       [(ngModel)]="enfermedad.tipoEnfermedad">
     </div>
 
@@ -62,6 +64,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
+      oninput="this.value = this.value.toUpperCase()"
       [(ngModel)]="enfermedad.tiempoEvolucion">
     </div>
 
@@ -73,6 +76,7 @@
       class="form-control"
       maxLength="20"
       style="max-width: 100%;"
+      oninput="this.value = this.value.toUpperCase()"
       [(ngModel)]="enfermedad.tratamientoLlevado">
     </div>
     <div class="col">

@@ -10,7 +10,7 @@
     cols="40"
     rows="5"
     [(ngModel)]="notasEnfermeria.accionesDxEnf"
-    (input)="utils.convertirAMayusculas($event)"></textarea>
+    oninput="this.value = this.value.toUpperCase()" ></textarea>
   </div>
 </div>
 <div class="row form-div-padding">
@@ -25,7 +25,7 @@
     cols="40"
     rows="5"
     [(ngModel)]="notasEnfermeria.accionesNEnf"
-    (input)="utils.convertirAMayusculas($event)"
+    oninput="this.value = this.value.toUpperCase()"
     ></textarea>
   </div>
 </div>
@@ -41,7 +41,7 @@
     cols="40"
     rows="5"
     [(ngModel)]="notasEnfermeria.resultadosNEnf"
-    (input)="utils.convertirAMayusculas($event)"></textarea>
+    oninput="this.value = this.value.toUpperCase()" ></textarea>
   </div>
 </div>
 <div class="row form-div-padding">
@@ -54,7 +54,7 @@
     maxLength="15"
     style="max-width: 100%;"
     [(ngModel)]="notasEnfermeria.realizoNEnf"
-    (input)="utils.convertirAMayusculas($event)">
+    oninput="this.value = this.value.toUpperCase()" >
   </div>
   <div class="col">
     <strong>Cedula Profesional <span style="color: red;">*</span></strong>

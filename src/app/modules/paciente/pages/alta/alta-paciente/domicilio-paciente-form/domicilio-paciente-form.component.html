@@ -28,7 +28,7 @@
       <div class="col" [formGroup]="domicilioForm">
         <label>Calle principal <span style="color:red;">*</span></label>
         <input type="text"
-        (input)="utils.convertirAMayusculas($event)"
+        oninput="this.value = this.value.toUpperCase()"
         name="callePrincipal"
         placeholder="E.j. Centro"
         class="form-control"
@@ -67,6 +67,7 @@
         maxLength="20"
         style="max-width: 100%;"
         [(ngModel)]="domicilio.entreCalles2">
+        oninput="this.value = this.value.toUpperCase()"
       </div>
 
 
@@ -80,7 +81,8 @@
       style="max-width: 100%;"
       [(ngModel)]="domicilio.entidad"
       formControlName="estado"
-      (keypress)="utils.validateCharacter($event)">
+      (keypress)="utils.validateCharacter($event)"
+      oninput="this.value = this.value.toUpperCase()">
       <div class="text-danger" *ngIf="domicilioForm.controls['estado'].invalid && (domicilioForm.controls['estado'].dirty || domicilioForm.controls['estado'].touched)">
         <div *ngIf="domicilioForm.controls['estado'].errors?.['required']">
           <h6>Dato obligatorio.</h6>
@@ -98,6 +100,7 @@
       style="max-width: 100%;"
       (keypress)="utils.validateCharacter($event)"
       [(ngModel)]="domicilio.localidad"
+      oninput="this.value = this.value.toUpperCase()"
       formControlName="localidad">
       <div class="text-danger" *ngIf="domicilioForm.controls['localidad'].invalid && (domicilioForm.controls['localidad'].dirty || domicilioForm.controls['localidad'].touched)">
         <div *ngIf="domicilioForm.controls['localidad'].errors?.['required']">
@@ -116,7 +119,8 @@
       style="max-width: 100%;"
       [(ngModel)]="domicilio.municipio"
       (keypress)="utils.validateCharacter($event)"
-      formControlName="municipio">
+      formControlName="municipio"
+      oninput="this.value = this.value.toUpperCase()">
       <div class="text-danger" *ngIf="domicilioForm.controls['municipio'].invalid && (domicilioForm.controls['municipio'].dirty || domicilioForm.controls['municipio'].touched)">
         <div *ngIf="domicilioForm.controls['municipio'].errors?.['required']">
           <h6>Dato obligatorio.</h6>
@@ -145,7 +149,8 @@
         class="form-control"
         maxLength="20"
         style="max-width: 50%;"
-        [(ngModel)]="domicilio.manzana">
+        [(ngModel)]="domicilio.manzana"
+        oninput="this.value = this.value.toUpperCase()">
       </div>
       <div class="col">
         <label>Vivienda</label>
@@ -155,6 +160,7 @@
         class="form-control"
         maxLength="20"
         style="max-width: 50%;"
-        [(ngModel)]="domicilio.vivienda">
+        [(ngModel)]="domicilio.vivienda"
+        oninput="this.value = this.value.toUpperCase()">
       </div>
     </div>
