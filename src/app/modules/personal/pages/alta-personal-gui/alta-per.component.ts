@@ -24,6 +24,8 @@ export class AltaPersonalComponent {
 
   fecha : Date = new Date();
   fechaFormateada : string = '';
+  tipoPersona : string[] = ['Médico', 'Enfermera', 'Administrativo', 'Otro'];
+  especialidades : string[] = ['Cardiología', 'Pediatría', 'Ginecología', 'Traumatología', 'Otro'];
 
   // Método de ejemplo para manejar el envío del formulario
   onSubmit() {
