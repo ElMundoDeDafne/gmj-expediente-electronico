@@ -15,13 +15,18 @@ export class Utilerias{
 
 
   /**
-   * Function to accept only characters (this also excludes numbers and special characters) given a KeyboardEvent
+   * Function to accept only characters (this also excludes numbers and special characters) given a KeyboardEvent, but it also accepts space bars.
    * @param $event KeyboardEvent
    *
   */
   validateCharacter($event: KeyboardEvent) {
     const charCode = $event.which ? $event.which : $event.keyCode;
-    if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+    // Allow only letters and space bar
+    if (
+      (charCode < 65 || charCode > 90) && // A-Z
+      (charCode < 97 || charCode > 122) && // a-z
+      charCode !== 32 // Space bar
+    ) {
       $event.preventDefault();
     }
   }

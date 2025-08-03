@@ -236,7 +236,7 @@
   <div class="row form-div-padding">
     <div class="col d-inline-block">
       <label>Motivo de consulta <span style="color:red;">*</span></label>
-      <input name="motivoConnsulta" placeholder="Motivo consulta" class="form-control mb-2" size="15" maxLength="30"
+      <input name="motivoConnsulta" placeholder="Motivo consulta" class="form-control mb-2" size="15" maxLength="100"
         [(ngModel)]="informacionPx.motivoConsulta" oninput="this.value = this.value.toUpperCase()" type="text"
         style="max-width: 100%;" formControlName="motivoConsulta">
       <div class="text-danger"
