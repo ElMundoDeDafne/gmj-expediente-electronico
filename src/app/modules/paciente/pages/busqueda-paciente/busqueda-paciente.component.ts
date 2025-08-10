@@ -11,6 +11,7 @@ import { debug } from 'console';
 import { Utilerias } from '../../../../utils/utilerias';
 import { BusquedaPacienteService } from '../../../../services/busq-pacientes.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AlertGeneratorService } from '../../../../pages/alerts/alert-generator/alert-generator.service';
 
 @Component({
   selector: 'app-busqueda-paciente',
@@ -20,7 +21,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class BusquedaPacienteComponent implements OnInit, AfterViewInit{
 
-constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private bsModalRefdf : BsModalRef, private busquedaPacienteService : BusquedaPacienteService) { }
+constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private bsModalRefdf : BsModalRef, private busquedaPacienteService : BusquedaPacienteService, private alertas:AlertGeneratorService) { }
   ngAfterViewInit(): void {
     setTimeout(() => {
       if(this.folioRB){
@@ -103,6 +104,54 @@ onRadioChange(resultado: IBusqPacientesResponse): void {
   this.seleccion = resultado;
 
 }
+
+
+
+msBusqPacientes(searchTermLower: string, option: string) : void{
+  console.error(searchTermLower);
+  console.error(option);
+  var iBusqPacResponse : IBusqPacientesResponse;
+  var iBusqPacRequest : IBusqPacientesRequest;
+  var msg : string;
+  console.error(`Opcion: ${option}`);
+  if(option==='nombres') {
+    iBusqPacRequest = {
+      tipoBusqueda : option,
+      nombre: searchTermLower
+    }
+  } else {
+    iBusqPacRequest = {
+      tipoBusqueda : option,
+      folio: searchTermLower
+    }
+  }
+
+  iBusqPacResponse = {
+    exito:false
+  }
+  console.error('Se consume servicio de busqueda de pacientes');
+  //se consume servicio buscando por folio
+  this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
+    data => {
+      this.resultadosBusqueda = data;
+      console.error('Respuesta registro paciente: ',data);
+      //iterar data
+      var i : number= 0;
+      console.error(`Total de registros encontrados: ${data.length}`);
+    //  console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
+    }
+    ,
+     error => {
+       var resp : string = this.utils.manejarErrorServicios(error);
+       console.error(`Respuesta del servicio: ${error}`);
+       msg = this.utils.manejarErrorServicios(error);
+       this.alertas.ventanaError(msg);
+    }
+);
+}
+
+
+
 /*** criteria: texto a buscar
  * option : [folio,curp,localidad,especialidad]
  */
@@ -124,41 +173,41 @@ filterDataByCriteria(option:string,criteria:string):void{
       var pruebas : boolean = false;
       if(option === 'folio') {
         console.error('Buscando por folio');
-        if(!pruebas) {
-          //msBusqPacientes(searchTermLower,option);
+        // if(!pruebas) {
+          this.msBusqPacientes(searchTermLower,option);
 
-          var iBusqPacResponse : IBusqPacientesResponse;
-          var iBusqPacRequest : IBusqPacientesRequest;
-          iBusqPacRequest = {
-            tipoBusqueda : option,
-            folio: searchTermLower
+        //   var iBusqPacResponse : IBusqPacientesResponse;
+        //   var iBusqPacRequest : IBusqPacientesRequest;
+        //   iBusqPacRequest = {
+        //     tipoBusqueda : option,
+        //     folio: searchTermLower
 
-          }
-          iBusqPacResponse = {
-            exito:false
-          }
-          console.error('Se consume servicio de busqueda de pacientes');
-          //se consume servicio buscando por folio
-          this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
-            data => {
-              this.resultadosBusqueda = data;
-              console.error('Respuesta registro paciente: ',data);
-              //iterar data
-              var i : number= 0;
-              console.error(`Total de registros encontrados: ${data.length}`);
-             console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
-            },
-            error => {
-              var resp : string = this.utils.manejarErrorServicios(error);
-              console.error(`Respuesta del servicio: ${resp}`);
-        //this.msg = this.utils.manejarErrorServicios(error);
-        //this.alertas.ventanaError(this.msg);
-            }
-        );
+        //   }
+        //   iBusqPacResponse = {
+        //     exito:false
+        //   }
+        //   console.error('Se consume servicio de busqueda de pacientes');
+        //   //se consume servicio buscando por folio
+        //   this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
+        //     data => {
+        //       this.resultadosBusqueda = data;
+        //       console.error('Respuesta registro paciente: ',data);
+        //       //iterar data
+        //       var i : number= 0;
+        //       console.error(`Total de registros encontrados: ${data.length}`);
+        //      console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
+        //     },
+        //     error => {
+        //       var resp : string = this.utils.manejarErrorServicios(error);
+        //       console.error(`Respuesta del servicio: ${resp}`);
+        // //this.msg = this.utils.manejarErrorServicios(error);
+        // //this.alertas.ventanaError(this.msg);
+        //     }
+        // );
 
 
 
-      }
+      // }
         /*
       else {
           var r! : string;
@@ -169,54 +218,25 @@ filterDataByCriteria(option:string,criteria:string):void{
         }
           */
       } else if(option === 'curp'){
-        this.returnedArray = this.data.filter((item) => {
-          return item.curp.toLowerCase().includes(searchTermLower);
-        });
-        this.filteredData = this.returnedArray;
+        this.msBusqPacientes(searchTermLower,option);
+        // this.returnedArray = this.data.filter((item) => {
+
+        //   return item.curp.toLowerCase().includes(searchTermLower);
+        // });
+        // this.filteredData = this.returnedArray;
       } else if (option === 'localidad') {
         this.returnedArray = this.data.filter((item) => {
           return item.localidad.toLowerCase().includes(searchTermLower);
         });
         this.filteredData = this.returnedArray;
       } else if (option === 'especialidad') {
-        consMsPacientes(option, criteria);
+        this.msBusqPacientes(searchTermLower,option);
         /*this.returnedArray = this.data.filter((item) => {
           return item.especialidad.toLowerCase().includes(searchTermLower);
         });*/
         this.filteredData = this.returnedArray;
       } else if (option === 'nombres'){
-
-        if(!pruebas) {
-          // consMsPacientes(option, criteria);
-          var iBusqPacResponse : IBusqPacientesResponse;
-          var iBusqPacRequest : IBusqPacientesRequest;
-          iBusqPacRequest = {
-            tipoBusqueda : option,
-            folio: searchTermLower
-
-          }
-          iBusqPacResponse = {
-            exito:false
-          }
-          console.error('Se consume servicio de busqueda de pacientes');
-          //se consume servicio buscando por folio
-          this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
-            data => {
-              this.resultadosBusqueda = data;
-              console.error('Respuesta registro paciente: ',data);
-              //iterar data
-              var i : number= 0;
-              console.error(`Total de registros encontrados: ${data.length}`);
-             console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
-            },
-            error => {
-              var resp : string = this.utils.manejarErrorServicios(error);
-              console.error(`Respuesta del servicio: ${resp}`);
-        //this.msg = this.utils.manejarErrorServicios(error);
-        //this.alertas.ventanaError(this.msg);
-            }
-        );
-      }
+        this.msBusqPacientes(searchTermLower,option);
 
 
         /*this.returnedArray = this.data.filter((item) => {
@@ -238,10 +258,6 @@ filterDataByCriteria(option:string,criteria:string):void{
     // if (this.filteredData.length===0) (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = `No se encontraron resultados con criterio '<b>${criteria}</b>' para opcion seleccionada <b>${option}</b>`;
   }
 
-
-  busquedaPacMs : void {
-
-  }
 }
 
   public busqueda:IBusquedaPaciente={
@@ -249,11 +265,5 @@ filterDataByCriteria(option:string,criteria:string):void{
     criterioBusqueda:''
   }
 };
-function msBusqPacientes(searchTermLower: string, option: string) {
 
-}
-
-function consMsPacientes(tipoBusqueda: any, folio: any) {
-  throw new Error('Function not implemented.');
-}
 

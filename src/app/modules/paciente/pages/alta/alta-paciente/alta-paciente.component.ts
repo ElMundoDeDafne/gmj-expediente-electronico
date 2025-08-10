@@ -190,6 +190,7 @@ export class AltaPacienteComponent {
     this.requestFrontal.domicilioPaciente = this.paciente.hojaFrontal.domicilioPaciente;
     this.requestFrontal.datosContacto = this.paciente.hojaFrontal.datosContacto;
     this.requestFrontal.historiaClinica = this.paciente.historiaClinica;
+    // this.requestFrontal. = this.paciente.notaMedicaPaciente;
     this.msg = "";
 
     this.hojaFrontalService.registrarObjetoReceta(this.requestFrontal).subscribe(

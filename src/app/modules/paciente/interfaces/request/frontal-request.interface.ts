@@ -11,4 +11,5 @@ export interface IHojaFrontalRequest {
   domicilioPaciente : IDomicilioPaciente;
   datosContacto : IDatosContactoPaciente;
   historiaClinica : IHistClinica;
+  // notaMedicaPaciente : INotaMedicaPac; // No es necesario enviar la nota medica, ya que se genera en el backend
 }

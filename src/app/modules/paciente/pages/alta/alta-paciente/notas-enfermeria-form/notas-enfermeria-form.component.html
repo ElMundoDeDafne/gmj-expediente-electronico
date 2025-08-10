@@ -51,7 +51,7 @@
     name="realizoNEnf"
     class="form-control"
     size="15"
-    maxLength="15"
+    maxLength="40"
     style="max-width: 100%;"
     [(ngModel)]="notasEnfermeria.realizoNEnf"
     oninput="this.value = this.value.toUpperCase()" >
@@ -65,7 +65,7 @@
     maxLength="8"
     style="max-width: 100%;"
     [(ngModel)]="notasEnfermeria.cedulaProfNEnf"
-    (input)="utils.convertirAMayusculas($event)">
+    oninput="this.value = this.value.toUpperCase()">
     <!-- <div class="text-danger" *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].invalid && (notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].dirty || notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].touched)">
       <div *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].errors?.['pattern']">
         <h6>Solo números.</h6>

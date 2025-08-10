@@ -191,7 +191,7 @@ export class Utilerias{
       } else if(error.status === 500){
         this.respuesta = "Error en el servicio: "+error.error.error;
       } else if (error.status === 400) {
-        this.respuesta = "Ocurrio un error al registrar paciente, respuesta de servicio: "+error.error.error;
+        this.respuesta = "Ocurrio un error en el proceso, respuesta de servicio: "+error.error.error;
       }
       // console.error('Error al consumir el servicio');
       // this.respuesta = "Error al consumir el servicio";
