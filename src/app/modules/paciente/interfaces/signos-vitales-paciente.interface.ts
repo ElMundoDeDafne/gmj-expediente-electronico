@@ -2,7 +2,7 @@
 export interface ISignosVitales{
     presionSist?:number;
     presionDiast?:number;
-    oxigenacion?:string;
+    oxigenacion?:number;
     pulso?:number;
     temperatura?:number;
     fechaToma?:string;
@@ -13,4 +13,6 @@ export interface ISignosVitales{
     peso?:number;
     talla?:number;
     imc?:number;
+    tipoSangre?:string;
+    factorRh?:string;
 }

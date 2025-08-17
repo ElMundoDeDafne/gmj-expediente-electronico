@@ -1,4 +1,13 @@
+<div class="text-danger" *ngIf="this.mensajes.length > 0">
   <div class="row form-div-padding">
+    <!-- Mensajes de alerta en signos -->
+    <div class="col">
+      <p *ngFor="let msg of mensajes">{{msg}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="row form-div-padding">
     <h2>Somatometria</h2>
     <div class="col">
       <label>Presion S.</label>
@@ -8,7 +17,8 @@
       size="15"
       maxLength="15"
       style="max-width: 50%;"
-      [(ngModel)]="signosVitales.presionSist">
+      [(ngModel)]="signosVitales.presionSist"
+      (input) = "this.validarSignos()">
     </div>
     <div class="col">
       <label>Presion D.</label>
@@ -18,7 +28,8 @@
       size="15"
       maxLength="15"
       style="max-width: 50%;"
-      [(ngModel)]="signosVitales.presionDiast">
+      [(ngModel)]="signosVitales.presionDiast"
+      (input) = "this.validarSignos()">
     </div>
     <div class="col">
       <label>Frec. respiratoria</label>
@@ -28,7 +39,8 @@
       size="15"
       maxLength="15"
       style="max-width: 50%;"
-      [(ngModel)]="signosVitales.oxigenacion">
+      [(ngModel)]="signosVitales.oxigenacion"
+      (input) = "this.validarSignos()">
       <!-- <label>FPM</label> -->
     </div>
     <div class="col">
@@ -39,7 +51,8 @@
       size="15"
       maxLength="15"
       style="max-width: 50%;"
-      [(ngModel)]="signosVitales.frecuenciaCardiaca">
+      [(ngModel)]="signosVitales.frecuenciaCardiaca"
+      (input) = "this.validarSignos()">
       <!-- <label>FPM</label> -->
     </div>
     <div class="col">
@@ -50,7 +63,8 @@
       size="15"
       maxLength="15"
       style="max-width: 50%;"
-      [(ngModel)]="signosVitales.talla">
+      [(ngModel)]="signosVitales.talla"
+      (input)="this.calcularIMC()">
       <!-- <label>FPM</label> -->
     </div>
     <div class="col">
@@ -62,6 +76,7 @@
       maxLength="15"
       style="max-width: 50%;"
       [(ngModel)]="signosVitales.temperatura"
+      (input) = "this.validarSignos()"
       >
       <!-- <label>FPM</label> -->
     </div>
@@ -69,26 +84,28 @@
     <div class="row form-div-padding">
       <div class="col">
         <label>Tipo de sangre</label>
-        <input type="number"
-        name="temperatura"
+        <input type="text"
+        name="tipoSangre"
         class="form-control"
         size="15"
         maxLength="15"
         style="max-width: 100px;"
-        [(ngModel)]="signosVitales.temperatura"
+        oninput = "this.value = this.value.toUpperCase()"
+        [(ngModel)]="signosVitales.tipoSangre"
         >
       </div>
 
       <div class="col">
         <label>Factor RH</label>
         <!--Cambiar esto por un select-->
-        <input type="number"
+        <input type="text"
         name="temperatura"
         class="form-control"
         size="15"
         maxLength="15"
         style="max-width: 100px;"
-        [(ngModel)]="signosVitales.temperatura"
+        [(ngModel)]="signosVitales.factorRh"
+        oninput = "this.value =this.value.toUpperCase()"
         >
       </div>
 
@@ -101,19 +118,20 @@
         maxLength="3"
         style="max-width: 100px;"
         [(ngModel)]="signosVitales.peso"
+        (input)="this.calcularIMC()"
         >
       </div>
 
       <div class="col">
         <label>IMC (calculado)</label>
         <input type="number"
-        name="imcPx"
+        name="imc"
         class="form-control"
         size="15"
         maxLength="15"
         style="max-width: 100px;"
         disabled
-        [(ngModel)]="signosVitales.peso"
+        [(ngModel)]="this.signosVitales.imc"
         >
       </div>
       <div class="col"></div>
@@ -137,7 +155,7 @@
 <div class="row form-div-padding">
   <div class="col">
     <label>Habitus Exterior</label>
-    <textarea type="number"
+    <textarea type="text"
     name="habitusExterior"
     class="form-control"
     size="15"
