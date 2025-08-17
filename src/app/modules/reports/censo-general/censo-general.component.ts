@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './censo-general.component.css'
 })
 export class CensoGeneralComponent {
+  sidebarOpen = true;
 
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
 }

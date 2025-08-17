@@ -11,7 +11,7 @@ describe('CensoGeneralComponent', () => {
       declarations: [CensoGeneralComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(CensoGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
