@@ -1,11 +1,12 @@
 <div class="layout">
+
   <!-- Botón de menú (hamburger) -->
-  <button (click)="toggleSidebar()" class="menu-toggle">
-    ☰
-  </button>
 
   <!-- Menú lateral -->
   <div class="sidebar" [class.hidden]="!sidebarOpen">
+      <button (click)="toggleSidebar()" class="menu-toggle">
+    ☰
+  </button>
     <ul>
       <li><a routerLink="/inicio">Inicio</a></li>
       <li><a routerLink="/perfil">Perfil</a></li>
@@ -18,5 +19,16 @@
   <div class="content">
     <h1>Censo General</h1>
     <p>Contenido del censo general...</p>
+
+    <ul>
+      <li *ngFor="let especialidad of especialidades">
+        {{ especialidad }}
+        <ul>
+          <li *ngFor="let dato of especialidad.datos">
+            {{ dato.codigo }} - {{ dato.nombre }}
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </div>
