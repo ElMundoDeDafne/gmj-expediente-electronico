@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ICatEspecialidadesResponse } from '../../paciente/interfaces/response/cat-esp-response,interface';
+import { ICatEspecialidadesResponse } from '../../paciente/interfaces/response/cat-esp-response.interface';
 import { CatEspecialidadesService } from '../../../services/cat-esp.service';
 
 @Component({

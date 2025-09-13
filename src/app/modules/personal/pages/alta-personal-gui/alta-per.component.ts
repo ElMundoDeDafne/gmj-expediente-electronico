@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { DayPilot } from '@daypilot/daypilot-lite-angular';
+import { IAltaPersonalRequest } from '../../../paciente/interfaces/request/alta-personal-request.interface';
+import { AltaPersonalService } from '../../../../services/alta-personal.service';
+import { AlertGeneratorService } from '../../../../pages/alerts/alert-generator/alert-generator.service';
 
 @Component({
   selector: 'app-alta-personal',
@@ -14,7 +17,7 @@ export class AltaPersonalComponent {
   }
 
 
-  constructor() {
+  constructor(private altaPersonalService : AltaPersonalService, private alertas:AlertGeneratorService) {
     // Inicialización del componente
   }
 
@@ -26,6 +29,7 @@ export class AltaPersonalComponent {
   fechaFormateada : string = '';
   tipoPersona : string[] = ['Médico', 'Enfermera', 'Administrativo', 'Otro'];
   especialidades : string[] = ['Cardiología', 'Pediatría', 'Ginecología', 'Traumatología', 'Otro'];
+  altaPersonalRequest : IAltaPersonalRequest;
 
   // Método de ejemplo para manejar el envío del formulario
   onSubmit() {
@@ -48,5 +52,9 @@ export class AltaPersonalComponent {
   actualizarFecha(valor: string): void {
     const [day, month, year] = valor.split('/');
     this.fecha = new Date(Number(day), Number(month) - 1, Number(year));
+  }
+  //metodo para registrar personal mediante servicio
+  registrarPersonal(): void {
+
   }
 }

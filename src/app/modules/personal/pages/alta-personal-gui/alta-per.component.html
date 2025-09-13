@@ -13,7 +13,7 @@
   <div class="row form-div-padding" style="padding-top: 0.5%;">
         <div class="col d-inline-block">
           <label class="form-check-label">Apellido materno</label><br>
-          <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="nombre">
+          <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="nombre" [(ngModel)]="altaPersonalRequest.apellidoMaterno">
         </div>
         <div class="col d-inline-block">
           <label class="form-check-label">Apellido paterno</label><br>
