@@ -1,75 +1,80 @@
 <div class="form-div-padding">
   <h1>Alta de personal</h1>
-  <div class="row form-div-padding" style="padding-top: 0.5%;">
-        <div class="col d-inline-block">
-          <label class="form-check-label">Primer nombre</label><br>
-          <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="folio">
-        </div>
-              <div class="col d-inline-block">
-                <label class="form-check-label">Segundo nombre</label><br>
-                <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="nombre">
-              </div>
-  </div>
-  <div class="row form-div-padding" style="padding-top: 0.5%;">
-        <div class="col d-inline-block">
-          <label class="form-check-label">Apellido materno</label><br>
-          <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="nombre" [(ngModel)]="altaPersonalRequest.apellidoMaterno">
-        </div>
-        <div class="col d-inline-block">
-          <label class="form-check-label">Apellido paterno</label><br>
-          <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="nombre">
-        </div>
-  </div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="row form-div-padding" style="padding-top: 0.5%;">
+      <div class="col d-inline-block">
+        <label class="form-check-label">Primer nombre</label><br>
+        <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="folio">
+      </div>
+
+      <div class="col d-inline-block">
+        <label class="form-check-label">Segundo nombre</label><br>
+        <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="nombre">
+      </div>
+</div>
 
 <div class="row form-div-padding" style="padding-top: 0.5%;">
-  <div class="col d-inline-block">
-    <label class="form-check-label">Tipo de personal</label><br>
-    <!--Combobox -->
-    <select class="form-select" [(ngModel)]="tipoPersona" name="tipoPersona">
-      <option value="" disabled selected>Seleccione un tipo de personal</option>
-      <option *ngFor="let tipo of tipoPersona" [value]="tipo.toUpperCase()">{{ tipo.toUpperCase() }}</option>
-    </select>
-  </div>
+      <div class="col d-inline-block">
+        <label class="form-check-label">Apellido materno</label><br>
+        <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="nombre" [(ngModel)]="altaPersonalRequest.apellidoMaterno">
+      </div>
+      <div class="col d-inline-block">
+        <label class="form-check-label">Apellido paterno</label><br>
+        <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="nombre" [(ngModel)]="altaPersonalRequest.apellidoPaterno">
+      </div>
+</div>
 
-  <div class="col d-inline-block">
-    <label class="form-check-label">Cedula profesional</label><br>
-    <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*">
-  </div>
+<div class="row form-div-padding" style="padding-top: 0.5%;">
+<div class="col d-inline-block">
+  <label class="form-check-label">Tipo de personal</label><br>
+  <!--Combobox -->
+  <select class="form-select" [(ngModel)]="tipoPersona" name="tipoPersona">
+    <option value="" disabled selected>Seleccione un tipo de personal</option>
+    <option *ngFor="let tipo of tipoPersona" [value]="tipo.toUpperCase()">{{ tipo.toUpperCase() }}</option>
+  </select>
+</div>
+
+<div class="col d-inline-block">
+  <label class="form-check-label">Cedula profesional</label><br>
+  <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.cedulaProfesional">
+</div>
 </div>
 
 <!--Si es medico o enfermero/a y tiene especialidad-->
 <div class="row form-div-padding" style="padding-top: 0.5%;">
-    <div class="col d-inline-block">
-    <label class="form-check-label">Cedula profesional (Esp.)</label><br>
-    <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*">
-  </div>
+  <div class="col d-inline-block">
+  <label class="form-check-label">Cedula profesional (Esp.)</label><br>
+  <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.especialidadOtro">
+</div>
 </div>
 
 <div class="row form-div-padding" style="padding-top: 0.5%;">
-  <div class="col d-inline-block">
-    <label class="form-check-label">Especialidad</label><br>
-    <!--Combobox -->
-    <select class="form-select" [(ngModel)]="especialidades" name="tipoPersona">
-      <option value="" disabled selected>Seleccione un tipo de personal</option>
-      <option *ngFor="let tipo of especialidades" [value]="tipo.toUpperCase()">{{ tipo.toUpperCase() }}</option>
-    </select>
-  </div>
-
-
-  <div class="col d-inline-block">
-    <label class="form-check-label">Especialidad (otro)</label><br>
-    <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*">
-  </div>
-
-  <div class="col d-inline-block">
-    <label class="form-check-label">Fecha cumpleaños</label><br>
-    <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*">
-  </div>
-
-  <div class="col d-inline-block">
-    <label class="form-check-label">CURP</label><br>
-    <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*">
-  </div>
+<div class="col d-inline-block">
+  <label class="form-check-label">Especialidad</label><br>
+  <!--Combobox -->
+  <select class="form-select" [(ngModel)]="especialidades" name="tipoPersona">
+    <option value="" disabled selected>Seleccione un tipo de personal</option>
+    <option *ngFor="let tipo of especialidades" [value]="tipo.toUpperCase()">{{ tipo.toUpperCase() }}</option>
+  </select>
 </div>
-    <button class="btn btn-outline-primary btn-sm" >Dar de alta</button>
+
+
+<div class="col d-inline-block">
+  <label class="form-check-label">Especialidad (otro)</label><br>
+  <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*">
+</div>
+
+<div class="col d-inline-block">
+  <label class="form-check-label">Fecha cumpleaños</label><br>
+  <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*">
+</div>
+
+<div class="col d-inline-block">
+  <label class="form-check-label">CURP</label><br>
+  <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*">
+</div>
+</div>
+
+<button type="submit" class="btn btn-outline-primary btn-sm" >Dar de alta</button>
+  </form>
 </div>

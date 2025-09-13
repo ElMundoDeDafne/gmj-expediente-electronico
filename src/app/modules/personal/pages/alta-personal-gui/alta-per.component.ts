@@ -29,12 +29,13 @@ export class AltaPersonalComponent {
   fechaFormateada : string = '';
   tipoPersona : string[] = ['Médico', 'Enfermera', 'Administrativo', 'Otro'];
   especialidades : string[] = ['Cardiología', 'Pediatría', 'Ginecología', 'Traumatología', 'Otro'];
-  altaPersonalRequest : IAltaPersonalRequest;
+  altaPersonalRequest : IAltaPersonalRequest = {};
 
   // Método de ejemplo para manejar el envío del formulario
   onSubmit() {
     // Lógica para manejar el envío del formulario
-    console.log('Formulario enviado');
+    console.error('Formulario enviado');
+    window.alert('enviado');
   }
 
   /**DEFINICION DE FUNCIONES */
