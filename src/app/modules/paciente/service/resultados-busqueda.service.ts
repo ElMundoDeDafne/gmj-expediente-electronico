@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBusquedaPacientes } from '../interfaces/busqueda/busqueda-pacientes.interface';
+import { BusquedaPacientesResponseDTO } from '../interfaces/response/busq-pacientes-response.interface';
+import { BusquedaPacienteRequestDTO } from '../interfaces/request/busq-pacientes-request.interface';
+import { BusquedaPacientesRepository } from '../../../core/repositories/busqueda-paciente.repository';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +12,13 @@ import { IBusquedaPacientes } from '../interfaces/busqueda/busqueda-pacientes.in
  * Servicio para busqueda de pacientes
 */
 export class ResultadosBusquedaService {
-  private jsonURL = 'assets/cat-js/resultados-busqueda.json';
-  constructor(private http: HttpClient) { }
-  getData(): Observable<IBusquedaPacientes[]> {
-    return this.http.get<IBusquedaPacientes[]>(this.jsonURL);
-  }
+  // constructor(private repository: BusquedaPacientesRepository) { }
+
+  // async getData(data: IBusqPacientesRequest): Promise<IBusqPacientesResponse[]> {
+  //   // return null;
+  //    return this.repository.getAll(data).toPromise().then(response => response ?? []);
+  //   // return this.http.get<IBusquedaPacientes[]>(this.jsonURL);
+  // }
 }
 
 /**

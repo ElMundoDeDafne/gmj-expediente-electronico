@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CatOcupacionesService } from './services/cat-ocupaciones.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonalModule } from './modules/personal/personal.module';
+import { BusquedaPacientesRepository } from './core/repositories/busqueda-paciente.repository';
 
 @NgModule({
   declarations: [

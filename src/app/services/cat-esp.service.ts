@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { IBusqPacientesResponse } from "../modules/paciente/interfaces/response/busq-pacientes-response.interface";
+import { BusquedaPacientesResponseDTO } from "../modules/paciente/interfaces/response/busq-pacientes-response.interface";
 import { ConstantesGenerales } from "../utils/constantes-generales";
 import { ICatEspecialidadesResponse } from "../modules/paciente/interfaces/response/cat-esp-response.interface";
 

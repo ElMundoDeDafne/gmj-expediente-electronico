@@ -1,5 +1,5 @@
 //TODO: Validar si debe de regresar una lista de pacientes o solo uno
-export interface IBusqPacientesResponse {
+export interface BusquedaPacientesResponseDTO {
   exito: boolean;
   folio?: string;
   nombres?: string;

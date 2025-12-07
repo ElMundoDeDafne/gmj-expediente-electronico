@@ -1,4 +1,4 @@
-export interface IBusqPacientesRequest {
+export interface BusquedaPacienteRequestDTO {
   folio?: string;
   nombre?: string;
   curp?: string;

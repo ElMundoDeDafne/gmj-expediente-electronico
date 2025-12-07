@@ -1,6 +1,6 @@
-import { IBusqPacientesRequest } from './../../interfaces/request/busq-pacientes-request.interface';
-import { IBusqPacientesResponse } from './../../interfaces/response/busq-pacientes-response.interface';
-  import { IBusquedaPaciente } from './../../interfaces/busqueda-paciente.interface';
+import { BusquedaPacienteRequestDTO } from './../../interfaces/request/busq-pacientes-request.interface';
+import { BusquedaPacientesResponseDTO } from './../../interfaces/response/busq-pacientes-response.interface';
+  import { BusquedaPacienteDTO } from './../../interfaces/busqueda-paciente.interface';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ResultadosBusquedaService } from '../../service/resultados-busqueda.service';
 import { IBusquedaPacientes } from '../../interfaces/busqueda/busqueda-pacientes.interface';
@@ -21,7 +21,7 @@ import { AlertGeneratorService } from '../../../../pages/alerts/alert-generator/
 
 export class BusquedaPacienteComponent implements OnInit, AfterViewInit{
 
-constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private bsModalRefdf : BsModalRef, private busquedaPacienteService : BusquedaPacienteService, private alertas:AlertGeneratorService) { }
+constructor(private bsModalRefdf : BsModalRef, private busquedaPacienteService : BusquedaPacienteService, private alertas:AlertGeneratorService) { }
   ngAfterViewInit(): void {
     setTimeout(() => {
       if(this.folioRB){
@@ -35,9 +35,9 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   }
   @ViewChild('folioRadioButton',{static:false}) folioRB! : ElementRef<HTMLInputElement> ;
   @Input() isConfirmed! : boolean;
-  @Output() onCloseEmitter : EventEmitter<IBusqPacientesResponse> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
+  @Output() onCloseEmitter : EventEmitter<BusquedaPacientesResponseDTO> = new EventEmitter(); //EventEmitter para comunicarse con componente padre
   data : IBusquedaPacientes[] = [];
-  dataMs : IBusqPacientesResponse = {
+  dataMs : BusquedaPacientesResponseDTO = {
     exito : false
   };
   //iBusqPacResponse
@@ -45,9 +45,9 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   searchTerm : string = ''; //termino de busqueda
   headers : string[] = ['','Folio','Nombre(s)','Ap. Paterno','Ap. Materno','CURP','Localidad','Edad','Especialidad','Medico Tratante','Ultima Visita','Receta'];
   radios : string[] = ['Folio','Nombre','Localidad','CURP','Medico tratante','Especialidad'];
-  resultadosBusqueda : IBusqPacientesResponse[] = [];
+  resultadosBusqueda : BusquedaPacientesResponseDTO[] = [];
   option : string = ''; //opcion para busqueda
-  seleccion! : IBusqPacientesResponse ; //opcion seleccionada
+  seleccion! : BusquedaPacientesResponseDTO ; //opcion seleccionada
   sinResultados:boolean=false;
   selectedPatientId: number | null = null;
   returnedArray!: IBusquedaPacientes[];
@@ -84,14 +84,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   }
 
   loadData():void{
-    this.resultadosBusquedaServ.getData()
-    .subscribe((response)=> {
-      this.data = response;
-      this.filteredData = this.data;
-      // this.filteredData = this.filteredData.slice(0,5);
-      this.returnedArray = this.filteredData.slice(0, 5);
-      // this.returnedArray = this.filteredData.slice(0, 5);
-    });
+    // this.resultadosBusquedaServ.getData();
     //this.contentArray = this.data;
     //this.contentArray = this.filteredData;
   //   this.contentArray = this.contentArray.map((v: IBusquedaPacientes, i: number) => {
@@ -100,7 +93,7 @@ constructor(private resultadosBusquedaServ : ResultadosBusquedaService, private 
   //  this.returnedArray = this.filteredData.slice(0, 5);
   }
 
-onRadioChange(resultado: IBusqPacientesResponse): void {
+onRadioChange(resultado: BusquedaPacientesResponseDTO): void {
   this.seleccion = resultado;
 
 }
@@ -110,28 +103,61 @@ onRadioChange(resultado: IBusqPacientesResponse): void {
 msBusqPacientes(searchTermLower: string, option: string) : void{
   console.error(searchTermLower);
   console.error(option);
-  var iBusqPacResponse : IBusqPacientesResponse;
-  var iBusqPacRequest : IBusqPacientesRequest;
+  var iBusqPacResponse : BusquedaPacientesResponseDTO;
+  var request : BusquedaPacienteRequestDTO = {};
   var msg : string;
   console.error(`Opcion: ${option}`);
-  if(option==='nombres') {
-    iBusqPacRequest = {
-      tipoBusqueda : option,
-      nombre: searchTermLower
-    }
-  } else {
-    iBusqPacRequest = {
-      tipoBusqueda : option,
-      folio: searchTermLower
-    }
+
+  //TODO: Migrar a servicio de pacientes
+  switch(option) {
+    case 'nombres':
+      request = {
+        tipoBusqueda : option,
+        nombre: searchTermLower
+      }
+      break;
+    case 'folio':
+      request = {
+        tipoBusqueda : option,
+        folio: searchTermLower
+      }
+      break;
+    case 'localidad':
+      request = {
+        tipoBusqueda : option,
+        localidad: searchTermLower
+      }
+      break;
+    case 'medicotratante':
+      request = {
+        tipoBusqueda : option,
+        medicoTratante: searchTermLower
+      }
+      break;
+    case 'curp':
+      request = {
+        tipoBusqueda : option,
+        curp: searchTermLower
+      }
+      break;
+    case 'especialidad':
+      request = {
+        tipoBusqueda : option,
+        especialidad: searchTermLower
+      }
+      break;
+    default:
+      window.alert('Buscar todos los registros');
+      request = {
+        tipoBusqueda : option,
+        especialidad: searchTermLower
+      }
+      break;
   }
 
-  iBusqPacResponse = {
-    exito:false
-  }
   console.error('Se consume servicio de busqueda de pacientes');
   //se consume servicio buscando por folio
-  this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
+  this.busquedaPacienteService.getBusqueda(request).subscribe(
     data => {
       this.resultadosBusqueda = data;
       console.error('Respuesta registro paciente: ',data);
@@ -166,6 +192,8 @@ filterDataByCriteria(option:string,criteria:string):void{
   } else {
     if(criteria.trim()===''){
       (<HTMLInputElement> document.getElementById('criterioBusquedaTexto')).innerHTML = '';
+      option="todos"; //cargamos todos los pacientes
+      this.msBusqPacientes(criteria,option);
       this.filteredData = this.data;
       this.returnedArray = this.filteredData.slice(0,5);
     } else {
@@ -225,10 +253,11 @@ filterDataByCriteria(option:string,criteria:string):void{
         // });
         // this.filteredData = this.returnedArray;
       } else if (option === 'localidad') {
-        this.returnedArray = this.data.filter((item) => {
-          return item.localidad.toLowerCase().includes(searchTermLower);
-        });
-        this.filteredData = this.returnedArray;
+        this.msBusqPacientes(searchTermLower,option);
+        // this.returnedArray = this.data.filter((item) => {
+        //   return item.localidad.toLowerCase().includes(searchTermLower);
+        // });
+        // this.filteredData = this.returnedArray;
       } else if (option === 'especialidad') {
         this.msBusqPacientes(searchTermLower,option);
         /*this.returnedArray = this.data.filter((item) => {
@@ -244,10 +273,11 @@ filterDataByCriteria(option:string,criteria:string):void{
         });
         this.filteredData = this.returnedArray;*/
       } else if (option === 'medicotratante'){
-        this.returnedArray = this.data.filter((item) => {
-          return item.medicoTratante.toLowerCase().includes(searchTermLower);
-        });
-        this.filteredData = this.returnedArray;
+        this.msBusqPacientes(searchTermLower,option);
+        // this.returnedArray = this.data.filter((item) => {
+        //   return item.medicoTratante.toLowerCase().includes(searchTermLower);
+        // });
+        // this.filteredData = this.returnedArray;
       } else {
         this.returnedArray = this.data.filter((item) => {
           return item.especialidad.toLowerCase().includes(searchTermLower);
@@ -260,7 +290,7 @@ filterDataByCriteria(option:string,criteria:string):void{
 
 }
 
-  public busqueda:IBusquedaPaciente={
+  public busqueda:BusquedaPacienteDTO={
     textoCriterioBusqueda:'',
     criterioBusqueda:''
   }

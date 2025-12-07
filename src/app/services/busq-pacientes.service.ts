@@ -1,9 +1,10 @@
-import { IBusqPacientesRequest } from './../modules/paciente/interfaces/request/busq-pacientes-request.interface';
+import { BusquedaPacienteRequestDTO } from './../modules/paciente/interfaces/request/busq-pacientes-request.interface';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { IBusqPacientesResponse } from "../modules/paciente/interfaces/response/busq-pacientes-response.interface";
+import { BusquedaPacientesResponseDTO } from "../modules/paciente/interfaces/response/busq-pacientes-response.interface";
 import { firstValueFrom, Observable } from "rxjs";
 import { ConstantesGenerales } from '../utils/constantes-generales';
+import { BusquedaPacientesHttpRepository } from '../infrastructure/repositories/busqueda-pacientes-json.repository';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,17 @@ export class BusquedaPacienteService {
   /**
    * Constructor del servicio
    */
-  constructor(private client : HttpClient) {}
+  constructor(private repository: BusquedaPacientesHttpRepository) {}
 
 
     /**Funcion para consumir servicio mediante metodo post*/
-    getDataPost(data: IBusqPacientesRequest) : Observable<IBusqPacientesResponse[]> {
-      return this.client.post<IBusqPacientesResponse[]>(ConstantesGenerales.URL_API_BUSQ_PACIENTES, data);
+    // getDataPost(data: IBusqPacientesRequest) : Observable<IBusqPacientesResponse[]> {
+    //   return this.client.post<IBusqPacientesResponse[]>(ConstantesGenerales.URL_API_BUSQ_PACIENTES, data);
+    // };
+
+    getBusqueda(data: BusquedaPacienteRequestDTO) : Observable<BusquedaPacientesResponseDTO[]> {
+      return this.repository.getAll(data);
+      // return this.client.post<IBusqPacientesResponse[]>(ConstantesGenerales.URL_API_BUSQ_PACIENTES, data);
     };
 
     //   async getData() : Promise<IBusqPacientesResponse> {

@@ -1,6 +1,6 @@
 import { IPaciente } from './paciente.interface';
 /**Interfaz para busqueda de pacientes */
-export interface IBusquedaPaciente{
+export interface BusquedaPacienteDTO{
   textoCriterioBusqueda?:string;
   criterioBusqueda?:string;
 }
