@@ -12,6 +12,7 @@ export class ConstantesGenerales{
   static readonly URL_API_CAT_POSTAL:string = 'http://localhost:8089/api/catalogos/v1.0/postal/get';
   static readonly URL_API_BUSQ_PACIENTES:string = 'http://localhost:8090/api/v1/paciente/busqueda/get';
   static readonly URL_API_CAT_ESPECIALIDADES:string = 'http://localhost:8091/api/cat/v1.0/esp/get';
-  static readonly URL_API_ALTA_PERSONAL:string = 'http://localhost:8091/api/cat/v1.0/esp/get';
+  static readonly URL_API_ALTA_PERSONAL:string = 'http://localhost:8094/api/v1.0/personal/registro/';
+  static readonly URL_API_CAT_PERFILES:string = 'http://localhost:8091/api/cat/v1.0/perfiles/get';
 
 }

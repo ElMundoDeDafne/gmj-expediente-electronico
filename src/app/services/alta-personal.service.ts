@@ -4,17 +4,18 @@ import { IAltaPersonalRequest } from '../modules/paciente/interfaces/request/alt
 import { IAltaPersonalResponse } from '../modules/paciente/interfaces/response/alta-personal-response.interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { ConstantesGenerales } from '../utils/constantes-generales';
+import { AltaPersonalHttpRepository } from '../infrastructure/repositories/alta-personal-http.repository';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AltaPersonalService {
 
-  constructor(private client : HttpClient) { }
+  constructor(private repository : AltaPersonalHttpRepository) { }
 
   //Metodo post para agregar un personal nuevo a la base de datos
-  registrarPersonal(request : IAltaPersonalRequest) : Observable<IAltaPersonalResponse> {
-    return this.client.post<IAltaPersonalResponse>(ConstantesGenerales.URL_API_ALTA_PERSONAL,request);
+  registrarPersonal(request : IAltaPersonalRequest) {
+    this.repository.registrarNuevoPersonal(request);
     //return this.client.post<IBusqPacientesResponse[]>(ConstantesGenerales.URL_API_BUSQ_PACIENTES, data);
   }
 

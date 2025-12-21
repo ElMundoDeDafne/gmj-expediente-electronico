@@ -1,6 +1,7 @@
 export interface IAltaPersonalRequest {
-  primerNombre? : string;
-  segundoNombre?: string;
+  nombre? : string;
+  nombrePropioUno? : string;
+  nombrePropioDos?: string;
   apellidoPaterno? : string;
   apellidoMaterno? : string;
   cedulaProfesional? : string;

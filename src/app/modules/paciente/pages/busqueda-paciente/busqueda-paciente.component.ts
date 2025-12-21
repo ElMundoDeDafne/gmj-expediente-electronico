@@ -108,53 +108,14 @@ msBusqPacientes(searchTermLower: string, option: string) : void{
   var msg : string;
   console.error(`Opcion: ${option}`);
 
-  //TODO: Migrar a servicio de pacientes
-  switch(option) {
-    case 'nombres':
-      request = {
-        tipoBusqueda : option,
-        nombre: searchTermLower
-      }
-      break;
-    case 'folio':
-      request = {
-        tipoBusqueda : option,
-        folio: searchTermLower
-      }
-      break;
-    case 'localidad':
-      request = {
-        tipoBusqueda : option,
-        localidad: searchTermLower
-      }
-      break;
-    case 'medicotratante':
-      request = {
-        tipoBusqueda : option,
-        medicoTratante: searchTermLower
-      }
-      break;
-    case 'curp':
-      request = {
-        tipoBusqueda : option,
-        curp: searchTermLower
-      }
-      break;
-    case 'especialidad':
-      request = {
-        tipoBusqueda : option,
-        especialidad: searchTermLower
-      }
-      break;
-    default:
-      window.alert('Buscar todos los registros');
-      request = {
-        tipoBusqueda : option,
-        especialidad: searchTermLower
-      }
-      break;
-  }
+    request = {
+      tipoBusqueda : option,
+      especialidad: searchTermLower
+    }
 
+  if(option==='todos') {
+      window.alert('Buscar todos los registros');
+      if(window.confirm('¿Desea cargar todos los registros?')) {
   console.error('Se consume servicio de busqueda de pacientes');
   //se consume servicio buscando por folio
   this.busquedaPacienteService.getBusqueda(request).subscribe(
@@ -174,6 +135,28 @@ msBusqPacientes(searchTermLower: string, option: string) : void{
        this.alertas.ventanaError(msg);
     }
 );
+      }
+  } else {
+  console.error('Se consume servicio de busqueda de pacientes');
+  //se consume servicio buscando por folio
+  this.busquedaPacienteService.getBusqueda(request).subscribe(
+    data => {
+      this.resultadosBusqueda = data;
+      console.error('Respuesta registro paciente: ',data);
+      //iterar data
+      var i : number= 0;
+      console.error(`Total de registros encontrados: ${data.length}`);
+    //  console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
+    }
+    ,
+     error => {
+       var resp : string = this.utils.manejarErrorServicios(error);
+       console.error(`Respuesta del servicio: ${error}`);
+       msg = this.utils.manejarErrorServicios(error);
+       this.alertas.ventanaError(msg);
+    }
+);
+  }
 }
 
 
@@ -190,100 +173,15 @@ filterDataByCriteria(option:string,criteria:string):void{
     (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = 'Seleccione una opcion';
     return;
   } else {
-    if(criteria.trim()===''){
+    if(criteria.trim()==='') {
       (<HTMLInputElement> document.getElementById('criterioBusquedaTexto')).innerHTML = '';
-      option="todos"; //cargamos todos los pacientes
+      option='todos'; //cargamos todos los pacientes
       this.msBusqPacientes(criteria,option);
       this.filteredData = this.data;
       this.returnedArray = this.filteredData.slice(0,5);
     } else {
       const searchTermLower = criteria.toUpperCase().trim();
-      var pruebas : boolean = false;
-      if(option === 'folio') {
-        console.error('Buscando por folio');
-        // if(!pruebas) {
-          this.msBusqPacientes(searchTermLower,option);
-
-        //   var iBusqPacResponse : IBusqPacientesResponse;
-        //   var iBusqPacRequest : IBusqPacientesRequest;
-        //   iBusqPacRequest = {
-        //     tipoBusqueda : option,
-        //     folio: searchTermLower
-
-        //   }
-        //   iBusqPacResponse = {
-        //     exito:false
-        //   }
-        //   console.error('Se consume servicio de busqueda de pacientes');
-        //   //se consume servicio buscando por folio
-        //   this.busquedaPacienteService.getDataPost(iBusqPacRequest).subscribe(
-        //     data => {
-        //       this.resultadosBusqueda = data;
-        //       console.error('Respuesta registro paciente: ',data);
-        //       //iterar data
-        //       var i : number= 0;
-        //       console.error(`Total de registros encontrados: ${data.length}`);
-        //      console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
-        //     },
-        //     error => {
-        //       var resp : string = this.utils.manejarErrorServicios(error);
-        //       console.error(`Respuesta del servicio: ${resp}`);
-        // //this.msg = this.utils.manejarErrorServicios(error);
-        // //this.alertas.ventanaError(this.msg);
-        //     }
-        // );
-
-
-
-      // }
-        /*
-      else {
-          var r! : string;
-          this.returnedArray = this.data.filter((item) => {
-            return item.folio.toLowerCase().includes(searchTermLower);
-          });
-          this.filteredData = this.returnedArray;
-        }
-          */
-      } else if(option === 'curp'){
-        this.msBusqPacientes(searchTermLower,option);
-        // this.returnedArray = this.data.filter((item) => {
-
-        //   return item.curp.toLowerCase().includes(searchTermLower);
-        // });
-        // this.filteredData = this.returnedArray;
-      } else if (option === 'localidad') {
-        this.msBusqPacientes(searchTermLower,option);
-        // this.returnedArray = this.data.filter((item) => {
-        //   return item.localidad.toLowerCase().includes(searchTermLower);
-        // });
-        // this.filteredData = this.returnedArray;
-      } else if (option === 'especialidad') {
-        this.msBusqPacientes(searchTermLower,option);
-        /*this.returnedArray = this.data.filter((item) => {
-          return item.especialidad.toLowerCase().includes(searchTermLower);
-        });*/
-        this.filteredData = this.returnedArray;
-      } else if (option === 'nombres'){
-        this.msBusqPacientes(searchTermLower,option);
-
-
-        /*this.returnedArray = this.data.filter((item) => {
-          return item.nombres.toLowerCase().includes(searchTermLower);
-        });
-        this.filteredData = this.returnedArray;*/
-      } else if (option === 'medicotratante'){
-        this.msBusqPacientes(searchTermLower,option);
-        // this.returnedArray = this.data.filter((item) => {
-        //   return item.medicoTratante.toLowerCase().includes(searchTermLower);
-        // });
-        // this.filteredData = this.returnedArray;
-      } else {
-        this.returnedArray = this.data.filter((item) => {
-          return item.especialidad.toLowerCase().includes(searchTermLower);
-        });
-        this.filteredData = this.returnedArray;
-      }
+      this.msBusqPacientes(searchTermLower,option);
     }
     // if (this.filteredData.length===0) (<HTMLBodyElement> document.getElementById('mensajeError')).innerHTML = `No se encontraron resultados con criterio '<b>${criteria}</b>' para opcion seleccionada <b>${option}</b>`;
   }

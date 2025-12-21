@@ -25,12 +25,10 @@ export class BusquedaPacientesHttpRepository extends BusquedaPacientesRepository
   }
 
   private readonly jsonURL = 'assets/cat-js/resultados-busqueda.json';
-
     override getAll(data: BusquedaPacienteRequestDTO): Observable<BusquedaPacientesResponseDTO[]> {
       // return this.http.get<IBusquedaPacientes[]>(this.jsonURL);
         return this.http.post<BusquedaPacientesResponseDTO[]>(ConstantesGenerales.URL_API_BUSQ_PACIENTES, data);
     }
-
   }
 
   // getAll(): Observable<BusquedaPaciente[]> {
