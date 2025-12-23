@@ -11,4 +11,6 @@ export interface IAltaPersonalRequest {
   especialidadOtro ? : string;
   fechaNacimiento? : string;
   curp? : string;
+  sexo?: string;
+  estadoCivil?:string;
 }
