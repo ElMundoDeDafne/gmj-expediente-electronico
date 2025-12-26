@@ -2,6 +2,7 @@ import { IBusquedaPacientes } from "../modules/paciente/interfaces/busqueda/busq
 import * as XLSX from "xlsx";
 import { IInfoPaciente } from '../modules/paciente/interfaces/paciente.interface';
 import { HttpErrorResponse } from "@angular/common/http";
+import { ConstantesGenerales } from "./constantes-generales";
 
 /**
  * Clase con distintos metodos de utileria para el sistema
@@ -182,7 +183,7 @@ export class Utilerias{
       console.error('Ocurrió un error:', error.error.message);
 
       if(error.status === 0){
-        this.respuesta = "Servicio no disponible, intente mas tarde";
+        this.respuesta = ConstantesGenerales.ERROR_SERVICIO_NO_DISPONIBLE;
       }
 
       if(error.status === 404){
@@ -191,7 +192,7 @@ export class Utilerias{
       } else if(error.status === 500){
         this.respuesta = "Error en el servicio: "+error.error.error;
       } else if (error.status === 400) {
-        this.respuesta = "Ocurrio un error en el proceso, respuesta de servicio: "+error.error.error;
+        this.respuesta = error.error.error;
       }
       // console.error('Error al consumir el servicio');
       // this.respuesta = "Error al consumir el servicio";

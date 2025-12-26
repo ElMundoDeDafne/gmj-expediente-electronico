@@ -114,26 +114,26 @@ msBusqPacientes(searchTermLower: string, option: string) : void{
     }
 
   if(option==='todos') {
-      window.alert('Buscar todos los registros');
-      if(this.alertas.confirmarOperacionSinDestino('','¿Desea cargar todos los registros?')){
+      if(this.alertas.confirmarOperacionSinDestino('','¿Desea cargar todos los registros?') === true) {
       console.error('Se consume servicio de busqueda de pacientes');
+      window.alert('entramos a consumir servicio');
   //se consume servicio buscando por folio
       this.busquedaPacienteService.getBusqueda(request).subscribe(
-    data => {
-      this.resultadosBusqueda = data;
-      console.error('Respuesta registro paciente: ',data);
+        data => {
+        this.resultadosBusqueda = data;
+        console.error('Respuesta registro paciente: ',data);
       //iterar data
-      var i : number= 0;
-      console.error(`Total de registros encontrados: ${data.length}`);
+        var i : number= 0;
+        console.error(`Total de registros encontrados: ${data.length}`);
     //  console.error(`Res. Busq: -> ${this.resultadosBusqueda.length}`);
-    }
-    ,
-     error => {
-       var resp : string = this.utils.manejarErrorServicios(error);
-       console.error(`Respuesta del servicio: ${error}`);
-       msg = this.utils.manejarErrorServicios(error);
-       this.alertas.ventanaError(msg);
-    }
+        }
+        ,
+        error => {
+          var resp : string = this.utils.manejarErrorServicios(error);
+          console.error(`Respuesta del servicio: ${resp}`);
+          msg = this.utils.manejarErrorServicios(error);
+          this.alertas.ventanaError(resp);
+        }
 );
       }
   } else {

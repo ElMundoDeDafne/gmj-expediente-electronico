@@ -40,7 +40,7 @@ export class AlertGeneratorService implements OnInit{
     }).then((result)=>{
       if(result.isConfirmed){
         confirmado = true;
-        console.error('se confirma operacion!!!!');
+        console.error('se confirma operacion!!!!'+confirmado);
       }
     });
     return confirmado;
