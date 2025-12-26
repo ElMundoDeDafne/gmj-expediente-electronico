@@ -28,6 +28,24 @@ export class AlertGeneratorService implements OnInit{
     });
   }
 
+  confirmarOperacionSinDestino(titulo : string, mensaje : string): boolean {
+    let confirmado : boolean = false;
+    Swal.fire({
+      icon:'warning',
+      title:titulo,
+      text:mensaje,
+      showCancelButton:true,
+      cancelButtonText:'No',
+      confirmButtonText:'Si'
+    }).then((result)=>{
+      if(result.isConfirmed){
+        confirmado = true;
+        console.error('se confirma operacion!!!!');
+      }
+    });
+    return confirmado;
+  }
+
 
   /**ALERTA DE CONFIRMACION(S/N) */
   confirmarOperacion(titulo:string,mensaje:string,destino:string):void{

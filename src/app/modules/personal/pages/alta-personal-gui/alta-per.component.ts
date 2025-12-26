@@ -7,6 +7,7 @@ import { EspecialidadMedicaResponse } from '../../../paciente/interfaces/respons
 import { CatEspecialidadesService } from '../../../../services/cat-esp.service';
 import { PerfilProfesionalResponse } from '../../../paciente/interfaces/response/perfil-prof-response.interface';
 import { CatPerfilesService } from '../../../../services/cat-perfiles.service';
+import { Utilerias } from '../../../../utils/utilerias';
 
 @Component({
   selector: 'app-alta-personal',
@@ -23,7 +24,10 @@ export class AltaPersonalComponent {
   }
 
 
-  constructor(private altaPersonalService : AltaPersonalService, private especialidadService : CatEspecialidadesService, private alertas:AlertGeneratorService, private perfilesService : CatPerfilesService) {
+  constructor(private altaPersonalService : AltaPersonalService,
+    private especialidadService : CatEspecialidadesService,
+    private alertas:AlertGeneratorService,
+    private perfilesService : CatPerfilesService) {
     // Inicialización del componente
   }
 
@@ -39,6 +43,9 @@ export class AltaPersonalComponent {
   altaPersonalRequest : IAltaPersonalRequest = {};
   especialidadesResponse : EspecialidadMedicaResponse = {"datos":[]};
   perfilesResponse : PerfilProfesionalResponse = {"datos":[]};
+  bsValue : Date = new Date();
+  fechaNacimiento : string = '';
+  utils : Utilerias = new Utilerias();
 
   // Método de ejemplo para manejar el envío del formulario
   onSubmit() {
@@ -66,6 +73,10 @@ export class AltaPersonalComponent {
    registrarPersonal(): void {
      console.error('entrando a dar de alta...');
      console.error(JSON.stringify(this.altaPersonalRequest));
+     if(!this.fechaNacimiento) {
+        this.alertas.ventanaInformacion('La fecha de nacimiento es obligatoria.');
+     }
+     this.altaPersonalRequest.fechaNacimiento = this.utils.formatIsoDateToDDMMYYYY(this.fechaNacimiento);
      this.altaPersonalService.registrarPersonal(this.altaPersonalRequest);
   }
 

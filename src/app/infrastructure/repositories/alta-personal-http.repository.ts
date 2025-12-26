@@ -4,12 +4,13 @@ import { AltaPersonalDTO } from "../../modules/personal/interfaces/alta-personal
 import { HttpClient } from "@angular/common/http";
 import { ConstantesGenerales } from "../../utils/constantes-generales";
 import { IAltaPersonalRequest } from "../../modules/paciente/interfaces/request/alta-personal-request.interface";
+import { AlertGeneratorService } from "../../pages/alerts/alert-generator/alert-generator.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AltaPersonalHttpRepository extends AltaPersonalRepository {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private alertas : AlertGeneratorService) {
     super();
   }
 
@@ -18,7 +19,14 @@ export class AltaPersonalHttpRepository extends AltaPersonalRepository {
     this.http.post<IAltaPersonalRequest>(ConstantesGenerales.URL_API_ALTA_PERSONAL, altaPersonalDTO)
       .subscribe(
         response => console.log('API Response:', response),
-        error => console.error('API Error:', error)
+        error => {
+          console.error(error.status);
+          if(error.status === 0){
+            this.alertas.ventanaError(ConstantesGenerales.ERROR_SERVICIO_NO_DISPONIBLE);
+            return;
+          }
+          this.alertas.ventanaError('Error al registrar el personal: ' + error.message);
+        }
       );
   }
   // getAll(): Observable<BusquedaPaciente[]> {

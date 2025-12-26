@@ -2,6 +2,7 @@
 export class ConstantesGenerales{
   static readonly NOMBRE_APP:string = 'Grupo Medico Jacala';
   static readonly VERSION_APP:string='1.0.0';
+  static readonly ERROR_SERVICIO_NO_DISPONIBLE:string='Servicio no disponible.';
   //Claves para interrogatorio
   static readonly CLAVE_SINTOMAS_GENERALES:string='SINT_GEN';
   static readonly CLAVE_PIEL_FANERAS:string='PIELFAN';

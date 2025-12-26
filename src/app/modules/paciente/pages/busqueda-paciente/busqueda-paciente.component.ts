@@ -115,10 +115,10 @@ msBusqPacientes(searchTermLower: string, option: string) : void{
 
   if(option==='todos') {
       window.alert('Buscar todos los registros');
-      if(window.confirm('¿Desea cargar todos los registros?')) {
-  console.error('Se consume servicio de busqueda de pacientes');
+      if(this.alertas.confirmarOperacionSinDestino('','¿Desea cargar todos los registros?')){
+      console.error('Se consume servicio de busqueda de pacientes');
   //se consume servicio buscando por folio
-  this.busquedaPacienteService.getBusqueda(request).subscribe(
+      this.busquedaPacienteService.getBusqueda(request).subscribe(
     data => {
       this.resultadosBusqueda = data;
       console.error('Respuesta registro paciente: ',data);
