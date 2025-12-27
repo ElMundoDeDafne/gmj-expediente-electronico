@@ -13,4 +13,6 @@ export interface IAltaPersonalRequest {
   curp? : string;
   sexo?: string;
   estadoCivil?:string;
+  codigoUsuario?:string;
+  password?:string;
 }

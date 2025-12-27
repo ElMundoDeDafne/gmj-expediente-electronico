@@ -124,9 +124,26 @@
 
 </div>
 
+<div class="row form-div-padding" style="padding-top: 0.5%;">
+  <h1>Usuario y password</h1>
+  <div class="form-div-padding">
 
+      <div class="col d-inline-block">
+      <label class="form-check-label">Usuario</label><br>
+      <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.codigoUsuario">
+    </div>
+
+    <div class="col d-inline-block">
+      <label class="form-check-label">Password</label><br>
+      <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.password">
+    </div>
+
+  </div>
+</div>
 
     <p>{{altaPersonalRequest|json}}</p>
+
+
 
     <button type="submit" class="btn btn-outline-primary btn-sm" >Dar de alta</button>
   </form>

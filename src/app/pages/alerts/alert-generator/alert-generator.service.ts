@@ -28,22 +28,16 @@ export class AlertGeneratorService implements OnInit{
     });
   }
 
-  confirmarOperacionSinDestino(titulo : string, mensaje : string): boolean {
-    let confirmado : boolean = false;
-    Swal.fire({
+  async confirmarOperacionSinDestino(titulo : string, mensaje : string): Promise<boolean> {
+    const confirmado : any = await Swal.fire({
       icon:'warning',
       title:titulo,
       text:mensaje,
       showCancelButton:true,
       cancelButtonText:'No',
       confirmButtonText:'Si'
-    }).then((result)=>{
-      if(result.isConfirmed){
-        confirmado = true;
-        console.error('se confirma operacion!!!!'+confirmado);
-      }
     });
-    return confirmado;
+    return confirmado.isConfirmed;
   }
 
 
