@@ -1,0 +1,78 @@
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Acciones Dx enf</strong>
+    <textarea type="number"
+    name="accionesDxNEnf"
+    class="form-control"
+    size="15"
+    maxLength="15"
+    style="max-width: 100%;"
+    cols="40"
+    rows="5"
+    [(ngModel)]="notasEnfermeria.accionesDxEnf"
+    oninput="this.value = this.value.toUpperCase()" ></textarea>
+  </div>
+</div>
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Acciones Enf.</strong>
+    <textarea type="number"
+    name="accionesNEnf"
+    class="form-control"
+    size="15"
+    maxLength="15"
+    style="max-width: 100%;"
+    cols="40"
+    rows="5"
+    [(ngModel)]="notasEnfermeria.accionesNEnf"
+    oninput="this.value = this.value.toUpperCase()"
+    ></textarea>
+  </div>
+</div>
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Resultados</strong>
+    <textarea type="number"
+    name="resultadosNEnf"
+    class="form-control"
+    size="15"
+    maxLength="15"
+    style="max-width: 100%;"
+    cols="40"
+    rows="5"
+    [(ngModel)]="notasEnfermeria.resultadosNEnf"
+    oninput="this.value = this.value.toUpperCase()" ></textarea>
+  </div>
+</div>
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Realizó</strong>
+    <input type="text"
+    name="realizoNEnf"
+    class="form-control"
+    size="15"
+    maxLength="40"
+    style="max-width: 100%;"
+    [(ngModel)]="notasEnfermeria.realizoNEnf"
+    oninput="this.value = this.value.toUpperCase()" >
+  </div>
+  <div class="col">
+    <strong>Cedula Profesional <span style="color: red;">*</span></strong>
+    <input type="text"
+    name="cedulaProfesionalNEnf"
+    class="form-control"
+    size="8"
+    maxLength="8"
+    style="max-width: 100%;"
+    [(ngModel)]="notasEnfermeria.cedulaProfNEnf"
+    oninput="this.value = this.value.toUpperCase()">
+    <!-- <div class="text-danger" *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].invalid && (notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].dirty || notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].touched)">
+      <div *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].errors?.['pattern']">
+        <h6>Solo números.</h6>
+      </div>
+      <div *ngIf="notasEnfemeriaForm.controls['cedulaProfesionalNEnf'].errors?.['required']">
+        <h6>Dato obligatorio.</h6>
+      </div>
+    </div> -->
+  </div>
+</div>

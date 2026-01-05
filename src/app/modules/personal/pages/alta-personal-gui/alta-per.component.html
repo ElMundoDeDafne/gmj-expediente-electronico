@@ -1,0 +1,150 @@
+<div class="form-div-padding">
+  <h1>Alta de personal</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="row form-div-padding" style="padding-top: 0.5%;">
+      <div class="col d-inline-block">
+        <label class="form-check-label">Primer nombre</label><br>
+        <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="folio" [(ngModel)]="altaPersonalRequest.nombrePropioUno">
+      </div>
+
+      <div class="col d-inline-block">
+        <label class="form-check-label">Segundo nombre</label><br>
+        <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="nombre" [(ngModel)]="altaPersonalRequest.nombrePropioDos">
+      </div>
+
+<!-- <div class="row form-div-padding" style="padding-top: 0.5%;"> -->
+  <div class="col d-inline-block">
+    <label>Sexo <span style="color:red;">*</span></label><br>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="H" [(ngModel)]="altaPersonalRequest.sexo">
+      <label class="form-check-label" for="inlineRadio5">H</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="M" [(ngModel)]="altaPersonalRequest.sexo">
+      <label class="form-check-label" for="inlineRadio6">M</label>
+    </div>
+  </div>
+
+<!-- </div> -->
+
+</div>
+
+<div class="row form-div-padding" style="padding-top: 0.5%;">
+      <div class="col d-inline-block">
+        <label class="form-check-label">Apellido materno</label><br>
+        <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="apellidoMaterno" [(ngModel)]="altaPersonalRequest.apellidoMaterno">
+      </div>
+      <div class="col d-inline-block">
+        <label class="form-check-label">Apellido paterno</label><br>
+        <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="apellidoPaterno" [(ngModel)]="altaPersonalRequest.apellidoPaterno">
+      </div>
+
+  <div class="col d-inline-block">
+    <label>Edo. Civil <span style="color:red;">*</span></label><br>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="SOLTERO" [(ngModel)]="altaPersonalRequest.estadoCivil">
+      <label class="form-check-label" for="inlineRadio7">SOLTERO</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="CASADO" [(ngModel)]="altaPersonalRequest.estadoCivil">
+      <label class="form-check-label" for="inlineRadio8">CASADO</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="cuentaConCartilla" id="tieneCartilla" value="UNION_LIBRE" [(ngModel)]="altaPersonalRequest.estadoCivil">
+      <label class="form-check-label" for="inlineRadio8">UNION LIBRE</label>
+    </div>
+  </div>
+
+</div>
+
+<div class="row form-div-padding" style="padding-top: 0.5%;">
+<div class="col d-inline-block">
+  <label class="form-check-label">Tipo de personal</label><br>
+  <select class="form-select" [(ngModel)]="altaPersonalRequest.tipoPersonal" name="tipoPersona">
+    <option value="" disabled selected>Seleccione un tipo de personal</option>
+    <option *ngFor="let tipo of perfilesResponse.datos" [value]="tipo.codigo" [(ngModel)]="altaPersonalRequest.tipoPersonal">{{ tipo.descripcion.toUpperCase() }}</option>
+  </select>
+</div>
+
+<div class="col d-inline-block">
+  <label class="form-check-label">Cedula profesional</label><br>
+  <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.cedulaProfesional">
+</div>
+</div>
+
+
+<div class="row form-div-padding" style="padding-top: 0.5%;">
+  <div class="col d-inline-block">
+  <label class="form-check-label">Cedula profesional (Esp.)</label><br>
+  <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.cedulaProfesionalOtra">
+</div>
+</div>
+
+<div class="row form-div-padding" style="padding-top: 0.5%;">
+  <div class="col d-inline-block">
+    <label class="form-check-label">Especialidad</label><br>
+    <select class="form-select" [(ngModel)]="especialidadesResponse.datos" name="especialidad" id="especialidad" [(ngModel)]="altaPersonalRequest.especialidad">
+      <option value="" disabled selected>Seleccione un tipo de personal</option>
+      <option *ngFor="let dato of especialidadesResponse.datos" [value]="dato.codigoEspecialidad">{{ dato.descripcionEspe.toUpperCase() }}</option>
+    </select>
+  </div>
+
+
+  <div class="col d-inline-block">
+    <label class="form-check-label">Especialidad (otro)</label><br>
+    <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.especialidadOtro">
+  </div>
+
+  <div class="col d-inline-block">
+  <div class="col">
+    <label>Fecha nacimiento</label>
+    <input type="text"
+    id="inicioVidaSexual"
+    name="inicioVidaSexual"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    bsDatepicker
+    [bsConfig]="{ isAnimated: false, dateInputFormat: 'DD/MM/YYYY' }"
+    [maxDate]="bsValue"
+    [(ngModel)]="fechaNacimiento">
+  </div>
+    <!-- <label class="form-check-label">Fecha cumpleaños</label><br> -->
+    <!-- <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="fechaCumpleanios" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.fechaNacimiento"> -->
+  </div>
+
+  <div class="col d-inline-block">
+    <label class="form-check-label">CURP</label><br>
+    <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.curp">
+  </div>
+
+
+          <!-- <app-domicilio-paciente-form [(ngModel)]="paciente.hojaFrontal.domicilioPaciente"></app-domicilio-paciente-form> -->
+          <!-- <app-datos-contacto-paciente-form [(ngModel)]="paciente.hojaFrontal.datosContacto"></app-datos-contacto-paciente-form> -->
+
+</div>
+
+<div class="row form-div-padding" style="padding-top: 0.5%;">
+  <h1>Usuario y password</h1>
+  <div class="form-div-padding">
+
+      <div class="col d-inline-block">
+      <label class="form-check-label">Usuario</label><br>
+      <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.codigoUsuario">
+    </div>
+
+    <div class="col d-inline-block">
+      <label class="form-check-label">Password</label><br>
+      <input oninput="this.value = this.value.toUpperCase()" class="form-control" type="text" name="inlineRadioOptions" id="cedulaProfesional" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="altaPersonalRequest.password">
+    </div>
+
+  </div>
+</div>
+
+    <p>{{altaPersonalRequest|json}}</p>
+
+
+
+    <button type="submit" class="btn btn-outline-primary btn-sm" >Dar de alta</button>
+  </form>
+</div>

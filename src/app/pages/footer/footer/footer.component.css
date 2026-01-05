@@ -1,5 +1,9 @@
+body{
+  padding-top: 30px;
+  padding-bottom: 60px; /* espacio para el footer */
+}
 footer {
-  position:fixed;
+  position:relative;
   left: 0;
   bottom: 0;
   width: 100%;

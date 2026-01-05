@@ -1,0 +1,185 @@
+<div class="text-danger" *ngIf="this.mensajes.length > 0">
+  <div class="row form-div-padding">
+    <!-- Mensajes de alerta en signos -->
+    <div class="col">
+      <p *ngFor="let msg of mensajes">{{msg}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="row form-div-padding">
+    <h2>Somatometria</h2>
+    <div class="col">
+      <label>Presion S.</label>
+      <input type="number"
+      name="presionSist"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.presionSist"
+      (input) = "this.validarSignos()">
+    </div>
+    <div class="col">
+      <label>Presion D.</label>
+      <input type="number"
+      name="presionDiast"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.presionDiast"
+      (input) = "this.validarSignos()">
+    </div>
+    <div class="col">
+      <label>Frec. respiratoria</label>
+      <input type="number"
+      name="freqResiratoria"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.oxigenacion"
+      (input) = "this.validarSignos()">
+      <!-- <label>FPM</label> -->
+    </div>
+    <div class="col">
+      <label>Frec. cardiaca</label>
+      <input type="number"
+      name="freqCardiaca"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.frecuenciaCardiaca"
+      (input) = "this.validarSignos()">
+      <!-- <label>FPM</label> -->
+    </div>
+    <div class="col">
+      <label>Talla</label>
+      <input type="number"
+      name="freqCardiaca"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.talla"
+      (input)="this.calcularIMC()">
+      <!-- <label>FPM</label> -->
+    </div>
+    <div class="col">
+      <label>Temperatura</label>
+      <input type="number"
+      name="temperatura"
+      class="form-control"
+      size="15"
+      maxLength="15"
+      style="max-width: 50%;"
+      [(ngModel)]="signosVitales.temperatura"
+      (input) = "this.validarSignos()"
+      >
+      <!-- <label>FPM</label> -->
+    </div>
+
+    <div class="row form-div-padding">
+      <div class="col">
+        <label>Tipo de sangre</label>
+        <input type="text"
+        name="tipoSangre"
+        class="form-control"
+        size="15"
+        maxLength="15"
+        style="max-width: 100px;"
+        oninput = "this.value = this.value.toUpperCase()"
+        [(ngModel)]="signosVitales.tipoSangre"
+        >
+      </div>
+
+      <div class="col">
+        <label>Factor RH</label>
+        <!--Cambiar esto por un select-->
+        <input type="text"
+        name="temperatura"
+        class="form-control"
+        size="15"
+        maxLength="15"
+        style="max-width: 100px;"
+        [(ngModel)]="signosVitales.factorRh"
+        oninput = "this.value =this.value.toUpperCase()"
+        >
+      </div>
+
+      <div class="col">
+        <label>Peso</label>
+        <input type="number"
+        name="peso"
+        class="form-control"
+        size="15"
+        maxLength="3"
+        style="max-width: 100px;"
+        [(ngModel)]="signosVitales.peso"
+        (input)="this.calcularIMC()"
+        >
+      </div>
+
+      <div class="col">
+        <label>IMC (calculado)</label>
+        <input type="number"
+        name="imc"
+        class="form-control"
+        size="15"
+        maxLength="15"
+        style="max-width: 100px;"
+        disabled
+        [(ngModel)]="this.signosVitales.imc"
+        >
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+
+    <div class="col">
+      <label>¿Ayuno?</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ayunoNo" value="true" [(ngModel)]="signosVitales.cuentaConAyuno">
+        <label class="form-check-label" for="inlineRadio1">Si</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ayunoSi" value="false" [(ngModel)]="signosVitales.cuentaConAyuno">
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+      <!-- <label>FPM</label> -->
+    </div>
+</div>
+
+<div class="row form-div-padding">
+  <div class="col">
+    <label>Habitus Exterior</label>
+    <textarea type="text"
+    name="habitusExterior"
+    class="form-control"
+    size="15"
+    maxLength="15"
+    style="max-width: 100%;"
+    cols="40"
+    rows="5"
+    [(ngModel)]="signosVitales.habitusExterior">
+  </textarea>
+  </div>
+  <div class="col">
+    <label>Padecimiento actual</label>
+    <textarea type="number"
+    name="padecimientoActual"
+    class="form-control"
+    size="15"
+    maxLength="15"
+    style="max-width: 100%;"
+    cols="40"
+    rows="5"
+    [(ngModel)]="signosVitales.padecimientoActual"></textarea>
+  </div>
+</div>
+
+<div class="row form-div-padding">
+
+</div>

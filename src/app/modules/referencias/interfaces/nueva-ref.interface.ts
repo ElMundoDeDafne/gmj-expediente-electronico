@@ -1,0 +1,3 @@
+export interface INuevaReferencia {
+  //TODO: agregar  variables...
+}

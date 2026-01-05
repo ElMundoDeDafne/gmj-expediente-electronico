@@ -1,0 +1,66 @@
+<div class="form-div-padding">
+  <!-- Poner aqui el titulo para busqueda de catalogos existentes -->
+  <h5 style="text-align: center;">Catalogos generales</h5>
+  <div class="row" style="padding-top: 0.5%;">
+    <!-- Barra de busqueda -->
+    <div class="col">
+      <input type="text"
+      name="criterioBusquedaTexto"
+      id="criterioBusquedaTexto"
+      class="form-control"
+      style="max-width: 100%;"
+      oninput="this.value = this.value.toUpperCase()" >
+      <br>
+      <input type="submit" value="Buscar" class="btn btn-outline-primary btn-sm">
+      <br>
+      <input type="submit" value="Nuevo" class="btn btn-outline-primary btn-sm">
+    </div>
+  </div>
+
+  <!-- Tabla con las siguientes columnas: Id, Catalogo, Descripcion catalogo -->
+  <div class="row" style="padding-top: 0.5%;">
+    <div class="col">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Catalogo</th>
+            <th scope="col">Descripción catalogo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí se agregarán las filas de la tabla dinámicamente -->
+          <!-- <tr *ngFor="let item of catalogos">
+            <td>{{ item.id }}</td>
+            <td>{{ item.catalogo }}</td>
+            <td>{{ item.descripcion }}</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+
+</div>
+
+
+<!-- <div class="layout"> -->
+  <!-- Botón de menú (hamburger) -->
+  <!-- <button (click)="toggleSidebar()" class="menu-toggle">
+    ☰
+  </button> -->
+
+  <!-- Menú lateral -->
+  <!-- <div class="sidebar" [class.hidden]="!sidebarOpen">
+    <ul>
+      <li><a routerLink="/inicio">Inicio</a></li>
+      <li><a routerLink="/perfil">Perfil</a></li>
+      <li><a routerLink="/configuracion">Configuración</a></li>
+      <li><a routerLink="/cerrar-sesion">Cerrar sesión</a></li>
+    </ul>
+  </div> -->
+
+  <!-- Contenido principal -->
+  <!-- <div class="content">
+    <h1>Censo General</h1>
+    <p>Contenido del censo general...</p>
+  </div> -->
+<!-- </div> -->

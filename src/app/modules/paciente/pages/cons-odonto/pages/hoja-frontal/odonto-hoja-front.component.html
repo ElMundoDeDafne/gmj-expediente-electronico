@@ -1,0 +1,150 @@
+<div class="row form-div-padding">
+  <div class="col d-inline-block">
+    <input type="submit" value="Buscar paciente" class="btn btn-outline-primary btn-sm d-inline-block" (click)="cargarModal()">
+
+    <div class=" form-div-padding d-inline-block">
+      <label>Nombre</label>
+      <input type="text"
+        name="nombre"
+        placeholder="Nombre(s)"
+        class="form-control infoPacienteId"
+        maxLength="20"
+        style="max-width: 100%;"
+        [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.nombreUno"
+        (input)="utils.convertirAMayusculas($event)">
+    </div>
+
+    <div class=" form-div-padding d-inline-block">
+      <input type="text"
+      name="apellidoPaterno"
+      placeholder="Apellido paterno"
+      class="form-control infoPacienteId"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.nombreDos"
+      (input)="utils.convertirAMayusculas($event)">
+    </div>
+
+    <div class=" form-div-padding d-inline-block">
+      <input type="text"
+      name="apellidoMaterno"
+      placeholder="Nombre(s)"
+      class="form-control infoPacienteId"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="form.apellidoMaterno"
+      (input)="utils.convertirAMayusculas($event)">
+    </div>
+  </div>
+</div>
+
+<div class="row form-div-padding">
+  <div class="col d-inline-block">
+    <div class=" form-div-padding d-inline-block">
+      <input type="text"
+      id="edad"
+      name="edad"
+      placeholder="Edad"
+      class="form-control bloque infoPacienteId"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.edad">
+    </div>
+
+    <div class=" form-div-padding d-inline-block">
+      <input type="text"
+      name="sexoAlNacer"
+      placeholder="Sexo"
+      class="form-control infoPacienteId"
+      maxLength="1"
+      style="max-width: 100%;"
+      [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.sexo">
+    </div>
+
+    <div class=" form-div-padding d-inline-block">
+      <input type="text"
+      name="fechaNacimiento"
+      placeholder="Fecha de nacimiento"
+      class="form-control infoPacienteId"
+      maxLength="20"
+      bsDatepicker
+      [bsValue]="bsValue"
+      [maxDate]="bsValue"
+      style="max-width: 100%;"
+      [(ngModel)]="form.fechaNacimiento">
+
+      <!-- <input type="text"
+      placeholder="Ej: 12/02/1991"
+      class="form-control"
+      pattern="\d{2}/\d{2}/\d{4}"
+      bsDatepicker
+      [bsValue]="bsValue"
+      [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }"
+      [maxDate]="fechaSeleccionada"
+      [(ngModel)]="informacionPx.fechaNacimiento"
+      formControlName="fechaNacimiento"
+      (ngModelChange)="calcularEdad($event)"> -->
+
+
+
+    </div>
+  </div>
+</div>
+
+<div class="row form-div-padding">
+  <div class="col d-inline-block">
+    <div class=" form-div-padding d-inline-block">
+      <input type="text"
+      name="domicilio"
+      placeholder="Domicilio"
+      class="form-control infoPacienteId"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="localidad"
+      (input)="utils.convertirAMayusculas($event)">
+    </div>
+
+    <div class="form-div-padding d-inline-block">
+      <input type="text"
+      name="telefono"
+      placeholder="Telefono"
+      class="form-control infoPacienteId"
+      maxLength="20"
+      style="max-width: 100%;"
+      [(ngModel)]="telefono">
+    </div>
+  </div>
+
+  <div class="row form-div-padding">
+    <div class="col d-inline-block">
+      <div class="form-div-padding d-inline-block">
+        <label>Motivo de consulta</label>
+        <input type="text"
+        name="motivoConsulta"
+        placeholder="Ej: Entumecimiento hemisferio derecho"
+        class="form-control infoPacienteId"
+        maxLength="200"
+        style="max-width: 100%;"
+        [(ngModel)]="hojaFrontalEsto.hojaFrontalOdonto.motivoConsulta"
+        (input)="utils.convertirAMayusculas($event)">
+      </div>
+
+      <div class="form-div-padding d-inline-block">
+        <label>Fecha ultimo examen medico</label>
+        <input type="text"
+        name="fechaUltimoExMedico"
+        placeholder="DD/MM/AAAA"
+        class="form-control infoPacienteId"
+        maxLength="10"
+        style="max-width: 100%;"
+        [(ngModel)]="form.fechaUltimoExMedico">
+      </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="nrFechaUltimaCitologia" id="nrFechaUltimaCitologia">
+          <label class="form-check-label" for="inlineRadio3">No recuerda</label>
+        </div>
+
+    </div>
+  </div>
+</div>

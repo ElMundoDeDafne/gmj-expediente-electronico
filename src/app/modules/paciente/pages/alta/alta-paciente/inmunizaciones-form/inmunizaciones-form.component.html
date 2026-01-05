@@ -1,0 +1,44 @@
+<br><br><h3>Inmunizaciones</h3>
+<!-- agregar combos o predictivos -->
+<div class="row" *ngFor="let inmunizacion of inmunizaciones; let i = index">
+  <div class="col">
+    <label>Biologico</label>
+    <!-- <input type="text"
+    name="biologicoNombre"
+    placeholder="BCG"
+    class="form-control"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="inmunizacion.biologicoNombre"> -->
+
+    <select class="form-select form-select-sm" id="biologicos{{i}}" [(ngModel)]="inmunizacion.biologicoNombre">
+      <option *ngFor="let biologico of biologicos" [value]="biologico">
+        {{ biologico }}
+      </option>
+    </select>
+
+  </div>
+
+  <!-- cambiar esto por un calendario -->
+  <div class="col">
+    <label>Fecha aplicacion</label>
+    <input type="text"
+    name="fechaAplicacion"
+    placeholder="Ej: 01/01/2000"
+    class="form-control"
+    bsDatepicker
+    [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }"
+    [maxDate]="bsValue"
+    maxLength="20"
+    style="max-width: 100%;"
+    [(ngModel)]="inmunizacion.fechaAplicacion">
+  </div>
+  <div class="col">
+    <div *ngIf="i===0">
+      <button (click)="agregarInput()" class="btn btn-outline-primary btn-sm">Agregar</button>
+    </div>
+    <div *ngIf="i>=1">
+      <button (click)="eliminar(i)" class="btn btn-outline-primary btn-sm">Eliminar</button>
+    </div>
+  </div>
+</div>

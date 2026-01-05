@@ -6,13 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PacienteModule } from './modules/paciente/paciente.module';
-import { ExpedienteClinicoModule } from './modules/expediente-clinico/expediente-clinico.module';
-import { NotasEnfermeriaModule } from './modules/notas-enfermeria/notas-enfermeria.module';
-import { ConsultaMedicaModule } from './modules/consulta-medica/consulta-medica.module';
 import { TopMenuComponent } from './pages/top/top-menu/top-menu.component';
 import { FooterComponent } from './pages/footer/footer/footer.component';
 import { WelcomePageComponent } from './pages/landing/welcome-page/welcome-page.component';
 import { WelcomeAlertComponent } from './pages/alerts/welcome-alert/welcome-alert.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { StillOnWorkPageComponent } from './pages/still-on-work-page/still-on-work-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { AuthorizationModule } from './modules/authorization/authorization.module';
+import { ReportsModule } from './modules/reports/reports.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CatOcupacionesService } from './services/cat-ocupaciones.service';
+import { HttpClientModule } from '@angular/common/http';
+import { PersonalModule } from './modules/personal/personal.module';
+import { BusquedaPacientesRepository } from './core/repositories/busqueda-paciente.repository';
 
 @NgModule({
   declarations: [
@@ -20,19 +27,25 @@ import { WelcomeAlertComponent } from './pages/alerts/welcome-alert/welcome-aler
     TopMenuComponent,
     FooterComponent,
     WelcomePageComponent,
-    WelcomeAlertComponent
+    WelcomeAlertComponent,
+    NotFoundPageComponent,
+    StillOnWorkPageComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PacienteModule,
-    ExpedienteClinicoModule,
-    NotasEnfermeriaModule,
-    ConsultaMedicaModule
+    ReportsModule,
+    AuthorizationModule,
+    PersonalModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    CatOcupacionesService
   ],
   bootstrap: [AppComponent]
 })

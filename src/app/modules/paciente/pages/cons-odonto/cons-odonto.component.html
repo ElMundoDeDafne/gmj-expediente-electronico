@@ -1,0 +1,36 @@
+<div class="row form-div-padding">
+  <h1>Nueva consulta odontologia</h1>
+
+  <!-- modal.component.html -->
+<!-- <div class="container"> -->
+  <!-- Botón que abre el modal -->
+  <!-- <button #triggerRef class="btn btn-primary" (click)="toggleModal()">Abrir Modal</button> -->
+
+  <!-- Modal -->
+  <!-- <div *ngIf="isModalVisible" #modalRef class="modal-container">
+    <div class="modal-content">
+      <button class="btn-close" (click)="toggleModal()"></button>
+      <app-busqueda-paciente></app-busqueda-paciente>
+    </div>
+  </div>
+</div> -->
+
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Hoja Frontal">
+      <p>Hoja frontal</p>
+      <app-odonto-hoja-front [(ngModel)]="pacienteOdonto"></app-odonto-hoja-front>
+    </mat-tab>
+    <mat-tab label="Ant. Hedo fam.">
+      <p>Ant. Hedofam.</p>
+      <app-odonto-ant-hfam></app-odonto-ant-hfam>
+    </mat-tab>
+    <mat-tab label="Ant. Personales">
+      <p>Ant. Personales</p>
+      <app-odonto-ant-per [(ngModel)]="pacienteOdonto"></app-odonto-ant-per>
+    </mat-tab>
+    <mat-tab label="Observaciones">
+      <app-odonto-observaciones></app-odonto-observaciones>
+    </mat-tab>
+  </mat-tab-group>
+
+  <code><p>{{pacienteOdonto|json}}</p></code>

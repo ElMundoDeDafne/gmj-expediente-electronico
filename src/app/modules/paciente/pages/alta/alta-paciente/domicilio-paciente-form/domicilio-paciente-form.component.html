@@ -1,0 +1,166 @@
+<div class="row form-div-padding">
+    <br><br><h3>Domicilio</h3>
+
+      <div class="col" [formGroup]="domicilioForm">
+        <label>Codigo Postal <span style="color:red;">*</span></label>
+        <input type="text"
+        name="codigoPostal"
+        placeholder="E.j. 42064"
+        class="form-control"
+        maxLength="5"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.codigoPostal"
+        formControlName="codigoPostal"
+        (keypress)="validateNumber($event)">
+        <div class="text-danger" *ngIf="domicilioForm.controls['codigoPostal'].invalid && (domicilioForm.controls['codigoPostal'].dirty || domicilioForm.controls['codigoPostal'].touched)">
+          <div *ngIf="domicilioForm.controls['codigoPostal'].errors?.['required']">
+        <h6>Dato obligatorio.</h6>
+          </div>
+        </div>
+        <div class="text-danger" *ngIf="domicilioForm.controls['codigoPostal'].invalid && (domicilioForm.controls['codigoPostal'].dirty || domicilioForm.controls['codigoPostal'].touched)">
+          <div *ngIf="domicilioForm.controls['codigoPostal'].errors?.['pattern']">
+        <h6>Solo numeros.</h6>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col" [formGroup]="domicilioForm">
+        <label>Calle principal <span style="color:red;">*</span></label>
+        <input type="text"
+        oninput="this.value = this.value.toUpperCase()"
+        name="callePrincipal"
+        placeholder="E.j. Centro"
+        class="form-control"
+        maxLength="90"
+        style="max-width: 100%;"
+        formControlName="callePrincipal"
+        [(ngModel)]="domicilio.callePrincipal">
+        <div class="text-danger" *ngIf="domicilioForm.controls['callePrincipal'].invalid && (domicilioForm.controls['callePrincipal'].dirty || domicilioForm.controls['callePrincipal'].touched)">
+          <div *ngIf="domicilioForm.controls['callePrincipal'].errors?.['required']">
+            <h6>Dato obligatorio.</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <label>Entre calle</label>
+        <input type="text"
+        name="entreCalle1"
+        placeholder="Reforma"
+        class="form-control"
+        maxLength="90"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.entreCalles1">
+      </div>
+  </div>
+
+
+
+    <div class="row form-div-padding">
+      <div class="col">
+        <label>Entre calle 2</label>
+        <input type="text"
+        name="entreCalle2"
+        placeholder="Reforma"
+        class="form-control"
+        maxLength="90"
+        style="max-width: 100%;"
+        [(ngModel)]="domicilio.entreCalles2">
+        oninput="this.value = this.value.toUpperCase()"
+      </div>
+
+
+    <div class="col" [formGroup]="domicilioForm">
+      <label>Estado <span style="color:red;">*</span></label>
+      <input type="text"
+      name="entidad"
+      placeholder="Hidalgo"
+      class="form-control"
+      maxLength="50"
+      style="max-width: 100%;"
+      [(ngModel)]="domicilio.entidad"
+      formControlName="estado"
+      (keypress)="utils.validateCharacter($event)"
+      oninput="this.value = this.value.toUpperCase()">
+      <div class="text-danger" *ngIf="domicilioForm.controls['estado'].invalid && (domicilioForm.controls['estado'].dirty || domicilioForm.controls['estado'].touched)">
+        <div *ngIf="domicilioForm.controls['estado'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="col" [formGroup]="domicilioForm">
+      <label>Localidad <span style="color:red;">*</span></label>
+      <input type="text"
+      name="entidad"
+      placeholder="Jacala"
+      class="form-control"
+      maxLength="50"
+      style="max-width: 100%;"
+      (keypress)="utils.validateCharacter($event)"
+      [(ngModel)]="domicilio.localidad"
+      oninput="this.value = this.value.toUpperCase()"
+      formControlName="localidad">
+      <div class="text-danger" *ngIf="domicilioForm.controls['localidad'].invalid && (domicilioForm.controls['localidad'].dirty || domicilioForm.controls['localidad'].touched)">
+        <div *ngIf="domicilioForm.controls['localidad'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="col" [formGroup]="domicilioForm">
+      <label>Municipio <span style="color:red;">*</span></label>
+      <input type="text"
+      name="municipio"
+      placeholder="Jacala"
+      class="form-control"
+      maxLength="50"
+      style="max-width: 100%;"
+      [(ngModel)]="domicilio.municipio"
+      (keypress)="utils.validateCharacter($event)"
+      formControlName="municipio"
+      oninput="this.value = this.value.toUpperCase()">
+      <div class="text-danger" *ngIf="domicilioForm.controls['municipio'].invalid && (domicilioForm.controls['municipio'].dirty || domicilioForm.controls['municipio'].touched)">
+        <div *ngIf="domicilioForm.controls['municipio'].errors?.['required']">
+          <h6>Dato obligatorio.</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row form-div-padding">
+    <div class="col">
+      <label>Numero</label>
+      <input type="text"
+      name="numeroCalle"
+      placeholder="S/N"
+      class="form-control"
+      maxLength="20"
+      style="max-width: 50%"
+      [(ngModel)]="domicilio.numeroCalle">
+      </div>
+      <div class="col">
+        <label>Manzana</label>
+        <input type="text"
+        name="manzana"
+        placeholder="S/N"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 50%;"
+        [(ngModel)]="domicilio.manzana"
+        oninput="this.value = this.value.toUpperCase()">
+      </div>
+      <div class="col">
+        <label>Vivienda</label>
+        <input type="text"
+        name="vivienda"
+        placeholder="S/N"
+        class="form-control"
+        maxLength="20"
+        style="max-width: 50%;"
+        [(ngModel)]="domicilio.vivienda"
+        oninput="this.value = this.value.toUpperCase()">
+      </div>
+    </div>

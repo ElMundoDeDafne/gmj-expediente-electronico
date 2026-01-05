@@ -1,0 +1,92 @@
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Resultados previos y actuales de laboratorio y/o gabinete</strong>
+    <textarea type="number"
+    name="resPreviosLab"
+    class="form-control"
+    size="80"
+    maxLength="300"
+    style="max-width: 100%;"
+    cols="80"
+    rows="7"
+    oninput="this.value = this.value.toUpperCase()"
+    [(ngModel)]="notasMedicasPx.resultados"
+    ></textarea>
+  </div>
+</div>
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Analisis y comentarios</strong>
+    <textarea type="number"
+    name="analisisYComent"
+    oninput="this.value = this.value.toUpperCase()"
+    class="form-control"
+    size="80"
+    maxLength="300"
+    style="max-width: 100%;"
+    cols="80"
+    rows="7"
+    [(ngModel)]="notasMedicasPx.analisisYComentarios"
+    ></textarea>
+  </div>
+</div>
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Impresión diagnostica</strong>
+    <textarea type="number"
+    name="impDiagnost"
+    oninput="this.value = this.value.toUpperCase()"
+    class="form-control"
+    size="5"
+    maxLength="300"
+    style="max-width: 100%;"
+    cols="200"
+    rows="5"
+    [(ngModel)]="notasMedicasPx.impresionDiagnostica"></textarea>
+  </div>
+</div>
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Tratamiento</strong>
+    <textarea type="number"
+    name="tratamiento"
+    class="form-control"
+    size="5"
+    maxLength="300"
+    style="max-width: 100%;"
+    cols="200"
+    rows="5"
+    [(ngModel)]="notasMedicasPx.tratamiento"
+    oninput="this.value = this.value.toUpperCase()"
+    ></textarea>
+  </div>
+</div>
+<div class="row form-div-padding">
+  <div class="col">
+    <strong>Realizó</strong>
+    <input type="text"
+    name="realizo"
+    class="form-control"
+    size="15"
+    maxLength="50"
+    style="max-width: 100%;"
+    oninput="this.value = this.value.toUpperCase()"
+    [(ngModel)]="notasMedicasPx.realizoNM">
+  </div>
+  <div class="col">
+    <strong>Cedula Profesional</strong>
+    <input type="text"
+    name="cedulaProfesional"
+    class="form-control"
+    size="15"
+    maxLength="15"
+    style="max-width: 100%;"
+    [(ngModel)]="notasMedicasPx.cedulaProfNM">
+  </div>
+  <div class="row form-div-padding">
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="generarReceta()">Generar receta</button>
+    </div>
+    <p>{{infoPaciente.informacionPx.nombrePropio1}}</p>
+  </div>
+</div>

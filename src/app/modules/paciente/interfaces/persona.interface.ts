@@ -1,4 +1,5 @@
-export interface Persona {
+/**Interfaz base para persona */
+export interface IPersona {
   nombrePropio1?:string;
   nombrePropio2?:string;
   apellidoPaterno?:string;
@@ -8,11 +9,16 @@ export interface Persona {
   sexoReferido?:string;
   sexoAlNacer?:string;
   esPersonal?:boolean;
-  esDerechoHabiente?:boolean;
+  esDerechoHabiente?:string;
   nss?:string;
   derechoHabiencia?:string;
   ocupacion?:string;
   curp?:string;
   fechaNacimiento?:string;
-  fechaRegistro?:string;
+  fechaRegistro?:Date;
+  nacionalidad?:string;
+  religion?:string;
+  talla?:number;
+  folioPaciente?:string;
+  meses?:string;
 }

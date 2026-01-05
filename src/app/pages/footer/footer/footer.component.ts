@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConstantesGenerales } from '../../../utils/constantes-generales';
 
 @Component({
   selector: 'app-footer',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  nombreApp:string='Grupo Medico Jacala App';
-  versionApp:string = '0.0.1 demo';
+  nombreApp:string=ConstantesGenerales.NOMBRE_APP;
+  versionApp:string = ConstantesGenerales.VERSION_APP;
   copyrightText:string='(C) 2024 Mundo de Dafne. Todos los derechos reservados.';
 }
